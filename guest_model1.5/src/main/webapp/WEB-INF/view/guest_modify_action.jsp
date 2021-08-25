@@ -33,6 +33,7 @@ try {
 	response.sendRedirect("guest_view.jsp?guest_no="+guest_noStr);
 } catch (Exception e) {
 	e.printStackTrace();
-	response.sendRedirect("guest_error.jsp");
+	/****** redirect [case1] ********/
+	response.sendRedirect("guest_error.do");
 }
 %>

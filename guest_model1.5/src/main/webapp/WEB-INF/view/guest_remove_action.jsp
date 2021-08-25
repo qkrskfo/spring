@@ -20,6 +20,7 @@ try {
 	response.sendRedirect("guest_list.jsp");
 } catch (Exception e) {
 	e.printStackTrace();
-	response.sendRedirect("guest_error.jsp");
+	/****** redirect [case1] ********/
+	response.sendRedirect("guest_error.do");
 }
 %>

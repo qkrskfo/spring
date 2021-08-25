@@ -3,19 +3,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-/*
-0.GET방식이면 guest_main.jsp redirection
-1.no 파라메타바끼
-2.GuestService.selectByNo()메쏘드호출
-3.Guest를 보여준다
-*/
-if(request.getMethod().equalsIgnoreCase("GET")){
-	response.sendRedirect("guest_main.jsp");
-	return;
-}
-String guest_noStr=request.getParameter("guest_no");
-GuestService guestService=new GuestService();
-Guest guest=guestService.selectByNo(Integer.parseInt(guest_noStr));
+
+	Guest guest = (Guest)request.getAttribute("guest");
+
 %>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>

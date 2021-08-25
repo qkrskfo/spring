@@ -19,9 +19,24 @@ public class GuestErrorServlet extends HttpServlet {
 		String forwardPath = "";
 		forwardPath = "/WEB-INF/view/guest_error.jsp";
 		
-		/******* forward *******/
+		/******* forward
 		RequestDispatcher rd = request.getRequestDispatcher(forwardPath);
 		rd.forward(request, response);
+		 *******/
+		
+		
+		/******* Forward or Redirect *******/
+		String[] pathArray = forwardPath.split(":");
+		String forwardOrRediret = pathArray[0];
+		String path = pathArray[1];
+		
+		if(forwardOrRediret.equals("forward")) {
+			RequestDispatcher rd = request.getRequestDispatcher(path);
+			rd.forward(request, response);
+		} else if (forwardOrRediret.equals("redirect")) {
+			response.sendRedirect(path);
+		}
+		/******************************************/
 	}
 
 }

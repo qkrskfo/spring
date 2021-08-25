@@ -21,17 +21,7 @@ public class GuestWriteActionServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String forwardPath = "";
-		/*
-		0 . GET방식이면 guest_write_form.do redirection
-		0 . 요청객체 인코딩설정
-		1 . 파라메타받기 
-			- 5개받기
-		2 . Service객체 메쏘드호출(업무처리)
-			- GuestService.insertGuest()
-		3 . 요청클라이언트로 응답 
-			- 성공:guest_main.do 로 redirection
-			- 실패(예외):guest_error.do로 redirection
-		*/
+		
 		if (request.getMethod().equalsIgnoreCase("GET")) {
 			forwardPath="redirect:guest_main.do";
 		} else {

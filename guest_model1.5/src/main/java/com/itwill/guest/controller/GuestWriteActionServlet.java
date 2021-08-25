@@ -55,15 +55,12 @@ public class GuestWriteActionServlet extends HttpServlet {
 			}
 		}
 		
-		
 		/******* Forward or Redirect *******/
 		String[] pathArray = forwardPath.split(":");
 		String forwardOrRediret = pathArray[0];
 		String path = pathArray[1];
 		
 		if(forwardOrRediret.equals("forward")) {
-			//rediret
-			//RequestDispatcher rd = request.getRequestDispatcher(forwardPath);
 			RequestDispatcher rd = request.getRequestDispatcher(path);
 			rd.forward(request, response);
 		} else if (forwardOrRediret.equals("redirect")) {

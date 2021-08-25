@@ -26,8 +26,6 @@ public class GuestMainServlet extends HttpServlet {
 		String path = pathArray[1];
 		
 		if(forwardOrRediret.equals("forward")) {
-			//rediret
-			//RequestDispatcher rd = request.getRequestDispatcher(forwardPath);
 			RequestDispatcher rd = request.getRequestDispatcher(path);
 			rd.forward(request, response);
 		} else if (forwardOrRediret.equals("redirect")) {

@@ -24,9 +24,7 @@ public class GuestListServlet extends HttpServlet {
 		
 			try {
 				GuestService guestService=new GuestService();
-				//guestService=new GuestService();
 				ArrayList<Guest> guestList=guestService.selectAll();
-				//guestList=guestService.selectAll();
 				request.setAttribute("guestList", guestList);
 				forwardPath = "forward:/WEB-INF/view/guest_list.jsp";
 				
@@ -36,20 +34,18 @@ public class GuestListServlet extends HttpServlet {
 				//response.sendRedirect("guest_error.do");
 				forwardPath = "redirect:guest_error.do";
 				
-				
 				/*** forward [case2] 
 				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/guest_error.jsp");
 				rd.forward(request, response);		
 				***/
-				return;
 			}
+			
 		/******* Forward or Redirect *******/
 		String[] pathArray = forwardPath.split(":");
 		String forwardOrRediret = pathArray[0];
 		String path = pathArray[1];
 		
 		if(forwardOrRediret.equals("forward")) {
-			//rediret
 			//RequestDispatcher rd = request.getRequestDispatcher(forwardPath);
 			RequestDispatcher rd = request.getRequestDispatcher(path);
 			rd.forward(request, response);
@@ -58,6 +54,12 @@ public class GuestListServlet extends HttpServlet {
 			//redirect는 응답은 할 수 없음.
 		}
 		/******************************************/
+		
+		/*
+		요청url 주소 자체를 따오는 코드
+		request.getRequestURI();
+		request.getRequestURL(); 하면 http 까지 가져옴
+		 */
 		
 	}
 

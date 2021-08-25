@@ -6,26 +6,11 @@
 /*
 요청URL-->
   http://localhost/guest_model1/guest_view.jsp?guest_no=2
-	0 . 요청객체인코딩설정 
-    1 . guest_no 파라메타받기
-	2 . Service객체 메쏘드호출(업무처리)
 	3 . 요청클라이언트로 응답 
 */
-request.setCharacterEncoding("UTF-8");
-String guest_noStr=request.getParameter("guest_no");
-if(guest_noStr==null|| guest_noStr.equals("")){
-	response.sendRedirect("guest_list.jsp");
-	return;
-}
-GuestService guestService=new GuestService();
-Guest guest=guestService.selectByNo(Integer.parseInt(guest_noStr));
-if(guest==null){
-	out.println("<script>");
-	out.println("alert('존재하지 않는게시물입니다.');");
-	out.println("location.href='guest_list.jsp';");
-	out.println("</script>");
-	return;
-}
+
+	Guest guest = (Guest)request.getAttribute("guest");
+
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -72,7 +57,7 @@ if(guest==null){
 								</tr>
 							</table> <!-- view Form  -->
 							<form name="f" method="post">
-								<input type="hidden" name="guest_no" value="<%=guest_noStr%>" />
+								<input type="hidden" name="guest_no" value="<%=guest.getGuest_no()%>" />
 								<table border="0" cellpadding="0" cellspacing="1" width="590"
 									bgcolor="BBBBBB">
 									<tr>

@@ -4,30 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-ArrayList<Guest> guestList = null;
-GuestService guestService = null;
-	try {
-		//GuestService guestService=new GuestService();
-		guestService=new GuestService();
-		//guestService = null;
-		//ArrayList<Guest> guestList=guestService.selectAll();
-		guestList=guestService.selectAll();
-		//guestService=new GuestService();
-		//guestService = null;
-		//guestList=guestService.selectAll();
-		
-	} catch(Exception e) {
-		e.printStackTrace();
-		/****** redirect [case1] ********/
-		response.sendRedirect("guest_error.do");
-		
-		
-		/*** forward [case2] 
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/guest_error.jsp");
-		rd.forward(request, response);		
-		***/
-		return;
-	}
+	ArrayList<Guest> guestList = (ArrayList<Guest>)request.getAttribute("guestList");
 %>	
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>

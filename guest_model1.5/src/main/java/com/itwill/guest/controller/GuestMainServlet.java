@@ -18,12 +18,23 @@ public class GuestMainServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String forwardPath = "";
-		forwardPath = "/WEB-INF/view/guest_main.jsp"; //web-inf 폴더는 보안이 강함
+		forwardPath = "forward:/WEB-INF/view/guest_main.jsp"; //web-inf 폴더는 보안이 강함
 		
-		/******* forward *******/
-		RequestDispatcher rd = request.getRequestDispatcher(forwardPath);
-		rd.forward(request, response);
+		/*********** Forward or Redirect ***********/
+		String[] pathArray = forwardPath.split(":");
+		String forwardOrRediret = pathArray[0];
+		String path = pathArray[1];
 		
+		if(forwardOrRediret.equals("forward")) {
+			//rediret
+			//RequestDispatcher rd = request.getRequestDispatcher(forwardPath);
+			RequestDispatcher rd = request.getRequestDispatcher(path);
+			rd.forward(request, response);
+		} else if (forwardOrRediret.equals("redirect")) {
+			response.sendRedirect(path);
+			//redirect는 응답은 할 수 없음.
+		}
+		/******************************************/
 	}
 
 }

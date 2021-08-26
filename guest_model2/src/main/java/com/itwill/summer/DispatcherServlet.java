@@ -144,8 +144,12 @@ public class DispatcherServlet extends HttpServlet {
 				forwardPath="redirect:guest_error.do";
 			}	
 		}else if(command.equals("/guest_error.do")){
-			
+			/********************guest_error.do******************/
+			request.setAttribute("error_msg","잘못된요청입니다.");
+			forwardPath="forward:/WEB-INF/view/guest_error.jsp";
 		}
+		// 이렇게 되면 error.do로 오는 애들 말고 다른 애들은 에러페이지가 안뜨는뎅?...
+		
 		/*#################################################################*/
 		/*
 		 * 3.jsp forward or redirect

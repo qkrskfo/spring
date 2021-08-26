@@ -15,7 +15,7 @@ import com.itwill.guest.GuestService;
 /**
  * Servlet implementation class GuestMainServlet
  */
-@WebServlet("/guest_modify_action.do")
+//@WebServlet("/guest_modify_action.do")
 public class GuestModifyActionServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		/*

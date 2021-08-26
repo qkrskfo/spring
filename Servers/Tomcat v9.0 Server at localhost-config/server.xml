@@ -156,7 +156,7 @@
         
 
 
-      <Context docBase="guest_model1.5" path="/guest_model1.5" reloadable="true" source="org.eclipse.jst.jee.server:guest_model1.5"/><Context docBase="guest_model1" path="/guest_model1" reloadable="true" source="org.eclipse.jst.jee.server:guest_model1"/><Context docBase="model2" path="/model2" reloadable="true" source="org.eclipse.jst.jee.server:model2"/></Host>
+      <Context docBase="guest_model1.5" path="/guest_model1.5" reloadable="true" source="org.eclipse.jst.jee.server:guest_model1.5"/><Context docBase="guest_model1" path="/guest_model1" reloadable="true" source="org.eclipse.jst.jee.server:guest_model1"/><Context docBase="model2" path="/model2" reloadable="true" source="org.eclipse.jst.jee.server:model2"/><Context docBase="guest_model2" path="/guest_model2" reloadable="true" source="org.eclipse.jst.jee.server:guest_model2"/></Host>
     </Engine>
   </Service>
 </Server>

@@ -85,13 +85,64 @@ public class DispatcherServlet extends HttpServlet {
 				forwardPath="redirect:guest_error.do";
 			}
 		}else if(command.equals("/guest_write_action.do")) {
-			
+			try{
+				/********************guest_write_action.do******************/
+				request.setCharacterEncoding("UTF-8");
+				String guest_name = request.getParameter("guest_name");
+				String guest_email = request.getParameter("guest_email");
+				String guest_hompage = request.getParameter("guest_homepage");
+				String guest_title = request.getParameter("guest_title");
+				String guest_content = request.getParameter("guest_content");
+				GuestService guestService = new GuestService();
+				Guest guest = new Guest(0, guest_name, null, guest_email, guest_hompage, guest_title, guest_content);
+				guestService.insertGuest(guest);
+				forwardPath = "redirect:guest_list.do";
+			}catch(Exception e){
+				e.printStackTrace();
+				forwardPath="redirect:guest_error.do";
+			}
 		}else if(command.equals("/guest_modify_form.do")) {
-			
+			try{
+				/********************guest_modify_form.do******************/
+				String guest_noStr = request.getParameter("guest_no");
+				GuestService guestServie = new GuestService();
+				Guest guest = guestServie.selectByNo(Integer.parseInt(guest_noStr));
+				request.setAttribute("guest", guest);
+				forwardPath = "forward:/WEB-INF/view/guest_modify_form.jsp";
+			}catch(Exception e){
+				e.printStackTrace();
+				forwardPath="redirect:guest_error.do";
+			}
 		}else if(command.equals("/guest_modify_action.do")) {
-			
+			try{
+				/********************guest_modify_action.do******************/
+				request.setCharacterEncoding("UTF-8");
+				String guest_noStr = request.getParameter("guest_no");
+				String guest_name = request.getParameter("guest_name");
+				String guest_email = request.getParameter("guest_email");
+				String guest_hompage = request.getParameter("guest_homepage");
+				String guest_title = request.getParameter("guest_title");
+				String guest_content = request.getParameter("guest_content");
+				GuestService guestService = new GuestService();
+				Guest updateGuest = new Guest(Integer.parseInt(guest_noStr), guest_name, null, guest_email, guest_hompage, guest_title, guest_content);
+				guestService.updateGuest(updateGuest);
+				forwardPath = "redirect:guest_view.do?guest_no="+guest_noStr;
+			}catch(Exception e){
+				e.printStackTrace();
+				forwardPath="redirect:guest_error.do";
+			}	
 		}else if(command.equals("/guest_remove_action.do")) {
-			
+			try{
+				/********************guest_remove_action.do******************/
+				request.setCharacterEncoding("UTF-8");
+				String guest_noStr = request.getParameter("guest_no");
+				GuestService guestService = new GuestService();
+				guestService.deleteGuest(Integer.parseInt(guest_noStr));
+				forwardPath="redirect:guest_list.do";
+			}catch(Exception e){
+				e.printStackTrace();
+				forwardPath="redirect:guest_error.do";
+			}	
 		}else if(command.equals("/guest_error.do")){
 			
 		}

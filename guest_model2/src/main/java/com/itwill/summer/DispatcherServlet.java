@@ -25,14 +25,47 @@ public class DispatcherServlet extends HttpServlet {
 	private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		/*
-		 * 1.클라이언트 요청분석(URI)
-		 */
+		<<요청 url(command)>>
+			/guest_main.do  
+			/guest_list.do			
+			/guest_view.do			
+			/guest_write_form.do	
+			/guest_write_action.do	
+			/guest_modify_form.do	
+			/guest_modify_action.do	
+			/guest_remove_action.do	
+			/guest_error.do			
+		*/
 		
+		/*
+		 * 1.클라이언트 요청URI를 사용해서 요청분석
+		 */
+		String command = request.getRequestURI().substring(request.getContextPath().length());
 		
 		/*
 		 * 2.클라이언트요청에따른 업무실행(Service객체)
 		 */
 		String forwardPath = "";
+		if(command.equals("/guest_main.do")) {
+			forwardPath="forward:/WEB-INF/view/guest_main.jsp";
+		} else if(command.equals("/guest_list.do")) {
+			
+		} else if(command.equals("/guest_view.do")) {
+			
+		} else if(command.equals("/guest_write_form.do")) {
+			
+		} else if(command.equals("/guest_write_action.do")) {
+			
+		} else if(command.equals("/guest_modify_form.do")) {
+			
+		} else if(command.equals("/guest_modify_action.do")) {
+			
+		} else if(command.equals("/guest_remove_action.do")) {
+			
+		} else if(command.equals("/guest_error.do")) {
+			
+		} 
+				
 		
 		/*
 		 * 3.jsp forward or redirect

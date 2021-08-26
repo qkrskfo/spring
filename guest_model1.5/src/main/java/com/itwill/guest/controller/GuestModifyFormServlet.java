@@ -32,7 +32,7 @@ public class GuestModifyFormServlet extends HttpServlet {
 				forwardPath="forward:/WEB-INF/view/guest_modify_form.jsp";
 			} catch (Exception e) {
 				e.printStackTrace();
-				forwardPath = "redirect:guest_error.do";
+				forwardPath = "forward:/WEB-INF/view/guest_error.jsp";
 			}
 		}
 		
@@ -50,6 +50,7 @@ public class GuestModifyFormServlet extends HttpServlet {
 		}
 		/******************************************/
 		
+		return;
 	}
 
 }

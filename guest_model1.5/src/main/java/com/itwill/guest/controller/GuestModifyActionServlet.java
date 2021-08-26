@@ -42,7 +42,7 @@ public class GuestModifyActionServlet extends HttpServlet {
 				forwardPath = "redirect:guest_view.do?guest_no="+guest_noStr;
 			} catch (Exception e) {
 				e.printStackTrace();
-				forwardPath = "redirect:guest_error.do";
+				forwardPath="forward:/WEB-INF/view/guest_error.jsp";
 			}
 		}
 		

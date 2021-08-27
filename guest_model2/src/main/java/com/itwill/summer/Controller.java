@@ -9,5 +9,5 @@ import javax.servlet.http.HttpServletResponse;
  * - Controller 구현객체는 DispatcherServlet에게 forwardPath를 반환  
  */
 public interface Controller {
-	public String handleRequest(HttpServletRequest request, HttpServletResponse response);
+	public String handleRequest(HttpServletRequest request,HttpServletResponse response);
 }

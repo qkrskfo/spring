@@ -8,6 +8,7 @@ import com.itwill.guest.GuestService;
 import com.itwill.summer.Controller;
 
 public class GuestViewController implements Controller {
+	
 	public String handleRequest(HttpServletRequest request,HttpServletResponse response) {
 		String forwardPath="";
 		try {
@@ -27,4 +28,6 @@ public class GuestViewController implements Controller {
 		}
 		return forwardPath;
 	}
+
+	
 }

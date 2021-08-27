@@ -52,7 +52,8 @@ public class DispatcherServlet1 extends HttpServlet {
 		String command=request.getRequestURI().substring(request.getContextPath().length());
 		
 		/*
-		 * 2.클라이언트요청에따른 업무실행(Service객체)
+		  2-1.클라이언트요청에따른 업무실행코드기술(Service객체사용)
+		  2-2.클라이언트요청에따른 업무실행코드의 실행후 forwardPath에 이동할 패쓰설정
 		 */
 		/*#################################################################*/
 		String forwardPath="";

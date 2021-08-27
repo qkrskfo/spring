@@ -45,7 +45,7 @@ public class DispatcherServlet extends HttpServlet {
 		String command=request.getRequestURI().substring(request.getContextPath().length());
 		
 		/*
-		 * 2.클라이언트요청에따른 업무실행(Service객체)
+		 * 2.클라이언트 요청에 따른 업무실행 controller객체의 생성
 		 */
 		/*#################################################################*/
 		/*
@@ -92,6 +92,10 @@ public class DispatcherServlet extends HttpServlet {
 		}
 		// 이렇게 되면 error.do로 오는 애들 말고 다른 애들은 에러페이지가 안뜨는뎅?...
 		
+		
+		/*
+		 * 2-2.클라이언트요청에따른 업무실행 Controller객체의실행결과(이동할 패쓰) 반환받기
+		 */
 		//위에서 자꾸 반복하지말고, 다 끝난다음에 여기서 호출하면 다 들어가잖아
 		forwardPath=controller.handleRequest(request, response);
 		

@@ -159,6 +159,10 @@ public class DispatcherServlet extends HttpServlet {
 			/**************************************************/
 		}else if(command.equals("/guest_error.do")){
 			/******************guest_error.do******************/
+			
+			//request.setAttribute("error_msg","잘못된요청입니다.");
+			//forwardPath="forward:/WEB-INF/view/guest_error.jsp";
+			
 			forwardPath = "/WEB-INF/view/guest_error.jsp";
 			/**************************************************/
 		}

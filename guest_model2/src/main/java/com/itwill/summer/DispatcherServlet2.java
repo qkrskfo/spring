@@ -22,7 +22,7 @@ import com.itwill.guest.controller.GuestRemoveActionController;
 import com.itwill.guest.controller.GuestViewController;
 import com.itwill.guest.controller.GuestViewServlet;
 import com.itwill.guest.controller.GuestWriteActionController;
-import com.itwill.guest.controller.GuestWriteController;
+import com.itwill.guest.controller.GuestWriteFormController;
 
 /*
  * 클라이언트의 모든요청(*.do)을 받는 서블릿(Controller)
@@ -76,7 +76,7 @@ public class DispatcherServlet2 extends HttpServlet {
 		}else if(command.equals("/guest_view.do")) {
 			controller=new GuestViewController();
 		}else if(command.equals("/guest_write_form.do")) {
-			controller=new GuestWriteController();
+			controller=new GuestWriteFormController();
 		}else if(command.equals("/guest_write_action.do")) {
 			controller= new GuestWriteActionController();
 		}else if(command.equals("/guest_modify_form.do")) {

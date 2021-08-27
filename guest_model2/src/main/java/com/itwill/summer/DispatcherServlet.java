@@ -23,7 +23,7 @@ import com.itwill.guest.controller.GuestModifyFormController;
 import com.itwill.guest.controller.GuestRemoveActionController;
 import com.itwill.guest.controller.GuestViewController;
 import com.itwill.guest.controller.GuestWriteActionController;
-import com.itwill.guest.controller.GuestWriteController;
+import com.itwill.guest.controller.GuestWriteFormController;
 
 
 /*
@@ -53,7 +53,7 @@ public class DispatcherServlet extends HttpServlet {
 			Properties controllerMappingProperties = new Properties();
 			controllerMappingProperties.load(in);
 			System.out.println("----------"+configFile+"-------------");
-			System.out.println(controllerMappingProperties);
+			//System.out.println(controllerMappingProperties);
 			Set commandKeySet = controllerMappingProperties.keySet();
 			Iterator commandKeyIterator = commandKeySet.iterator();
 			while(commandKeyIterator.hasNext()) {
@@ -109,8 +109,9 @@ public class DispatcherServlet extends HttpServlet {
 		 */
 		
 		String forwardPath="";
-		Controller controller=null;
+		Controller controller=controllerMap.get(command);
 		
+		/*
 		if(command.equals("/guest_main.do")) {
 			controller=new GuestMainController();
 		}else if(command.equals("/guest_list.do")) {
@@ -118,7 +119,7 @@ public class DispatcherServlet extends HttpServlet {
 		}else if(command.equals("/guest_view.do")) {
 			controller=new GuestViewController();
 		}else if(command.equals("/guest_write_form.do")) {
-			controller=new GuestWriteController();
+			controller=new GuestWriteFormController();
 		}else if(command.equals("/guest_write_action.do")) {
 			controller= new GuestWriteActionController();
 		}else if(command.equals("/guest_modify_form.do")) {
@@ -133,7 +134,7 @@ public class DispatcherServlet extends HttpServlet {
 			controller= new GuestErrorController();
 		}
 		// 이렇게 되면 error.do로 오는 애들 말고 다른 애들은 에러페이지가 안뜨는뎅?...
-		
+		*/
 		
 		/*
 		 * 2-2.클라이언트요청에따른 업무실행 Controller객체의실행결과(이동할 패쓰) 반환받기

@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.itwill.summer.Controller;
 
-public class GuestWriteController implements Controller {
+public class GuestWriteFormController implements Controller {
 
 	public String handleRequest (HttpServletRequest request, HttpServletResponse response) {
 		String forwardPath = null;

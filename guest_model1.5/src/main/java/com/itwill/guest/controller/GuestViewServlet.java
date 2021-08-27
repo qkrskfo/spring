@@ -44,7 +44,18 @@ public class GuestViewServlet extends HttpServlet {
 				String guest_noStr=request.getParameter("guest_no");
 				GuestService guestService=new GuestService();
 				Guest guest=guestService.selectByNo(Integer.parseInt(guest_noStr));
-				request.setAttribute("guest", guest);
+				
+				if(guest==null) {
+				/*
+					out.print("<script>");
+					out.print("alert('존재하지 않는 게시물입니다.');");
+					out.print("location.href='guest_list.jsp';");
+					out.print("</script>");
+				 */
+					request.setAttribute("GUEST_NOT_FOUND_MSG", "존재하지 않는 게시물입니다.");
+				} else {
+					request.setAttribute("guest", guest);
+				}
 				forwardPath = "forward:/WEB-INF/view/guest_view.jsp";
 			} catch (Exception e) {
 				e.printStackTrace();

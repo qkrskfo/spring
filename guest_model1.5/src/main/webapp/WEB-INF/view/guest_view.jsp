@@ -10,7 +10,14 @@
 */
 
 	Guest guest = (Guest)request.getAttribute("guest");
-
+	String GUEST_NOT_FOUND_MSG = (String)request.getAttribute("GUEST_NOT_FOUND_MSG");
+	if(GUEST_NOT_FOUND_MSG==null) GUEST_NOT_FOUND_MSG="";
+	if(guest==null) {
+		out.print("<script>");
+		out.print("alert('"+GUEST_NOT_FOUND_MSG+"');");
+		out.print("location.href='guest_list.do';");
+		out.print("</script>");
+	}
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">

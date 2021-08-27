@@ -13,6 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.itwill.guest.Guest;
 import com.itwill.guest.GuestService;
+import com.itwill.guest.controller.GuestListController;
+import com.itwill.guest.controller.GuestMaincontroller;
+import com.itwill.guest.controller.GuestViewController;
+import com.itwill.guest.controller.GuestViewServlet;
 
 /*
  * 클라이언트의 모든요청(*.do)을 받는 서블릿(Controller)
@@ -27,6 +31,17 @@ public class DispatcherServlet extends HttpServlet {
 		this.processRequest(request, response);
 	}
 	private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
+		/*
+		 * 1.클라이언트 요청URI를 사용해서 요청분석
+		 */
+		String command=request.getRequestURI().substring(request.getContextPath().length());
+		
+		/*
+		 * 2.클라이언트요청에따른 업무실행(Service객체)
+		 */
+		/*#################################################################*/
 		/*
 		<<요청 url(command)>>
 		/guest_main.do  		
@@ -42,51 +57,22 @@ public class DispatcherServlet extends HttpServlet {
 		 * 데이터를 넘겨야될땐 FORWARD
 		 * 데이터를 안넘길땐 REDIRECT
 		 * FORWARD를 쓸 때 발생하는 문제점들이 있어서 REDIRECT가 좋음
-		 * 
 		 * 	
 		 */
-		
-		/*
-		 * 1.클라이언트 요청URI를 사용해서 요청분석
-		 */
-		String command=request.getRequestURI().substring(request.getContextPath().length());
-		
-		/*
-		 * 2.클라이언트요청에따른 업무실행(Service객체)
-		 */
-		/*#################################################################*/
 		String forwardPath="";
 		if(command.equals("/guest_main.do")) {
 			/********************guest_main.do******************/
-			forwardPath="forward:/WEB-INF/view/guest_main.jsp";
+			GuestMaincontroller controller = new GuestMaincontroller();
+			forwardPath = controller.handleRequest();
 		}else if(command.equals("/guest_list.do")) {
 			/********************guest_list.do******************/
-			try{
-				GuestService guestService=new GuestService();
-				ArrayList<Guest> guestList=guestService.selectAll();
-				request.setAttribute("guestList", guestList);
-				forwardPath = "forward:/WEB-INF/view/guest_list.jsp";
-			}catch(Exception e){
-				e.printStackTrace();
-				forwardPath="redirect:guest_error.do";
-			}	
+			GuestListController controller = new GuestListController();
+			forwardPath = controller.handleRequest(request, response);
 		}else if(command.equals("/guest_view.do")) {
-			try{
-				/********************guest_view.do******************/
-				String guest_no = request.getParameter("guest_no");
-				GuestService guestService=new GuestService();
-				Guest guest = guestService.selectByNo(Integer.parseInt(guest_no));
-				
-				if(guest==null) {
-					request.setAttribute("GUEST_NOT_FOUND_MSG", "존재하지 않는 게시물입니다.");
-				}else {
-					request.setAttribute("guest", guest);
-				}	
-				forwardPath = "forward:/WEB-INF/view/guest_view.jsp";
-			}catch(Exception e){
-				e.printStackTrace();
-				forwardPath="redirect:guest_error.do";
-			}
+			/********************guest_view.do******************/
+			GuestViewController controller=new GuestViewController();
+			forwardPath = controller.handleRequest(request, request);
+			/**************************************************/
 		}else if(command.equals("/guest_write_form.do")) {
 			try{
 				/********************guest_write_form.do******************/

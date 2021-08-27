@@ -13,10 +13,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.itwill.guest.Guest;
 import com.itwill.guest.GuestService;
+import com.itwill.guest.controller.GuestErrorController;
 import com.itwill.guest.controller.GuestListController;
 import com.itwill.guest.controller.GuestMainController;
+import com.itwill.guest.controller.GuestModifyActionController;
+import com.itwill.guest.controller.GuestModifyFormController;
+import com.itwill.guest.controller.GuestRemoveActionController;
 import com.itwill.guest.controller.GuestViewController;
 import com.itwill.guest.controller.GuestViewServlet;
+import com.itwill.guest.controller.GuestWriteActionController;
+import com.itwill.guest.controller.GuestWriteController;
 
 /*
  * 클라이언트의 모든요청(*.do)을 받는 서블릿(Controller)
@@ -59,122 +65,35 @@ public class DispatcherServlet extends HttpServlet {
 		 * FORWARD를 쓸 때 발생하는 문제점들이 있어서 REDIRECT가 좋음
 		 * 	
 		 */
+		
 		String forwardPath="";
 		Controller controller=null;
+		
 		if(command.equals("/guest_main.do")) {
-			/********************guest_main.do******************/
 			controller=new GuestMainController();
-			/**************************************************/
 		}else if(command.equals("/guest_list.do")) {
-			/********************guest_list.do******************/
 			controller=new GuestListController();
-			/**************************************************/
 		}else if(command.equals("/guest_view.do")) {
-			/********************guest_view.do******************/
 			controller=new GuestViewController();
-			/**************************************************/
 		}else if(command.equals("/guest_write_form.do")) {
-			/**************guest_write_form.do*****************/
-			forwardPath="forward:/WEB-INF/view/guest_write_form.jsp";
-			/**************************************************/
+			controller=new GuestWriteController();
 		}else if(command.equals("/guest_write_action.do")) {
-			/*************guest_write_action.do****************/
-			if (request.getMethod().equalsIgnoreCase("GET")) {
-				forwardPath="redirect:guest_main.do";
-			}else {
-				try {
-					request.setCharacterEncoding("UTF-8");
-					String guest_name = request.getParameter("guest_name");
-					String guest_email = request.getParameter("guest_email");
-					String guest_homepage = request.getParameter("guest_homepage");
-					String guest_title = request.getParameter("guest_title");
-					String guest_content = request.getParameter("guest_content");
-					Guest guest = new Guest(0, guest_name, null, guest_email, guest_homepage, guest_title, guest_content);
-					GuestService guestService = new GuestService();
-					int insertRowCount = guestService.insertGuest(guest);
-					forwardPath="redirect:guest_list.do";
-				} catch (Exception e) {
-					e.printStackTrace();
-					forwardPath="redirect:guest_error.do";
-				}
-			}
-			/**************************************************/
+			controller= new GuestWriteActionController();
 		}else if(command.equals("/guest_modify_form.do")) {
-			/**************guest_modify_form.do****************/
-			if(request.getMethod().equalsIgnoreCase("GET")){
-				forwardPath="redirect:guest_main.do";
-			}else {
-				try {
-					String guest_noStr=request.getParameter("guest_no");
-					GuestService guestService=new GuestService();
-					Guest guest=guestService.selectByNo(Integer.parseInt(guest_noStr));
-					request.setAttribute("guest",guest);
-					forwardPath="forward:/WEB-INF/view/guest_modify_form.jsp";
-				}catch (Exception e) {
-					e.printStackTrace();
-					forwardPath="forward:/WEB-INF/view/guest_error.jsp";
-				}
-			}
-			/**************************************************/
+			controller= new GuestModifyFormController();
 		}else if(command.equals("/guest_modify_action.do")) {
-			/*************guest_modify_action.do***************/
-			if (request.getMethod().equalsIgnoreCase("GET")) {
-				forwardPath="redirect:guest_main.do";
-			}else {
-				try {
-					request.setCharacterEncoding("UTF-8");
-					String guest_noStr=request.getParameter("guest_no");
-					String guest_name=request.getParameter("guest_name");
-					String guest_email=request.getParameter("guest_email");
-					String guest_homepage=request.getParameter("guest_homepage");
-					String guest_title=request.getParameter("guest_title");
-					String guest_content=request.getParameter("guest_content");
-					Guest updateGuest = new Guest(
-							Integer.parseInt(guest_noStr),guest_name,
-							null,guest_email,guest_homepage,
-							guest_title,guest_content);
-					int updateRowCount = new GuestService().updateGuest(updateGuest);
-					forwardPath="redirect:guest_view.do?guest_no="+guest_noStr;
-				} catch (Exception e) {
-					e.printStackTrace();
-					forwardPath="forward:/WEB-INF/view/guest_error.jsp";
-				}
-			}
-			/**************************************************/
+			controller= new GuestModifyActionController();
 		}else if(command.equals("/guest_remove_action.do")) {
-			/*************guest_remove_action.do***************/
-			if (request.getMethod().equalsIgnoreCase("GET")) {
-				forwardPath="redirect:guest_main.do";
-			}else {
-				try {
-					String guest_noStr = request.getParameter("guest_no");
-					GuestService guestService = new GuestService();
-					guestService.deleteGuest(Integer.parseInt(guest_noStr));
-					forwardPath="redirect:guest_list.do";
-				} catch (Exception e) {
-					e.printStackTrace();
-					forwardPath="redirect:guest_error.do";
-				}
-			}
-			/**************************************************/
+			controller= new GuestRemoveActionController();
 		}else if(command.equals("/guest_error.do")){
-			/******************guest_error.do******************/
-			
 			//request.setAttribute("error_msg","잘못된요청입니다.");
 			//forwardPath="forward:/WEB-INF/view/guest_error.jsp";
-			
-			forwardPath = "/WEB-INF/view/guest_error.jsp";
-			/**************************************************/
+			controller= new GuestErrorController();
 		}
 		// 이렇게 되면 error.do로 오는 애들 말고 다른 애들은 에러페이지가 안뜨는뎅?...
 		
-		
 		//위에서 자꾸 반복하지말고, 다 끝난다음에 여기서 호출하면 다 들어가잖아
 		forwardPath=controller.handleRequest(request, response);
-		
-		
-		
-		
 		
 		/*#################################################################*/
 		/*

@@ -13,7 +13,6 @@
 	  		<param-name>configFile</param-name>
 	  		<param-value>/WEB-INF/guest_controller_mapping.properties</param-value>
 		</init-param>
-		
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>

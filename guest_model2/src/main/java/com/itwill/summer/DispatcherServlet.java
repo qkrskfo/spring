@@ -1,10 +1,16 @@
 package com.itwill.summer;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Properties;
+import java.util.Set;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,6 +30,7 @@ import com.itwill.guest.controller.GuestViewServlet;
 import com.itwill.guest.controller.GuestWriteActionController;
 import com.itwill.guest.controller.GuestWriteController;
 
+
 /*
  * 클라이언트의 모든요청(*.do)을 받는 서블릿(Controller)
  */
@@ -33,8 +40,33 @@ public class DispatcherServlet extends HttpServlet {
 	public DispatcherServlet() {
 		System.out.println("0.DispatcherServlet()생성자");
 	}
-	
-	
+	@Override
+	public void init(ServletConfig config) throws ServletException {
+		super.init(config);
+		System.out.println("0.DispatcherServlet.init()");
+		String configFile="/WEB-INF/guest_controller_mapping.properties";
+		ServletContext servletContext = this.getServletContext();
+		String configFileRealPath = servletContext.getRealPath(configFile);
+		try {
+			FileInputStream in = new FileInputStream(configFileRealPath);
+			Properties controllerMappingProperties = new Properties();
+			controllerMappingProperties.load(in);
+			System.out.println("----------"+configFile+"-------------");
+			System.out.println(controllerMappingProperties);
+			Set commandKeySet = controllerMappingProperties.keySet();
+			Iterator commandKeyIterator = commandKeySet.iterator();
+			while(commandKeyIterator.hasNext()) {
+				String command = (String)commandKeyIterator.next();
+				String controllerClassName = controllerMappingProperties.getProperty(command);
+				System.out.println(command+"-->"+controllerClassName);
+			}
+			System.out.println("-------------------------------------");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}	
+				
+ 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		this.processRequest(request, response);
 	}

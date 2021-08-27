@@ -6,9 +6,14 @@
 	<display-name>guest_model2</display-name>
 	<servlet>
 		<servlet-name>dispatcher</servlet-name>
-		<servlet-class>com.itwill.summer.DispatcherServlet</servlet-class>
 		<!-- <servlet-class>com.itwill.summer.DispatcherServlet1</servlet-class> -->
 		<!-- <servlet-class>com.itwill.summer.DispatcherServlet2</servlet-class> -->
+		<servlet-class>com.itwill.summer.DispatcherServlet</servlet-class>
+		<init-param>
+	  		<param-name>configFile</param-name>
+	  		<param-value>/WEB-INF/guest_controller_mapping.properties</param-value>
+		</init-param>
+		
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>

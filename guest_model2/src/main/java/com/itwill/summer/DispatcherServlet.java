@@ -25,6 +25,9 @@ import com.itwill.guest.controller.GuestViewController;
 import com.itwill.guest.controller.GuestWriteActionController;
 import com.itwill.guest.controller.GuestWriteFormController;
 
+/***
+ * 내꺼는 이게 최종! dispatherServlet1-3은 선생님 버전이랑 동일하고, 4는 주석 유지하려고 내가 추가로 생성한 것. 선생님꺼는 4가 최종. 
+ */
 
 /*
  * 클라이언트의 모든요청(*.do)을 받는 서블릿(Controller)
@@ -40,12 +43,25 @@ public class DispatcherServlet extends HttpServlet {
 	}
 	@Override
 	public void init(ServletConfig config) throws ServletException {
+
 		super.init(config);
-		
 		controllerMap = new HashMap<String,Controller>();
 		
+		/*
+		<< web.xml에 설정된 파라메타값 가져오기 >>
+		<servlet>
+		  	<servlet-name>dispatcher</servlet-name>
+		  	<servlet-class>com.itwill.summer.DispatcherServlet</servlet-class>
+		  	<init-param>
+		  		<param-name>configFile</param-name>
+		  		<param-value>/WEB-INF/guest_controller_mapping.properties</param-value>
+		  	</init-param>
+  		</servlet>
+		 */
+		
 		System.out.println("0.DispatcherServlet.init()");
-		String configFile="/WEB-INF/guest_controller_mapping.properties";
+		String configFile=config.getInitParameter("configFile");
+		//String configFile = "/WEB-INF/guest_controller_mapping.properties";
 		ServletContext servletContext = this.getServletContext();
 		String configFileRealPath = servletContext.getRealPath(configFile);
 		try {

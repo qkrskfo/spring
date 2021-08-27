@@ -7,6 +7,8 @@
 	<servlet>
 		<servlet-name>dispatcher</servlet-name>
 		<servlet-class>com.itwill.summer.DispatcherServlet</servlet-class>
+		<!-- <servlet-class>com.itwill.summer.DispatcherServlet1</servlet-class> -->
+		<!-- <servlet-class>com.itwill.summer.DispatcherServlet2</servlet-class> -->
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>

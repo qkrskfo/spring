@@ -30,12 +30,12 @@ import com.itwill.guest.controller.GuestWriteFormController;
  * 클라이언트의 모든요청(*.do)을 받는 서블릿(Controller)
  */
 
-public class DispatcherServlet extends HttpServlet {
+public class DispatcherServlet3 extends HttpServlet {
 	/*
 	 * controller 객체들을 저장하는 맵
 	 */
 	private HashMap<String, Controller> controllerMap;
-	public DispatcherServlet() {
+	public DispatcherServlet3() {
 		System.out.println("0.DispatcherServlet()생성자");
 	}
 	@Override
@@ -87,16 +87,62 @@ public class DispatcherServlet extends HttpServlet {
 		String command=request.getRequestURI().substring(request.getContextPath().length());
 		
 		/*
-		 * 2-1.클라이언트요청에따른 업무실행 Controller객체를 command키로 얻기
+		 * 2.클라이언트 요청에 따른 업무실행 controller객체의 생성
 		 */
+		/*#################################################################*/
+		/*
+		<<요청 url(command)>>
+		/guest_main.do  		
+		/guest_list.do			
+		/guest_view.do			
+		/guest_write_form.do	
+		/guest_write_action.do	
+		/guest_modify_form.do	
+		/guest_modify_action.do	
+		/guest_remove_action.do	
+		/guest_error.do		
+		 * 
+		 * 데이터를 넘겨야될땐 FORWARD
+		 * 데이터를 안넘길땐 REDIRECT
+		 * FORWARD를 쓸 때 발생하는 문제점들이 있어서 REDIRECT가 좋음
+		 * 	
+		 */
+		
 		String forwardPath="";
 		Controller controller=controllerMap.get(command);
 		
 		/*
+		if(command.equals("/guest_main.do")) {
+			controller=new GuestMainController();
+		}else if(command.equals("/guest_list.do")) {
+			controller=new GuestListController();
+		}else if(command.equals("/guest_view.do")) {
+			controller=new GuestViewController();
+		}else if(command.equals("/guest_write_form.do")) {
+			controller=new GuestWriteFormController();
+		}else if(command.equals("/guest_write_action.do")) {
+			controller= new GuestWriteActionController();
+		}else if(command.equals("/guest_modify_form.do")) {
+			controller= new GuestModifyFormController();
+		}else if(command.equals("/guest_modify_action.do")) {
+			controller= new GuestModifyActionController();
+		}else if(command.equals("/guest_remove_action.do")) {
+			controller= new GuestRemoveActionController();
+		}else if(command.equals("/guest_error.do")){
+			//request.setAttribute("error_msg","잘못된요청입니다.");
+			//forwardPath="forward:/WEB-INF/view/guest_error.jsp";
+			controller= new GuestErrorController();
+		}
+		// 이렇게 되면 error.do로 오는 애들 말고 다른 애들은 에러페이지가 안뜨는뎅?...
+		*/
+		
+		/*
 		 * 2-2.클라이언트요청에따른 업무실행 Controller객체의실행결과(이동할 패쓰) 반환받기
 		 */
+		//위에서 자꾸 반복하지말고, 다 끝난다음에 여기서 호출하면 다 들어가잖아
 		forwardPath=controller.handleRequest(request, response);
 		
+		/*#################################################################*/
 		/*
 		 * 3.jsp forward or redirect
 		 * 		redirect:member_main.do

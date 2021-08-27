@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.itwill.guest.Guest;
 import com.itwill.guest.GuestService;
 import com.itwill.guest.controller.GuestListController;
-import com.itwill.guest.controller.GuestMaincontroller;
+import com.itwill.guest.controller.GuestMainController;
 import com.itwill.guest.controller.GuestViewController;
 import com.itwill.guest.controller.GuestViewServlet;
 
@@ -60,18 +60,19 @@ public class DispatcherServlet extends HttpServlet {
 		 * 	
 		 */
 		String forwardPath="";
+		Controller controller = null;
 		if(command.equals("/guest_main.do")) {
 			/********************guest_main.do******************/
-			GuestMaincontroller controller = new GuestMaincontroller();
-			forwardPath = controller.handleRequest();
+			controller = new GuestMainController();
+			//forwardPath = controller.handleRequest(request, response);
 		}else if(command.equals("/guest_list.do")) {
 			/********************guest_list.do******************/
-			GuestListController controller = new GuestListController();
-			forwardPath = controller.handleRequest(request, response);
+			controller = new GuestListController();
+			//forwardPath = controller.handleRequest(request, response);
 		}else if(command.equals("/guest_view.do")) {
 			/********************guest_view.do******************/
-			GuestViewController controller=new GuestViewController();
-			forwardPath = controller.handleRequest(request, request);
+			controller=new GuestViewController();
+			//forwardPath = controller.handleRequest(request, response);
 			/**************************************************/
 		}else if(command.equals("/guest_write_form.do")) {
 			try{
@@ -146,6 +147,14 @@ public class DispatcherServlet extends HttpServlet {
 			forwardPath="forward:/WEB-INF/view/guest_error.jsp";
 		}
 		// 이렇게 되면 error.do로 오는 애들 말고 다른 애들은 에러페이지가 안뜨는뎅?...
+		
+		
+		//위에서 자꾸 반복하지말고, 다 끝난다음에 여기서 호출하면 다 들어가잖아
+		forwardPath = controller.handleRequest(request, response);
+		
+		
+		
+		
 		
 		/*#################################################################*/
 		/*

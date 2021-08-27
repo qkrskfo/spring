@@ -5,10 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.itwill.summer.Controller;
 
-public class GuestMaincontroller implements Controller {
-	public String handleRequest() {
-		
-	}
+public class GuestMainController implements Controller {
 
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {

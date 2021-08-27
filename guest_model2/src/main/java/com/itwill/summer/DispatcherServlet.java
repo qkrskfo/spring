@@ -30,6 +30,11 @@ import com.itwill.guest.controller.GuestWriteController;
 
 public class DispatcherServlet extends HttpServlet {
 
+	public DispatcherServlet() {
+		System.out.println("0.DispatcherServlet()생성자");
+	}
+	
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		this.processRequest(request, response);
 	}

@@ -7,6 +7,15 @@
 	3 . 요청클라이언트로 응답 
 */
 Guest guest=(Guest)request.getAttribute("guest");
+String GUEST_NOT_FOUND_MSG =(String)request.getAttribute("GUEST_NOT_FOUND_MSG");
+if(GUEST_NOT_FOUND_MSG==null)GUEST_NOT_FOUND_MSG="";
+if(guest==null){
+	out.println("<script>");
+	out.println("alert('"+GUEST_NOT_FOUND_MSG+"');");
+	out.println("location.href='guest_list.do';");
+	out.println("</script>");
+	return;
+}
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">

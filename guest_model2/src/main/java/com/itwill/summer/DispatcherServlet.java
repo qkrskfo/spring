@@ -37,7 +37,13 @@ public class DispatcherServlet extends HttpServlet {
 		/guest_modify_form.do	
 		/guest_modify_action.do	
 		/guest_remove_action.do	
-		/guest_error.do			
+		/guest_error.do		
+		 * 
+		 * 데이터를 넘겨야될땐 FORWARD
+		 * 데이터를 안넘길땐 REDIRECT
+		 * FORWARD를 쓸 때 발생하는 문제점들이 있어서 REDIRECT가 좋음
+		 * 
+		 * 	
 		 */
 		
 		/*
@@ -70,7 +76,12 @@ public class DispatcherServlet extends HttpServlet {
 				String guest_no = request.getParameter("guest_no");
 				GuestService guestService=new GuestService();
 				Guest guest = guestService.selectByNo(Integer.parseInt(guest_no));
-				request.setAttribute("guest", guest);
+				
+				if(guest==null) {
+					request.setAttribute("GUEST_NOT_FOUND_MSG", "존재하지 않는 게시물입니다.");
+				}else {
+					request.setAttribute("guest", guest);
+				}	
 				forwardPath = "forward:/WEB-INF/view/guest_view.jsp";
 			}catch(Exception e){
 				e.printStackTrace();

@@ -40,6 +40,8 @@ public class GuestModifyActionServlet extends HttpServlet {
 				int updateRowCount = new GuestService().updateGuest(updateGuest);
 				//response.sendRedirect("guest_view.jsp?guest_no="+guest_noStr);
 				forwardPath = "redirect:guest_view.do?guest_no="+guest_noStr;
+				//forwardPath = "forward:guest_view.do"; // redirect는 보임(클라이언트에게 알려줘, 보여죠), forward는 사용자에게 보이지 않는 url임(클라이언트가 모르게 이동시키는 것)
+				// forward로 들어가면 modifyAction이 url에 남아있어서, 새로고침하면 계속 글이 수정됨. 
 			} catch (Exception e) {
 				e.printStackTrace();
 				forwardPath="forward:/WEB-INF/view/guest_error.jsp";

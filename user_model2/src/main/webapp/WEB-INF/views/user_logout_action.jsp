@@ -3,5 +3,5 @@
 <%@include file="login_check.jspf" %>    
 <%
 session.invalidate();
-response.sendRedirect("user_main.jsp");
+response.sendRedirect("user_main.do");
 %>

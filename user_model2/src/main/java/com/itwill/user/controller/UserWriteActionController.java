@@ -11,6 +11,12 @@ import com.itwill.user.UserService;
 
 public class UserWriteActionController implements Controller{
 
+	private UserService userService;
+	
+	public UserWriteActionController() throws Exception {
+		userService = new UserService();
+	}
+	
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
 		
@@ -26,8 +32,8 @@ public class UserWriteActionController implements Controller{
 				String name=request.getParameter("name");
 				String email=request.getParameter("email");
 				User newUser=new User(userId,password,name,email);
-				UserService userService=new UserService();
-				int result=userService.create(newUser);
+				//UserService userService=new UserService();
+				int result = this.userService.create(newUser);
 				if(result==-1){
 					//아이디중복
 					String msg=URLEncoder.encode(userId+" 는 이미존재하는 아이디입니다.", "UTF-8");

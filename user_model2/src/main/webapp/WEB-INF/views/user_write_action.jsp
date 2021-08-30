@@ -6,11 +6,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
+	/*
 	if(request.getMethod().equalsIgnoreCase("GET")){
 		response.sendRedirect("user_write_form.do");
 		return;
 	}
-	/**************1.반환값사용***********************/
+	*/
+	/**************1.반환값사용*********************
 	//request.setCharacterEncoding("UTF-8");
 	String userId=request.getParameter("userId");
 	String password=request.getParameter("password");
@@ -27,7 +29,7 @@
 		//회원가입성공
 		response.sendRedirect("user_login_form.do");
 	}
-	/*******************************************/
+	******************************************/
 
 	/**********2.사용자정의예외객체사용********
 	try{

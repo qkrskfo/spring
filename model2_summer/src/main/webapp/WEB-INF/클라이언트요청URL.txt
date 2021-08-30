@@ -1,0 +1,5 @@
+<<요청 URL>>
+/member_main.do  	
+/member_list.do  	
+/member_detail.do  
+

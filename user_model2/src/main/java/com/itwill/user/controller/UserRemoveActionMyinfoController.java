@@ -9,6 +9,9 @@ public class UserRemoveActionMyinfoController implements Controller{
 
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		return "forward:/WEB-INF/views/user_remove_action_myinfo.jsp";
+		
+		String forwardPath = "forward:/WEB-INF/views/user_remove_action_myinfo.jsp";
+		return forwardPath;
+		
 	}
 }

@@ -8,6 +8,9 @@ import com.itwill.summer.Controller;
 public class UserLogoutActionController implements Controller{
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		return "forward:/WEB-INF/views/user_logout_action.jsp";
+		
+		String forwardPath = "forward:/WEB-INF/views/user_logout_action.jsp";
+		return forwardPath;
+		
 	}
 }

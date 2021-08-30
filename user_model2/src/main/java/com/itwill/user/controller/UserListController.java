@@ -13,7 +13,7 @@ public class UserListController implements Controller{
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
 		
-String forwardPath ="";
+		String forwardPath ="";
 		
 		try {
 			UserService userService=new UserService();

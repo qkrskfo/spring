@@ -9,6 +9,9 @@ public class UserModifyActionMyinfoController implements Controller{
 
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		return "forward:/WEB-INF/views/user_modify_action_myinfo.jsp";
+		
+		String forwardPath = "forward:/WEB-INF/views/user_modify_action_myinfo.jsp";
+		return forwardPath;
+		
 	}
 }

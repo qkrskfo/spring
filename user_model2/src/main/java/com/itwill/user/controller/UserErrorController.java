@@ -9,6 +9,7 @@ public class UserErrorController implements Controller{
 
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		return "forward:/WEB-INF/views/user_error.jsp";
+		String forwardPath="forward:/WEB-INF/views/user_error.jsp";
+		return forwardPath;
 	}
 }

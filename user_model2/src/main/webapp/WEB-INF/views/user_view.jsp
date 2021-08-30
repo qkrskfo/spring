@@ -6,7 +6,7 @@
 <%
 	String userId = request.getParameter("userId");
 	if(userId==null||userId.equals("")){
-		response.sendRedirect("user_list.jsp");
+		response.sendRedirect("user_list.do");
 		return;
 	}
 	UserService userService=new UserService();

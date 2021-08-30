@@ -49,13 +49,13 @@
 			f.password.select();
 			return false;
 		}
-		document.f.action = "user_write_action.jsp";
+		document.f.action = "user_write_action.do";
 		document.f.method='POST';
 		document.f.submit();
 	}
 
 	function userList() {
-		f.action = "user_list.jsp";
+		f.action = "user_list.do";
 		f.submit();
 	}
 </script>

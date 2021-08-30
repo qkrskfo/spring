@@ -7,7 +7,7 @@
     pageEncoding="UTF-8"%>
 <%
 	if(request.getMethod().equalsIgnoreCase("GET")){
-		response.sendRedirect("user_write_form.jsp");
+		response.sendRedirect("user_write_form.do");
 		return;
 	}
 	/**************1.반환값사용***********************/
@@ -22,10 +22,10 @@
 	if(result==-1){
 		//아이디중복
 		String msg=URLEncoder.encode(userId+" 는 이미존재하는 아이디입니다.", "UTF-8");
-		response.sendRedirect("user_write_form.jsp?msg="+msg);
+		response.sendRedirect("user_write_form.do?msg="+msg);
 	}else if(result==1){
 		//회원가입성공
-		response.sendRedirect("user_login_form.jsp");
+		response.sendRedirect("user_login_form.do");
 	}
 	/*******************************************/
 

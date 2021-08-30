@@ -28,7 +28,7 @@
 <link rel=stylesheet href="css/user.css" type="text/css">
 <script type="text/javascript">
 	function userList() {
-		location.href='user_list.jsp';
+		location.href='user_list.do';
 	}
 </script>
 </head>

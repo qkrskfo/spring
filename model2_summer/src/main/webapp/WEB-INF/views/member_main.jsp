@@ -11,7 +11,7 @@
 <ol>
 	<li><a href='member_main.do'>멤버메인</a></li>
 	<li><a href='member_list.do'>멤버리스트</a></li>
-	<li><a href='member_detail.do?id=guard'>멤버상세보기</a></li>
+	<li><a href='member_detail.do?id=guard'>멤버상세보기  </a></li>
 </ol>
 </body>
 </html>

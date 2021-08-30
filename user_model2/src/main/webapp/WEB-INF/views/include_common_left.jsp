@@ -16,11 +16,11 @@
 <ul>
 	   <%if(isLogin){ %>
 			<li><a href=""><%=sUserId%>님</a></li>
-			<li><a href="user_view_myinfo.jsp">내정보</a></li>
-			<li><a href="user_logout_action.jsp">로그아웃</a></li>
-			<li><a href="user_list.jsp">전체회원리스트</a></li>
+			<li><a href="user_view_myinfo.do">내정보</a></li>
+			<li><a href="user_logout_action.do">로그아웃</a></li>
+			<li><a href="user_list.do">전체회원리스트</a></li>
 		<%}else{ %>
-			<li><a href="user_login_form.jsp">로그인</a></li>
-			<li><a href="user_write_form.jsp">회원가입</a></li>
+			<li><a href="user_login_form.do">로그인</a></li>
+			<li><a href="user_write_form.do">회원가입</a></li>
 		<%} %>
 </ul>

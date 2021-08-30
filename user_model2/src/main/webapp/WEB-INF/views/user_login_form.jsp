@@ -1,13 +1,18 @@
      
+<%@page import="com.itwill.user.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	/************************case1[redirected]*************************/
+	/*************** case1[redirected] ********
 	String msg1=request.getParameter("msg1");
 	String msg2=request.getParameter("msg2");
 	if(msg1==null)msg1="";
 	if(msg2==null)msg2="";
-	
+	*************************************************/
+	/************************case2[forward]*************************/
+	String msg1 = "";
+	String msg2 = "";
+	User fuser = null;
 	
 %>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">

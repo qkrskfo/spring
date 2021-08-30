@@ -5,8 +5,8 @@
     pageEncoding="UTF-8"%>
 <%@include file="login_check.jspf" %> 
 <%
-	UserService userService=new UserService();
-	ArrayList<User> userList=userService.findUserList();
+	
+	ArrayList<User> userList = (ArrayList<User>)request.getAttribute("userList");
 %>   
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>

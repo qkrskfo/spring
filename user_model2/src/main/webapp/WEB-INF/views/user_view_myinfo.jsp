@@ -17,17 +17,17 @@
 <link rel=stylesheet href="css/user.css" type="text/css">
 <script type="text/javascript">
 	function userList() {
-		f.action = "user_list.jsp";
+		f.action = "user_list.do";
 		f.submit();
 	}
 
 	function userModifyForm() {
-		location.href='user_modify_form_myinfo.jsp'
+		location.href='user_modify_form_myinfo.do'
 	}
 
 	function userRemove() {
 		if (confirm("정말 탈퇴하시겠습니까?")) {
-			document.f.action = "user_remove_action_myinfo.jsp";
+			document.f.action = "user_remove_action_myinfo.do";
 			document.f.method='POST';
 			document.f.submit();
 		}

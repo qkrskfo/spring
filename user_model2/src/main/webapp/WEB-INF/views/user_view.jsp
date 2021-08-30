@@ -14,7 +14,7 @@
 	if(user==null){
 		out.println("<script>");
 		out.println("alert('존재하지않는회원입니다.');");
-		out.println("location.href='user_list.jsp';");
+		out.println("location.href='user_list.do';");
 		out.println("</script>");
 		return;
 	}

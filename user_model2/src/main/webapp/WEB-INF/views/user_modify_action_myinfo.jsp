@@ -14,7 +14,7 @@
 		  실패:user_error.jsp 
 	*/
 	if(request.getMethod().equalsIgnoreCase("GET")){
-		response.sendRedirect("user_main.jsp");
+		response.sendRedirect("user_main.do");
 		return;
 	}
 	try{
@@ -24,9 +24,9 @@
 		String email=request.getParameter("email");
 		UserService userService=new UserService();
 		userService.update(new User(sUserId,password,name,email));
-		response.sendRedirect("user_view_myinfo.jsp");
+		response.sendRedirect("user_view_myinfo.do");
 	}catch(Exception e){
 		e.printStackTrace();
-		response.sendRedirect("user_error.jsp");
+		response.sendRedirect("user_error.do");
 	}
 %>

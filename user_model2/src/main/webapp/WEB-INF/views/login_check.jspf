@@ -3,7 +3,7 @@
 <%
 	String sUserId=(String)session.getAttribute("sUserId");
 	if(sUserId==null){
-		response.sendRedirect("user_main.jsp");
+		response.sendRedirect("user_main.do");
 		return;
 	}
 %>  

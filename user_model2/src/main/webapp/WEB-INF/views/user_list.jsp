@@ -17,7 +17,7 @@
 <link rel=stylesheet href="css/user.css" type="text/css">
 <script type="text/javascript">
 function userList() {
-		f.action = "user_write_form.jsp";
+		f.action = "user_write_form.do";
 		f.submit();
 }
 </script>
@@ -77,7 +77,7 @@ function userList() {
 											<%=user.getUserId()%>
 										</td>
 										<td width=200 bgcolor="ffffff" style="padding-left: 10">
-											<a href="user_view.jsp?userId=<%=user.getUserId()%>"
+											<a href="user_view.do?userId=<%=user.getUserId()%>"
 											class="user"><%=user.getName()%></a>
 										</td>
 										<td width=200 align=center bgcolor="ffffff"><%=user.getEmail()%>

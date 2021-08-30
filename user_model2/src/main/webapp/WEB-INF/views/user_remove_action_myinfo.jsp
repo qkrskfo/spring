@@ -12,7 +12,7 @@
 		  	 
 	*/
 	if(request.getMethod().equalsIgnoreCase("GET")){
-		response.sendRedirect("user_main.jsp");
+		response.sendRedirect("user_main.do");
 		return;
 	}
 	try{
@@ -20,13 +20,13 @@
 		userService.remove(sUserId);
 		/****case1**********/
 		session.invalidate();
-		response.sendRedirect("user_main.jsp");
+		response.sendRedirect("user_main.do");
 		/**********************/
 		/****case2**********
 		response.sendRedirect("user_logout_action.jsp");
 		******************/
 	}catch(Exception e){
 		e.printStackTrace();
-		response.sendRedirect("user_error.jsp");
+		response.sendRedirect("user_error.do");
 	}
 %>

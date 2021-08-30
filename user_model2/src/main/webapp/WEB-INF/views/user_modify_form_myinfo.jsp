@@ -45,11 +45,11 @@
 			return false;
 		}
 		
-		document.f.action = "user_modify_action_myinfo.jsp";
+		document.f.action = "user_modify_action_myinfo.do";
 		document.f.submit();
 	}
 	function userList() {
-		f.action = "user_list.jsp";
+		f.action = "user_list.do";
 		f.submit();
 	}
 </script>

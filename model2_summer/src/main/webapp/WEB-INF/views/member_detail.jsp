@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>member_list.jsp</h1>
-<hr>
+<h1>member_detail.jsp</h1><hr>
 </body>
 </html>

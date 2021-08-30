@@ -7,12 +7,11 @@ import com.itwill.summer.Controller;
 
 public class MemberMainController implements Controller{
 
-		@Override
-		public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-				String forwardPath ="";
-				forwardPath = "forward:/WEB-INF/views/member_main.jsp";
-				return forwardPath;
-		}
-		
-	
+	@Override
+	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
+		String forwardPath="";
+		forwardPath="forward:/WEB-INF/views/member_main.jsp";
+		return forwardPath;
+	}
+
 }

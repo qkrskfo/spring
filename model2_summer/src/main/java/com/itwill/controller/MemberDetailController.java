@@ -5,12 +5,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.itwill.summer.Controller;
 
-public class MemberListController implements Controller{
+public class MemberDetailController implements Controller {
 
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		String forwardPath="forward:/WEB-INF/views/member_list.jsp";
-		//Service객체사용
+		String forwardPath="forward:/WEB-INF/views/member_detail.jsp";
 		return forwardPath;
 	}
 

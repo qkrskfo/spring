@@ -9,7 +9,9 @@ public class UserWriteActionController implements Controller{
 
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
+		
 		return "forward:/WEB-INF/views/user_write_action.jsp";
+		
 	}
 	
 	

@@ -9,8 +9,10 @@ public class UserMainController implements Controller {
 
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
+		
 		String forwardPath="forward:/WEB-INF/views/user_main.jsp";
 		return forwardPath;
+		
 	}
 	
 }

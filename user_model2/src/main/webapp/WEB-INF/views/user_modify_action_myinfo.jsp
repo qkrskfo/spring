@@ -12,7 +12,7 @@
 		4.UserService.update 메쏘드호출
 		5.성공:user_view_myinfo.jsp redirection
 		  실패:user_error.jsp 
-	*/
+	
 	if(request.getMethod().equalsIgnoreCase("GET")){
 		response.sendRedirect("user_main.do");
 		return;
@@ -29,4 +29,5 @@
 		e.printStackTrace();
 		response.sendRedirect("user_error.do");
 	}
+	*/
 %>

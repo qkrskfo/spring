@@ -4,8 +4,10 @@
     pageEncoding="UTF-8"%>
 <%@include file="login_check.jspf" %>
 <%
-	UserService userService=new UserService();
-	User loginUser=userService.findUser(sUserId);
+	//UserService userService=new UserService();
+	//User loginUser=userService.findUser(sUserId);
+	
+	User loginUser=(User)request.getAttribute("user");
 	
 %>
     

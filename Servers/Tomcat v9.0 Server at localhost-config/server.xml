@@ -156,7 +156,7 @@
         
 
 
-      <Context docBase="user_model2" path="/user_model2" reloadable="true" source="org.eclipse.jst.jee.server:user_model2"/><Context docBase="model2_summer" path="/model2_summer" reloadable="true" source="org.eclipse.jst.jee.server:model2_summer"/></Host>
+      <Context docBase="user_model2" path="/user_model2" reloadable="true" source="org.eclipse.jst.jee.server:user_model2"/><Context docBase="model2_summer" path="/model2_summer" reloadable="true" source="org.eclipse.jst.jee.server:model2_summer"/><Context docBase="el_jstl_customtag" path="/el_jstl_customtag" reloadable="true" source="org.eclipse.jst.jee.server:el_jstl_customtag"/></Host>
     </Engine>
   </Service>
 </Server>

@@ -10,19 +10,26 @@ import com.itwill.user.User;
 import com.itwill.user.UserService;
 
 public class UserListController implements Controller{
+	
+	private UserService userService;
+	
+	public UserListController() throws Exception {
+		userService = new UserService();
+	}
+	
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
 		
 		String forwardPath ="";
 		
 		try {
-			UserService userService=new UserService();
+			//UserService userService=new UserService();
 			ArrayList<User> userList=userService.findUserList();
 			request.setAttribute("userList", userList);
 			forwardPath = "forward:/WEB-INF/views/user_list.jsp";
 		} catch (Exception e) {
 			e.printStackTrace();
-			forwardPath = "redirect:user_error.do";
+			forwardPath = "forward:/WEB-INF/views/user_error.jsp";
 		}
 		
 		//return "forward:/WEB-INF/views/user_list.jsp";

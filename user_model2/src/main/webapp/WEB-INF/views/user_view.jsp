@@ -4,6 +4,20 @@
     pageEncoding="UTF-8"%>
 <%@ include file="login_check.jspf" %> 
 <%
+
+	User user = (User)request.getAttribute("user");
+	//String userNotFoundMsg = (String)request.getAttribute("USER_NOT_FOUND_MSG");
+	if(user==null) {
+%>
+		<script>
+			alert('존재하지 않는 회원입니다.');
+			location.href='user_list.do';
+		</script>
+<% 
+		return;
+	} %>	
+<%
+	/*
 	String userId = request.getParameter("userId");
 	if(userId==null||userId.equals("")){
 		response.sendRedirect("user_list.do");
@@ -18,6 +32,8 @@
 		out.println("</script>");
 		return;
 	}
+	*/
+	
 %>   
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>

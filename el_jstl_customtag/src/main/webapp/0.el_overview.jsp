@@ -4,6 +4,8 @@
     pageEncoding="UTF-8"%>
 <%
 
+	// guest_model2 - guest_view.jsp에 예제 있음!
+
 	request.setAttribute("a", new String("속성객체1"));
 	request.setAttribute("b", new Integer(2));
 	request.setAttribute("c", new Boolean(true));

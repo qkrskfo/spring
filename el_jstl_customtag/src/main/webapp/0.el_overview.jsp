@@ -15,6 +15,8 @@
 	request.setAttribute("guest", new Guest(1, "KIM", "2021-08", "summer@gmail.com", "http://www.google.com", "타이틀", "콘텐트"));
 	request.setAttribute("user", new User("summer", "1111", "박나래", "summer@gmail.com")); 
 
+	
+	
 	String str1 = "난 JSP 로컬 변수";
 	int int1 = 1234;
 %>

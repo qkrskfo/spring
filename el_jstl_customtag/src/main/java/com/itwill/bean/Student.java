@@ -10,6 +10,13 @@ public class Student {
 		// TODO Auto-generated constructor stub
 	}
 
+	public Student(int no, String name, Car car) {
+		super();
+		this.no = no;
+		this.name = name;
+		this.car = car;
+	}
+
 	//getter
 	public Car getCar() {
 		return this.car;

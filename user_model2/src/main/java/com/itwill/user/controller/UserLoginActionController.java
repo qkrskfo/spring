@@ -54,6 +54,14 @@ public class UserLoginActionController implements Controller {
 				//response.sendRedirect("user_login_form.do?msg2="+msg2);
 				forwardPath="redirect:user_login_form.do?msg2="+msg2;
 				**********************************************/
+				
+				/* case2 [forward] */
+				String msg2 = "패스워드가 일치하지 않습니다.";
+				User fuser = new User(userId, password,"","");
+				request.setAttribute("msg2", msg2);
+				request.setAttribute("fuser", fuser);
+				forwardPath="forward:/WEB-INF/views/user_login_form.jsp";
+				
 			}else if(result==2){ //패쓰워드일치(로그인성공)
 				/*
 				 * session.setAttribute("sUserId",userId); //session은 jsp에서만.. 

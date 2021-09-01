@@ -33,16 +33,21 @@ public class UserModifyActionMyinfoController implements Controller{
 			return forwardPath;
 		}	
 		
-		//request.setCharacterEncoding("UTF-8");
-		String password=request.getParameter("password");
-		String name=request.getParameter("name");
-		String email=request.getParameter("email");
-		//UserService userService=new UserService();
+		
 		
 		try{
+			
+			//request.setCharacterEncoding("UTF-8");
+			String password=request.getParameter("password");
+			String name=request.getParameter("name");
+			String email=request.getParameter("email");
+			//UserService userService=new UserService();
+			
 			userService.update(new User(sUserId,password,name,email));
 			forwardPath="redirect:user_view_myinfo.do";
+			
 		}catch(Exception e){
+			
 			e.printStackTrace();
 			forwardPath="redirect:user_error.do";
 		}

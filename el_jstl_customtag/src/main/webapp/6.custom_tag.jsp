@@ -43,6 +43,21 @@
 	<itwill:if test="false">
 		반드시 안실행<br>
 	</itwill:if>
+	<itwill:if test="${sUserId!=null}">
+		${sUserId}님 안녕하세요<br>
+	</itwill:if>
+	<itwill:if test="${sUserId==null}">
+		GUEST님 안녕하세요<br>
+	</itwill:if>
+	<itwill:if test="${!(empty name)}">
+		${name}님 안녕하세요<br>
+	</itwill:if>
+	<itwill:if test="${sUserId!=null}">
+		<a href='logout.jsp'>${sUserId}님 로그아웃</a><br>
+	</itwill:if>
+	<itwill:if test="${sUserId==null}">
+		<a href='login.jsp'>로그인</a><br>
+	</itwill:if>
 	
 	
 	

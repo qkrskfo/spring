@@ -56,6 +56,7 @@
 		<li>${pageContext.session}</li>
 		<li>${pageContext.session.id}</li>
 		<li>${pageContext.session.maxInactiveInterval}</li>
+		<li>${pageContext.response}</li>
 		<li>${pageContext.response.contentType}</li>
 	</ul>
 </body>

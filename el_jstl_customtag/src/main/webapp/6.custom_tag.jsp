@@ -27,15 +27,24 @@
 </head>
 <body>
 	<h1>custom tag [사용자 정의 태그]</h1><hr>
+	--------- hello tag ----------- <br/>
 	<itwill:hello></itwill:hello>
 	<itwill:hello/>
+	--------- helloAttr tag ----------- <br/>
 	<itwill:helloAttr irum="박여름" />
-	<itwill:helloAttr irum="박나래" />
+	<itwill:helloAttr irum="김경호" />
 	<itwill:helloAttr irum="${name}" />
+	<itwill:helloAttr irum="${cookie.JSESSIONID.value}" />
 	<itwill:helloAttr />
-	<form action="">
+	--------- if tag [body] ----------- <br/>
+	<itwill:if test="true">
+		반드시 실행<br>
+	</itwill:if>
+	<itwill:if test="false">
+		반드시 안실행<br>
+	</itwill:if>
 	
-	</form>
+	
 	
 </body>
 </html>

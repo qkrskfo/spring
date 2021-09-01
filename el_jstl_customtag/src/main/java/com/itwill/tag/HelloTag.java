@@ -1,6 +1,9 @@
 package com.itwill.tag;
 
+import java.io.IOException;
+
 import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
 
 public class HelloTag extends TagSupport {
@@ -12,6 +15,13 @@ public class HelloTag extends TagSupport {
 	@Override
 	public int doStartTag() throws JspException {
 		System.out.println("HelloTag.doStartTag() [시작태그를 만났습니다.]");
+		try {
+			JspWriter out = pageContext.getOut();
+			out.println("GUEST님 안녕하세요.<br>");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 		return super.doStartTag();
 	}
 	

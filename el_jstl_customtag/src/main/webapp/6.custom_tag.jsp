@@ -22,5 +22,7 @@
 <body>
 	<h1>custom tag [사용자 정의 태그]</h1><hr>
 	<itwill:hello></itwill:hello>
+	<itwill:hello></itwill:hello>
+	<itwill:hello></itwill:hello>
 </body>
 </html>

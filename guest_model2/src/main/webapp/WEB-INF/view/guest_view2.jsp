@@ -1,3 +1,5 @@
+<%--@page import="com.itwill.guest.Guest"--%>
+<%--@page import="com.itwill.guest.GuestService"--%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -7,11 +9,29 @@
 	3 . 요청클라이언트로 응답 
 
 Guest guest=(Guest)request.getAttribute("guest");
+String GUEST_NOT_FOUND_MSG =(String)request.getAttribute("GUEST_NOT_FOUND_MSG");
+if(GUEST_NOT_FOUND_MSG==null)GUEST_NOT_FOUND_MSG="";
 
+if(guest==null){
+	out.println("<script>");
+	out.println("alert('"+GUEST_NOT_FOUND_MSG+"');");
+	out.println("location.href='guest_list.do';");
+	out.println("</script>");
+	return;
+}
 */
 
 %>
+<!--
+<c:if test="${guest==null}">
+	<script>
+		alert('${GUEST_NOT_FOUND_MSG}');
+		location.href='guest_list.do';
+	</script>
+</c:if>
 
+<c:if test="${guest!=null}">
+-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -110,3 +130,6 @@ Guest guest=(Guest)request.getAttribute("guest");
 	<!--container end-->
 </body>
 </html>
+<!-- 
+</c:if>
+ -->

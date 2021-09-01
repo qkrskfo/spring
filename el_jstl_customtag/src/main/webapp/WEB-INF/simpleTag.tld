@@ -18,4 +18,15 @@
 		<tagclass>com.itwill.tag.HelloTag</tagclass>
 		<bodycontent>empty</bodycontent>
 	</tag>
+	<tag>
+		<name>helloAttr</name>
+		<tagclass>com.itwill.tag.HelloAttributeTag</tagclass>
+		<bodycontent>empty</bodycontent>
+		<attribute>
+			<name>irum</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	
 </taglib>	

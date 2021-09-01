@@ -1,3 +1,6 @@
+<%@page import="java.util.HashMap"%>
+<%@page import="com.itwill.bean.Guest"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
@@ -18,6 +21,16 @@
 	pageContext.setAttribute("age", 31);
 	pageContext.setAttribute("weight", 51.21);
 	pageContext.setAttribute("height", 164);
+	
+	Guest guest = null;
+	ArrayList<Guest> guestList = new ArrayList<Guest>();
+	HashMap<String, Guest> guestMap = new HashMap<String, Guest>();
+	String emptyStr = "";
+	
+	pageContext.setAttribute("guest", guest);
+	pageContext.setAttribute("guestList", guestList);
+	pageContext.setAttribute("guestMap", guestMap);
+	pageContext.setAttribute("emptyStr", emptyStr);
 	
 	
 %>    
@@ -63,6 +76,19 @@
 		<li>age lt 30 --> ${age lt 30}</li> <!-- 작냐 lt (less than) -->
 		<li>30대인가요? ${age>=30 && age<40}</li>
 		<li>30대이고 키가 160 이상인가요? ${(age>=30 && age<40) && height>=160}</li>
+		<li> -- empty, null size check -- </li>
+		<li>${guest==null}</li>
+		<li>${guestList.size()==0}</li>
+		<li>${guestMap.size()==0}</li>
+		<li>${emptyStr.equals('')}</li>
+		<li>${empty guest}</li>
+		<li>${empty guestList}</li>
+		<li>${empty guestMap}</li>
+		<li>${empty emptyStr}</li>
+		<li>${!(empty emptyStr)}</li>
+		<li>${empty null}</li>
+		<li>${empty ''}</li>
+		<li>${empty ""}</li>
 	</ul>
 </body>
 </html>

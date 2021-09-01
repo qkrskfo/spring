@@ -25,28 +25,23 @@ import com.itwill.guest.controller.GuestViewController;
 import com.itwill.guest.controller.GuestWriteActionController;
 import com.itwill.guest.controller.GuestWriteFormController;
 
-/***
- * 내꺼는 이게 최종! dispatherServlet1-3은 선생님 버전이랑 동일하고, 4는 주석 유지하려고 내가 추가로 생성한 것. 선생님꺼는 4가 최종. 
- */
-
 /*
  * 클라이언트의 모든요청(*.do)을 받는 서블릿(Controller)
  */
-
 public class DispatcherServlet extends HttpServlet {
 	/*
-	 * controller 객체들을 저장하는 맵
+	 * Controller객체들을 저장하는맵
 	 */
-	private HashMap<String, Controller> controllerMap;
+	private HashMap<String,Controller> controllerMap;
+	
 	public DispatcherServlet() {
 		System.out.println("0.DispatcherServlet()생성자");
 	}
 	@Override
 	public void init(ServletConfig config) throws ServletException {
-
+		System.out.println("0.DispatcherServlet.init()");
 		super.init(config);
-		controllerMap = new HashMap<String,Controller>();
-		
+		controllerMap=new HashMap<String, Controller>();
 		/*
 		<< web.xml에 설정된 파라메타값 가져오기 >>
 		<servlet>
@@ -58,44 +53,46 @@ public class DispatcherServlet extends HttpServlet {
 		  	</init-param>
   		</servlet>
 		 */
-		
-		System.out.println("0.DispatcherServlet.init()");
+		//String configFile="/WEB-INF/guest_controller_mapping.properties";
 		String configFile=config.getInitParameter("configFile");
-		//String configFile = "/WEB-INF/guest_controller_mapping.properties";
-		ServletContext servletContext = this.getServletContext();
+		ServletContext servletContext=this.getServletContext();
 		String configFileRealPath = servletContext.getRealPath(configFile);
 		try {
-			FileInputStream in = new FileInputStream(configFileRealPath);
-			Properties controllerMappingProperties = new Properties();
+			FileInputStream in=new FileInputStream(configFileRealPath);
+			Properties controllerMappingProperties=new Properties();
 			controllerMappingProperties.load(in);
-			System.out.println("----------"+configFile+"-------------");
-			//System.out.println(controllerMappingProperties);
-			Set commandKeySet = controllerMappingProperties.keySet();
+			System.out.println("-----------------------"+configFile+"----------------------------");
+			Set commandKeySet=controllerMappingProperties.keySet();
 			Iterator commandKeyIterator = commandKeySet.iterator();
 			while(commandKeyIterator.hasNext()) {
 				String command = (String)commandKeyIterator.next();
-				String controllerClassName = controllerMappingProperties.getProperty(command);
-				//System.out.println(command+"-->"+controllerClassName);
+				String controllerClassName=controllerMappingProperties.getProperty(command);
+				/*
+				 * Controller클래스로딩
+				 */
 				Class controllerClass = Class.forName(controllerClassName);
-				Controller controllerObject = (Controller)controllerClass.newInstance();
+				/*
+				 *  Controller클래스기본생성자호출
+				 */
+				Controller controllerObject =(Controller)controllerClass.newInstance();
 				controllerMap.put(command, controllerObject);
 				System.out.println(command+"="+controllerObject);
 			}
-			System.out.println("-------------------------------------");
-		} catch (Exception e) {
+			System.out.println("-------------------------------------------------------------------");
+		}catch (Exception e) {
 			e.printStackTrace();
 		}
-	}	
-				
- 	
+	}
+	
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		this.processRequest(request, response);
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		this.processRequest(request, response);
 	}
+
 	private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		
 		/*
 		 * 1.클라이언트 요청URI를 사용해서 요청분석

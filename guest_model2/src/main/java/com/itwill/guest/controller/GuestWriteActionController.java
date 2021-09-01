@@ -7,10 +7,11 @@ import com.itwill.guest.Guest;
 import com.itwill.guest.GuestService;
 import com.itwill.summer.Controller;
 
-public class GuestWriteActionController implements Controller{
+public class GuestWriteActionController implements Controller {
 
-	public String handleRequest (HttpServletRequest request, HttpServletResponse response) {
-		String forwardPath = null;
+	@Override
+	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
+		String forwardPath="";
 		if (request.getMethod().equalsIgnoreCase("GET")) {
 			forwardPath="redirect:guest_main.do";
 		}else {
@@ -32,5 +33,5 @@ public class GuestWriteActionController implements Controller{
 		}
 		return forwardPath;
 	}
-	
+
 }

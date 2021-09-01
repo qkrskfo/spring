@@ -7,10 +7,10 @@ import com.itwill.guest.GuestService;
 import com.itwill.summer.Controller;
 
 public class GuestRemoveActionController implements Controller {
-	
-	public String handleRequest (HttpServletRequest request, HttpServletResponse response) {
-		String forwardPath = null;
-		
+
+	@Override
+	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
+		String forwardPath="";
 		if (request.getMethod().equalsIgnoreCase("GET")) {
 			forwardPath="redirect:guest_main.do";
 		}else {
@@ -24,7 +24,6 @@ public class GuestRemoveActionController implements Controller {
 				forwardPath="redirect:guest_error.do";
 			}
 		}
-		
 		return forwardPath;
 	}
 

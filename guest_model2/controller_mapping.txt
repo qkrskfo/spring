@@ -1,5 +1,5 @@
 <<요청 url(command)>>
-/guest_main.do  
+/guest_main.do  		
 /guest_list.do			
 /guest_view.do			
 /guest_write_form.do	

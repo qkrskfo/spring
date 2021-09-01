@@ -5,11 +5,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.itwill.summer.Controller;
 
-public class GuestWriteFormController implements Controller {
+public class GuestWriteFormController implements Controller{
 
-	public String handleRequest (HttpServletRequest request, HttpServletResponse response) {
-		String forwardPath = null;
-		forwardPath="forward:/WEB-INF/view/guest_write_form.jsp";
+	@Override
+	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
+		String forwardPath="";
+		
+		forwardPath="forward:/WEB-INF/view/guest_write_form.jsp";		
+		
 		return forwardPath;
+		
 	}
+
 }

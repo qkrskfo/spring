@@ -42,19 +42,6 @@ public class DispatcherServlet3 extends HttpServlet {
 		System.out.println("0.DispatcherServlet.init()");
 		super.init(config);
 		controllerMap=new HashMap<String, Controller>();
-		
-		/*
-		<< web.xml에 설정된 파라메타값 가져오기 >>
-		<servlet>
-		  	<servlet-name>dispatcher</servlet-name>
-		  	<servlet-class>com.itwill.summer.DispatcherServlet</servlet-class>
-		  	<init-param>
-		  		<param-name>configFile</param-name>
-		  		<param-value>/WEB-INF/guest_controller_mapping.properties</param-value>
-		  	</init-param>
-  		</servlet>
-		 */
-		
 		String configFile="/WEB-INF/guest_controller_mapping.properties";
 		ServletContext servletContext=this.getServletContext();
 		String configFileRealPath = servletContext.getRealPath(configFile);

@@ -1,17 +1,14 @@
-<%--@page import="com.itwill.guest.Guest"--%>
-<%--@page import="com.itwill.guest.GuestService"--%>
+<%@page import="com.itwill.guest.Guest"%>
+<%@page import="com.itwill.guest.GuestService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
-<%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%> 
 <%
 /*
 	3 . 요청클라이언트로 응답 
-
+*/
 Guest guest=(Guest)request.getAttribute("guest");
 String GUEST_NOT_FOUND_MSG =(String)request.getAttribute("GUEST_NOT_FOUND_MSG");
 if(GUEST_NOT_FOUND_MSG==null)GUEST_NOT_FOUND_MSG="";
-
 if(guest==null){
 	out.println("<script>");
 	out.println("alert('"+GUEST_NOT_FOUND_MSG+"');");
@@ -19,19 +16,8 @@ if(guest==null){
 	out.println("</script>");
 	return;
 }
-*/
-
 %>
-<%-- 
-<c:if test="${guest==null}">
-	<script>
-		alert('${GUEST_NOT_FOUND_MSG}');
-		location.href='guest_list.do';
-	</script>
-</c:if>
 
-<c:if test="${guest!=null}">
---%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -76,30 +62,37 @@ if(guest==null){
 								</tr>
 							</table> <!-- view Form  -->
 							<form name="f" method="post">
-								<input type="hidden" name="guest_no" value="${guest.guest_no}" />
-								<table border="0" cellpadding="0" cellspacing="1" width="590" bgcolor="BBBBBB">
+								<input type="hidden" name="guest_no" value="<%=guest.getGuest_no() %>" />
+								<table border="0" cellpadding="0" cellspacing="1" width="590"
+									bgcolor="BBBBBB">
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">번호</td>
-										<td width=490 bgcolor="ffffff" align="left" style="padding-left: 10px">${guest.guest_no}</td>
+										<td width=490 bgcolor="ffffff" align="left"
+											style="padding-left: 10px"><%=guest.getGuest_no() %></td>
 									</tr>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">이름</td>
-										<td width=490 bgcolor="ffffff" align="left" style="padding-left: 10px">${guest.guest_name}</td>
+										<td width=490 bgcolor="ffffff" align="left"
+											style="padding-left: 10px"><%=guest.getGuest_name() %></td>
 									</tr>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">날짜</td>
-										<td width=490 bgcolor="ffffff" align="left" style="padding-left: 10px">${guest.guest_date.substring(0,10)}</td>
+										<td width=490 bgcolor="ffffff" align="left"
+											style="padding-left: 10px"><%=guest.getGuest_date().substring(0,10) %></td>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">홈페이지</td>
-										<td width=490 bgcolor="ffffff" align="left" style="padding-left: 10px">${guest.guest_homepage}</td>
+										<td width=490 bgcolor="ffffff" align="left"
+											style="padding-left: 10px"><%=guest.getGuest_homepage() %></td>
 									</tr>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">제목</td>
-										<td width=490 bgcolor="ffffff" align="left" style="padding-left: 10px">${guest.guest_title}</td>
+										<td width=490 bgcolor="ffffff" align="left"
+											style="padding-left: 10px"><%=guest.getGuest_title() %></td>
 									</tr>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="110">내용</td>
-										<td width=490 bgcolor="ffffff" align="left" style="padding-left: 10px">${guest.guest_content}</td>
+										<td width=490 bgcolor="ffffff" align="left"
+											style="padding-left: 10px"><%=guest.getGuest_content() %></td>
 									</tr>
 								</table>
 							</form> <br />
@@ -130,6 +123,3 @@ if(guest==null){
 	<!--container end-->
 </body>
 </html>
-<%-- 
-</c:if>
---%>

@@ -8,10 +8,10 @@ import com.itwill.guest.GuestService;
 import com.itwill.summer.Controller;
 
 public class GuestModifyActionController implements Controller {
-	
-	public String handleRequest (HttpServletRequest request, HttpServletResponse response) {
-		String forwardPath = null;
-		
+
+	@Override
+	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
+		String forwardPath="";
 		if (request.getMethod().equalsIgnoreCase("GET")) {
 			forwardPath="redirect:guest_main.do";
 		}else {
@@ -34,7 +34,6 @@ public class GuestModifyActionController implements Controller {
 				forwardPath="forward:/WEB-INF/view/guest_error.jsp";
 			}
 		}
-		
 		return forwardPath;
 	}
 

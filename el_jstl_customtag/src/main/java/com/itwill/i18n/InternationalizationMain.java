@@ -9,7 +9,10 @@ import java.util.ResourceBundle;
 public class InternationalizationMain {
 
 	public static void main(String[] args) {
+		
 		Locale currentLocale = Locale.getDefault();
+		//os의 locale
+		
 		String language = currentLocale.getLanguage();
 		String country = currentLocale.getCountry();
 		System.out.println(language + "_" + country);
@@ -18,11 +21,13 @@ public class InternationalizationMain {
 		Locale jpLocale = new Locale("ja", "JP");
 		Locale krLocale = new Locale("ko", "KR");
 		Locale cnLocale = new Locale("zh", "CN");
-		Locale locale = usLocale;
+		
+		//Locale locale = usLocale;
 		// Locale locale = jpLocale;
 		// Locale locale = krLocale;
 		// Locale locale = cnLocale;
-		//Locale locale = currentLocale;
+		Locale locale = currentLocale;
+		
 		language = locale.getLanguage();
 		country = locale.getCountry();
 

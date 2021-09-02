@@ -20,8 +20,7 @@ public class UserModifyFormMyinfoController implements Controller{
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
 		String forwardPath = "";
 		
-		HttpSession session = request.getSession();
-		String sUserId=(String)session.getAttribute("sUserId");
+		String sUserId=(String)request.getSession().getAttribute("sUserId");
 			
 		if(sUserId==null || sUserId.equals("")){
 			forwardPath = "redirect:user_main.do";

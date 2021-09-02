@@ -21,16 +21,7 @@ public class UserListController implements Controller{
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
 		
 		String forwardPath ="";
-		
-		/************* login check **********/
-		String sUserId = (String)request.getSession().getAttribute("sUserId");
-		if(sUserId==null) {
-			forwardPath="redirect:user_main.do";
-			return forwardPath;
-		}
-		/************************************/
-		
-		
+				
 		try {
 			//UserService userService=new UserService();
 			ArrayList<User> userList=userService.findUserList();

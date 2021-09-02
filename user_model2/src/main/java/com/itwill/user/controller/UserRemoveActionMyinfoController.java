@@ -18,13 +18,9 @@ public class UserRemoveActionMyinfoController implements Controller{
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
 		
 		String forwardPath = "";
-		/*******************login check************************/
+		
 		String sUserId=(String)request.getSession().getAttribute("sUserId");
-		if(sUserId==null){
-			forwardPath = "redirect:user_main.do";
-			return forwardPath;
-		}
-		/****************************************************/
+		
 		if (request.getMethod().equalsIgnoreCase("GET")) {
 			forwardPath = "redirect:user_main.do";
 			return forwardPath;

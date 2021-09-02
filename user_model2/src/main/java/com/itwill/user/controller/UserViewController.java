@@ -20,14 +20,7 @@ public class UserViewController implements Controller {
 		
 		String forwardPath = "";
 		
-		/************* login check **********/
-		String sUserId = (String)request.getSession().getAttribute("sUserId");
-		if(sUserId==null) {
-			forwardPath="redirect:user_main.do";
-			return forwardPath;
-		}
-		/************************************/
-		
+			
 		String userId = request.getParameter("userId");
 		if(userId==null||userId.equals("")){
 			forwardPath = "redirect:user_main.do";

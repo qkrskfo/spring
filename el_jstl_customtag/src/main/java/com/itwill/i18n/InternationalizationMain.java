@@ -33,8 +33,9 @@ public class InternationalizationMain {
 		country = locale.getCountry();
 
 		/*
-		 * Locale정보를 이용해서 guest_xx_YY.properties 중하나를 읽어서 xx--> 언어정보(en,ko,ja) YY-->
-		 * 국가정보(US,KR,JP)
+		 * Locale정보를 이용해서 guest_xx_YY.properties 중하나를 읽어서
+		 *  xx--> 언어정보(en,ko,ja) 
+		 *  YY--> 국가정보(US,KR,JP)
 		 * 
 		 * ResourceBundle객체생성
 		 */

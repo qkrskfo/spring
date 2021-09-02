@@ -20,7 +20,6 @@ import com.itwill.guest.controller.GuestModifyActionController;
 import com.itwill.guest.controller.GuestModifyFormController;
 import com.itwill.guest.controller.GuestRemoveActionController;
 import com.itwill.guest.controller.GuestViewController;
-import com.itwill.guest.controller.GuestViewServlet;
 import com.itwill.guest.controller.GuestWriteActionController;
 import com.itwill.guest.controller.GuestWriteFormController;
 

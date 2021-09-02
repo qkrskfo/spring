@@ -35,6 +35,7 @@ public class UserWriteActionController implements Controller{
 		String email=request.getParameter("email");
 		User newUser=new User(userId,password,name,email);
 		//UserService userService=new UserService();
+		
 		try {	
 			int result = this.userService.create(newUser);
 			if(result==-1){ //아이디중복

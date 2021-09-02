@@ -20,9 +20,11 @@ public class UserModifyFormMyinfoController implements Controller{
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
 		String forwardPath = "";
 		
-		HttpSession session = request.getSession();
-		String sUserId=(String)session.getAttribute("sUserId");
-			
+		//HttpSession session = request.getSession();
+		//String sUserId=(String)session.getAttribute("sUserId");
+		
+		String sUserId = (String) request.getSession().getAttribute("sUserId");
+		
 		if(sUserId==null || sUserId.equals("")){
 			forwardPath = "redirect:user_main.do";
 			return forwardPath;
@@ -30,17 +32,13 @@ public class UserModifyFormMyinfoController implements Controller{
 			
 		try {	
 			User loginUser = userService.findUser(sUserId);
-			
-			if(sUserId!=null){
-				request.setAttribute("user", loginUser);
-			}
+			request.setAttribute("loginUser", loginUser);
 			forwardPath = "forward:/WEB-INF/views/user_modify_form_myinfo.jsp";
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 			forwardPath = "forward:/WEB-INF/views/user_error.jsp";
 		}	
-		
 		
 		//return forwardPath = "forward:/WEB-INF/views/user_modify_form_myinfo.jsp";
 		return forwardPath;

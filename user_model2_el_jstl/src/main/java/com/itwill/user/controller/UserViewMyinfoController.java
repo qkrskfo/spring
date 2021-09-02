@@ -20,7 +20,7 @@ public class UserViewMyinfoController implements Controller {
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
 		
 		String forwardPath = "";
-		
+		/*
 		HttpSession session = request.getSession();
 		String sUserId=(String)session.getAttribute("sUserId");
 			
@@ -28,13 +28,13 @@ public class UserViewMyinfoController implements Controller {
 			forwardPath = "redirect:user_main.do";
 			return forwardPath;
 		}	
-			
+		*/
 		try {	
+			String sUserId = (String)request.getSession().getAttribute("sUserId");
 			User loginUser = userService.findUser(sUserId);
 			
-			if(sUserId!=null){
-				request.setAttribute("user", loginUser);
-			}
+			request.setAttribute("loginUser", loginUser);
+		
 			forwardPath = "forward:/WEB-INF/views/user_view_myinfo.jsp";
 			
 		} catch (Exception e) {

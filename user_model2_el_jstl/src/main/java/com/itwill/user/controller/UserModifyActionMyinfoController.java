@@ -20,19 +20,14 @@ public class UserModifyActionMyinfoController implements Controller{
 		
 		String forwardPath = "";
 		
+		String sUserId=(String)request.getSession().getAttribute("sUserId");
+		
 		if(request.getMethod().equalsIgnoreCase("GET")){
 			forwardPath="redirect:user_write_form.do";
 			return forwardPath;
 		}
 		
-		HttpSession session = request.getSession();
-		String sUserId=(String)session.getAttribute("sUserId");
-		
-		if(sUserId==null || sUserId.equals("")){
-			forwardPath = "redirect:user_main.do";
-			return forwardPath;
-		}	
-		
+			
 		//request.setCharacterEncoding("UTF-8");
 		String password=request.getParameter("password");
 		String name=request.getParameter("name");

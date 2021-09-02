@@ -19,18 +19,21 @@ public class UserRemoveActionMyinfoController implements Controller{
 		
 		String forwardPath = "forward:/WEB-INF/views/user_remove_action_myinfo.jsp";
 		
+		//HttpSession session = request.getSession();
+		//String sUserId = (String)session.getAttribute("sUserId");
+		
+		String sUserId=(String)request.getSession().getAttribute("sUserId");
+		
 		if(request.getMethod().equalsIgnoreCase("GET")){
 			forwardPath = "redirect:user_main.do";
 			return forwardPath;
 		}
 		
-		HttpSession session = request.getSession();
-		String sUserId = (String)session.getAttribute("sUserId");
-		
 		try{
 			userService.remove(sUserId);
 			/****case1**********/
-			session.invalidate();
+			//session.invalidate();
+			request.getSession().invalidate();
 			forwardPath = "redirect:user_main.do";
 			/**********************/
 			/****case2**********

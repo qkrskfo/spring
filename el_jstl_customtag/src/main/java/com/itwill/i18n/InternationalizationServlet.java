@@ -21,11 +21,15 @@ public class InternationalizationServlet extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out=response.getWriter();
 		
-		//Locale defaultLocale = Locale.getDefault();
-		Locale requestLocale = request.getLocale();
+		Locale defaultLocale = Locale.getDefault(); //os locale
 		
-		//Locale usLocale=new Locale("en", "US");
-		//Locale jpLocale=new Locale("ja", "JP");
+		Locale requestLocale = request.getLocale(); //요청 브라우저의 locale
+		
+		Locale usLocale=new Locale("en", "US");
+		Locale jpLocale=new Locale("ja", "JP");
+		Locale krLocale = new Locale("ko", "KR");
+		Locale cnLocale = new Locale("zh", "CN");
+		Locale esLocale = new Locale("es", "ES");
 		
 		Locale locale = requestLocale;
 		

@@ -21,12 +21,13 @@ public class InternationalizationMain {
 		Locale jpLocale = new Locale("ja", "JP");
 		Locale krLocale = new Locale("ko", "KR");
 		Locale cnLocale = new Locale("zh", "CN");
+		Locale esLocale = new Locale("es", "ES");
 		
-		//Locale locale = usLocale;
+		Locale locale = usLocale;
 		// Locale locale = jpLocale;
-		// Locale locale = krLocale;
+		//Locale locale = krLocale;
 		// Locale locale = cnLocale;
-		Locale locale = currentLocale;
+		//Locale locale = currentLocale;
 		
 		language = locale.getLanguage();
 		country = locale.getCountry();
@@ -38,9 +39,11 @@ public class InternationalizationMain {
 		 * ResourceBundle객체생성
 		 */
 		ResourceBundle resBundle1 = ResourceBundle.getBundle("com/itwill/i18n/guest", locale);
-		System.out.println("----------------locale[" + language + "_" + country + "]-----------");
+		System.out.println(locale.getLanguage()+"_"+locale.getCountry());
+		
+		//System.out.println("----------------locale[" + language + "_" + country + "]-----------");
+		
 		System.out.println(resBundle1.getString("title.main"));
-
 		System.out.println(resBundle1.getString("title.list"));
 		System.out.println(resBundle1.getString("title.view"));
 		System.out.println(resBundle1.getString("title.write"));

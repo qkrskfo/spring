@@ -20,6 +20,8 @@ public class LoginCheckFilter implements Filter{
 		HttpServletRequest req = (HttpServletRequest)request;
 		HttpServletResponse resp = (HttpServletResponse)response;
 		
+		System.out.println("LoginCheckFilter --> "+req.getRequestURI());
+		
 		String sUserId = (String)req.getSession().getAttribute("sUserId");
 		if(sUserId==null) {
 			resp.sendRedirect("user_main.do");

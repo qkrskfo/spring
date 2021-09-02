@@ -12,7 +12,10 @@
 	</filter>
 	<filter-mapping>
 		<filter-name>NoCache Filter</filter-name>
-		<url-pattern>/*</url-pattern>
+		<url-pattern>*.js</url-pattern>
+		<url-pattern>/image/*</url-pattern>
+		<url-pattern>/css/*</url-pattern>
+		<url-pattern>*.do</url-pattern>
 	</filter-mapping>
 	
 	

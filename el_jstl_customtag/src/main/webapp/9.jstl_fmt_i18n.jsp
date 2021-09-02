@@ -20,7 +20,7 @@
 <%-- param의 타입은 map --%>
 
 <%-- 2. ResourceBundle의 properties 파일지정(JSTL) 페이지 전역 --%>
-<fmt:bundle basename="com/itwill/i18n/guest" />
+<fmt:setBundle basename="com/itwill/i18n/guest" />
 
 <!DOCTYPE html>
 <html>-

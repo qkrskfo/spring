@@ -22,10 +22,6 @@ public class UserModifyFormMyinfoController implements Controller{
 		
 		String sUserId=(String)request.getSession().getAttribute("sUserId");
 			
-		if(sUserId==null || sUserId.equals("")){
-			forwardPath = "redirect:user_main.do";
-			return forwardPath;
-		}	
 			
 		try {	
 			User loginUser = userService.findUser(sUserId);

@@ -11,6 +11,7 @@ import com.itwill.user.UserService;
 public class UserModifyActionMyinfoController implements Controller{
 
 	private UserService userService;
+	
 	public UserModifyActionMyinfoController() throws Exception{
 		userService = new UserService();
 	}
@@ -27,16 +28,7 @@ public class UserModifyActionMyinfoController implements Controller{
 			return forwardPath;
 		}
 		
-		
-		if(sUserId==null || sUserId.equals("")){
-			forwardPath = "redirect:user_main.do";
-			return forwardPath;
-		}	
-		
-		
-		
 		try{
-			
 			//request.setCharacterEncoding("UTF-8");
 			String password=request.getParameter("password");
 			String name=request.getParameter("name");

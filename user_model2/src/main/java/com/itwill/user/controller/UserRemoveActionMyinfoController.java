@@ -10,6 +10,7 @@ import com.itwill.user.UserService;
 public class UserRemoveActionMyinfoController implements Controller{
 	
 	private UserService userService;
+	
 	public UserRemoveActionMyinfoController() throws Exception {
 		userService = new UserService();
 	}

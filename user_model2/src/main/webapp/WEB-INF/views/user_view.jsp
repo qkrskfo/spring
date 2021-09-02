@@ -2,7 +2,7 @@
 <%@page import="com.itwill.user.UserService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="login_check.jspf" %> 
+<%--@ include file="login_check.jspf" --%> 
 <%
 
 	User user = (User)request.getAttribute("user");

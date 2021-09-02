@@ -10,12 +10,11 @@ public class InternationalizationMain {
 
 	public static void main(String[] args) {
 		
-		Locale currentLocale = Locale.getDefault();
-		//os의 locale
+		Locale currentLocale = Locale.getDefault();	//os의 locale
 		
-		String language = currentLocale.getLanguage();
-		String country = currentLocale.getCountry();
-		System.out.println(language + "_" + country);
+		//String language = currentLocale.getLanguage();
+		//String country = currentLocale.getCountry();
+		//System.out.println(language + "_" + country);
 
 		Locale usLocale = new Locale("en", "US");
 		Locale jpLocale = new Locale("ja", "JP");
@@ -29,8 +28,8 @@ public class InternationalizationMain {
 		// Locale locale = cnLocale;
 		//Locale locale = currentLocale;
 		
-		language = locale.getLanguage();
-		country = locale.getCountry();
+		//language = locale.getLanguage();
+		//country = locale.getCountry();
 
 		/*
 		 * Locale정보를 이용해서 guest_xx_YY.properties 중하나를 읽어서

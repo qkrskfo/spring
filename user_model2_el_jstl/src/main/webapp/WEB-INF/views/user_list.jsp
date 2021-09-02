@@ -4,9 +4,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%--@include file="login_check.jspf" --%> 
+
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%
 	String sUserId=(String)session.getAttribute("sUserId");
-	ArrayList<User> userList = (ArrayList<User>)request.getAttribute("userList");
+	//ArrayList<User> userList = (ArrayList<User>)request.getAttribute("userList");
 %>   
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -68,22 +71,21 @@ function userList() {
 										<td align=center bgcolor="E6ECDE">이메일</td>
 									</tr>
 									<!-- 회원리스트 start -->
-									<%
+									<%--
 									for(User user:userList){
 										if(user.getUserId().equals(sUserId)) continue;
-									%>
+									--%>
+									<c:forEach items="${userList}" var="user">
 									<tr>
-										<td width=190 align=center bgcolor="ffffff" height="20">
-											<%=user.getUserId()%>
-										</td>
+										<td width=190 align=center bgcolor="ffffff" height="20">${user.getUserId()}</td>
 										<td width=200 bgcolor="ffffff" style="padding-left: 10">
-											<a href="user_view.do?userId=<%=user.getUserId()%>"
-											class="user"><%=user.getName()%></a>
+											<a href="user_view.do?userId=${user.getUserId()}" class="user">${user.getName()}</a>
 										</td>
-										<td width=200 align=center bgcolor="ffffff"><%=user.getEmail()%>
+										<td width=200 align=center bgcolor="ffffff">${user.getEmail()}
 										</td>
 									</tr>
-									<% }%>
+									</c:forEach>
+									<%-- }--%>
 									<!-- 회원리스트 end -->
 									
 									

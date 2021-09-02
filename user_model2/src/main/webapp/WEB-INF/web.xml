@@ -3,7 +3,23 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
 	version="4.0">
+	
 	<display-name>user_model2</display-name>
+	<filter>
+		<filter-name>LoginCheck Filter</filter-name>
+		<filter-class>com.itwill.filter.LoginCheckFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>LoginCheck Filter</filter-name>
+		<url-pattern>/user_logout_action.do</url-pattern>
+		<url-pattern>/user_list.do</url-pattern>
+		<url-pattern>/user_view.do</url-pattern>
+		<url-pattern>/user_view_myinfo.do</url-pattern>
+		<url-pattern>/user_modify_form_myinfo.do</url-pattern>
+		<url-pattern>/user_modify_action_myinfo.do</url-pattern>
+		<url-pattern>/user_remove_action_myinfo.do</url-pattern>
+	</filter-mapping>
+	
 	<filter>
 		<filter-name>Encoding Filter</filter-name>
 		<filter-class>com.itwill.filter.EncodingFilter</filter-class>

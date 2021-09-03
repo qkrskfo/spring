@@ -6,5 +6,6 @@
 	</select>
 	<select id="findAllStudents" resultType="com.mybatis3.domain.Student">
 		select * from students
+		<!-- select stud_id as studid ,name,email,dob from students -->
 	</select>
 </mapper>

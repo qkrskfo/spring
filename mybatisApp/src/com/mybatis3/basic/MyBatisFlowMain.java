@@ -18,17 +18,25 @@ public class MyBatisFlowMain {
 		/*
 		 * 0. mybatis-config.xml --> InputStream
 		 */
+		InputStream myBatisConfigInputStream = Resources.getResourceAsStream("mybatis-config.xml");
+		
 		/*
 		 * 1. SqlSessionFactoryBuilder
 		 */
+		SqlSessionFactoryBuilder sqlSessionFactoryBuilder = new SqlSessionFactoryBuilder();
+		
 		/*
 		 * 2. SqlSessionFactory
 		 */
+		SqlSessionFactory sqlSessionFactory = sqlSessionFactoryBuilder.build(myBatisConfigInputStream);
+		
 		/*
 		 * 3. SqlSession open
 		 */
+		
+		
 		/*
-		 * autocommit true
+		 * auto commit true
 		 */
 		/*
 		 * 4. SqlSession사용(CRUD)

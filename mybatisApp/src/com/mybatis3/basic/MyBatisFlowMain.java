@@ -49,7 +49,15 @@ public class MyBatisFlowMain {
 		sqlSession.update(null);
 		sqlSession.insert(null);
 		*/
-		sqlSession.selectOne("");
+		/*
+		 * SELECT * FROM student WHERE stud_id = ?;
+		 */
+		/*
+		 * com/mybatis3/dao/mapper/StudentBasicMapper 를 namespace로 가지는 xml파일의 findStudentById라는 이름의 sql문
+		 */
+		
+		Student student = sqlSession.selectOne("findStudentById", new Integer(1));
+		System.out.println("#### findStudent: "+ student);
 		
 		/*
 		 * 5. SqlSession close

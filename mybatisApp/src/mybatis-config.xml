@@ -16,6 +16,7 @@
 		</environment>
 	</environments>
 	<mappers>
+		<mapper resource="com/mybatis3/dao/mapper/StudentBasicMapper.xml" />
 	</mappers>
 </configuration>
 

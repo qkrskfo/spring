@@ -33,17 +33,27 @@ public class MyBatisFlowMain {
 		/*
 		 * 3. SqlSession open
 		 */
-		
+		SqlSession sqlSession = sqlSessionFactory.openSession();
 		
 		/*
 		 * auto commit true
 		 */
+		
 		/*
 		 * 4. SqlSession사용(CRUD)
 		 */
+		System.out.println("##### SqlSession 객체: "+sqlSession);
+		/*
+		sqlSession.select(null);
+		sqlSession.delete(null);
+		sqlSession.update(null);
+		sqlSession.insert(null);
+		*/
+		
 		/*
 		 * 5. SqlSession close
 		 */
+		sqlSession.close();
 		
 	}
 }

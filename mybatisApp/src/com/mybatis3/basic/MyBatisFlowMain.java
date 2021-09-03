@@ -49,6 +49,7 @@ public class MyBatisFlowMain {
 		sqlSession.update(null);
 		sqlSession.insert(null);
 		*/
+		sqlSession.selectOne("");
 		
 		/*
 		 * 5. SqlSession close

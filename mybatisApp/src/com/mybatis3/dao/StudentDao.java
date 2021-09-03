@@ -1,13 +1,39 @@
 package com.mybatis3.dao;
 
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+
 import com.mybatis3.domain.Student;
 
 public class StudentDao {
+	
+	private SqlSessionFactory sqlSessionFactory;
+	
 	public StudentDao() {
+		try {
+			/*
+			 * 0. mybatis-config.xml --> InputStream
+			 */
+			InputStream myBatisConfigInputStream = Resources.getResourceAsStream("mybatis-config.xml");
+			
+			/*
+			 * 1. SqlSessionFactoryBuilder
+			 */
+			SqlSessionFactoryBuilder sqlSessionFactoryBuilder = new SqlSessionFactoryBuilder();
+			
+			/*
+			 * 2. SqlSessionFactory
+			 */
+			this.sqlSessionFactory = sqlSessionFactoryBuilder.build(myBatisConfigInputStream);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	/* @@@@@@@@@@@@@@@@@@@@@@@ SELECT JOIN[students + courses] @@@@@@@@@@@@@@@@@ */

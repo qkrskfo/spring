@@ -49,7 +49,7 @@ public class Student
 	@Override
 	public String toString() {
 		return "Student [studId=" + studId + ", name=" + name + ", email=" + email + ", dob=" + dob + ", address="
-				+ address + ", courseList=" + courseList + "]";
+				+ address + ", courseList=" + courseList + "] \n";
 	}
 
 	public Address getAddress() {

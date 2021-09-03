@@ -1,6 +1,7 @@
 select dob from students;
 select name from students where stud_id=1;
 select STUDENTS_STUD_ID_SEQ.currval from dual;
+
 /*
 students + addresses[inner join]
 */
@@ -64,6 +65,7 @@ select  s.stud_id,s.name as student_name ,s.email,s.phone,s.dob ,
 		on s.stud_id = ce.stud_id
 		left outer join courses c
 		on ce.course_id=c.course_id where s.stud_id=1;
+		
        
 ----findCourseByIdWithStudents 
 select c.*,s.* from courses c 
@@ -133,11 +135,3 @@ SELECT * FROM COURSES
 WHERE TUTOR_ID = 1
 AND NAME LIKE '%Quick%'
 AND START_DATE >= TO_DATE('2015/05/01');
-      
-      
-      
-      
-      
-      
-      
-      

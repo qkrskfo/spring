@@ -156,7 +156,7 @@
         
 
 
-      <Context docBase="model2_summer" path="/model2_summer" reloadable="true" source="org.eclipse.jst.jee.server:model2_summer"/><Context docBase="el_jstl_customtag" path="/el_jstl_customtag" reloadable="true" source="org.eclipse.jst.jee.server:el_jstl_customtag"/><Context docBase="guest_model2_el_jstl" path="/guest_model2_el_jstl" reloadable="true" source="org.eclipse.jst.jee.server:guest_model2_el_jstl"/><Context docBase="guest_model2" path="/guest_model2" reloadable="true" source="org.eclipse.jst.jee.server:guest_model2"/><Context docBase="user_model2_el_jstl" path="/user_model2_el_jstl" reloadable="true" source="org.eclipse.jst.jee.server:user_model2_el_jstl"/><Context docBase="guest_model1" path="/guest_model1" reloadable="true" source="org.eclipse.jst.jee.server:guest_model1"/><Context docBase="user_model2" path="/user_model2" reloadable="true" source="org.eclipse.jst.jee.server:user_model2"/></Host>
+      <Context docBase="el_jstl_customtag" path="/el_jstl_customtag" reloadable="true" source="org.eclipse.jst.jee.server:el_jstl_customtag"/><Context docBase="guest_model2_el_jstl" path="/guest_model2_el_jstl" reloadable="true" source="org.eclipse.jst.jee.server:guest_model2_el_jstl"/><Context docBase="user_model2_el_jstl" path="/user_model2_el_jstl" reloadable="true" source="org.eclipse.jst.jee.server:user_model2_el_jstl"/></Host>
     </Engine>
   </Service>
 </Server>

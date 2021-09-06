@@ -43,15 +43,23 @@ public class StudentDao {
 	 * INSERT
 	***************************************************/
 	public int insertStudent(Student student) {
-		SqlSession sqlSession = sqlSessionFactory.openSession();
+		/*
+		 * openSession의 autocommit 여부 설정(true, false)
+		 */
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 		int row = sqlSession.insert(NAMESPACE+"insertStudent", student);
 		sqlSession.close();
 		return row;
 	}
 
 	public int insertStudentBySequence1(Student student) {
-		SqlSession sqlSession = sqlSessionFactory.openSession();
+		/*
+		 * openSession의 autocommit 여부 설정(true, false)
+		 *  - false로 하면, commit을 반드시 해주어야 함.
+		 */
+		SqlSession sqlSession = sqlSessionFactory.openSession(false);
 		int row = sqlSession.insert(NAMESPACE+"insertStudentBySequence1", student);
+		sqlSession.commit();
 		sqlSession.close();
 		return row;
 	}

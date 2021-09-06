@@ -68,6 +68,7 @@ public class StudentDao {
 		</select>
 		*/
 		List<Student> studentList = sqlSession.selectList(NAMESPACE+"findAllStudents");
+		sqlSession.close();
 		return studentList;
 	}
 
@@ -76,6 +77,30 @@ public class StudentDao {
 		return null;
 	}
 
+	/*
+	 * select sql의 결과타입이 Wrapper(String)객체인 경우
+	 * resultType : String, Wrapper
+	 * resultType Wrapper(String)
+	 */
+	public String findStudentNameById(Integer userId) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		/*
+		<< StudentMapper.xml --> namespace "com.mybatis3.dao.mapper.StudentMapper" >>
+		<select id="findStudentNameById" parameterType="java.lang.Integer" resultType="java.lang.String">
+			select name from students where stud_id=#{studId}
+		</select>
+		 */
+		String name = sqlSession.selectOne(NAMESPACE+"findStudentNameById", userId);
+		sqlSession.close();
+		return name;
+	}
+
+	public List<String> findStudentNameList() {
+
+		return null;
+	}
+	
+	
 	/*
 	 * resultMap
 	 */
@@ -90,20 +115,7 @@ public class StudentDao {
 	}
 	
 	
-	/*
-	 * select sql의 결과타입이 Wrapper(String)객체인 경우
-	 * resultType : String, Wrapper
-	 * resultType Wrapper(String)
-	 */
-	public String findStudentNameById(Integer userId) {
-		SqlSession sqlSession = sqlSessionFactory.openSession();
-		return null;
-	}
-
-	public List<String> findStudentNameList() {
-
-		return null;
-	}
+	
 
 	/*
 	 * resultType Map

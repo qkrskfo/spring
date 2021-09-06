@@ -108,13 +108,29 @@ public class StudentDao {
 	 * resultMap : DTO, VO, Domain
 	 */
 	public Student findStudentByIdResultMap(Integer studId) {
-
-		return null;
+		/*
+		<< StudentMapper.xml --> namespace "com.mybatis3.dao.mapper.StudentMapper" >>
+		<select id="findStudentByResultMap" parameterType="java.lang.Integer" resultMap="studentResultMap">
+			select stud_id, name, email, dob from students where stud_id=#{studId}
+		</select>
+		*/
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		Student student = sqlSession.selectOne(NAMESPACE+"findStudentByIdResultMap", studId);
+		sqlSession.close();
+		return student;
 	}
 
 	public List<Student> findAllStudentsResultMap() {
-
-		return null;
+		/*
+		<< StudentMapper.xml --> namespace "com.mybatis3.dao.mapper.StudentMapper" >>
+		<select id="findAllStudentsResultMap" resultMap="studentResultMap">
+			selsect stud_id, name, email, dob from students
+		</select>	
+		*/
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		List<Student> studentList = sqlSession.selectList(NAMESPACE+"findStudentByIdResultMap");
+		sqlSession.close();
+		return studentList;
 	}
 	
 	

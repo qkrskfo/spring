@@ -20,10 +20,12 @@ public class StudentDaoMain {
 		System.out.println("###"+studentDao.findStudentNameById(2));
 		System.out.println("---------findStudentNameList-------------------------");
 		System.out.println("###"+studentDao.findStudentNameList());
-		System.out.println("---------findStudentByIdMap--------------------------");
-		System.out.println("---------findAllStudentsMapList----------------------");
+
 		System.out.println("---------findStudentByIdResultMap--------------------");
+		System.out.println("###"+studentDao.findStudentByIdResultMap(5));
 		System.out.println("---------findAllStudentsResultMap--------------------");
+		System.out.println("###"+studentDao.findAllStudentsResultMap());
+		
 		System.out.println("---------insertStudent(Dto)--------------------------");
 		System.out.println("---------insertStudentBySequence1--------------------");
 		System.out.println("---------insertStudentBySequence2--------------------");
@@ -40,5 +42,8 @@ public class StudentDaoMain {
 		System.out.println("---------findStudentByIdNestedfindAddressById-----------");
 		System.out.println("---------updateStudentDynamicSql---------");
 		System.out.println("---------findStudentCount----------------");
+		
+		System.out.println("---------findStudentByIdMap--------------------------");
+		System.out.println("---------findAllStudentsMapList----------------------");
 	}
 }

@@ -43,7 +43,7 @@ public class StudentDao {
 
 	/*
 	 * select sql의 결과타입이 DTO, VO, Domain 객체인 경우
-	 * resultType : Dto
+	 * resultType : DTO, VO, Domain
 	 */
 	public Student findStudentById(Integer studId) {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
@@ -103,9 +103,9 @@ public class StudentDao {
 		return nameList;
 	}
 	
-	
 	/*
-	 * resultMap
+	 * select sql의 결과타입이 DTO, VO, Domain 객체인 경우
+	 * resultMap : DTO, VO, Domain
 	 */
 	public Student findStudentByIdResultMap(Integer studId) {
 

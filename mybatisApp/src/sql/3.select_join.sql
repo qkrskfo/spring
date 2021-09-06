@@ -16,33 +16,34 @@ students + addresses [left outer join]
 select stud_id, name, email,phone, a.addr_id, street, city, state, zip, country
 FROM students s 
 left outer join addresses a 
-on s.addr_id=a.addr_id;
+on s.addr_id=a.addr_id
+where stud_id=6;
      
 /*
 students + addresses [right outer join]
 */    
 select stud_id, name, email,phone, a.addr_id, street, city, state, zip, country
-  		FROM students s 
-      right outer join addresses a 
-      on s.addr_id=a.addr_id;   
+FROM students s 
+right outer join addresses a 
+on s.addr_id=a.addr_id;   
  
 /*
 students + addresses [full outer join]
 */    
 select stud_id, name, email,phone, a.addr_id, street, city, state, zip, country
-  		FROM students s 
-      full outer join addresses a 
-      on s.addr_id=a.addr_id;   
+FROM students s 
+full outer join addresses a 
+on s.addr_id=a.addr_id;   
 
 --findStudentByIdWithAddress--
 /*
 stdents + addresses join
 */
 select stud_id, name, email,phone, a.addr_id, street, city, state, zip, country
-  		FROM students s 
-      left outer join addresses a 
-      on s.addr_id=a.addr_id
-      where s.stud_id=1;
+FROM students s 
+left outer join addresses a 
+on s.addr_id=a.addr_id
+where s.stud_id=1;
  
 --findStudentByIdWithCourses 
 /*

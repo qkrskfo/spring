@@ -1,7 +1,7 @@
-     
 <%@page import="com.itwill.user.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 	/*************** case1[redirected] ********
 	String msg1=request.getParameter("msg1");
@@ -9,13 +9,13 @@
 	if(msg1==null)msg1="";
 	if(msg2==null)msg2="";
 	*************************************************/
-	/************************case2[forward]*************************/
+	/************************case2[forward]************
 	String msg1 = (String)request.getAttribute("msg1");
 	String msg2 = (String)request.getAttribute("msg2");
 	User fuser = (User)request.getAttribute("fuser");
 	if(msg1==null) msg1="";
 	if(msg2==null) msg2="";
-	if(fuser==null) fuser = new User("","","","");
+	if(fuser==null) fuser = new User("","","","");*************/
 %>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -73,28 +73,26 @@
 				<table border=0 cellpadding=0 cellspacing=0>
 					<tr>
 						<td><br />
-							<table style="padding-left: 10px" border=0 cellpadding=0
-								cellspacing=0>
+							<table style="padding-left: 10px" border=0 cellpadding=0 cellspacing=0>
 								<tr>
-									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp;<b>사용자 관리
-											- 로그인</b></td>
+									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp;<b>사용자 관리 - 로그인</b></td>
 								</tr>
 							</table> <!-- login Form  -->
 							<form name="f" >
-								<table border="0" cellpadding="0" cellspacing="1"
-									bgcolor="BBBBBB">
+								<table border="0" cellpadding="0" cellspacing="1" bgcolor="BBBBBB">
 									<tr>
-										<td width=100 align=center bgcolor="E6ECDE" height="22">사용자
-											아이디</td>
-										<td width=490 align="left" bgcolor="ffffff"
-											style="padding-left: 10px"><input type="text"
-											style="width: 150" name="userId" value="<%=fuser.getUserId()%>">&nbsp;&nbsp;<font color="red"><%=msg1%></font></td>
+										<td width=100 align=center bgcolor="E6ECDE" height="22">사용자 아이디</td>
+										<td width=490 align="left" bgcolor="ffffff" style="padding-left: 10px">
+											<input type="text" style="width: 150" name="userId" value="${fuser.getUserId()}">
+											&nbsp;&nbsp;<font color="red">${msg1}</font>
+										</td>
 									</tr>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">비밀번호</td>
-										<td width=490 align="left" bgcolor="ffffff"
-											style="padding-left: 10px"><input type="password"
-											style="width: 150" name="password" value="<%=fuser.getPassword()%>">&nbsp;&nbsp;<font color="red"><%=msg2%></font></td>
+										<td width=490 align="left" bgcolor="ffffff" style="padding-left: 10px">
+											<input type="password" style="width: 150" name="password" value="${fuser.getPassword()}">
+											&nbsp;&nbsp;<font color="red">${msg2}</font>
+										</td>
 									</tr>
 								</table>
 							</form> <br />

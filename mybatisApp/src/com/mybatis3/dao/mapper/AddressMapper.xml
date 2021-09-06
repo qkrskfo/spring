@@ -4,6 +4,17 @@
 
 	<resultMap id="addressWithStudentsResultMap" type="com.mybatis3.domain.Address">
 		<result column="ADDR_ID" property="addrId" />
+		<result column="STREET" property="street" />
+		<result column="CITY" property="city" />
+		<result column="STATE" property="state" />
+		<result column="ZIP" property="zip" />
+		<result column="COUNTRY" property="country" />
+		<collection property="studentList" javaType="java.util.List" ofType="com.mybatis3.domain.Student">
+			<result column="STUD_ID" property="studId" />
+			<result column="NAME" property="name" />
+			<result column="EMAIL" property="email" />
+			<result column="DOB" property="dob" />
+		</collection>
 	</resultMap>
 
 	<!-- 

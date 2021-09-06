@@ -72,7 +72,10 @@ left outer join courses c
 on ce.course_id=c.course_id where s.stud_id=1;
 		
        
-----findCourseByIdWithStudents 
+----findCourseByIdWithStudents
+/*
+ * courses + students join
+ */
 select c.*,s.* from courses c 
 join course_enrollment ce on c.course_id=ce.course_id
 join students s on ce.stud_id=s.stud_id

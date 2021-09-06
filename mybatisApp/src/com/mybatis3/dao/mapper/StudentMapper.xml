@@ -17,8 +17,15 @@
 		<result column="NAME" property="name" />
 		<result column="EMAIL" property="email" />
 		<result column="DOB" property="dob" />
-		<association property="address">
+		<association property="address" javaType="com.mybatis3.domain.Address">
 			<!-- 1대1의 관계는 어소시에이션.  -->
+			<result column="ADDR_ID" property="addrId" />
+			<result column="STREET" property="street" />
+			<result column="CITY" property="city" />
+			<result column="STATE" property="state" />
+			<result column="ZIP" property="zip" />
+			<result column="COUNTRY" property="country" />
+			<!-- 컬럼이라고 표현하기 위해 대문자로 썼음. 소문자로 써도됨 -->
 		</association>
 	</resultMap> 
 

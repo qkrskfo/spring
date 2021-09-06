@@ -85,7 +85,8 @@ select c.*,s.* from courses c
 		where c.course_id=1;
 
 
-       
+--findTutorByIdWithCourses       
+
 /*
 tutor + courses join
 */
@@ -115,6 +116,7 @@ SELECT t.tutor_id, t.name as tutor_name, email,course_id, c.name, description, s
       
 /*
 course + tutor join
+개설된 강의와 강사정보
 */
 SELECT course_id, c.name, c.description, c.start_date, c.end_date,t.tutor_id, t.name as tutor_name, t.email
       FROM tutors t 

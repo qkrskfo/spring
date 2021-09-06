@@ -2,4 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mybatis3.dao.mapper.AddressMapper">
 
+	<resultMap id="addressWithStudentsResultMap" type="com.mybatis3.domain.Address">
+		
+	</resultMap>
+
+	<!-- 
+	join은 무조건 map이 있어야 함!
+	/****************************  
+	SELECT [addresses + students JOIN ] (1 : N) 
+	*****************************/
+	 -->
+
+	<select id="findAddressByIdWithStudents" parameterType="java.lang.Integer">
+		SELECT * FROM addresses a INNER JOIN students s ON a.addr_id=s.addr_id where addr_id=#{addrId}
+	</select>
 </mapper>

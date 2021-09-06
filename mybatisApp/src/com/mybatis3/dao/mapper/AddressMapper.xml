@@ -3,7 +3,7 @@
 <mapper namespace="com.mybatis3.dao.mapper.AddressMapper">
 
 	<resultMap id="addressWithStudentsResultMap" type="com.mybatis3.domain.Address">
-		
+		<result column="ADDR_ID" property="addrId" />
 	</resultMap>
 
 	<!-- 

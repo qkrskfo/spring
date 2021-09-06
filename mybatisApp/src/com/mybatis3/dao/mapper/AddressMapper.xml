@@ -20,11 +20,11 @@
 	<!-- 
 	join은 무조건 map이 있어야 함!
 	/****************************  
-	SELECT [addresses + students JOIN ] (1 : N) 
+	SELECT [addresses + students JOIN ] (1 : N)  
 	*****************************/
 	 -->
 
-	<select id="findAddressByIdWithStudents" parameterType="java.lang.Integer">
+	<select id="findAddressByIdWithStudents" parameterType="java.lang.Integer" resultMap="addressWithStudentsResultMap">
 		SELECT * FROM addresses a INNER JOIN students s ON a.addr_id=s.addr_id where addr_id=#{addrId}
 	</select>
 </mapper>

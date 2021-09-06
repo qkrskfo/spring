@@ -50,11 +50,11 @@
 	 * resultMap : Dto
 	 */
 -->
-	<select id="findStudentByResultMap" parameterType="java.lang.Integer" resultMap="studentResultMap">
+	<select id="findStudentByIdResultMap" parameterType="java.lang.Integer" resultMap="studentResultMap">
 		select stud_id, name, email, dob from students where stud_id=#{studId}
 	</select>
 	<select id="findAllStudentsResultMap" resultMap="studentResultMap">
-		selsect stud_id, name, email, dob from students
+		select stud_id, name, email, dob from students
 	</select>	
 	
 	

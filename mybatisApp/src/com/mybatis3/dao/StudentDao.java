@@ -128,7 +128,7 @@ public class StudentDao {
 		</select>	
 		*/
 		SqlSession sqlSession = sqlSessionFactory.openSession();
-		List<Student> studentList = sqlSession.selectList(NAMESPACE+"findStudentByIdResultMap");
+		List<Student> studentList = sqlSession.selectList(NAMESPACE+"findAllStudentsResultMap");
 		sqlSession.close();
 		return studentList;
 	}

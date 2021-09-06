@@ -16,79 +16,72 @@ students + addresses [left outer join]
 select stud_id, name, email,phone, a.addr_id, street, city, state, zip, country
 FROM students s 
 left outer join addresses a 
-on s.addr_id=a.addr_id
-where stud_id=6;
+on s.addr_id=a.addr_id;
+
+/*
+students + addresses [left outer join]
+*/
+select stud_id, name, email,phone, a.addr_id, street, city, state, zip, country
+FROM students s 
+left outer join addresses a 
+on s.addr_id=a.addr_id where stud_id=1;
+
      
-/*
-students + addresses [right outer join]
-*/    
-select stud_id, name, email,phone, a.addr_id, street, city, state, zip, country
-FROM students s 
-right outer join addresses a 
-on s.addr_id=a.addr_id;   
- 
-/*
-students + addresses [full outer join]
-*/    
-select stud_id, name, email,phone, a.addr_id, street, city, state, zip, country
-FROM students s 
-full outer join addresses a 
-on s.addr_id=a.addr_id;   
 
 --findStudentByIdWithAddress--
 /*
-stdents + addresses join [ 1 : 1 ]
+students + addresses join [1 : 1]
 */
 select stud_id, name, email,phone, a.addr_id, street, city, state, zip, country
 FROM students s 
 left outer join addresses a 
 on s.addr_id=a.addr_id
 where s.stud_id=1;
- 
 
+ 
 /*
-addresses + students join [ 1 : n ]
-*/
-select a.addr_id, street, city, state, zip, country, stud_id, name, email, dob 
+addresses + students join [1 : n]
+*/ 
+select a.addr_id ,street,city,state,zip,country,stud_id,name,email,dob 
 from addresses a inner join students s 
 on a.addr_id=s.addr_id 
 where a.addr_id=8;
 
-
+ 
+ 
 --findStudentByIdWithCourses 
 /*
 students + courses  join
 */     
 select s.*,c.* 
-		from students s 
-		join course_enrollment ce
-		on s.stud_id = ce.stud_id
-		join courses c
-		on ce.course_id=c.course_id where s.stud_id=1;
+from students s 
+join course_enrollment ce
+on s.stud_id = ce.stud_id
+join courses c
+on ce.course_id=c.course_id where s.stud_id=1;
 
 /*
 students + courses join
 */
-select  s.stud_id,s.name as student_name ,s.email,s.phone,s.dob ,
+select  s.stud_id,s.name as student_name ,s.email,s.phone,s.dob,
         c.course_id,c.name as course_name ,c.description,c.start_date,c.end_date
-		from students s 
-		left outer join course_enrollment ce
-		on s.stud_id = ce.stud_id
-		left outer join courses c
-		on ce.course_id=c.course_id where s.stud_id=1;
+from students s 
+left outer join course_enrollment ce
+on s.stud_id = ce.stud_id
+left outer join courses c
+on ce.course_id=c.course_id where s.stud_id=1;
 		
        
 ----findCourseByIdWithStudents 
 select c.*,s.* from courses c 
-		join course_enrollment ce on c.course_id=ce.course_id
-		join students s on ce.stud_id=s.stud_id
-		where c.course_id=1;
+join course_enrollment ce on c.course_id=ce.course_id
+join students s on ce.stud_id=s.stud_id
+where c.course_id=1;
 
 
---findTutorByIdWithCourses       
-
+---findTutorByIdWithCourses       
 /*
-tutor + courses join
+tutors + courses join[ 1 : N ]
 */
 /*
 inner join
@@ -112,19 +105,23 @@ SELECT t.tutor_id, t.name as tutor_name, email,course_id, c.name, description, s
       FROM tutors t 
       left outer join courses c 
       on t.tutor_id=c.tutor_id
-      where t.tutor_id=3;  
+      where t.tutor_id=1;  
       
 /*
-course + tutor join
-개설된 강의와 강사정보
+courses + tutors join[ 1 : 1 ]
+개설된강의와 강사정보
 */
+--inner join--
 SELECT course_id, c.name, c.description, c.start_date, c.end_date,t.tutor_id, t.name as tutor_name, t.email
-      FROM tutors t 
-      left outer join courses c 
-      on t.tutor_id=c.tutor_id
-      where c.course_id=1; 
-
-
+      FROM courses c  
+      join tutors t
+      on c.tutor_id=t.tutor_id;
+ 
+SELECT course_id, c.name, c.description, c.start_date, c.end_date,t.tutor_id, t.name as tutor_name, t.email
+      FROM courses c  
+      join tutors t
+      on c.tutor_id=t.tutor_id
+	where c.course_id = 1;
       
       
 /*
@@ -136,7 +133,7 @@ SELECT t.tutor_id, t.name as tutor_name, email, a.addr_id, street, city, state, 
       left outer join addresses a 
       on t.addr_id=a.addr_id
 	  left outer join courses c on t.tutor_id=c.tutor_id
-where t.tutor_id=1;
+	where t.tutor_id=1;
         
   
   
@@ -148,4 +145,4 @@ SELECT * FROM COURSES
 WHERE TUTOR_ID = 1
 AND NAME LIKE '%Quick%'
 AND START_DATE >= TO_DATE('2015/05/01');
-
+      

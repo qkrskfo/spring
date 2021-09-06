@@ -1,7 +1,8 @@
 <%@page import="com.itwill.user.UserService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%
+<%@taglib prefix = "c" uri="http://java.sun.com/jsp/jstl/core" %> 	
+<%--
 	boolean isDuplicate=false;	
 	String msg="";
 	//request.setCharacterEncoding("UTF-8");
@@ -21,7 +22,7 @@
 		}
 	}
 	
-%>	
+--%>	
 	
 <!DOCTYPE html>
 <html>
@@ -80,16 +81,16 @@
 		<br>
 		<div id="chk">
 			<form id="checkForm">
-				<input type="text" name="userId" id="userId" value="<%=userId%>"> <input
+				<input type="text" name="userId" id="userId" value="${userId}"> <input
 					type="button" value="중복확인" onclick="idCheck()">
 			</form>
-			<div id="msg"><%=msg %></div>
+			<div id="msg">${msg}</div>
 
 			<br> 
 			<input id="cancelBtn" type="button" value="취소" onclick="window.close();"> 
-			<%if(!isDuplicate){ %>
+			<%--if(!isDuplicate){ --%>
 			<input id="useBtn" type="button" value="사용하기" onclick="sendCheckValue()">
-			<%} %>
+			<%--} --%>
 		</div>
 	</div>
 </body>

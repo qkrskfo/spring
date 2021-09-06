@@ -17,7 +17,9 @@ public class StudentDaoMain {
 		System.out.println("---------findAllStudents-----------------------------");
 		System.out.println("###"+studentDao.findAllStudents());
 		System.out.println("---------findStudentNameById-------------------------");
+		System.out.println("###"+studentDao.findStudentNameById(2));
 		System.out.println("---------findStudentNameList-------------------------");
+		System.out.println("###"+studentDao.findStudentNameList());
 		System.out.println("---------findStudentByIdMap--------------------------");
 		System.out.println("---------findAllStudentsMapList----------------------");
 		System.out.println("---------findStudentByIdResultMap--------------------");

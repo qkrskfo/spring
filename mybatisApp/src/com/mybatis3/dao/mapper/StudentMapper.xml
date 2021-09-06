@@ -29,6 +29,9 @@
 	<select id="findStudentNameById" parameterType="java.lang.Integer" resultType="java.lang.String">
 	select name from students where stud_id=#{studId}
 	</select>
+	<select id="findStudentNameList" resultType="java.lang.String">
+	select name from students
+	</select>
 	
 	
 </mapper>

@@ -83,21 +83,24 @@ public class StudentDao {
 	 * resultType Wrapper(String)
 	 */
 	public String findStudentNameById(Integer userId) {
-		SqlSession sqlSession = sqlSessionFactory.openSession();
+		
 		/*
 		<< StudentMapper.xml --> namespace "com.mybatis3.dao.mapper.StudentMapper" >>
 		<select id="findStudentNameById" parameterType="java.lang.Integer" resultType="java.lang.String">
 			select name from students where stud_id=#{studId}
 		</select>
 		 */
+		SqlSession sqlSession = sqlSessionFactory.openSession();
 		String name = sqlSession.selectOne(NAMESPACE+"findStudentNameById", userId);
 		sqlSession.close();
 		return name;
 	}
 
 	public List<String> findStudentNameList() {
-
-		return null;
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		List<String> nameList = sqlSession.selectList(NAMESPACE+"findStudentNameList");
+		sqlSession.close();
+		return nameList;
 	}
 	
 	

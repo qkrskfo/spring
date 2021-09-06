@@ -35,7 +35,85 @@ public class StudentDao {
 			e.printStackTrace();
 		}
 	}
+	
+	/* @@@@@@@@@@@@@@@@@@@@@@@SELECT@@@@@@@@@@@@@@@@@ */
 
+	/*
+	 * select sql의 결과타입이 DTO, VO, Domain 객체인 경우
+	 * resultType : Dto
+	 */
+	public Student findStudentById(Integer studId) {
+
+		return null;
+	}
+
+	public List<Student> findAllStudents() {
+
+		return null;
+	}
+
+	public List<Student> findAllOrderedStudents(String columnName) {
+
+		return null;
+	}
+
+	/*
+	 * resultMap
+	 */
+	public Student findStudentByIdResultMap(Integer studId) {
+
+		return null;
+	}
+
+	public List<Student> findAllStudentsResultMap() {
+
+		return null;
+	}
+	
+	
+	/*
+	 * resultType Wrapper(String)
+	 */
+	public String findStudentNameById(Integer userId) {
+
+		return null;
+	}
+
+	public List<String> findStudentNameList() {
+
+		return null;
+	}
+
+	/*
+	 * resultType Map
+	 */
+	public Map findStudentByIdMap(Integer userId) {
+
+		return null;
+	}
+
+	public List<Map> findAllStudentsMapList() {
+
+		return null;
+	}
+
+	public List<Student> findStudentByIdRangeParamMap(HashMap idRangeMap) {
+
+		return null;
+	}
+
+	public List<Student> findStudentsThreeParamMap(HashMap studentsMap) {
+
+		return null;
+	}
+
+	public int updateStudentParamMap(Map studentMap) {
+
+		return 0;
+	}
+	
+	
+	
 	/* @@@@@@@@@@@@@@@@@@@@@@@ SELECT JOIN[students + courses] @@@@@@@@@@@@@@@@@ */
 	public Student findStudentByIdWithCourses(Integer studId) {
 		return null;
@@ -85,77 +163,5 @@ public class StudentDao {
 		return 0;
 	}
 
-	/* @@@@@@@@@@@@@@@@@@@@@@@SELECT@@@@@@@@@@@@@@@@@ */
-	/*
-	 * resultMap
-	 */
-	public Student findStudentByIdResultMap(Integer studId) {
-
-		return null;
-	}
-
-	public List<Student> findAllStudentsResultMap() {
-
-		return null;
-	}
-
-	/*
-	 * resultType Dto
-	 */
-	public Student findStudentById(Integer studId) {
-
-		return null;
-	}
-
-	public List<Student> findAllStudents() {
-
-		return null;
-	}
-
-	public List<Student> findAllOrderedStudents(String columnName) {
-
-		return null;
-	}
-
-	/*
-	 * resultType Wrapper(String)
-	 */
-	public String findStudentNameById(Integer userId) {
-
-		return null;
-	}
-
-	public List<String> findStudentNameList() {
-
-		return null;
-	}
-
-	/*
-	 * resultType Map
-	 */
-	public Map findStudentByIdMap(Integer userId) {
-
-		return null;
-	}
-
-	public List<Map> findAllStudentsMapList() {
-
-		return null;
-	}
-
-	public List<Student> findStudentByIdRangeParamMap(HashMap idRangeMap) {
-
-		return null;
-	}
-
-	public List<Student> findStudentsThreeParamMap(HashMap studentsMap) {
-
-		return null;
-	}
-
-	public int updateStudentParamMap(Map studentMap) {
-
-		return 0;
-	}
 
 }

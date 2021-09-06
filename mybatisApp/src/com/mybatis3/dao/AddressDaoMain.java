@@ -6,6 +6,7 @@ public class AddressDaoMain {
 		/*******************AddressDao.findAddressById()**************/
 		AddressDao addressDao = new AddressDao();
 		System.out.println("###"+addressDao.findAddressByIdWithStudents(4));
+		System.out.println("###"+addressDao.findAddressByIdWithStudents(8));
 	}
 
 }

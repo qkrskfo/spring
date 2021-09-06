@@ -16,7 +16,7 @@ public class StudentDao {
 	
 	private SqlSessionFactory sqlSessionFactory;
 	
-	public static final String NAMESPACE = "com.mybatis3.dao.mapper.StudentMapper";
+	public static final String NAMESPACE = "com.mybatis3.dao.mapper.StudentMapper.";
 	
 	public StudentDao() {
 		try {
@@ -61,6 +61,12 @@ public class StudentDao {
 
 	public List<Student> findAllStudents() {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
+		/*
+		<< StudentMapper.xml --> namespace "com.mybatis3.dao.mapper.StudentMapper" >>
+		<select id="findAllStudents" resultType="com.mybatis3.domain.Student">
+			select stud_id as studId, name, email, dob from students
+		</select>
+		*/
 		List<Student> studentList = sqlSession.selectList(NAMESPACE+"findAllStudents");
 		return studentList;
 	}

@@ -17,7 +17,6 @@
 	
 	<select id="findAllStudents" resultType="com.mybatis3.domain.Student">
 		select stud_id as studId, name, email, dob from students
-	
 	</select>
 	
 </mapper>

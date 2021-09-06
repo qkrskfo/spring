@@ -7,7 +7,6 @@ import com.itwill.summer.Controller;
 
 public class UserErrorController implements Controller{
 
-	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
 		String forwardPath="forward:/WEB-INF/views/user_error.jsp";
 		return forwardPath;

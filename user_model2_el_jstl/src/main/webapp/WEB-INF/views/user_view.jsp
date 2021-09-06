@@ -1,22 +1,27 @@
-<%@page import="com.itwill.user.User"%>
-<%@page import="com.itwill.user.UserService"%>
+<%--@page import="com.itwill.user.User"--%>
+<%--@page import="com.itwill.user.UserService"--%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%--@ include file="login_check.jspf" --%> 
-<%
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix = "fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:setBundle basename="com/itwill/user/user" />
+<%--
 
 	User user = (User)request.getAttribute("user");
 	//String userNotFoundMsg = (String)request.getAttribute("USER_NOT_FOUND_MSG");
 	if(user==null) {
-%>
+--%>
+<%--
 		<script>
 			alert('존재하지 않는 회원입니다.');
 			location.href='user_list.do';
 		</script>
-<% 
+ --%>		
+<%-- 
 		return;
-	} %>	
-<%
+	} --%>	
+<%--
 	/*
 	String userId = request.getParameter("userId");
 	if(userId==null||userId.equals("")){
@@ -34,7 +39,7 @@
 	}
 	*/
 	
-%>   
+--%>   
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -91,20 +96,20 @@
 										<td width=100 align=center bgcolor="E6ECDE" height="22">사용자
 											아이디</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10">
-											<%=user.getUserId() %>
+											${user.userId}
 										</td>
 									</tr>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">이름</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10">
-											<%=user.getName() %>
+											${user.name}
 										</td>
 									</tr>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">이메일
 											주소</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10">
-											<%=user.getEmail() %>
+											${user.email}
 										</td>
 									</tr>
 								</table>

@@ -1,10 +1,13 @@
-<%@page import="com.itwill.user.User"%>
-<%@page import="com.itwill.user.UserService"%>
+<%--@page import="com.itwill.user.User"--%>
+<%--@page import="com.itwill.user.UserService"--%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%--@include file="login_check.jspf" --%>
+<%@taglib prefix = "c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix = "fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:setBundle basename="com/itwill/user/user" />
 <%
-	User loginUser=(User)request.getAttribute("loginUser");
+	//User loginUser=(User)request.getAttribute("loginUser");
 %>
 
 
@@ -77,20 +80,20 @@
 										<td width=100 align=center bgcolor="E6ECDE" height="22">사용자
 											아이디</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10">
-											<%=loginUser.getUserId()%>
+											${loginUser.userId}
 										</td>
 									</tr>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">이름</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10">
-											<%=loginUser.getName()%>
+											${loginUser.getName()}
 										</td>
 									</tr>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">이메일
 											주소</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10">
-											<%=loginUser.getEmail()%>
+											${loginUser.email}
 										</td>
 									</tr>
 								</table>

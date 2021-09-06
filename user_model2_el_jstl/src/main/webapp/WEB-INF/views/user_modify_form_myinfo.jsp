@@ -1,5 +1,5 @@
-<%@page import="com.itwill.user.User"%>
-<%@page import="com.itwill.user.UserService"%>
+<%--@page import="com.itwill.user.User"--%>
+<%--@page import="com.itwill.user.UserService"--%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%--@include file="login_check.jspf" --%>
@@ -7,7 +7,8 @@
 	//UserService userService=new UserService();
 	//User loginUser=userService.findUser(sUserId);
 	
-	User loginUser=(User)request.getAttribute("loginUser");
+	//	User loginUser=(User)request.getAttribute("loginUser");
+//	--> el쓸때는 안넣어도 된대
 	
 %>
     
@@ -100,33 +101,27 @@
 										<td width=100 align=center bgcolor="E6ECDE" height="22">사용자
 											아이디</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px"
-											align="left"><%=loginUser.getUserId()%></td>
+											align="left">${loginUser.userId}</td>
 									</tr>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">비밀번호</td>
-										<td width=490 bgcolor="ffffff" style="padding-left: 10px"
-											align="left"><input type="password" style="width: 150px"
-											name="password" value="<%=loginUser.getPassword()%>"></td>
+										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left">
+										<input type="password" style="width: 150px" name="password" value="${loginUser.password}"></td>
 									</tr>
 									<tr>
-										<td width=100 align=center bgcolor="E6ECDE" height="22">비밀번호
-											확인</td>
-										<td width=490 bgcolor="ffffff" style="padding-left: 10px"
-											align="left"><input type="password" style="width: 150px"
-											name="password2" value="<%=loginUser.getPassword()%>"></td>
+										<td width=100 align=center bgcolor="E6ECDE" height="22">비밀번호 확인</td>
+										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left">
+										<input type="password" style="width: 150px" name="password2" value="${loginUser.password}"></td>
 									</tr>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">이름</td>
-										<td width=490 bgcolor="ffffff" style="padding-left: 10px"
-											align="left"><input type="text" style="width: 150px"
-											name="name" value="<%=loginUser.getName()%>"></td>
+										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left">
+										<input type="text" style="width: 150px" name="name" value="${loginUser.name}"></td>
 									</tr>
 									<tr>
-										<td width=100 align=center bgcolor="E6ECDE" height="22">이메일
-											주소</td>
-										<td width=490 bgcolor="ffffff" style="padding-left: 10px"
-											align="left"><input type="text" style="width: 150px"
-											name="email" value="<%=loginUser.getEmail()%>"></td>
+										<td width=100 align=center bgcolor="E6ECDE" height="22">이메일주소</td>
+										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left">
+										<input type="text" style="width: 150px" name="email" value="${loginUser.email}"></td>
 									</tr>
 								</table>
 							</form> <br>

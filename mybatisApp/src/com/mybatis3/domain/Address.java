@@ -24,11 +24,12 @@ public class Address implements Serializable
 	private String country;
 	private List<Student> studentList;
 	
+	
+	
 	@Override
 	public String toString() {
-		return "Address [addrId=" + addrId + ", street=" + street + ", city=" + city
-				+ ", state=" + state + ", zip=" + zip + ", country=" + country
-				+ "]";
+		return "Address [addrId=" + addrId + ", street=" + street + ", city=" + city + ", state=" + state + ", zip="
+				+ zip + ", country=" + country + ", studentList=" + studentList + "]";
 	}
 	public Address()
 	{

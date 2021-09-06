@@ -49,7 +49,10 @@ where s.stud_id=1;
 /*
 addresses + students join [ 1 : n ]
 */
-SELECT * FROM addresses a INNER JOIN students s ON a.addr_id=s.addr_id;
+select a.addr_id, street, city, state, zip, country, stud_id, name, email, dob 
+from addresses a inner join students s 
+on a.addr_id=s.addr_id 
+where a.addr_id=8;
 
 
 --findStudentByIdWithCourses 

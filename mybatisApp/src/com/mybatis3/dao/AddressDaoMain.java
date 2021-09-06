@@ -4,7 +4,8 @@ public class AddressDaoMain {
 
 	public static void main(String[] args) {
 		/*******************AddressDao.findAddressById()**************/
-		
+		AddressDao addressDao = new AddressDao();
+		System.out.println("###"+addressDao.findAddressByIdWithStudents(4));
 	}
 
 }

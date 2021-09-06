@@ -25,6 +25,6 @@
 	 -->
 
 	<select id="findAddressByIdWithStudents" parameterType="java.lang.Integer" resultMap="addressWithStudentsResultMap">
-		SELECT * FROM addresses a INNER JOIN students s ON a.addr_id=s.addr_id where addr_id=#{addrId}
+		select * from addresses a inner join students s on a.addr_id=s.addr_id where a.addr_id=#{addrId}
 	</select>
 </mapper>

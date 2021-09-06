@@ -1,41 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mybatis3.dao.mapper.StudentMapper">
-	<!-- ################### resultMap정의 ########################## -->
-	<!-- studentResultMap -->
-	<!-- studentWithAddressResultMap -->
-	<!-- studentWithCoursesResultMap -->
+
+<!-- 
+
+	/* @@@@@@@@@@@@@@@@@@@@@@@SELECT@@@@@@@@@@@@@@@@@ */
+	/*
+	 * select sql의 결과타입이 DTO, VO, Domain 객체인 경우
+	 * resultType : Dto
+	 */
+
+-->
+	<select id="findStudentById" parameterType="java.lang.Integer" resultType="com.mybatis3.domain.Student">
+		select stud_id as studId, name, email, dob from students where stud_id=#{studId}
+	</select>
 	
-	<!-- @@@@@@@@@@@@@@@@@@@@@@@ select[students + addresses JOIN] @@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
-	<!-- @@@@@@@@@@@@@@@@@@@@@@@ select[students + courses JOIN] @@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
+	<select id="findAllStudents" resultType="com.mybatis3.domain.Student">
+		select stud_id as studId, name, email, dob from students
 	
-	<!-- @@@@@@@@@@@@@@@@@@@@@@@ select @@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
-	<!--resultMap  -->
-	<!--resultType Dto  -->
-	<!--resultType Wrappper(String) -->
-	<!--resultType Map -->
-	
-	
-	
-	
-	
-	<!-- @@@@@@@@@ parameterType[java.util.Map,java.util.HashMap,map,hashmap] @@@@@ -->
-	<!-- 
-		parameterType
-		  1. Dto
-		  2. Wrapper(String),Date
-		  3. Map
-	 -->
-	
-	
-	
-	
-	<!--@@@@@@@@@@@@@@@@@@@@@@@ insert @@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
-	
-	<!--@@@@@@@@@@@@@@@@@@@@@@@ update @@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
-	
-	<!--@@@@@@@@@@@@@@@@@@@@@@@ delete @@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
-	
+	</select>
 	
 </mapper>
 

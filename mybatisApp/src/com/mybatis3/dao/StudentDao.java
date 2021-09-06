@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
@@ -14,6 +15,8 @@ import com.mybatis3.domain.Student;
 public class StudentDao {
 	
 	private SqlSessionFactory sqlSessionFactory;
+	
+	public static final String NAMESPACE = "com.mybatis3.dao.mapper.StudentMapper";
 	
 	public StudentDao() {
 		try {
@@ -43,13 +46,23 @@ public class StudentDao {
 	 * resultType : Dto
 	 */
 	public Student findStudentById(Integer studId) {
-
-		return null;
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		/*
+==4		<< StudentMapper.xml --> namespace "com.mybatis3.dao.mapper.StudentMapper" >>
+		
+		<select id="findStudentById" parameterTjava.lang.Integer" resultType="com.mybatis3.domain.Student">
+			select stud_id as studId, name, email, dob from students where stud_id=#{studId}
+		</select> 
+		*/
+		Student student = sqlSession.selectOne("com.mybatis3.dao.mapper.StudentMapper.findStudentById", studId);
+		sqlSession.close();
+		return student;
 	}
 
 	public List<Student> findAllStudents() {
-
-		return null;
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		List<Student> studentList = sqlSession.selectList(NAMESPACE+"findAllStudents");
+		return studentList;
 	}
 
 	public List<Student> findAllOrderedStudents(String columnName) {

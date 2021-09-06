@@ -10,7 +10,9 @@ public class StudentDaoMain {
 
 	public static void main(String[] args) {
 		StudentDao studentDao = new StudentDao();
+		
 		System.out.println("---------findStudentById-----------------------------");
+		System.out.println("###" + studentDao.findStudentById(1));
 		System.out.println("---------findAllStudents-----------------------------");
 		System.out.println("---------findStudentNameById-------------------------");
 		System.out.println("---------findStudentNameList-------------------------");

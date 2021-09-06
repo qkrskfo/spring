@@ -26,6 +26,11 @@ public class StudentDaoMain {
 		System.out.println("---------findAllStudentsResultMap--------------------");
 		System.out.println("###"+studentDao.findAllStudentsResultMap());
 		
+		System.out.println("---------findStudentByIdWithAddress------------------");
+		System.out.println("###"+studentDao.findStudentByIdWithAddress(2));
+		System.out.println("---------findStudentByIdWithCourses------------------");
+		
+		
 		System.out.println("---------insertStudent(Dto)--------------------------");
 		System.out.println("---------insertStudentBySequence1--------------------");
 		System.out.println("---------insertStudentBySequence2--------------------");
@@ -33,8 +38,7 @@ public class StudentDaoMain {
 		System.out.println("---------deleteStudentById---------------------------");
 		System.out.println("---------deleteStudentByName-------------------------");
 		System.out.println("---------deleteStudentByNameLike---------------------");
-		System.out.println("---------findStudentByIdWithAddress------------------");
-		System.out.println("---------findStudentByIdWithCourses------------------");
+		
 		System.out.println("---------findAllOrderedStudents------------------");
 		System.out.println("---------findStudentByIdRangeParamMap(parameter Map)-");
 		System.out.println("---------updateStudentParamMap(parameter Map)--------");

@@ -28,9 +28,23 @@
 			<!-- 컬럼이라고 표현하기 위해 대문자로 썼음. 소문자로 써도됨 -->
 		</association>
 	</resultMap> 
+<!-- 
+	/* @@@@@@@@@@@@@@@@@@@@@@@ SELECT [student + address JOIN] @@@@@@@@@@@@@@@@@ */
+	/*
+	 * select sql의 결과타입이 DTO, VO, Domain 객체인 경우
+	 * resultMap : studentWithAddressResultMap
+	 */
+-->
+	<select id="findStudentByIdWithAddress" parameterType="java.lang.Integer" resultMap="studentWithAddressResultMap">
+		SELECT stud_id, name, email, dob, a.addr_id, street, city, state, zip, country
+		FROM students s 
+		LEFT OUTER JOIN addresses a 
+		ON s.addr_id=a.addr_id WHERE stud_id=#{studId}
+	</select>
+
 
 <!-- 
-	/* @@@@@@@@@@@@@@@@@@@@@@@SELECT@@@@@@@@@@@@@@@@@ */
+	/* @@@@@@@@@@@@@@@@@@@@@@@ SELECT @@@@@@@@@@@@@@@@@ */
 	/*
 	 * select sql의 결과타입이 DTO, VO, Domain 객체인 경우
 	 * resultType : Dto
@@ -45,6 +59,7 @@
 	</select>
 
 <!-- 
+	/* @@@@@@@@@@@@@@@@@@@@@@@SELECT@@@@@@@@@@@@@@@@@ */
 	/*
 	 * select sql의 결과타입이 DTO, VO, Domain 객체인 경우
 	 * resultMap : Dto

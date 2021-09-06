@@ -38,6 +38,28 @@ public class StudentDao {
 			e.printStackTrace();
 		}
 	}
+
+	/***************************************************
+	 * INSERT
+	***************************************************/
+	public int insertStudent(Student student) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		int row = sqlSession.insert(NAMESPACE+"insertStudent", student);
+		sqlSession.close();
+		return row;
+	}
+
+	public int insertStudentBySequence1(Student student) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		int row = sqlSession.insert(NAMESPACE+"insertStudentBySequence1", student);
+		sqlSession.close();
+		return row;
+	}
+
+	public int insertStudentBySequence2(Student student) {
+
+		return 0;
+	}
 	
 	/***************************************************
 	 * 		SELECT JOIN[students + addresses]
@@ -210,21 +232,7 @@ public class StudentDao {
 		return 0;
 	}
 
-	/* @@@@@@@@@@@@@@@@@@@@@@@INSERT@@@@@@@@@@@@@@@@@ */
-	public int insertStudent(Student student) {
-
-		return 0;
-	}
-
-	public int insertStudentBySequence1(Student student) {
-
-		return 0;
-	}
-
-	public int insertStudentBySequence2(Student student) {
-
-		return 0;
-	}
+	
 
 
 }

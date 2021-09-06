@@ -37,22 +37,15 @@
 		parameterType: DTO, VO, Domain
 	-->
 	<insert id="insertStudent" parameterType="com.mybatis3.domain.Student">
-	insert into students(stud_id, name, email, dob)
-	values (#{studId}, #{name}, #{email], #{dob})
+		insert into students(stud_id,name,email,dob)
+		values (#{studId},#{name},#{email},#{dob})
 	</insert>
 	
 	<insert id="insertStudentBySequence1" parameterType="com.mybatis3.domain.Student">
-	insert into students(stud_id, name, email, dob)
-	values (STUDENTS_STUD_ID_SEQ.nextval, #{name}, #{email], #{dob})
+		insert into students(stud_id,name,email,dob)
+		values (STUDENTS_STUD_ID_SEQ.nextval,#{name},#{email},#{dob})
 	</insert>
 	 
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	

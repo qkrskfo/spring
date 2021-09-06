@@ -32,8 +32,17 @@ public class StudentDaoMain {
 		
 		
 		System.out.println("---------insertStudent(Dto)--------------------------");
+		Student student1 = new Student(1000, "박여름", "summer@gmail.com", new Date());
+		System.out.println("### "+studentDao.insertStudent(student1));
+		
 		System.out.println("---------insertStudentBySequence1--------------------");
+		Student student2 = new Student(0, "시퀀스1", "seq1@gmail.com", new Date());
+		System.out.println("### "+studentDao.insertStudentBySequence1(student2));
+		
 		System.out.println("---------insertStudentBySequence2--------------------");
+		
+		
+		
 		System.out.println("---------updateStudentById---------------------------");
 		System.out.println("---------deleteStudentById---------------------------");
 		System.out.println("---------deleteStudentByName-------------------------");

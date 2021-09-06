@@ -19,6 +19,18 @@
 		select stud_id as studId, name, email, dob from students
 	</select>
 	
+	<!-- 
+	/*
+	 * select sql의 결과타입이 Wrapper(String)객체인 경우
+	 * resultType : String, Wrapper
+	 * resultType Wrapper(String)
+	 */
+	-->
+	<select id="findStudentNameById" parameterType="java.lang.Integer" resultType="java.lang.String">
+	select name from students where stud_id=#{studId}
+	</select>
+	
+	
 </mapper>
 
 

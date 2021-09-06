@@ -91,10 +91,12 @@ public class StudentDao {
 	
 	
 	/*
+	 * select sql의 결과타입이 Wrapper(String)객체인 경우
+	 * resultType : String, Wrapper
 	 * resultType Wrapper(String)
 	 */
 	public String findStudentNameById(Integer userId) {
-
+		SqlSession sqlSession = sqlSessionFactory.openSession();
 		return null;
 	}
 

@@ -24,37 +24,24 @@ public class TutorDao
 			e.printStackTrace();
 		}
 	}
-		
-	/*******************************************
-	 	SELECT TUTOR + COURSES JOIN [ 1 : N ]
-	 *******************************************/
+	/*****************************************
+	SELECT  TUTOR + COURSES JOIN [ 1 : N ]
+	*****************************************/
 	public Tutor findTutorByIdWithCourses(Integer tutorId) {
+		SqlSession sqlSession=sqlSessionFactory.openSession();
 		/*
-		<< TutorMapper.xml --> namespace : com.mybatis3.dao.mapper.TutorMapper >>
-		<select id="findTutorByIdWithCourses" parameterType="java.lang.Integer"
-											  resultMap="tutorWithCoursesResultMap">
-			SELECT t.tutor_id, t.name as tutor_name, email,course_id, c.name, description, start_date, end_date
-		    FROM tutors t 
-		    left outer join courses c 
-			on t.tutor_id=c.tutor_id
-			where t.tutor_id=#{tutorId}
-		</select>
+		 << TutorMapper.xml --> namespace : com.mybatis3.dao.mapper.TutorMapper >>
+			<select id="findTutorByIdWithCourses" parameterType="java.lang.Integer"
+										  resultMap="tutorWithCoursesResultMap">
+				SELECT t.tutor_id, t.name as tutor_name, email,course_id, c.name, description, start_date, end_date
+	      		FROM tutors t 
+	      		left outer join courses c 
+	      		on t.tutor_id=c.tutor_id
+	      		where t.tutor_id=#{tutorId} 
+			</select>
 		 */
-		SqlSession sqlSession = sqlSessionFactory.openSession();
-		Tutor tutor = sqlSession.selectOne(NAMESPACE+"findTutorByIdWithCoursesAndAddress");
+		Tutor tutor=
+				sqlSession.selectOne(NAMESPACE+"findTutorByIdWithCourses",tutorId);
 		return tutor;
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

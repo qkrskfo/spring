@@ -8,7 +8,7 @@
 	<result column="EMAIL" property="email" />
 	<collection property="courses" javaType="java.util.List" ofType="com.mybatis3.domain.Course">
 		<result column="COURSE_ID" property="courseId" />
-		<result column="COURSE_NAME" property="name" />
+		<result column="NAME" property="name" />
 		<result column="START_DATE" property="startDate" />
 		<result column="END_DATE" property="endDate" />
 	</collection>

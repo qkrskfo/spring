@@ -12,23 +12,29 @@ public class StudentDaoMain {
 		StudentDao studentDao = new StudentDao();
 		
 		System.out.println("---------findStudentById-----------------------------");
-		System.out.println("###" + studentDao.findStudentById(1));
-		System.out.println("###" + studentDao.findStudentById(7));
+		System.out.println("### " + studentDao.findStudentById(1));
+		System.out.println("### " + studentDao.findStudentById(7));
+		
 		System.out.println("---------findAllStudents-----------------------------");
-		System.out.println("###"+studentDao.findAllStudents());
+		System.out.println("### "+studentDao.findAllStudents());
+		
 		System.out.println("---------findStudentNameById-------------------------");
-		System.out.println("###"+studentDao.findStudentNameById(2));
+		System.out.println("### "+studentDao.findStudentNameById(2));
+		
 		System.out.println("---------findStudentNameList-------------------------");
-		System.out.println("###"+studentDao.findStudentNameList());
+		System.out.println("### "+studentDao.findStudentNameList());
 
 		System.out.println("---------findStudentByIdResultMap--------------------");
-		System.out.println("###"+studentDao.findStudentByIdResultMap(5));
+		System.out.println("### "+studentDao.findStudentByIdResultMap(5));
+		
 		System.out.println("---------findAllStudentsResultMap--------------------");
-		System.out.println("###"+studentDao.findAllStudentsResultMap());
+		System.out.println("### "+studentDao.findAllStudentsResultMap());
 		
 		System.out.println("---------findStudentByIdWithAddress------------------");
-		System.out.println("###"+studentDao.findStudentByIdWithAddress(2));
+		System.out.println("### "+studentDao.findStudentByIdWithAddress(2));
+		
 		System.out.println("---------findStudentByIdWithCourses------------------");
+		System.out.println("### "+studentDao.findStudentByIdWithCourses(1));
 		
 		
 		System.out.println("---------insertStudent(Dto)--------------------------");

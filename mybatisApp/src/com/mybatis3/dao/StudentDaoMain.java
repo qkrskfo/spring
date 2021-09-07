@@ -73,6 +73,9 @@ public class StudentDaoMain {
 		System.out.println("---------deleteStudentByNameLike---------------------");
 		System.out.println("### "+studentDao.deleteStudentByNameLike("여"));
 		
+		System.out.println("---------findStudentByIdMap--------------------------");
+		System.out.println("### "+studentDao.findStudentByIdMap(1));		
+		
 		
 		System.out.println("---------findAllOrderedStudents------------------");
 		System.out.println("---------findStudentByIdRangeParamMap(parameter Map)-");
@@ -82,7 +85,6 @@ public class StudentDaoMain {
 		System.out.println("---------updateStudentDynamicSql---------");
 		System.out.println("---------findStudentCount----------------");
 		
-		System.out.println("---------findStudentByIdMap--------------------------");
 		System.out.println("---------findAllStudentsMapList----------------------");
 	}
 }

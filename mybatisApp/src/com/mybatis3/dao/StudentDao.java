@@ -245,15 +245,14 @@ public class StudentDao {
 		return studentList;
 	}
 	
-	
-	
-
+	/*************************************************
+	결과데이터를 Map(HashMap)에 담아서 반환할 수 있다.
+	 *************************************************/
 	/*
 	 * resultType Map
 	 */
-	public Map findStudentByIdMap(Integer userId) {
-
-		return null;
+	public Map findStudentByIdMap(Integer studId) {
+		return sqlSessionFactory.openSession().selectOne(NAMESPACE+"findStudentByIdMap", studId);
 	}
 
 	public List<Map> findAllStudentsMapList() {

@@ -1,6 +1,6 @@
-<%@page import="com.itwill.user.User"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="com.itwill.user.UserService"%>
+<%--@page import="com.itwill.user.User"--%>
+<%--@page import="java.util.ArrayList"--%>
+<%--@page import="com.itwill.user.UserService"--%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%--@include file="login_check.jspf" --%> 
@@ -78,11 +78,11 @@ function userList() {
 										
 										<c:if test="${user.userId ne sUserId}">
 											<tr>
-												<td width=190 align=center bgcolor="ffffff" height="20">${user.getUserId()}</td>
+												<td width=190 align=center bgcolor="ffffff" height="20">${user.userId}</td>
 												<td width=200 bgcolor="ffffff" style="padding-left: 10">
-													<a href="user_view.do?userId=${user.getUserId()}" class="user">${user.getName()}</a>
+													<a href="user_view.do?userId=${user.userId}" class="user">${user.name}</a>
 												</td>
-												<td width=200 align=center bgcolor="ffffff">${user.getEmail()}
+												<td width=200 align=center bgcolor="ffffff">${user.email}
 												</td>
 											</tr>
 										</c:if>

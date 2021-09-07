@@ -17,10 +17,12 @@
 <ul>
 		<c:choose>
 			<c:when test = "${sUserId eq null}">
+			<!-- c:if test = ${!empty sUserID} -->
 				<li><a href="user_login_form.do">로그인</a></li>
 				<li><a href="user_write_form.do">회원가입</a></li>
 			</c:when>
 			<c:otherwise>
+			<!-- c:if test = ${empty sUserID} -->
 				<li><a href="">${sUserId}님</a></li>
 				<li><a href="user_view_myinfo.do">내정보</a></li>
 				<li><a href="user_logout_action.do">로그아웃</a></li>

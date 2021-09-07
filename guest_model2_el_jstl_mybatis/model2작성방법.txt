@@ -1,0 +1,17 @@
+<<< 모델2 작성방법 >>
+
+A. DispatcherServlet[Controller서블릿]작성
+
+B. DispatcherServlet 이 모든클라이언트요청에의해 실행하도록  web.xml설정
+
+ - web.xml
+ 
+	  <servlet>
+	  	<servlet-name>dispatcher</servlet-name>
+	  	<servlet-class>com.itwill.summer.DispatcherServlet</servlet-class>
+	  	<load-on-startup>1</load-on-startup>
+	  </servlet>
+	  <servlet-mapping>
+	  	<servlet-name>dispatcher</servlet-name>
+	  	<url-pattern>*.do</url-pattern>
+	  </servlet-mapping>

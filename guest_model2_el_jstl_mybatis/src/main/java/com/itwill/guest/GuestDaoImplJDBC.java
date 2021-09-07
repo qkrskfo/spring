@@ -7,10 +7,10 @@ import java.util.ArrayList;
 
 
 
-public class GuestDaoJDBC implements GuestDao {
+public class GuestDaoImplJDBC implements GuestDao {
 	private DataSource dataSource;
 
-	public GuestDaoJDBC() {
+	public GuestDaoImplJDBC() {
 		this.dataSource = new DataSource();
 	}
 

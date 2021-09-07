@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 public class GuestDaoImplMyBatis implements GuestDao{
+	public static final String NAMESPACE="com.itwill.guest.mapper.GuestMapper.";
 	
 	private SqlSessionFactory sqlSessionFactory;
 	public GuestDaoImplMyBatis() {
@@ -29,7 +30,7 @@ public class GuestDaoImplMyBatis implements GuestDao{
 	@Override
 	public Guest selectByNo(int no) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return sqlSessionFactory.openSession().selectOne(NAMESPACE+"selectByNo",no);
 	}
 
 	@Override

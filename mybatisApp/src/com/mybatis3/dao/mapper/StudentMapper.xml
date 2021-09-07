@@ -88,6 +88,17 @@
 		insert into students(stud_id,name,email,dob)
 		values (#{studId},#{name},#{email},#{dob})
 	</insert>
+	
+<!-- 
+	/* @@@@@@@@@@@@@@@@@@@@@@@ UPDATE @@@@@@@@@@@@@@@@@ */
+	/*
+	 * parameterType: DTO, VO, Domain 
+	 */
+-->
+	<update id="updateStudentById" parameterType="com.mybatis3.domain.Student">
+	</update>
+
+
 
 <!-- 
 	/* @@@@@@@@@@@@@@@@@@@@@@@ SELECT [students + addresses + courses(course_enrollment) JOIN] (1 : 1 : N) @@@@@@@@@@@@@@@@@ */

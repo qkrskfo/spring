@@ -57,7 +57,6 @@ public class StudentDaoMain {
 		System.out.println("### " + studentDao.findStudentById(student3.getStudId()));
 		
 		
-		
 		System.out.println("---------updateStudentById---------------------------");
 		Student student4 = studentDao.findStudentById(4);
 		student4.setName("김수정");
@@ -66,8 +65,14 @@ public class StudentDaoMain {
 		
 		
 		System.out.println("---------deleteStudentById---------------------------");
+		System.out.println("### "+studentDao.deleteStudentById(student3.getStudId()));
+		
 		System.out.println("---------deleteStudentByName-------------------------");
+		System.out.println("### "+studentDao.deleteStudentByName(student2.getName()));
+		
 		System.out.println("---------deleteStudentByNameLike---------------------");
+		System.out.println("### "+studentDao.deleteStudentByNameLike("여"));
+		
 		
 		System.out.println("---------findAllOrderedStudents------------------");
 		System.out.println("---------findStudentByIdRangeParamMap(parameter Map)-");

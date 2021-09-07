@@ -112,6 +112,9 @@
 	<delete id="deleteStudentByName" parameterType="java.lang.String">
 		delete from students where name=#{name}
 	</delete>
+	<delete id="deleteStudentByNameLike" parameterType="java.lang.String">
+		delete from students where name like '%'||#{name}||'%'
+	</delete>
 	
 
 

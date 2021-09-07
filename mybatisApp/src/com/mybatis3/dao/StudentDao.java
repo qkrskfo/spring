@@ -44,15 +44,15 @@ public class StudentDao {
 	***************************************************/
 	
 	public int deleteStudentById(Integer studId) {
-		SqlSession sqlSession = sqlSessionFactory.openSession(true);
-		sqlSession.close();
-		return 0;
+		return sqlSessionFactory.openSession(true).delete(NAMESPACE+"deleteStudentById", studId);
 	}
 
 	public int deleteStudentByName(String name) {
-		SqlSession sqlSession = sqlSessionFactory.openSession(true);
-		sqlSession.close();
-		return 0;
+		return sqlSessionFactory.openSession(true).delete(NAMESPACE+"deleteStudentByName", name);
+	}
+	
+	public int deleteStudentByNameLike(String name) {
+		return sqlSessionFactory.openSession(true).delete(NAMESPACE+"deleteStudentByNameLike", name);
 	}
 	
 	/***************************************************
@@ -275,17 +275,6 @@ public class StudentDao {
 
 		return 0;
 	}
-	
-	
-
-	/* @@@@@@@@@@@@@@@@@@@@@@@DELETE@@@@@@@@@@@@@@@@@ */
-	
-
-	public int deleteStudentByNameLike(String name) {
-
-		return 0;
-	}
-
 	
 
 

@@ -11,6 +11,7 @@ public class StudentDaoMain {
 	public static void main(String[] args) {
 		StudentDao studentDao = new StudentDao();
 		
+		// select
 		System.out.println("---------findStudentById-----------------------------");
 		System.out.println("### " + studentDao.findStudentById(1));
 		System.out.println("### " + studentDao.findStudentById(7));
@@ -36,9 +37,13 @@ public class StudentDaoMain {
 		System.out.println("---------findStudentByIdWithCourses------------------");
 		System.out.println("### "+studentDao.findStudentByIdWithCourses(1));
 		
+		System.out.println("--------- findStudentByIdWithAddressWithCourses ---------");
+		System.out.println("### "+studentDao.findStudentByIdWithAddressWithCourses(1));
 		
+		
+		//insert
 		System.out.println("---------insertStudent(Dto)--------------------------");
-		Student student1 = new Student(1001, "박여름", "summer@gmail.com", new Date());
+		Student student1 = new Student(1002, "박여름", "summer@gmail.com", new Date());
 		System.out.println("### "+studentDao.insertStudent(student1));
 		
 		System.out.println("---------insertStudentBySequence1--------------------");

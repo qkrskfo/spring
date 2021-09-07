@@ -71,11 +71,11 @@ public class StudentDao {
 	
 	
 	/***************************************************
-	 * 		SELECT JOIN[students + address + courses(course_enrollment) join] (1 : 1 : N)
+	 * 	SELECT JOIN[students + address + courses(course_enrollment) join] (1 : 1 : N)
 	 ***************************************************/
 	/*
 	 * select sql의 결과타입이 DTO, VO, Domain 객체인 경우
-	 * resultMap :
+	 * resultMap : studentWithAddressWithCoursesResultMap
 	 */
 	public Student findStudentByIdWithAddressWithCourses(Integer studId) {
 		return sqlSessionFactory.openSession().selectOne(NAMESPACE+"findStudentByIdWithAddressWithCourses", studId);
@@ -84,7 +84,7 @@ public class StudentDao {
 
 	
 	/***************************************************
-	 * 		SELECT JOIN[students + courses(course_enrollment) join] (1 : N)
+	 * 	SELECT JOIN[students + courses(course_enrollment) join] (1 : N)
 	 ***************************************************/
 	/*
 	 * select sql의 결과타입이 DTO, VO, Domain 객체인 경우
@@ -99,7 +99,7 @@ public class StudentDao {
 	
 	
 	/***************************************************
-	 * 		SELECT JOIN[students + addresses join] (1 : 1)
+	 * 	SELECT JOIN[students + addresses join] (1 : 1)
 	 ***************************************************/
 	/*
 	 * select sql의 결과타입이 DTO, VO, Domain 객체인 경우

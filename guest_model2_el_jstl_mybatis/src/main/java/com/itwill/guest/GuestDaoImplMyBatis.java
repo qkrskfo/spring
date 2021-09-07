@@ -2,6 +2,7 @@ package com.itwill.guest;
 
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -19,7 +20,6 @@ public class GuestDaoImplMyBatis implements GuestDao{
 			e.printStackTrace();
 		}
 	}
-
 	
 	@Override
 	public int insertGuest(Guest guest) throws Exception {
@@ -29,14 +29,14 @@ public class GuestDaoImplMyBatis implements GuestDao{
 
 	@Override
 	public Guest selectByNo(int no) throws Exception {
-		// TODO Auto-generated method stub
 		return sqlSessionFactory.openSession().selectOne(NAMESPACE+"selectByNo",no);
 	}
 
 	@Override
 	public ArrayList<Guest> selectAll() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		List<Guest> gList = sqlSessionFactory.openSession().selectList(NAMESPACE+"selectAll");
+		ArrayList<Guest> guestList = (ArrayList<Guest>)gList;
+		return guestList;
 	}
 
 	@Override

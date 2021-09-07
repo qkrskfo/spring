@@ -4,4 +4,7 @@
 	<select id="selectByNo" parameterType="int" resultType="com.itwill.guest.Guest">
 		select * from guest where guest_no=#{guestNo}
 	</select>
+	<select id="selectAll" resultType="com.itwill.guest.Guest">
+		select * from guest
+	</select>
 </mapper>

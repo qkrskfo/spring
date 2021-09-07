@@ -29,6 +29,19 @@
 		</association>
 	</resultMap> 
 	
+	<resultMap id="studentWithCoursesResultMap" type="com.mybatis3.domain.Student">
+		<result column="STUD_ID" property="studId" />
+		<result column="NAME" property="name" />
+		<result column="EMAIL" property="email" />
+		<result column="DOB" property="dob" />
+		<collection property="courseList" ofType="com.mybatis3.domain.Course" javaType="java.util.List">
+			<result column="COURSE_ID" property="courseId" />
+			<result column="NAME" property="name" />
+			<result column="DESCRIPTION" property="description" />
+			<result column="START_DATE" property="startDate" />
+			<result column="END_DATE" property="endDate" />
+		</collection>
+	</resultMap>
 	
 	<!-- 
 	/***********************************************************

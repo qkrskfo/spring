@@ -83,14 +83,14 @@
 	</insert>
 
 <!-- 
-	/* @@@@@@@@@@@@@@@@@@@@@@@ SELECT [students + addresses + courses(course_enrollment) JOIN] (1 : N) @@@@@@@@@@@@@@@@@ */
+	/* @@@@@@@@@@@@@@@@@@@@@@@ SELECT [students + addresses + courses(course_enrollment) JOIN] (1 : 1 : N) @@@@@@@@@@@@@@@@@ */
 	/*
 	 * select sql의 결과타입이 DTO, VO, Domain 객체인 경우
 	 * resultMap : 
 	 */
 -->	 
 	<select id="findStudentByIdWithAddressWithCourses" parameterType="java.lang.Integer" resultMap="studentWithAddressWithCoursesResultMap">
-	select s.*, a.*, c.course_id, c.name as course_name, c.description, c.start_date, c.end_date
+		select s.*, a.*, c.course_id, c.name as course_name, c.description, c.start_date, c.end_date
 		from students s 
 		join addresses a on s.stud_id = a.addr_id 
 		join course_enrollment ce on s.stud_id = ce.stud_id

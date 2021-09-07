@@ -1,11 +1,11 @@
 package com.itwill.guest.test;
 
 import com.itwill.guest.Guest;
-import com.itwill.guest.GuestDao;
+import com.itwill.guest.GuestDaoJDBC;
 
 public class GuestDaoTestMain {
 	public static void main(String[] args) throws Exception{
-		GuestDao guestDao=new GuestDao();
+		GuestDaoJDBC guestDao=new GuestDaoJDBC();
 		System.out.println("1.insert");
 		System.out.println(guestDao.insertGuest(	
 							new Guest(0, "name", null,

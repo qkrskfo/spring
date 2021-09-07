@@ -3,10 +3,10 @@ package com.itwill.guest;
 import java.util.ArrayList;
 
 public class GuestService {
-	private GuestDao guestDao;
+	private GuestDaoJDBC guestDao;
 
 	public GuestService() {
-		this.guestDao = new GuestDao();
+		this.guestDao = new GuestDaoJDBC();
 	}
 
 	public int insertGuest(Guest guest) throws Exception {

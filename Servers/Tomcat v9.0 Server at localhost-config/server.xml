@@ -156,7 +156,7 @@
         
 
 
-      <Context docBase="el_jstl_customtag" path="/el_jstl_customtag" reloadable="true" source="org.eclipse.jst.jee.server:el_jstl_customtag"/><Context docBase="guest_model2_el_jstl" path="/guest_model2_el_jstl" reloadable="true" source="org.eclipse.jst.jee.server:guest_model2_el_jstl"/><Context docBase="user_model2_el_jstl" path="/user_model2_el_jstl" reloadable="true" source="org.eclipse.jst.jee.server:user_model2_el_jstl"/></Host>
+      <Context docBase="el_jstl_customtag" path="/el_jstl_customtag" reloadable="true" source="org.eclipse.jst.jee.server:el_jstl_customtag"/><Context docBase="guest_model2_el_jstl" path="/guest_model2_el_jstl" reloadable="true" source="org.eclipse.jst.jee.server:guest_model2_el_jstl"/><Context docBase="user_model2_el_jstl" path="/user_model2_el_jstl" reloadable="true" source="org.eclipse.jst.jee.server:user_model2_el_jstl"/><Context docBase="guest_model2_el_jstl_mybatis" path="/guest_model2_el_jstl_mybatis" reloadable="true" source="org.eclipse.jst.jee.server:guest_model2_el_jstl_mybatis"/></Host>
     </Engine>
   </Service>
 </Server>

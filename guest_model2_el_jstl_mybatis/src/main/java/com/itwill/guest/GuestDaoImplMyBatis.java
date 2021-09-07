@@ -23,8 +23,7 @@ public class GuestDaoImplMyBatis implements GuestDao{
 	
 	@Override
 	public int insertGuest(Guest guest) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSessionFactory.openSession(true).insert(NAMESPACE+"create",guest);
 	}
 
 	@Override

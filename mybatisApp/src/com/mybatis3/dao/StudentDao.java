@@ -63,10 +63,20 @@ public class StudentDao {
 		sqlSession.close();
 		return row;
 	}
-
+	
 	public int insertStudentBySequence2(Student student) {
-
-		return 0;
+		/*
+		 * sequence 실행 후 PK return
+		 */
+		/*
+		 * openSession의 autocommit 여부 설정(true, false)
+		 *  - false로 하면, commit을 반드시 해주어야 함.
+		 */
+		SqlSession sqlSession = sqlSessionFactory.openSession(false);
+		int row = sqlSession.insert(NAMESPACE+"insertStudentBySequence2", student);
+		sqlSession.commit();
+		sqlSession.close();
+		return student.getStudId();
 	}
 	
 	

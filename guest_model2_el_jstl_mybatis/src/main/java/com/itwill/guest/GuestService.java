@@ -6,8 +6,8 @@ public class GuestService {
 	private GuestDao guestDao;
 
 	public GuestService() {
-		this.guestDao = new GuestDaoImplJDBC();
-		//this.guestDao = new GuestDaoImplMyBatis();
+		//this.guestDao = new GuestDaoImplJDBC();
+		this.guestDao = new GuestDaoImplMyBatis();
 	}
 
 	public int insertGuest(Guest guest) throws Exception {

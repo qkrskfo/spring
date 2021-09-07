@@ -43,6 +43,29 @@
 		</collection>
 	</resultMap>
 	
+	<resultMap id="studentWithAddressWithCoursesResultMap" type="com.mybatis3.domain.Student">
+	<result column="STUD_ID" property="studId" />
+		<result column="NAME" property="name" />
+		<result column="EMAIL" property="email" />
+		<result column="DOB" property="dob" />
+		<association property="address" javaType="com.mybatis3.domain.Address">
+			<!-- 1대1의 관계는 어소시에이션.  -->
+			<result column="ADDR_ID" property="addrId" />
+			<result column="STREET" property="street" />
+			<result column="CITY" property="city" />
+			<result column="STATE" property="state" />
+			<result column="ZIP" property="zip" />
+			<result column="COUNTRY" property="country" />
+		</association>
+		<collection property="courseList" ofType="com.mybatis3.domain.Course" javaType="java.util.List">
+			<result column="COURSE_ID" property="courseId" />
+			<result column="COURSE_NAME" property="name" />
+			<result column="DESCRIPTION" property="description" />
+			<result column="START_DATE" property="startDate" />
+			<result column="END_DATE" property="endDate" />
+		</collection>
+	</resultMap>
+	
 	<!-- 
 	/***********************************************************
 		INSERT
@@ -58,6 +81,15 @@
 		insert into students(stud_id,name,email,dob)
 		values (STUDENTS_STUD_ID_SEQ.nextval,#{name},#{email},#{dob})
 	</insert>
+
+<!-- 
+	/* @@@@@@@@@@@@@@@@@@@@@@@ SELECT [students + addresses + courses(course_enrollment) JOIN] (1 : N) @@@@@@@@@@@@@@@@@ */
+	/*
+	 * select sql의 결과타입이 DTO, VO, Domain 객체인 경우
+	 * resultMap : 
+	 */
+-->	 
+
 
 <!-- 
 	/* @@@@@@@@@@@@@@@@@@@@@@@ SELECT [students + courses(course_enrollment) JOIN] (1 : N) @@@@@@@@@@@@@@@@@ */

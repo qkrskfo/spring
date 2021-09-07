@@ -24,7 +24,10 @@ public class CourseDao {
 	}
 
 	public Course findCourseByIdWithStudents(Integer courseId) {
-		return null;
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		Course course = sqlSession.selectOne(NAMESPACE+"findCourseByIdWithStudents", courseId);
+		sqlSession.close();
+		return course;
 	}
 
 }

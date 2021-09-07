@@ -20,7 +20,7 @@
 		select c.*,s.* from courses c 
 		join course_enrollment ce on c.course_id=ce.course_id
 		join students s on ce.stud_id=s.stud_id
-		where c.course_id=#{couseId}
+		where c.course_id=#{courseId}
 	</select>
 	
 </mapper>

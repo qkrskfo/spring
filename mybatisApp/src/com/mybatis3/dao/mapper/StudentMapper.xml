@@ -75,8 +75,12 @@
 		2. String, Wrapper List<String, Wrapper>
 		3. Map, HashMap **
 	-->
-	<select id="findStudentByIdMap" resultType="java.util.Map">
+	<select id="findStudentByIdMap" parameterType="int" resultType="java.util.Map">
 		select * from students where stud_id=#{studId}
+	</select>
+	
+	<select id="findAllStudentsMapList" resultType="java.util.Map">
+		select * from students
 	</select>
 	
 	

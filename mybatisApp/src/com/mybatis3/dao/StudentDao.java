@@ -254,10 +254,9 @@ public class StudentDao {
 	public Map findStudentByIdMap(Integer studId) {
 		return sqlSessionFactory.openSession().selectOne(NAMESPACE+"findStudentByIdMap", studId);
 	}
-
+	
 	public List<Map> findAllStudentsMapList() {
-
-		return null;
+		return sqlSessionFactory.openSession().selectList(NAMESPACE+"findAllStudentsMapList");
 	}
 
 	public List<Student> findStudentByIdRangeParamMap(HashMap idRangeMap) {

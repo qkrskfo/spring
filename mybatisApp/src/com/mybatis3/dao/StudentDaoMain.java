@@ -1,5 +1,6 @@
 package com.mybatis3.dao;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -74,8 +75,14 @@ public class StudentDaoMain {
 		System.out.println("### "+studentDao.deleteStudentByNameLike("여"));
 		
 		System.out.println("---------findStudentByIdMap--------------------------");
-		System.out.println("### "+studentDao.findStudentByIdMap(1));		
-		
+		Map studentMap = studentDao.findStudentByIdMap(1);
+		System.out.println(studentMap);
+		BigDecimal stud_id = (BigDecimal)studentMap.get("STUD_ID");
+		String name = (String)studentMap.get("NAME");
+		String email = (String)studentMap.get("EMAIL");
+		String phone = (String)studentMap.get("PHONE");
+		Date dob = (Date)studentMap.get("DOB");
+		System.out.println(stud_id+" "+name+" "+email+" "+phone+" "+dob);
 		
 		System.out.println("---------findAllOrderedStudents------------------");
 		System.out.println("---------findStudentByIdRangeParamMap(parameter Map)-");

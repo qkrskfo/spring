@@ -3,6 +3,7 @@ package com.mybatis3.dao;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.mybatis3.domain.Student;
@@ -84,6 +85,13 @@ public class StudentDaoMain {
 		Date dob = (Date)studentMap.get("DOB");
 		System.out.println(stud_id+" "+name+" "+email+" "+phone+" "+dob);
 		
+		System.out.println("---------findAllStudentsMapList----------------------");
+		List<Map> studentMapList = studentDao.findAllStudentsMapList();
+		//System.out.println(studentMapList);
+		for(Map studentRowMap : studentMapList) {
+			System.out.println(studentRowMap);
+		}
+		
 		System.out.println("---------findAllOrderedStudents------------------");
 		System.out.println("---------findStudentByIdRangeParamMap(parameter Map)-");
 		System.out.println("---------updateStudentParamMap(parameter Map)--------");
@@ -92,6 +100,6 @@ public class StudentDaoMain {
 		System.out.println("---------updateStudentDynamicSql---------");
 		System.out.println("---------findStudentCount----------------");
 		
-		System.out.println("---------findAllStudentsMapList----------------------");
+		
 	}
 }

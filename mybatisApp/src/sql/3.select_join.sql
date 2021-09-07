@@ -51,7 +51,7 @@ where a.addr_id=8;
  
 --findStudentByIdWithCourses 
 /*
-students + courses  join
+students + courses[course_enrollment]  join
 */     
 select s.*,c.* 
 from students s 

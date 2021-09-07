@@ -54,6 +54,9 @@ public class StudentDaoMain {
 		Student student3 = new Student(0, "시퀀스2", "seq1@gmail.com", new Date());
 		System.out.println("### pk "+studentDao.insertStudentBySequence2(student3));
 		System.out.println("### student3 : "+student3);
+		System.out.println("### " + studentDao.findStudentById(student3.getStudId()));
+		
+		
 		
 		System.out.println("---------updateStudentById---------------------------");
 		System.out.println("---------deleteStudentById---------------------------");

@@ -40,6 +40,33 @@ public class StudentDao {
 	}
 
 	/***************************************************
+	 * DELETE
+	***************************************************/
+	
+	public int deleteStudentById(Integer studId) {
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		sqlSession.close();
+		return 0;
+	}
+
+	public int deleteStudentByName(String name) {
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		sqlSession.close();
+		return 0;
+	}
+	
+	/***************************************************
+	 * UPDATE
+	***************************************************/
+	public int updateStudentById(Student student) {
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		int updateRow = sqlSession.update(NAMESPACE+"updateStudentById", student);
+		sqlSession.close();
+		return updateRow;
+	}
+	
+	
+	/***************************************************
 	 * INSERT
 	***************************************************/
 	public int insertStudent(Student student) {
@@ -250,23 +277,9 @@ public class StudentDao {
 	}
 	
 	
-		
-
-	/* @@@@@@@@@@@@@@@@@@@@@@@ UPDATE @@@@@@@@@@@@@@@@@ */
-	public int updateStudentById(Student updateStudent) {
-		return 0;
-	}
 
 	/* @@@@@@@@@@@@@@@@@@@@@@@DELETE@@@@@@@@@@@@@@@@@ */
-	public int deleteStudentById(Integer studId) {
-
-		return 0;
-	}
-
-	public int deleteStudentByName(String name) {
-
-		return 0;
-	}
+	
 
 	public int deleteStudentByNameLike(String name) {
 

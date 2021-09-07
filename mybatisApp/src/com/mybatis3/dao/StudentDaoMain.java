@@ -59,6 +59,12 @@ public class StudentDaoMain {
 		
 		
 		System.out.println("---------updateStudentById---------------------------");
+		Student student4 = studentDao.findStudentById(4);
+		student4.setName("김수정");
+		student4.setEmail("soojeong@gmail.com");
+		System.out.println("### "+studentDao.updateStudentById(student4));
+		
+		
 		System.out.println("---------deleteStudentById---------------------------");
 		System.out.println("---------deleteStudentByName-------------------------");
 		System.out.println("---------deleteStudentByNameLike---------------------");

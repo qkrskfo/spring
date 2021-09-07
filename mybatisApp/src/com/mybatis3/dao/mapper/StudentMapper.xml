@@ -95,8 +95,24 @@
 	 * parameterType: DTO, VO, Domain 
 	 */
 -->
-	<update id="updateStudentById" parameterType="com.mybatis3.domain.Student">
+	<update id="updateStudentById" parameterType="Student">
+		update students set name=#{name}, email=#{email}, dob=#{dob}
+		where stud_id=#{studId}
 	</update>
+
+<!-- 
+	/* @@@@@@@@@@@@@@@@@@@@@@@ DELETE @@@@@@@@@@@@@@@@@ */
+	/*
+	 * parameterType: java.lang.Integer, java.lang.String 
+	 */
+-->
+	<delete id="deleteStudentById" parameterType="int">
+		delete from students where stud_id=#{studId}
+	</delete>
+	<delete id="deleteStudentByName" parameterType="java.lang.String">
+		delete from students where name=#{name}
+	</delete>
+	
 
 
 

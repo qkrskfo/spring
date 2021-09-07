@@ -7,13 +7,14 @@ import java.util.ArrayList;
 
 
 
-public class GuestDaoJDBC {
+public class GuestDaoJDBC implements GuestDao {
 	private DataSource dataSource;
 
 	public GuestDaoJDBC() {
 		this.dataSource = new DataSource();
 	}
 
+	@Override
 	public int insertGuest(Guest guest) throws Exception {
 		Connection con=dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(GuestSQL.GUEST_INSERT);
@@ -36,6 +37,7 @@ GUEST_HOMEPAGE          VARCHAR2(50)
 GUEST_TITLE    NOT NULL VARCHAR2(100)  
 GUEST_CONTENT  NOT NULL VARCHAR2(4000) 
  */
+	@Override
 	public Guest selectByNo(int no)throws Exception {
 		Guest guest=null;
 		Connection con=dataSource.getConnection();
@@ -55,6 +57,7 @@ GUEST_CONTENT  NOT NULL VARCHAR2(4000)
 		return guest;
 	}
 
+	@Override
 	public ArrayList<Guest> selectAll() throws Exception {
 		ArrayList<Guest> guestList=new ArrayList<Guest>();
 		
@@ -75,6 +78,7 @@ GUEST_CONTENT  NOT NULL VARCHAR2(4000)
 		return guestList;
 	}
 
+	@Override
 	public int updateGuest(Guest guest) throws Exception {
 		Connection con=dataSource.getConnection();
 		PreparedStatement pstmt=con.prepareStatement(GuestSQL.GUEST_UPDATE);
@@ -87,6 +91,7 @@ GUEST_CONTENT  NOT NULL VARCHAR2(4000)
 		return pstmt.executeUpdate();
 	}
 
+	@Override
 	public int deleteGuest(int no) throws Exception {
 		Connection con=dataSource.getConnection();
 		PreparedStatement pstmt=con.prepareStatement(GuestSQL.GUEST_DELETE);

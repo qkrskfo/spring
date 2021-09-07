@@ -69,8 +69,24 @@ public class StudentDao {
 		return 0;
 	}
 	
+	
 	/***************************************************
-	 * 		SELECT JOIN[students + addresses]
+	 * 		SELECT JOIN[students + courses join] (1 : N)
+	 ***************************************************/
+	/*
+	 * select sql의 결과타입이 DTO, VO, Domain 객체인 경우
+	 * resultMap : studentWithCoursesResultMap
+	 */
+	public Student findStudentByIdWithCourses(Integer studId) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		Student student = sqlSession.selectOne(NAMESPACE+"findStudentByIdWithCourses");
+		sqlSession.close();
+		return student;
+	}
+	
+	
+	/***************************************************
+	 * 		SELECT JOIN[students + addresses join] (1 : 1)
 	 ***************************************************/
 	/*
 	 * select sql의 결과타입이 DTO, VO, Domain 객체인 경우
@@ -211,13 +227,7 @@ public class StudentDao {
 	}
 	
 	
-	
-	/* @@@@@@@@@@@@@@@@@@@@@@@ SELECT JOIN[students + courses] @@@@@@@@@@@@@@@@@ */
-	public Student findStudentByIdWithCourses(Integer studId) {
-		return null;
-	}
-
-	
+		
 
 	/* @@@@@@@@@@@@@@@@@@@@@@@ UPDATE @@@@@@@@@@@@@@@@@ */
 	public int updateStudentById(Student updateStudent) {

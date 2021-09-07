@@ -81,6 +81,13 @@
 		insert into students(stud_id,name,email,dob)
 		values (STUDENTS_STUD_ID_SEQ.nextval,#{name},#{email},#{dob})
 	</insert>
+	<insert id="insertStudentBySequence2" parameterType="com.mybatis3.domain.Student">
+		<selectKey order="BEFORE" resultType="java.lang.Integer" keyProperty="studId">
+			select STUDENTS_STUD_ID_SEQ.nextval from dual
+		</selectKey>
+		insert into students(stud_id,name,email,dob)
+		values (#{studId},#{name},#{email},#{dob})
+	</insert>
 
 <!-- 
 	/* @@@@@@@@@@@@@@@@@@@@@@@ SELECT [students + addresses + courses(course_enrollment) JOIN] (1 : 1 : N) @@@@@@@@@@@@@@@@@ */

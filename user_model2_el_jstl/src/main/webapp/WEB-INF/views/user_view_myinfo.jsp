@@ -4,8 +4,9 @@
     pageEncoding="UTF-8"%>
 <%--@include file="login_check.jspf" --%>
 <%@taglib prefix = "c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib prefix = "fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<fmt:setBundle basename="com/itwill/user/user" />
+<%--@taglib prefix = "fmt" uri="http://java.sun.com/jsp/jstl/fmt" --%>
+<%-- <fmt:setBundle basename="com/itwill/user/user" /> --%>
+
 <%
 	//User loginUser=(User)request.getAttribute("loginUser");
 %>
@@ -37,8 +38,7 @@
 	}
 </script>
 </head>
-<body bgcolor=#FFFFFF text=#000000 leftmargin=0 topmargin=0
-	marginwidth=0 marginheight=0>
+<body bgcolor=#FFFFFF text=#000000 leftmargin=0 topmargin=0 marginwidth=0 marginheight=0>
 	<!-- container start-->
 	<div id="container">
 		<!-- header start -->
@@ -66,19 +66,15 @@
 					<tr>
 						<td>
 							<!--contents--> <br />
-							<table style="padding-left: 10px" border=0 cellpadding=0
-								cellspacing=0>
+							<table style="padding-left: 10px" border=0 cellpadding=0 cellspacing=0>
 								<tr>
-									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp;<b>내정보 관리
-											- 내정보보기</b></td>
+									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp;<b>내정보 관리 - 내정보보기</b></td>
 								</tr>
 							</table> <!-- view Form  -->
 							<form name="f" method="post">
-								<table border="0" cellpadding="0" cellspacing="1" width="590"
-									bgcolor="BBBBBB">
+								<table border="0" cellpadding="0" cellspacing="1" width="590" bgcolor="BBBBBB">
 									<tr>
-										<td width=100 align=center bgcolor="E6ECDE" height="22">사용자
-											아이디</td>
+										<td width=100 align=center bgcolor="E6ECDE" height="22">사용자 아이디</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10">
 											${loginUser.userId}
 										</td>
@@ -90,8 +86,7 @@
 										</td>
 									</tr>
 									<tr>
-										<td width=100 align=center bgcolor="E6ECDE" height="22">이메일
-											주소</td>
+										<td width=100 align=center bgcolor="E6ECDE" height="22">이메일 주소</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10">
 											${loginUser.email}
 										</td>

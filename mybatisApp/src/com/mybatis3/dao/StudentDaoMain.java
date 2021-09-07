@@ -38,7 +38,7 @@ public class StudentDaoMain {
 		
 		
 		System.out.println("---------insertStudent(Dto)--------------------------");
-		Student student1 = new Student(1000, "박여름", "summer@gmail.com", new Date());
+		Student student1 = new Student(1001, "박여름", "summer@gmail.com", new Date());
 		System.out.println("### "+studentDao.insertStudent(student1));
 		
 		System.out.println("---------insertStudentBySequence1--------------------");

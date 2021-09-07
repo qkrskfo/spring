@@ -61,7 +61,7 @@ join courses c
 on ce.course_id=c.course_id where s.stud_id=1;
 
 /*
-students + courses join
+students + courses[course enrollment] join
 */
 select  s.stud_id,s.name as student_name ,s.email,s.phone,s.dob,
         c.course_id,c.name as course_name ,c.description,c.start_date,c.end_date

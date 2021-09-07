@@ -36,7 +36,7 @@
 		<result column="DOB" property="dob" />
 		<collection property="courseList" ofType="com.mybatis3.domain.Course" javaType="java.util.List">
 			<result column="COURSE_ID" property="courseId" />
-			<result column="NAME" property="name" />
+			<result column="COURSE_NAME" property="name" />
 			<result column="DESCRIPTION" property="description" />
 			<result column="START_DATE" property="startDate" />
 			<result column="END_DATE" property="endDate" />
@@ -67,12 +67,13 @@
 	 */
 -->	 
 	<select id="findStudentByIdWithCourses" parameterType="java.lang.Integer" resultMap="studentWithCoursesResultMap">
-		select s.*,c.* 
+		select s.stud_id, s.name, s.email, s.dob,
+		       c.course_id, c.name as course_name, c.description, c.start_date, c.end_date
 		from students s 
 		join course_enrollment ce
 		on s.stud_id = ce.stud_id
 		join courses c
-		on ce.course_id=c.course_id where s.stud_id=#{studId};
+		on ce.course_id=c.course_id where s.stud_id=#{studId}
 	</select>
 
 <!-- 

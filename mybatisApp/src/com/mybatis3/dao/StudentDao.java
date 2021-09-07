@@ -79,7 +79,7 @@ public class StudentDao {
 	 */
 	public Student findStudentByIdWithCourses(Integer studId) {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
-		Student student = sqlSession.selectOne(NAMESPACE+"findStudentByIdWithCourses");
+		Student student = sqlSession.selectOne(NAMESPACE+"findStudentByIdWithCourses", studId);
 		sqlSession.close();
 		return student;
 	}

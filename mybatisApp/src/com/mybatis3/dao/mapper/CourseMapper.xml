@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mybatis3.dao.mapper.CourseMapper">
-	<!-- 
-	select c.*,s.* from courses c 
-	join course_enrollment ce on c.course_id=ce.course_id
-	join students s on ce.stud_id=s.stud_id
-	where c.course_id=1;
-	-->
-	<select id="findCourseByIdWithStudents" parameterType="java.lang.Integer">
-	select c.*,s.* from courses c 
-	join course_enrollment ce on c.course_id=ce.course_id
-	join students s on ce.stud_id=s.stud_id
-	where c.course_id=#{couseId}
+
+	<resultMap id="courseWithStudentsResultMap" type="com.mybatis3.domain.Course">
+		<result column="COURSE_ID" property="courseId" />
+		<result column="NAME" property="name" />
+		<result column="DESCRIPTION" property="description" />
+		<result column="START_DATE" property="startDate" />
+		<result column="END_DATE" property="endDate" />
+		<collection property="students" resultMap="com.mybatis3.dao.mapper.StudentMapper.studentResultMap">
+		</collection>
+	</resultMap>
+
+	<select id="findCourseByIdWithStudents" parameterType="java.lang.Integer" resultMap="courseWithStudentsResultMap">
+		select c.*,s.* from courses c 
+		join course_enrollment ce on c.course_id=ce.course_id
+		join students s on ce.stud_id=s.stud_id
+		where c.course_id=#{couseId}
 	</select>
 	
 </mapper>

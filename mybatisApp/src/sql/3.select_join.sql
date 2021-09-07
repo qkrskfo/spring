@@ -139,7 +139,15 @@ SELECT t.tutor_id, t.name as tutor_name, email, a.addr_id, street, city, state, 
 	where t.tutor_id=1;
         
   
-  
+/*
+ * students + addresses + courses
+ */
+select s.*, a.*, c.course_id, c.name as course_name, c.description, c.start_date, c.end_date
+from students s 
+join addresses a on s.stud_id = a.addr_id 
+join course_enrollment ce on s.stud_id = ce.stud_id
+join courses c on ce.course_id = c.course_id
+where s.stud_id=1;
 
       
       

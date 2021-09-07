@@ -4,7 +4,7 @@
 
 	<resultMap id="courseWithStudentsResultMap" type="com.mybatis3.domain.Course">
 		<result column="COURSE_ID" property="courseId" />
-		<result column="NAME" property="name" />
+		<result column="COURSE_NAME" property="name" />
 		<result column="DESCRIPTION" property="description" />
 		<result column="START_DATE" property="startDate" />
 		<result column="END_DATE" property="endDate" />
@@ -17,7 +17,9 @@
 	</resultMap>
 
 	<select id="findCourseByIdWithStudents" parameterType="java.lang.Integer" resultMap="courseWithStudentsResultMap">
-		select c.*,s.* from courses c 
+		select c.course_id, c.name as course_name, c.description, c.start_date, c.end_date,
+		s.stud_id, s.name, s.email, s.dob
+		from courses c 
 		join course_enrollment ce on c.course_id=ce.course_id
 		join students s on ce.stud_id=s.stud_id
 		where c.course_id=#{courseId}

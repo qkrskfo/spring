@@ -8,7 +8,11 @@
 		<result column="DESCRIPTION" property="description" />
 		<result column="START_DATE" property="startDate" />
 		<result column="END_DATE" property="endDate" />
-		<collection property="students" resultMap="com.mybatis3.dao.mapper.StudentMapper.studentResultMap">
+		<collection property="students" ofType="com.mybatis3.domain.Student" javaType="java.util.List">
+			<result column="STUD_ID" property="studId" />
+			<result column="NAME" property="name" />
+			<result column="EMAIL" property="email" />
+			<result column="DOB" property="dob" />
 		</collection>
 	</resultMap>
 

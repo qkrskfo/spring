@@ -13,7 +13,7 @@ public class DataSource {
 
 	public Connection getConnection() throws Exception {
 		/*********************DB접속정보*********************/
-		InputStream in = DataSource.class.getResourceAsStream("jdbc.properties"); 
+		InputStream in = DataSource.class.getResourceAsStream("/jdbc.properties"); 
 		Properties properties=new Properties();
 		properties.load(in);
 		/*

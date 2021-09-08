@@ -13,9 +13,9 @@ public class GuestDaoTestMain {
 									"email@gmail.com", "http//www.naver.com",
 									"타이틀", "컨텐트")));
 		System.out.println("2.selectByNo");
-		System.out.println(guestDao.selectByNo(1));
+		System.out.println(guestDao.selectByNo(2));
 		System.out.println("3.updateGuest");
-		Guest updateGuest=guestDao.selectByNo(4);
+		Guest updateGuest=guestDao.selectByNo(2);
 		updateGuest.setGuest_name("이름변경");
 		updateGuest.setGuest_title("타이틀변경");
 		updateGuest.setGuest_content("컨텐트변경");

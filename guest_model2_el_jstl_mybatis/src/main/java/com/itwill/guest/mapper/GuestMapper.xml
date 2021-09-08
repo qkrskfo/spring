@@ -7,4 +7,15 @@
 	<select id="selectAll" resultType="com.itwill.guest.Guest">
 		select * from guest
 	</select>
+	<!-- 
+	<insert id="create" parameterType="com.itwill.guest.Guest">
+		insert into guest values(guest_no_seq.nextval, #{guest_name}, sysdate, #{guest_email}, #{guest_homepage}, #{guest_title}, #{guest_content})
+	</insert>
+	 -->
+	<insert id="create" parameterType="com.itwill.guest.Guest">
+		<selectKey order="BEFORE" resultType="int" keyProperty="guest_no">
+		select guest_no_seq.nextval from dual
+		</selectKey>
+		insert into guest values(#{guest_no}, #{guest_name}, sysdate, #{guest_email}, #{guest_homepage}, #{guest_title}, #{guest_content})
+	</insert>
 </mapper>

@@ -25,7 +25,9 @@ public class GuestWriteActionController implements Controller {
 				Guest guest = new Guest(0, guest_name, null, guest_email, guest_homepage, guest_title, guest_content);
 				GuestService guestService = new GuestService();
 				int insertRowCount = guestService.insertGuest(guest);
-				forwardPath="redirect:guest_list.do";
+				int pk = guest.getGuest_no();
+				//forwardPath="redirect:guest_list.do";
+				forwardPath="redirect:guest_view.do?guest_no="+pk;
 			} catch (Exception e) {
 				e.printStackTrace();
 				forwardPath="redirect:guest_error.do";

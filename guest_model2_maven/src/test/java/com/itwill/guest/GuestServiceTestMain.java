@@ -1,4 +1,4 @@
-package com.itwill.guest.test;
+package com.itwill.guest;
 
 import com.itwill.guest.GuestService;
 

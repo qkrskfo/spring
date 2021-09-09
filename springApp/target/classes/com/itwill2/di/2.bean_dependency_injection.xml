@@ -2,10 +2,16 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-	<bean id="userDao" class="com.itwill.user.UserDaoImpl"/>
+	
 	<!-- 1. Setter Injection(setter메쏘드를 통한 의존성주입) -->
 	<!-- 참조타입 setter메쏘드 인자로주입 -->
+	<bean id="userDao" class="com.itwill.user.UserDaoImpl"/>
 	<bean id="userService" class="com.itwill.user.UserServiceImpl">
 		<property name="userDao"  ref="userDao"/>
+	</bean>
+	<!-- 2. Constructor Injection (생성자를 통한 의존성주입) -->
+	<bean id="conUserDao" class="com.itwill.user.UserDaoImpl" />
+	<bean id="conUserService" class="com.itwill.user.UserServiceImpl">
+		<constructor-arg ref="conUserDao" />
 	</bean>
 </beans>

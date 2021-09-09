@@ -8,12 +8,13 @@
 	<version>1.0.0.CI-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>springApp</name>
-	
+
 	<properties>
 		<maven.test.failure.ignore>true</maven.test.failure.ignore>
 		<spring.framework.version>4.3.25.RELEASE</spring.framework.version>
 		<java-version>8</java-version>
-	</properties>	<dependencies>
+	</properties>
+	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -49,7 +50,7 @@
 					<target>${java-version}</target>
 				</configuration>
 			</plugin>
- 
+
 		</plugins>
-	</build> 
+	</build>
 </project>

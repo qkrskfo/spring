@@ -7,9 +7,9 @@ import com.itwill.user.UserService;
 
 public class UserServiceClient {
 	public static void main(String[] args) throws Exception{		
-		ApplicationContext factory = 
+		ApplicationContext applicationContext = 
 			new ClassPathXmlApplicationContext("99.user.xml");
-		UserService userService = (UserService)factory.getBean("userService");
+		UserService userService = (UserService)applicationContext.getBean("userService");
 		userService.findUser("id");
 		userService.remove("id");
 		userService.findUserList();

@@ -1,4 +1,4 @@
-package com.itwill1.bean.create;
+package com.itwill2.di;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

@@ -68,7 +68,7 @@ public class UserDaoImpl implements UserDao {
 	 */
 	@Override
 	public List<User> findUserList() throws Exception {
-		System.out.println("#### UserDaoImpl : findUserList 호출  ");
+		System.out.println("#### UserDaoImpl : findUserList() 호출  ");
 		return null;
 	}
 	/*

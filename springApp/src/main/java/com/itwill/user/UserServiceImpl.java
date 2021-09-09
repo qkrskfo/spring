@@ -7,21 +7,26 @@ import com.itwill.user.exception.PasswordMismatchException;
 import com.itwill.user.exception.UserNotFoundException;
 
 public class UserServiceImpl implements UserService {
+	
 	private UserDao userDao;
+	
 	public UserServiceImpl() {
 		System.out.println("#### UserServiceImpl() : 디폴트생성자호출");
 
 	}
 
 	public UserServiceImpl(UserDao userDao) {
-
 		System.out.println("#### UserServiceImpl(UserDao userDao) : 생성자호출");
 	}
+	
+	public void serUserDao(UserDao userDao) {
+		System.out.println("### UserServiceImpl : setUserDao("+userDao+")호출");
+		this.userDao = userDao;
+	}
+	
 
 	public int create(User user) throws ExistedUserException, Exception {
-
 		System.out.println("#### UserServiceImpl : create() 호출");
-
 		return 0;
 	}
 
@@ -29,9 +34,7 @@ public class UserServiceImpl implements UserService {
 	 * User 상세보기
 	 */
 	public User findUser(String userId) throws UserNotFoundException, Exception {
-
 		System.out.println("#### UserServiceImpl : findUser() 호출");
-
 		return null;
 
 	}

@@ -7,7 +7,7 @@ public class ProductService {
 	private ProductDao productDao;
 	
 	public ProductService() {
-		System.out.println("0. ### ProductService() 생성자");
+		System.out.println("1. ### ProductService() 생성자");
 	}
 	
 	
@@ -19,6 +19,7 @@ public class ProductService {
 
 
 	public void setProductDao(ProductDao productDao) {
+		System.out.println("2. ### ProductService.setProductDao("+productDao+") 메소드 호출");
 		this.productDao = productDao;
 	}
 

@@ -27,6 +27,7 @@ public class User {
 	}
 
 	public void setUserId(String userId) {
+		System.out.println("#### User : setUserId("+userId+") 호출");
 		this.userId = userId;
 	}
 
@@ -35,6 +36,7 @@ public class User {
 	}
 
 	public void setPassword(String password) {
+		System.out.println("#### User : setPassword(String password) 호출");
 		this.password = password;
 	}
 
@@ -43,6 +45,7 @@ public class User {
 	}
 
 	public void setName(String name) {
+		System.out.println("#### User : setName(String name) 호출");
 		this.name = name;
 	}
 
@@ -51,6 +54,7 @@ public class User {
 	}
 
 	public void setEmail(String email) {
+		System.out.println("#### User :setEmail(String email) 호출");
 		this.email = email;
 	}
 	@Override
@@ -70,10 +74,3 @@ public class User {
 	
 
 }
-
-
-
-
-
-
-

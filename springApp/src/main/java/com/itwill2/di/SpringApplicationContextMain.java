@@ -2,6 +2,7 @@ package com.itwill2.di;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.itwill.user.User;
 import com.itwill.user.UserService;
 
 public class SpringApplicationContextMain {
@@ -14,16 +15,17 @@ public class SpringApplicationContextMain {
 		System.out.println("------------Spring Container초기화시작----------------");
 		ApplicationContext applicationContext=new ClassPathXmlApplicationContext("com/itwill2/di/2.bean_dependency_injection.xml");
 		System.out.println("------------Spring Container초기화끝------------------");
-		
-		System.out.println("### 1. Setter Injection(setter 메소드를 통한 의존성 주입)");
+		System.out.println("#### 1. Setter Injection(setter메쏘드를 통한 의존성주입)");
 		UserService userService=(UserService)applicationContext.getBean("userService");
 		userService.findUser(null);
 		userService.findUserList();
+		User setUser=(User)applicationContext.getBean("setUser");
+		System.out.println("#### "+setUser);
 		
-		System.out.println("### 2. Constructor Injection(생성자를 통한 의존성 주입)");
+		System.out.println("#### 2. Constructor Injection(생성자를 통한 의존성주입)");
 		UserService conUserService=(UserService)applicationContext.getBean("conUserService");
-		userService.findUser(null);
-		userService.findUserList();
+		conUserService.findUser(null);
+		conUserService.findUserList();
 		
 	}
 

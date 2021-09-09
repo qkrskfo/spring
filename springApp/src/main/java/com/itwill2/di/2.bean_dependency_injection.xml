@@ -9,9 +9,19 @@
 	<bean id="userService" class="com.itwill.user.UserServiceImpl">
 		<property name="userDao"  ref="userDao"/>
 	</bean>
-	<!-- 2. Constructor Injection (생성자를 통한 의존성주입) -->
-	<bean id="conUserDao" class="com.itwill.user.UserDaoImpl" />
+	<!-- 기본형타입 setter메쏘드 인자로주입 -->
+	<bean id="setUser" class="com.itwill.user.User" >
+		<property name="userId" value="guard"/>
+		<property name="password" value="1111"/>
+		<property name="name" value="가아드"/>
+		<property name="email" value="guard@gmail.com"/>
+	</bean>
+	
+	<!-- 2. Constructor Injection(생성자를 통한 의존성주입) -->
+	<!-- 참조타입 생성자메쏘드 인자로주입 -->
+	<bean id="conUserDao" class="com.itwill.user.UserDaoImpl"/>
 	<bean id="conUserService" class="com.itwill.user.UserServiceImpl">
 		<constructor-arg ref="conUserDao" />
 	</bean>
+	
 </beans>

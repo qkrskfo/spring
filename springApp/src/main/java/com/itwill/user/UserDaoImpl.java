@@ -5,7 +5,7 @@ import java.util.List;
 
 public class UserDaoImpl implements UserDao {
 	
-
+	
 	public UserDaoImpl() {
 		System.out.println("#### UserDaoImpl() : 디폴트생성자 호출  ");
 	}
@@ -84,17 +84,3 @@ public class UserDaoImpl implements UserDao {
 	}
 	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

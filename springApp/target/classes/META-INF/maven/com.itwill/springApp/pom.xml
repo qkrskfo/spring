@@ -11,7 +11,8 @@
 	
 	<properties>
 		<maven.test.failure.ignore>true</maven.test.failure.ignore>
-		<spring.framework.version>3.0.6.RELEASE</spring.framework.version>
+		<spring.framework.version>4.3.25.RELEASE</spring.framework.version>
+		<java-version>8</java-version>
 	</properties>	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -44,9 +45,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.8.1</version>
 				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
-					<!-- ${java-version} -->
+					<source>${java-version}</source>
+					<target>${java-version}</target>
 				</configuration>
 			</plugin>
  

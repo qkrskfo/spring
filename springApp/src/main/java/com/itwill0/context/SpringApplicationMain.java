@@ -10,6 +10,7 @@ public class SpringApplicationMain {
 		 * 
 		 */
 		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("com/itwill0/context/0.applicationContext.xml");
+		System.out.println(applicationContext);
 	}
 	
 }

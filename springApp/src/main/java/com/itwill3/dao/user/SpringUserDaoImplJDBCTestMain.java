@@ -9,11 +9,14 @@ public class SpringUserDaoImplJDBCTestMain {
 	
 	ApplicationContext applicationContext = new ClassPathXmlApplicationContext("com/itwill3/dao/user/3.user_dao_jdbc.xml");
 	UserDao userDao = (UserDao)applicationContext.getBean("userDao");
-	/*
-	userDao.create(new User(null, null, null, null));
-	userDao.findUser(null);
-	userDao.findUserList();
-	 */
+	
+	//userDao.create(new User(null, null, null, null));
+	//userDao.findUser("summer");
+	//userDao.findUserList();
+	
+	System.out.println("### "+userDao.findUser("summer"));
+	System.out.println("### "+userDao.findUserList());
+	
 	}
 
 }

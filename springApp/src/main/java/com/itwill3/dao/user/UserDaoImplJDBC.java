@@ -10,9 +10,6 @@ import javax.sql.DataSource;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 
-
-
-
 /*
  사용자관리에서 데이타베이스와의 작업을 전담하는 클래스
  USERINFO 테이블에 사용자를 추가,삭제,검색,수정등의 작업을한다.
@@ -23,17 +20,15 @@ public class UserDaoImplJDBC implements UserDao {
 	 */
 	private DataSource dataSource;
 
-	public UserDaoImplJDBC() throws Exception {
-		Properties properties=new Properties();
-		properties.load(UserDaoImplJDBC.class.getResourceAsStream("/jdbc.properties"));
-		/*****Apache DataSource[commons-dbcp2]***/
-		BasicDataSource basicDataSource=new BasicDataSource();
-		basicDataSource.setDriverClassName(properties.getProperty("driverClassName"));
-		basicDataSource.setUrl(properties.getProperty("url"));
-		basicDataSource.setUsername(properties.getProperty("username"));
-		basicDataSource.setPassword(properties.getProperty("password"));
-		this.dataSource=basicDataSource;
+	public UserDaoImplJDBC() {
+
 	}
+	
+	public void setDataSource(DataSource dataSource) {
+		this.dataSource = dataSource;
+	}
+
+
 
 	/*
 	 * 사용자관리테이블에 새로운사용자생성

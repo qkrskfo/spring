@@ -5,12 +5,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.itwill.summer.Controller;
 import com.itwill.user.UserService;
+import com.itwill.user.UserServiceImpl;
 
 public class UserRemoveActionMyInfoController implements Controller {
 	private UserService userService;
 
 	public UserRemoveActionMyInfoController() throws Exception {
-		userService = new UserService();
+		userService = new UserServiceImpl();
 	}
 
 	@Override

@@ -6,12 +6,13 @@ import javax.servlet.http.HttpServletResponse;
 import com.itwill.summer.Controller;
 import com.itwill.user.User;
 import com.itwill.user.UserService;
+import com.itwill.user.UserServiceImpl;
 
 public class UserModifyFormMyInfoController implements Controller {
 	private UserService userService;
 
 	public UserModifyFormMyInfoController() throws Exception {
-		userService = new UserService();
+		userService = new UserServiceImpl();
 	}
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {

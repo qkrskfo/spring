@@ -8,7 +8,10 @@ import com.itwill.guest.GuestService;
 import com.itwill.summer.Controller;
 
 public class GuestModifyFormController implements Controller {
-
+	private GuestService guestService;
+	public GuestModifyFormController() {
+		guestService=new GuestService();
+	}
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
 		String forwardPath="";
@@ -17,7 +20,6 @@ public class GuestModifyFormController implements Controller {
 		}else {
 			try {
 				String guest_noStr=request.getParameter("guest_no");
-				GuestService guestService=new GuestService();
 				Guest guest=guestService.selectByNo(Integer.parseInt(guest_noStr));
 				request.setAttribute("guest",guest);
 				forwardPath="forward:/WEB-INF/view/guest_modify_form.jsp";

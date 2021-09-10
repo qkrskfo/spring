@@ -7,7 +7,10 @@ import com.itwill.guest.GuestService;
 import com.itwill.summer.Controller;
 
 public class GuestRemoveActionController implements Controller {
-
+	private GuestService guestService;
+	public GuestRemoveActionController() {
+		guestService=new GuestService();
+	}
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
 		String forwardPath="";
@@ -16,7 +19,6 @@ public class GuestRemoveActionController implements Controller {
 		}else {
 			try {
 				String guest_noStr = request.getParameter("guest_no");
-				GuestService guestService = new GuestService();
 				guestService.deleteGuest(Integer.parseInt(guest_noStr));
 				forwardPath="redirect:guest_list.do";
 			} catch (Exception e) {

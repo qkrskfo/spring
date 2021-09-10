@@ -8,7 +8,10 @@ import com.itwill.guest.GuestService;
 import com.itwill.summer.Controller;
 
 public class GuestModifyActionController implements Controller {
-
+	private GuestService guestService;
+	public GuestModifyActionController() {
+		guestService=new GuestService();
+	}
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
 		String forwardPath="";
@@ -27,7 +30,7 @@ public class GuestModifyActionController implements Controller {
 						Integer.parseInt(guest_noStr),guest_name,
 						null,guest_email,guest_homepage,
 						guest_title,guest_content);
-				int updateRowCount = new GuestService().updateGuest(updateGuest);
+				int updateRowCount = guestService.updateGuest(updateGuest);
 				forwardPath="redirect:guest_view.do?guest_no="+guest_noStr;
 			} catch (Exception e) {
 				e.printStackTrace();

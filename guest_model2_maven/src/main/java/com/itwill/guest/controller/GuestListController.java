@@ -10,10 +10,15 @@ import com.itwill.guest.GuestService;
 import com.itwill.summer.Controller;
 
 public class GuestListController implements Controller{
+	private GuestService guestService;
+	
+	public GuestListController() {
+		guestService=new GuestService();
+	}
+	
 	public String handleRequest(HttpServletRequest request,HttpServletResponse response) {
 		String forwardPath="";
 		try{
-			GuestService guestService=new GuestService();
 			ArrayList<Guest> guestList=guestService.selectAll();
 			request.setAttribute("guestList", guestList);
 			forwardPath = "forward:/WEB-INF/view/guest_list.jsp";

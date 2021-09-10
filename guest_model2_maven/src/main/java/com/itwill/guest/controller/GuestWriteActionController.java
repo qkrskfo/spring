@@ -9,6 +9,11 @@ import com.itwill.summer.Controller;
 
 public class GuestWriteActionController implements Controller {
 
+	private GuestService guestService;
+	public GuestWriteActionController() {
+		guestService = new GuestService();
+	}
+	
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
 		String forwardPath="";
@@ -23,7 +28,7 @@ public class GuestWriteActionController implements Controller {
 				String guest_title = request.getParameter("guest_title");
 				String guest_content = request.getParameter("guest_content");
 				Guest guest = new Guest(0, guest_name, null, guest_email, guest_homepage, guest_title, guest_content);
-				GuestService guestService = new GuestService();
+				//GuestService guestService = new GuestService();
 				int insertRowCount = guestService.insertGuest(guest);
 				int pk = guest.getGuest_no();
 				//forwardPath="redirect:guest_list.do";

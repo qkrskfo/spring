@@ -8,10 +8,10 @@ import java.util.ArrayList;
  * - Dao를 이용해서 데이타베이스를 조작작업(CRUD)하는 클래스
  */
 public class UserService {
-	private UserDao userDao;
+	private UserDaoImple userDao;
 
 	public UserService() throws Exception {
-		userDao = new UserDao();
+		userDao = new UserDaoImple();
 	}
 	/*
 	 * 회원가입

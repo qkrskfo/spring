@@ -10,7 +10,7 @@ public class SpringDataSourceMain {
 		 *  - Spring Container객체생성
 		 */
 		System.out.println("------------Spring Container초기화시작----------------");
-		ApplicationContext applicationContext=new ClassPathXmlApplicationContext("applicationContext.xml");
+		ApplicationContext applicationContext=new ClassPathXmlApplicationContext("com/itwill3/dao/3.spring_datasource.xml");
 		System.out.println("------------Spring Container초기화끝------------------");
 
 	}

@@ -7,7 +7,7 @@ B. mybatis-config.xml 파일생성(복사)[/src 디렉토리에(classpath root�
    		<properties resource="jdbc.properties"/>
    B-3. mybatis-config.xml과 jdbc.properties 파일을 /src(classpath root위치) 디렉토리에 위치시킨다.
 
-C. com/itwill/guest/mapper/ 디렉토리에 UserMapper.xml 파일 생성 
+C. com/itwill/user/mapper/ 디렉토리에 UserMapper.xml 파일 생성 
 
 D. mybatis-config.xml 파일에 mapper설정
 	 	<mappers>

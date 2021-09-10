@@ -2,32 +2,16 @@ package com.itwill.guest;
 
 import java.util.ArrayList;
 
-public class GuestService {
-	private GuestDao guestDao;
+public interface GuestService {
 
-	public GuestService() {
-		//this.guestDao = new GuestDaoImplJDBC();
-		this.guestDao = new GuestDaoImplMyBatis();
-	}
+	int insertGuest(Guest guest) throws Exception;
 
-	public int insertGuest(Guest guest) throws Exception {
-		return guestDao.insertGuest(guest);
-	}
+	Guest selectByNo(int no) throws Exception;
 
-	public Guest selectByNo(int no) throws Exception {
-		return guestDao.selectByNo(no);
-	}
+	ArrayList<Guest> selectAll() throws Exception;
 
-	public ArrayList<Guest> selectAll() throws Exception {
-		return guestDao.selectAll();
-	}
+	int updateGuest(Guest guest) throws Exception;
 
-	public int updateGuest(Guest guest) throws Exception {
-		return guestDao.updateGuest(guest);
-	}
-
-	public int deleteGuest(int no) throws Exception {
-		return guestDao.deleteGuest(no);
-	}
+	int deleteGuest(int no) throws Exception;
 
 }

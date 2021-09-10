@@ -25,9 +25,9 @@ try {
 	String guest_title=request.getParameter("guest_title");
 	String guest_content=request.getParameter("guest_content");
 	Guest updateGuest = new Guest(
-			Integer.parseInt(guest_noStr),guest_name,
-			null,guest_email,guest_homepage,
-			guest_title,guest_content);
+	Integer.parseInt(guest_noStr),guest_name,
+	null,guest_email,guest_homepage,
+	guest_title,guest_content);
 	
 	int updateRowCount = new GuestService().updateGuest(updateGuest);
 	response.sendRedirect("guest_view.jsp?guest_no="+guest_noStr);

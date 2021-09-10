@@ -5,12 +5,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.itwill.guest.Guest;
 import com.itwill.guest.GuestService;
+import com.itwill.guest.GuestServiceImpl;
 import com.itwill.summer.Controller;
 
 public class GuestModifyActionController implements Controller {
 	private GuestService guestService;
 	public GuestModifyActionController() {
-		guestService=new GuestService();
+		guestService=new GuestServiceImpl();
 	}
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {

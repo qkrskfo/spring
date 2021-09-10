@@ -15,6 +15,11 @@ public class GuestDaoImplJDBC implements GuestDao {
 		
 	}
 
+	public void setDataSource(DataSource dataSource) {
+		this.dataSource = dataSource;
+	}
+
+
 	@Override
 	public int insertGuest(Guest guest) throws Exception {
 		Connection con=dataSource.getConnection();

@@ -15,8 +15,9 @@
 		<property name="password" value="${jdbc.password}"/>
 	</bean>
 	
-	<!-- GuestDao -->
-	<bean id="GuestDao" class="com.itwill3.dao.guest.GuestDaoImplJDBC">
+	<!-- GuestDao 생성, Datasource객체 setter injection-->
+	<bean id="guestDao" class="com.itwill3.dao.guest.GuestDaoImplJDBC">
+		<property name="dataSource" ref="dataSource" />
 	</bean>
 
 </beans>

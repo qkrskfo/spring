@@ -49,15 +49,13 @@
 			<version>1.7.25</version>
 			<scope>test</scope>
 		</dependency>
-
-
-		<!-- 2.oracle driver -->
-		<!-- https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc6 -->
+		<!-- oracle driver -->
 		<dependency>
 		    <groupId>com.oracle.database.jdbc</groupId>
 		    <artifactId>ojdbc6</artifactId>
 		    <version>11.2.0.4</version>
 		</dependency>
+
 
 	</dependencies>
 

@@ -26,7 +26,7 @@
 		</environment>
 	</environments>
 	<mappers>
-		<mapper resource="com/itwill/guest/mapper/GuestMapper.xml" />
+		
 	</mappers>
 </configuration>
 

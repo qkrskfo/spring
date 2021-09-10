@@ -6,7 +6,7 @@
 		    <version>1.2.17</version>
 		</dependency>
 ##################### oracle driver ####################			
-		<!-- 1. oracle driver -->
+		<!-- 1.oracle driver -->
 		<dependency>
 			<groupId>com.oracle</groupId>
 			<artifactId>ojdbc6</artifactId>
@@ -20,7 +20,7 @@
 			</repository>
 		</repositories>
 		
-		<!-- 2. oracle driver -->
+		<!-- 2.oracle driver -->
 		<!-- https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc6 -->
 		<dependency>
 		    <groupId>com.oracle.database.jdbc</groupId>

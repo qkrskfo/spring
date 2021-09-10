@@ -156,7 +156,7 @@
         
 
 
-      <Context docBase="guest_model2_el_jstl_mybatis" path="/guest_model2_el_jstl_mybatis" reloadable="true" source="org.eclipse.jst.jee.server:guest_model2_el_jstl_mybatis"/><Context docBase="guest_model2_maven" path="/guest_model2_maven" reloadable="true" source="org.eclipse.jst.jee.server:guest_model2_maven"/></Host>
+      <Context docBase="guest_model2_el_jstl_mybatis" path="/guest_model2_el_jstl_mybatis" reloadable="true" source="org.eclipse.jst.jee.server:guest_model2_el_jstl_mybatis"/><Context docBase="guest_model2_maven" path="/guest_model2_maven" reloadable="true" source="org.eclipse.jst.jee.server:guest_model2_maven"/><Context docBase="user_model2_el_jstl_mybatis" path="/user_model2_el_jstl_mybatis" reloadable="true" source="org.eclipse.jst.jee.server:user_model2_el_jstl_mybatis"/></Host>
     </Engine>
   </Service>
 </Server>

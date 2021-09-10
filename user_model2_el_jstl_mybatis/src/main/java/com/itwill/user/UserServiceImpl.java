@@ -11,7 +11,8 @@ public class UserServiceImpl implements UserService {
 	private UserDao userDao;
 
 	public UserServiceImpl() throws Exception {
-		userDao = new UserDaoImplJDBC();
+		//userDao = new UserDaoImplJDBC();
+		userDao = new UserDaoImplMyBatis();
 	}
 	/*
 	 * 회원가입

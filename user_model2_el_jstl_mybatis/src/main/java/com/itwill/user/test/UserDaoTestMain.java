@@ -2,12 +2,12 @@ package com.itwill.user.test;
 
 import com.itwill.user.User;
 import com.itwill.user.UserDao;
-import com.itwill.user.UserDaoImple;
+import com.itwill.user.UserDaoImplJDBC;
 
 public class UserDaoTestMain {
 
 	public static void main(String[] args) throws Exception{
-		UserDao userDao=new UserDaoImple();
+		UserDao userDao=new UserDaoImplJDBC();
 		System.out.println("1.insert:"+
 				userDao.create(new User("guard1", "1111", "경호", "guard@gmail.com")));
 		User updateUser = new User("guard1", "1111", "공경호", "change@gmail.com");

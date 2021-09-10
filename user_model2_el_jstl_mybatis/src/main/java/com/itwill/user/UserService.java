@@ -11,7 +11,7 @@ public class UserService {
 	private UserDao userDao;
 
 	public UserService() throws Exception {
-		userDao = new UserDaoImple();
+		userDao = new UserDaoImplJDBC();
 	}
 	/*
 	 * 회원가입

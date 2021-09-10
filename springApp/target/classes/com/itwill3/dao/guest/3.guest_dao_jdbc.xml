@@ -7,6 +7,7 @@
 
 	<!-- jdbc.properties 파일 로딩 -->
 	<context:property-placeholder location="classpath:jdbc.properties" />
+	
 	<!-- DataSource[Apache] -->
 	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
 		<property name="driverClassName" value="${jdbc.driverClassName}" />

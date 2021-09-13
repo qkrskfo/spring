@@ -4,7 +4,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 
-public class SpringUserDaoImplMyBatisMain {
+public class SpringUserDaoImplMyBatisTestMain {
 
 	public static void main(String[] args)  throws Exception{
 		ApplicationContext applicationContext=

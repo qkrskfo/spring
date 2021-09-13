@@ -4,10 +4,8 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
-		
 	<!-- jdbc.properties파일 로딩 -->
 	<context:property-placeholder location="classpath:jdbc.properties"/>
-	
 	<!-- DataSource[Apache] 객체생성-->
 	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
 		<property name="driverClassName"  value="${jdbc.driverClassName}"/>
@@ -16,26 +14,23 @@
 		<property name="password"  value="${jdbc.password}"/>
 	</bean>
 	
-	 
 	<bean  id="sqlSessionFactory" 
 			class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="apacheDataSource"/>
+		<property name="dataSource" ref="dataSource"/>
 		<property name="mapperLocations">
 			<list>
 				<value>com/itwill3/dao/user/mapper/UserMapper.xml</value>
 			</list>
 		</property>          
 	</bean>
-	
 	<bean id="sqlSession" 
 			class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="sqlSessionFactory"/>
 	</bean>
 	
-	
 	<bean id="userDao" class="com.itwill3.dao.user.UserDaoImplMyBatis">
 		<property name="sqlSession" ref="sqlSession"/>
-	</bean> 
+	</bean>
 	
-
+	
 </beans>

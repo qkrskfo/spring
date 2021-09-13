@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 import org.apache.ibatis.session.SqlSession;
 
-public class UserDaoImplMybatis implements UserDao {
-
+public class UserDaoImplMyBatis implements UserDao{
 	private SqlSession sqlSession;
+	
 	
 	public void setSqlSession(SqlSession sqlSession) {
 		this.sqlSession = sqlSession;
@@ -48,6 +48,4 @@ public class UserDaoImplMybatis implements UserDao {
 		return false;
 	}
 
-	
-	
 }

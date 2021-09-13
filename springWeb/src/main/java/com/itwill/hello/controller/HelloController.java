@@ -15,7 +15,9 @@ public class HelloController implements Controller {
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("### HelloController.handleRequest() 호출");
-		return null;
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("forward:/WEB-INF/views/hello.jsp");
+		return mv;
 	}
 	
 	

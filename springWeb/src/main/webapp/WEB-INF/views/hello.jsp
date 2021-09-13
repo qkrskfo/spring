@@ -15,10 +15,10 @@
 	    HelloController객체얻기
 	 </li>
 	 <li>
-	 	DispatcherServlet이 HelloController객체의 HandleRequest메쏘드 호출	
+	 	DispatcherServlet이 HelloController객체의 handleRequest메쏘드 호출	
 	 </li> 
 	 <li>
-	 	DispatcherServlet이 HelloController객체의 HandleRequest메쏘드 호출후 
+	 	DispatcherServlet이 HelloController객체의 handleRequest메쏘드 호출후 
 	 	반환된 forwardPath로 forwarding..
 	 </li>  
 	 <li>

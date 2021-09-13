@@ -1,5 +1,7 @@
 package com.itwill3.dao;
 
+import java.util.List;
+
 import javax.sql.DataSource;
 
 import org.springframework.context.ApplicationContext;
@@ -32,10 +34,31 @@ public class SpringJdbcTemplateMain {
 		System.out.println("---------------JdbcTemplate.update[insert]--------------");
 		//int insertRowCount = jdbcTemplate.update(USER_INSERT,"aaaa","1111","에이에이","a@gmail.com");
 		//System.out.println("insert row count:"+insertRowCount);
-		System.out.println("---------------JdbcTemplate.queryForObject[select one]");
-		User user = jdbcTemplate.queryForObject( USER_SELECT_BY_ID,new Object[]{"aaaa"}, new BeanPropertyRowMapper<User>(User.class)); 
+		System.out.println("---------------JdbcTemplate.update[update]--------------");
+		int updateRowCount=jdbcTemplate.update(USER_UPDATE,"aaaa","에이수정","achange@gmail.com","aaaa");
+		System.out.println("update row count:"+updateRowCount);
+		System.out.println("---------------JdbcTemplate.update[delete]--------------");
+		//int deleteRowCount=jdbcTemplate.update(USER_REMOVE,"aaaa");
+		//System.out.println("delete row count:"+deleteRowCount);
+		
+		
+		
+		System.out.println("---------------JdbcTemplate.queryForObject[select one(DTO)]");
+		User user = jdbcTemplate.queryForObject( USER_SELECT_BY_ID,new Object[]{"aaaa"}, 
+					new BeanPropertyRowMapper<User>(User.class)); 
+		/*
+		 * BeanPropertyRowMapper객체
+		 *  1. sql문실행 
+		 *  2. User객체생성
+		 *  3. 컬럼의이름과일치하는 User객체 property에 데이타를  setting
+		 */
 		System.out.println(user);
+		System.out.println("---------------JdbcTemplate.queryForObject[select one(Integer)]");
+		Integer count =jdbcTemplate.queryForObject(USER_SELECT_BY_ID_COUNT, new Object[]{"aaaa"},Integer.class);
+		System.out.println("count:"+count);
 		System.out.println("---------------JdbcTemplate.query[select many]");
-	
+		List<User> userList=jdbcTemplate.query(USER_SELECT_ALL,new BeanPropertyRowMapper<User>(User.class));
+		System.out.println(userList);
 	}
+
 }

@@ -2,7 +2,15 @@ package com.itwill3.dao.user;
 
 import java.util.ArrayList;
 
+import org.apache.ibatis.session.SqlSession;
+
 public class UserDaoImplMybatis implements UserDao {
+
+	private SqlSession sqlSession;
+	
+	public void setSqlSession(SqlSession sqlSession) {
+		this.sqlSession = sqlSession;
+	}
 
 	@Override
 	public int create(User user) throws Exception {

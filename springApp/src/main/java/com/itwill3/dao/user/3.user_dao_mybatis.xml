@@ -29,13 +29,13 @@
 	
 	<bean id="sqlSession" 
 			class="org.mybatis.spring.SqlSessionTemplate">
-		<constructor-arg index="0" ref="sqlSessionFactory"/>
+		<constructor-arg ref="sqlSessionFactory"/>
 	</bean>
 	
-	<!-- 
-	<bean id="userDao" class="com.itwill.user.UserDaoImplMyBatis">
+	
+	<bean id="userDao" class="com.itwill3.dao.user.UserDaoImplMyBatis">
 		<property name="sqlSession" ref="sqlSession"/>
 	</bean> 
-	 -->
+	
 
 </beans>

@@ -1,3 +1,14 @@
+0. pom.xml파일 project name변경(contextPath)
+	<project ...>
+		...
+		<groupId>com.itwill</groupId>
+		<artifactId>springWeb</artifactId>
+		<name>springWeb</name>
+		...
+	</project>
+
+
+
 1. pom.xml파일 java compiler설정
 
    A.java.version 와 spring-framework.version 설정

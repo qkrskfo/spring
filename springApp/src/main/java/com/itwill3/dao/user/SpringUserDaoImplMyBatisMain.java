@@ -8,8 +8,9 @@ public class SpringUserDaoImplMyBatisMain {
 
 	public static void main(String[] args)  throws Exception{
 		ApplicationContext applicationContext=
-				new ClassPathXmlApplicationContext("com/itwill3/dao/user/3.user_dao_springdao.xml");
+				new ClassPathXmlApplicationContext("com/itwill3/dao/user/3.user_dao_mybatis.xml");
 		UserDao userDao=(UserDao)applicationContext.getBean("userDao");
+		/*
 		System.out.println("-------userDao.findUserList()------");
 		System.out.println(userDao.findUserList());
 		System.out.println("-------userDao.create()------");
@@ -22,6 +23,7 @@ public class SpringUserDaoImplMyBatisMain {
 		System.out.println("-------userDao.remove()------");
 		System.out.println(userDao.remove("vvvv"));
 		System.out.println(userDao.findUserList());
+		*/
 
 	}
 

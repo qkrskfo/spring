@@ -1,0 +1,12 @@
+A.spring-webmvc-4.3.25.RELEASE.jar라이브러리다운로드후 
+  context/WEB-INF/lib 폴더에위치시킨다.(spring-webmvc-4.3.25.RELEASE.jar)
+B.mvc-config.xml 파일생성(요청url -->Controller)
+C.모든클라이언트요청(*.do)을 실행하도록 web.xml DispatcherServlet 설정
+D.contoller설정파일위치파라메타등록
+
+	  
+E.인코딩필터클래스설정  web.xml설정	  
+
+		
+F. Controller작성(Controller interface implement)
+G. properties파일에설정(mapping)

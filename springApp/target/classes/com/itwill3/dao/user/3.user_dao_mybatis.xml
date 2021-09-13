@@ -22,15 +22,17 @@
 		<property name="dataSource" ref="apacheDataSource"/>
 		<property name="mapperLocations">
 			<list>
-				<value>com/itwill/user/mapper/UserMapper.xml</value>
+				<value>com/itwill3/dao/user/mapper/UserMapper.xml</value>
 			</list>
 		</property>          
 	</bean>
-	<!-- 
+	
 	<bean id="sqlSession" 
 			class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg index="0" ref="sqlSessionFactory"/>
 	</bean>
+	
+	<!-- 
 	<bean id="userDao" class="com.itwill.user.UserDaoImplMyBatis">
 		<property name="sqlSession" ref="sqlSession"/>
 	</bean> 

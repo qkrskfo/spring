@@ -25,7 +25,7 @@
 	 	/WEB-INF/views/hello.jsp 응답
 	 </li>
 	 
-	 <li>Controller객체에서 요청객체에 설정된 속성객체출력:${hello.msg}</li>
+	 <li>Controller객체에서 요청객체에 설정된 속성객체출력:${msg}</li>
 </ol>
 </body>
 </html>

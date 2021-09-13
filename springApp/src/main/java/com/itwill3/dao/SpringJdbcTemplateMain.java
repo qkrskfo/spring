@@ -1,6 +1,7 @@
 package com.itwill3.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.sql.DataSource;
 
@@ -38,10 +39,8 @@ public class SpringJdbcTemplateMain {
 		int updateRowCount=jdbcTemplate.update(USER_UPDATE,"aaaa","에이수정","achange@gmail.com","aaaa");
 		System.out.println("update row count:"+updateRowCount);
 		System.out.println("---------------JdbcTemplate.update[delete]--------------");
-		//int deleteRowCount=jdbcTemplate.update(USER_REMOVE,"aaaa");
-		//System.out.println("delete row count:"+deleteRowCount);
-		
-		
+		int deleteRowCount=jdbcTemplate.update(USER_REMOVE,"asdf");
+		System.out.println("delete row count:"+deleteRowCount);
 		
 		System.out.println("---------------JdbcTemplate.queryForObject[select one(DTO)]");
 		User user = jdbcTemplate.queryForObject( USER_SELECT_BY_ID,new Object[]{"aaaa"}, 
@@ -59,6 +58,22 @@ public class SpringJdbcTemplateMain {
 		System.out.println("---------------JdbcTemplate.query[select many]");
 		List<User> userList=jdbcTemplate.query(USER_SELECT_ALL,new BeanPropertyRowMapper<User>(User.class));
 		System.out.println(userList);
+		System.out.println("*************************** MAP **********************************");
+		System.out.println("---------------JdbcTemplate.queryForMap[select one]");
+		Map rowMap=jdbcTemplate.queryForMap(USER_SELECT_BY_ID,"aaaa");
+		System.out.println(rowMap);
+		String userId = (String)rowMap.get("USERID");
+		String password = (String)rowMap.get("PASSWORD");
+		String name = (String)rowMap.get("NAME");
+		String email = (String)rowMap.get("EMAIL");
+		System.out.println("rowMap-->"+userId+" "+password+" "+name+" "+email);
+		
+		System.out.println("--- JdbTemplate.queryForList[selet many map]");
+		List<Map<String,Object>> rowMapList = jdbcTemplate.queryForList(USER_SELECT_ALL);
+		for(Map<String, Object> tempRowMap : rowMapList) {
+			System.out.println("rowMap --> "+tempRowMap);
+		}
+		
 	}
 
 }

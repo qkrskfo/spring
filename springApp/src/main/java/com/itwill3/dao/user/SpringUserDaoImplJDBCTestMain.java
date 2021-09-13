@@ -16,7 +16,7 @@ public class SpringUserDaoImplJDBCTestMain {
 	
 	System.out.println("### "+userDao.findUser("summer"));
 	System.out.println("### "+userDao.findUserList());
-	System.out.println("### "+userDao.create(new User("summer5", "5555", "인서트", "1004@dddd.com")));
+	//System.out.println("### "+userDao.create(new User("summer5", "5555", "인서트", "1004@dddd.com")));
 	System.out.println("### "+userDao.remove("summer4"));
 	System.out.println("### "+userDao.update(new User("summer3", "3333", "수정", "test@ddd.com")));
 	

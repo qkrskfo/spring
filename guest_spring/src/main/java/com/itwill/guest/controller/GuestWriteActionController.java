@@ -26,24 +26,22 @@ public class GuestWriteActionController implements Controller {
 		String forwardPath = "";
 		if (request.getMethod().equalsIgnoreCase("GET")) {
 			forwardPath="redirect:guest_main.do";
-			return new ModelAndView(forwardPath);
+		} else {
+			try {
+				String guest_name = request.getParameter("guest_name");
+				String guest_email = request.getParameter("guest_email");
+				String guest_homepage = request.getParameter("guest_homepage");
+				String guest_title = request.getParameter("guest_title");
+				String guest_content = request.getParameter("guest_content");
+				Guest guest = new Guest(0, guest_name, null, guest_email, guest_homepage, guest_title, guest_content);
+				int insertRowCount = guestService.insertGuest(guest);
+				int pk = guest.getGuest_no();
+				System.out.println(pk);
+				forwardPath="redirect:guest_view.do?guest_no="+pk;
+			} catch (Exception e) {
+				forwardPath="redirect:guest_error.do";
+			}
 		}
-		
-		try {
-			String guest_name = request.getParameter("guest_name");
-			String guest_email = request.getParameter("guest_email");
-			String guest_homepage = request.getParameter("guest_homepage");
-			String guest_title = request.getParameter("guest_title");
-			String guest_content = request.getParameter("guest_content");
-			Guest guest = new Guest(0, guest_name, null, guest_email, guest_homepage, guest_title, guest_content);
-			int insertRowCount = guestService.insertGuest(guest);
-			int pk = guest.getGuest_no();
-			System.out.println(pk);
-			forwardPath="redirect:guest_view.do?guest_no="+pk; //이 부분이 안되네..
-		} catch (Exception e) {
-			forwardPath="redirect:guest_error.do";
-		}
-	
 		return new ModelAndView(forwardPath);
 	}
 

@@ -10,7 +10,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 public class UserDaoImpl implements UserDao {
 	
-	// 이 3개 중에 하나를 가지겠찌?
 	private DataSource dataSource;
 	//private JdbcTemplate jdbcTemplate;
 	//private SqlSession sqlSession;
@@ -18,13 +17,11 @@ public class UserDaoImpl implements UserDao {
 	public UserDaoImpl() {
 		System.out.println("#### UserDaoImpl() : 디폴트생성자 호출  ");
 	}
-
+	
 	public void setDataSource(DataSource dataSource) {
-		System.out.println("#### UserDaoImpl setDataSource() 호출  ");
+		System.out.println("#### UserDaoImpl.setDataSource("+dataSource+") : 메쏘드호출  ");
 		this.dataSource = dataSource;
 	}
-
-
 
 	/*
 	 * 사용자관리테이블에 새로운사용자생성
@@ -83,7 +80,7 @@ public class UserDaoImpl implements UserDao {
 	 */
 	@Override
 	public List<User> findUserList() throws Exception {
-		System.out.println("#### UserDaoImpl : findUserList() 호출  ");
+		System.out.println("#### UserDaoImpl : findUserList 호출  ");
 		return null;
 	}
 	/*

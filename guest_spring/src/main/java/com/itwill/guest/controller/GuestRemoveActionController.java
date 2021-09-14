@@ -11,6 +11,10 @@ import com.itwill.guest.GuestService;
 public class GuestRemoveActionController implements Controller {
 	private GuestService guestService;
 	
+	public GuestRemoveActionController() {
+
+	}
+	
 	public void setGuestService(GuestService guestService) {
 		this.guestService = guestService;
 	}

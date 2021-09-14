@@ -13,6 +13,10 @@ public class GuestWriteActionController implements Controller {
 
 	private GuestService guestService;
 	
+	public GuestWriteActionController() {
+		
+	}
+	
 	public void setGuestService(GuestService guestService) {
 		this.guestService = guestService;
 	}

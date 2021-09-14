@@ -13,6 +13,10 @@ public class GuestModifyActionController implements Controller {
 
 	private GuestService guestService;
 	
+	public GuestModifyActionController() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	public void setGuestService(GuestService guestService) {
 		this.guestService = guestService;
 	}

@@ -39,7 +39,7 @@
 		</servlet-mapping>
 	
 	
-	E.인코딩필터클래스설정  web.xml설정	  
+	F.인코딩필터클래스설정  web.xml설정	  
 		<filter>
 	    	<filter-name>encodingFilter</filter-name>
 		    <filter-class>
@@ -56,9 +56,9 @@
 		</filter-mapping>
 			
 	
-	F. Controller작성(Controller interface implement)
+	G. Controller작성(Controller interface implement)
 	
-	G. properties파일에설정(mapping)
+	H. properties파일에설정(mapping)
 	
 	
 	

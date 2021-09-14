@@ -18,12 +18,26 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 
+	<!-- ApplicationContext[Beanfactory] 객체 생성 시 필요한 설정파일 -->
+	<context-param>
+		 <param-name>contextConfigLocation</param-name>
+		 <param-value>classpath:spring/application-config.xml</param-value>
+	</context-param>
+	<!-- 
+		Context가 시작될 때 contextConfigLocation에 설정된 application-config.xml 파일을 사용해서
+		ApplicationContext[BeanFactory] 객체를 생성
+	
+	 -->
+	<listner>
+		<listner-class>org.springframework.web.context.ContextLoaderListner</listner-class>
+	</listner>
 	<servlet>
 		<servlet-name>dispatcher</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet
 		</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
+			<!-- WebApplicationContext[Beanfactory] 객체 생성 시 필요한 파일 -->
 			<param-value>classpath:spring/mvc-config.xml</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>

@@ -5,13 +5,19 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import javax.sql.DataSource;
+
 
 
 public class GuestDaoImplJDBC implements GuestDao {
 	private DataSource dataSource;
 
 	public GuestDaoImplJDBC() {
-		this.dataSource = new DataSource();
+		
+	}
+	
+	public void setDataSource(DataSource dataSource) {
+		this.dataSource = dataSource;
 	}
 
 	@Override

@@ -22,7 +22,7 @@
 			<version>2.1.1</version>
 		</dependency>
 
-############# spring-jdbc[SqlSessinTemplate] ###############		
+############# spring-jdbc[SqlSessinTemplate, SpringDataSource] ###############		
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>

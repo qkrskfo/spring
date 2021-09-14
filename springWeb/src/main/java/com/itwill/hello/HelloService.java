@@ -1,5 +1,7 @@
 package com.itwill.hello;
 
+import java.util.List;
+
 public class HelloService {
 	private HelloDao helloDao;
 	public HelloService() {
@@ -10,9 +12,9 @@ public class HelloService {
 		this.helloDao = helloDao;
 	}
 	
-	public void helloList() {
+	public List<HelloDto> helloList() {
 		System.out.println("B . ### HelloService.helloList()메쏘드호출");
-		helloDao.helloList();
+		return helloDao.helloList();
 	}
 	
 	

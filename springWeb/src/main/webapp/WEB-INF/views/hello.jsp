@@ -16,10 +16,10 @@
 	    HelloController객체얻기
 	 </li>
 	 <li>
-	 	DispatcherServlet이 HelloController객체의 handleRequest메쏘드 호출	
-	 		A . ### HelloController.handleRequest()호출
-			B . ### HelloService.hello()메쏘드호출
-			C . ### HelloDao.hello()메쏘드호출
+	 	DispatcherServlet이 HelloController객체의 handleRequest메쏘드 호출<br>
+	 		A . ### HelloController.handleRequest()호출<br>
+			B . ### HelloService.hello()메쏘드호출<br>
+			C . ### HelloDao.hello()메쏘드호출<br>
 	 </li> 
 	 <li>
 	 	DispatcherServlet이 HelloController객체의 handleRequest메쏘드 호출후 

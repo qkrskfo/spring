@@ -6,7 +6,11 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
 
+import com.itwill.hello.HelloService;
+
 public class HelloController implements Controller {
+	
+	private HelloService helloService;
 	
 	public HelloController() {
 		System.out.println("### HelloController() 생성자");

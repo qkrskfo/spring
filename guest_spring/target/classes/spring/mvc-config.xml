@@ -34,6 +34,11 @@
 		<property name="guestService" ref="guestService" />
 	</bean>
 	
+	<bean id="guestRemoveActionController" class="com.itwill.guest.controller.GuestRemoveActionController">
+		<property name="guestService" ref="guestService" />
+	</bean>
+	
+	
 	
 	<!-- handler mapping 객체 (공부할때만 쓰는객체) value 에 공백/띄어쓰기 넣지마-->
 	<bean id="handlerMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">

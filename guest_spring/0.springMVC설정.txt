@@ -1,10 +1,14 @@
 	
 	A.spring-webmvc-4.3.25.RELEASE.jar라이브러리다운로드후 
 	  context/WEB-INF/lib 폴더에위치시킨다.(spring-webmvc-4.3.25.RELEASE.jar)
-	  
-	B.mvc-config.xml 파일생성(요청url -->Controller)
+	 
+	B.
+		- application-config.xml 파일생성(DataSource, Dao, Service 객체 설정)
+		- mvc-config.xml 파일생성 (HandlerMapping, Controller)
 	
 	C.web.xml에 모든클라이언트요청(*.do)을 실행하도록 DispatcherServlet 설정
+	
+	D.contoller설정파일위치파라메타등록
 		<servlet>
 			<servlet-name>dispatcher</servlet-name>
 			<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -20,10 +24,9 @@
 			<url-pattern>*.do</url-pattern>
 		</servlet-mapping>
 	
-	D.contoller설정파일위치파라메타등록
 	
 	E.인코딩필터클래스설정  web.xml설정	  
-	<filter>
+		<filter>
 	    	<filter-name>encodingFilter</filter-name>
 		    <filter-class>
 		   			org.springframework.web.filter.CharacterEncodingFilter

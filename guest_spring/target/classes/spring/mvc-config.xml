@@ -15,7 +15,17 @@
 	/guest_error.do=com.itwill.guest.controller.GuestErrorController
 	 -->	
 	<!-- Controller -->
+	<bean id="guestMainController" class="com.itwill.guest.controller.GuestMainController" />
 	
+	<!-- handler mapping 객체 (공부할때만 쓰는객체) value 에 공백/띄어쓰기 넣지마-->
+	<bean id="handlerMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<value>
+				/guest_main.do=guestMainController
+				/guest_write_form.do=guestWriteFormController
+			</value>
+		</property>
+	</bean>
 	
 	
 </beans>

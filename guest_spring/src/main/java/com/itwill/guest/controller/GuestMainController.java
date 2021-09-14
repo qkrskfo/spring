@@ -10,8 +10,8 @@ public class GuestMainController implements Controller {
 
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		ModelAndView modelAndView = new ModelAndView("forward:/WEB-INF/views/");
-		return null;
+		ModelAndView modelAndView = new ModelAndView("forward:/WEB-INF/views/guest_main.jsp");
+		return modelAndView;
 	}
 
 }

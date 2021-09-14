@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.itwill3.dao.user.mapper.UserMapper">
-	<insert id="create" parameterType="com.itwill.user.User">
+	<insert id="create" parameterType="com.itwill3.dao.user.User">
 			insert into userinfo(userid,password,name,email) 
 			values(#{userId},#{password},#{name},#{email})
 	</insert>
-	<update id="update" parameterType="com.itwill.user.User">
+	<update id="update" parameterType="com.itwill3.dao.user.User">
 		update  userinfo 
 		set password=#{password},name=#{name},email=#{email} 
 		where userid=#{userId}
@@ -14,11 +14,11 @@
 		delete userinfo where userid=#{userId}
 	</delete>
 	<select id="findUser" parameterType="java.lang.String"
-						  resultType="com.itwill.user.User"	>
+						  resultType="com.itwill3.dao.user.User"	>
 		select userid,password,name,email from userinfo 
 		where userid=#{userId}
 	</select>
-	<select id="findUserList" resultType="com.itwill.user.User">
+	<select id="findUserList" resultType="com.itwill3.dao.user.User">
 		select userid,password,name,email from userinfo
 	</select>
 	<select id="existedUser" 	parameterType="java.lang.String" 

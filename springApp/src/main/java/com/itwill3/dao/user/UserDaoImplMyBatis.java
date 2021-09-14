@@ -16,7 +16,7 @@ public class UserDaoImplMyBatis implements UserDao{
 
 	@Override
 	public int create(User user) throws Exception {
-		return sqlSession.insert(NAMESPACE+"create");//mapper에 insert id가 create잖아
+		return sqlSession.insert(NAMESPACE+"create", user);//mapper에 insert id가 create잖아
 	}
 
 	@Override
@@ -26,7 +26,7 @@ public class UserDaoImplMyBatis implements UserDao{
 
 	@Override
 	public int remove(String userId) throws Exception {
-		return sqlSession.delete(NAMESPACE+"remove, userId");
+		return sqlSession.delete(NAMESPACE+"remove", userId);
 	}
 
 	@Override

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,7 +29,10 @@
 	 	/WEB-INF/views/hello.jsp 응답
 	 </li>
 	 
-	 <li>Controller객체에서 요청객체에 설정된 속성객체출력:${msg}</li>
+	 <li>Controller객체에서 요청객체에 설정된 속성객체출력:${helloList}</li>
+	 <c:forEach items="${helloList}" var="helloDto">
+	 	<li>${hello.msg}</li>
+	 </c:forEach>
 </ol>
 </body>
 </html>

@@ -16,10 +16,13 @@
 	 </li>
 	 <li>
 	 	DispatcherServlet이 HelloController객체의 handleRequest메쏘드 호출	
+	 		A. ### HelloController.handleRequest()호출
+	 		B. ### HelloService.hello() 메소드 호출
+	 		C. ### HelloDao.hello() 메소드 호출
 	 </li> 
 	 <li>
 	 	DispatcherServlet이 HelloController객체의 handleRequest메쏘드 호출후 
-	 	반환된 forwardPath로 forwarding..
+	 	반환된 forwardPath로 forwarding..(model and view로 되어 있음)
 	 </li>  
 	 <li>
 	 	/WEB-INF/views/hello.jsp 응답

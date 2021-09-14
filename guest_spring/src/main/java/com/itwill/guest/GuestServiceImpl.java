@@ -6,8 +6,7 @@ public class GuestServiceImpl implements GuestService {
 	private GuestDao guestDao;
 
 	public GuestServiceImpl() {
-		//this.guestDao = new GuestDaoImplJDBC();
-		this.guestDao = new GuestDaoImplMyBatis();
+		this.guestDao = new GuestDaoImplJDBC();
 	}
 
 	@Override

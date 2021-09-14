@@ -2,13 +2,28 @@ package com.itwill.user;
 
 import java.util.List;
 
+import javax.sql.DataSource;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.jdbc.core.JdbcTemplate;
+
 
 public class UserDaoImpl implements UserDao {
 	
+	// 이 3개 중에 하나를 가지겠찌?
+	private DataSource dataSource;
+	//private JdbcTemplate jdbcTemplate;
+	//private SqlSession sqlSession;
 	
 	public UserDaoImpl() {
 		System.out.println("#### UserDaoImpl() : 디폴트생성자 호출  ");
 	}
+
+	public void setDataSource(DataSource dataSource) {
+		System.out.println("#### UserDaoImpl setDataSource() 호출  ");
+		this.dataSource = dataSource;
+	}
+
 
 
 	/*

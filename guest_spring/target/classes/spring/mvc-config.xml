@@ -26,6 +26,14 @@
 	<bean id="guestModifyFormController" class="com.itwill.guest.controller.GuestModifyFormController">
 		<property name="guestService" ref="guestService" />
 	</bean>
+	<bean id="guestModifyActionController" class="com.itwill.guest.controller.GuestModifyActionController">
+		<property name="guestService" ref="guestService" />
+	</bean>
+	
+	<bean id="guestWriteActionController" class="com.itwill.guest.controller.GuestWriteActionController">
+		<property name="guestService" ref="guestService" />
+	</bean>
+	
 	
 	<!-- handler mapping 객체 (공부할때만 쓰는객체) value 에 공백/띄어쓰기 넣지마-->
 	<bean id="handlerMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
@@ -36,6 +44,9 @@
 				/guest_list.do=guestListController
 				/guest_view.do=guestViewController
 				/guest_modify_form.do=guestModifyFormController
+				/guest_modify_action.do=guestModifyActionController
+				/guest_write_action.do=guestWriteActionController
+				/guest_remove_action.do=guestRemoveActionController
 			</value>
 		</property>
 	</bean>

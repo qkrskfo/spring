@@ -1,18 +1,14 @@
 package com.itwill.guest.controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
 
-import com.itwill.guest.Guest;
 import com.itwill.guest.GuestService;
 
-public class GuestListController implements Controller {
-
+public class GuestRemoveActionController implements Controller {
 	private GuestService guestService;
 	
 	public void setGuestService(GuestService guestService) {
@@ -21,16 +17,20 @@ public class GuestListController implements Controller {
 
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String forwardPath= "";
-		try {
-			List<Guest> guestList = guestService.selectAll();
-			request.setAttribute("guestList", guestList);
-			forwardPath = "forward:/WEB-INF/views/guest_list.jsp";
-		} catch (Exception e) {
-			e.printStackTrace();
-			forwardPath="forward:/WEB-INF/views/guest_error.jsp";
+		String forwardPath="";
+		if (request.getMethod().equalsIgnoreCase("GET")) {
+			forwardPath="redirect:guest_main.do";
+		}else {
+			try {
+				String guest_noStr = request.getParameter("guest_no");
+				guestService.deleteGuest(Integer.parseInt(guest_noStr));
+				forwardPath="redirect:guest_list.do";
+			} catch (Exception e) {
+				e.printStackTrace();
+				forwardPath="redirect:guest_error.do";
+			}
 		}
-			return new ModelAndView(forwardPath);
+		return new ModelAndView(forwardPath);
 	}
 
 }

@@ -13,27 +13,32 @@ public class GuestModifyFormController implements Controller {
 
 	private GuestService guestService;
 	
+	public GuestModifyFormController() {
+
+	}
+	
 	public void setGuestService(GuestService guestService) {
 		this.guestService = guestService;
 	}
 
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String forwardpath ="";
+		String forwardPath ="";
 		String guest_noStr = request.getParameter("guest_no");
 		
 		try {
 			Guest guest = guestService.selectByNo(Integer.parseInt(guest_noStr));
 			if(guest==null) {
-				forwardpath="redirect:guest_main.do";
+				forwardPath="redirect:guest_main.do";
 			} else {
 			request.setAttribute("guest", guest);
-			forwardpath="forward:/WEB-INF/views/guest_modify_form.jsp";
+			forwardPath="forward:/WEB-INF/views/guest_modify_form.jsp";
 			}
 		} catch (Exception e) {
-			forwardpath="forward:/WEB-INF/views/guest_error.jsp";
+			e.printStackTrace();
+			forwardPath="forward:/WEB-INF/views/guest_error.jsp";
 		}
-		return new ModelAndView(forwardpath);
+		return new ModelAndView(forwardPath);
 	}
 
 }

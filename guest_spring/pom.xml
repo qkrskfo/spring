@@ -9,8 +9,22 @@
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
+		<java-version>1.8</java-version>
 	</properties>
+	
 	<dependencies>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>4.3.25.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>4.3.25.RELEASE</version>
+		</dependency>
+		
+	
 		<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
 		<!-- JSP -->
 		<dependency>
@@ -86,8 +100,8 @@
 				<version>3.8.1</version>
 				<configuration>
 					<!-- 자바컴파일러버젼설정 -->
-					<source>8</source>
-					<target>8</target>
+					<source>${java-version}</source>
+					<target>${java-version}</target>
 					<compilerArgument>-Xlint:all</compilerArgument>
 					<showWarnings>true</showWarnings>
 					<showDeprecation>true</showDeprecation>

@@ -37,7 +37,7 @@ public class GuestWriteActionController implements Controller {
 				int insertRowCount = guestService.insertGuest(guest);
 				int pk = guest.getGuest_no();
 				System.out.println("########## pk가 잘 들어오나요? -->> "+pk);
-				forwardPath="redirect:guest_view.do?guest_no="+pk;
+				forwardPath="redirect:guest_view.do?guest_no="+pk; //이거 왜 안되징 ㅠ.ㅠ
 			} catch (Exception e) {
 				forwardPath="redirect:guest_error.do";
 			}

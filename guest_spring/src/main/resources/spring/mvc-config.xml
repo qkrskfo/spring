@@ -27,6 +27,7 @@
 			<value>
 				/guest_main.do=guestMainController
 				/guest_write_form.do=guestWriteFormController
+				/guest_list.do=guestListController
 			</value>
 		</property>
 	</bean>

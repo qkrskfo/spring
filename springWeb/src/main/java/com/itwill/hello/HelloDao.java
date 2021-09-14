@@ -5,7 +5,7 @@ public class HelloDao {
 		System.out.println("1.#### HelloDao()생성자");
 	}
 	
-	public void hello() {
-		System.out.println("C. ### HelloDao.hello() 메소드 호출");
+	public void helloList() {
+		System.out.println("C . ### HelloDao.helloList()메쏘드호출");
 	}
 }

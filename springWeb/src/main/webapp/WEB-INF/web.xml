@@ -28,9 +28,9 @@
 		ApplicationContext[BeanFactory] 객체를 생성
 	
 	 -->
-	<listner>
-		<listner-class>org.springframework.web.context.ContextLoaderListner</listner-class>
-	</listner>
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
 	<servlet>
 		<servlet-name>dispatcher</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet

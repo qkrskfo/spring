@@ -10,9 +10,7 @@ public class UserServiceClient {
 		ApplicationContext applicationContext = 
 			new ClassPathXmlApplicationContext("99.user.xml");
 		UserService userService = (UserService)applicationContext.getBean("userService");
-		userService.findUser("id");
-		userService.remove("id");
-		userService.findUserList();
+
 		
 		
 	}

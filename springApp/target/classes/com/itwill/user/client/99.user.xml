@@ -13,10 +13,8 @@
 		<property name="username" value="${jdbc.username}"/>
 		<property name="password" value="${jdbc.password}"/>
 	</bean>
-	
 	<bean id="userDao" class="com.itwill.user.UserDaoImpl"/>
-	<bean id="userService" class="com.itwill.user.UserServiceImpl">
-		<property name="userDao" ref="userDao"/>
-	</bean>
+	<bean id="userService" class="com.itwill.user.UserServiceImpl"/>
+		
 	
 </beans>

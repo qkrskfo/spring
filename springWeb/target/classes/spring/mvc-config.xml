@@ -3,7 +3,14 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	
-	<bean id="helloController" class="com.itwill.hello.controller.HelloController" />
+	<bean id="helloDao" class="com.itwill.hello.HelloDao" />
+	<bean id="helloService" class="com.itwill.hello.HelloService">
+		<property name="helloDao" ref="helloDao" />
+	</bean>
+	
+	<bean id="helloController" class="com.itwill.hello.controller.HelloController">
+		<property name="helloService" ref="helloService" />
+	</bean>
 	
 	<bean id="" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<property name="mappings">

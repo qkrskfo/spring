@@ -1,10 +1,12 @@
 package com.itwill3.dao.user;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
 public class UserDaoImplMyBatis implements UserDao{
+	public final static String NAMESPACE="com.itwill3.dao.user.mapper.UserMapper.";
 	private SqlSession sqlSession;
 	
 	
@@ -14,38 +16,39 @@ public class UserDaoImplMyBatis implements UserDao{
 
 	@Override
 	public int create(User user) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.insert(NAMESPACE+"create");//mapper에 insert id가 create잖아
 	}
 
 	@Override
 	public int update(User user) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.update(NAMESPACE+"update", user);
 	}
 
 	@Override
 	public int remove(String userId) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.delete(NAMESPACE+"remove, userId");
 	}
 
 	@Override
 	public User findUser(String userId) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectOne(NAMESPACE+"findUser", userId);
 	}
 
 	@Override
 	public ArrayList<User> findUserList() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		List<User> uList = sqlSession.selectList(NAMESPACE+"findUserList");
+		ArrayList<User> userList = (ArrayList<User>)uList;
+		return userList;
 	}
 
 	@Override
 	public boolean existedUser(String userId) throws Exception {
-		// TODO Auto-generated method stub
-		return false;
+		int count = sqlSession.selectOne(NAMESPACE+"existedUser", userId);
+		if(count==1) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 }

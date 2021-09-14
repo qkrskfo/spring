@@ -17,9 +17,14 @@
 		<property name="password" value="${jdbc.password}" />
 	</bean>
 	
-	<!-- dao설정 -->
+	<!-- dao 설정 -->
 	<bean id="guestDao" class="com.itwill.guest.GuestDaoImplJDBC">
 		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<!-- service 설정 -->
+	<bean id="guestService" class="com.itwill.guest.GuestServiceImpl">
+		<property name="guestDao" ref="guestDao" />
 	</bean>
 
 </beans>

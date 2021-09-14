@@ -22,7 +22,6 @@
 		<property name="mappings">
 			<value>
 				/guest_main.do=guestMainController
-				/guest_write_form.do=guestWriteFormController
 			</value>
 		</property>
 	</bean>

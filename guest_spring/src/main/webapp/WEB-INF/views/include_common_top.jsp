@@ -2,5 +2,5 @@
     pageEncoding="UTF-8"%>
   
 <h1>
-	<a href="">방명록 [model2 el jstl mybatis maven]</a>
+	<a href="">방명록 [spring]</a>
 </h1>

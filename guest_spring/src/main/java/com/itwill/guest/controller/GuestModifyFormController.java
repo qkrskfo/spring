@@ -6,12 +6,34 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
 
+import com.itwill.guest.Guest;
+import com.itwill.guest.GuestService;
+
 public class GuestModifyFormController implements Controller {
+
+	private GuestService guestService;
+	
+	public void setGuestService(GuestService guestService) {
+		this.guestService = guestService;
+	}
 
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		String forwardpath ="";
+		String guest_noStr = request.getParameter("guest_no");
+		
+		try {
+			Guest guest = guestService.selectByNo(Integer.parseInt(guest_noStr));
+			if(guest==null) {
+				forwardpath="redirect:guest_main.do";
+			} else {
+			request.setAttribute("guest", guest);
+			forwardpath="forward:/WEB-INF/views/guest_modify_form.jsp";
+			}
+		} catch (Exception e) {
+			forwardpath="forward:/WEB-INF/views/guest_error.jsp";
+		}
+		return new ModelAndView(forwardpath);
 	}
 
 }

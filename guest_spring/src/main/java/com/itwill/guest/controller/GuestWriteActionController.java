@@ -35,10 +35,17 @@ public class GuestWriteActionController implements Controller {
 				String guest_content = request.getParameter("guest_content");
 				Guest guest = new Guest(0, guest_name, null, guest_email, guest_homepage, guest_title, guest_content);
 				int insertRowCount = guestService.insertGuest(guest);
-				int pk = guest.getGuest_no();
+				
+				/***********CASE1******************/
+				forwardPath="redirect:guest_list.do";
+				
+				/************CASE2[pk 반환]********
+				int pk = guest.getGuest_no();        //이거 왜 안되징 ㅠ.ㅠ
 				System.out.println("########## pk가 잘 들어오나요? -->> "+pk);
-				forwardPath="redirect:guest_view.do?guest_no="+pk; //이거 왜 안되징 ㅠ.ㅠ
+				forwardPath="redirect:guest_view.do?guest_no="+pk; 
+				******************************/
 			} catch (Exception e) {
+				e.printStackTrace();
 				forwardPath="redirect:guest_error.do";
 			}
 		}

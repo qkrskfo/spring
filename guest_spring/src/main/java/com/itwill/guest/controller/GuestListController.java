@@ -1,11 +1,14 @@
 package com.itwill.guest.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
 
+import com.itwill.guest.Guest;
 import com.itwill.guest.GuestService;
 
 public class GuestListController implements Controller {
@@ -18,9 +21,16 @@ public class GuestListController implements Controller {
 
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String forwardPath="forward:/WEB-INF/views/guest_list.jsp";
-		guestService.selectAll();
-		return new ModelAndView(forwardPath);
+		String forwardPath= "";
+		try {
+			List<Guest> guestList = guestService.selectAll();
+			request.setAttribute("guestList", guestList);
+			forwardPath = "forward:/WEB-INF/views/guest_list.jsp";
+		} catch (Exception e) {
+			e.printStackTrace();
+			forwardPath ="redirect:/WEB-INF/view/guest_error.jsp";
+		}
+			return new ModelAndView(forwardPath);
 	}
 
 }

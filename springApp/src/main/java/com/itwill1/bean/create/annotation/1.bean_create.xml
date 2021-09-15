@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- bean을 등록하면 applicationContext 초기화 시 기본생성자를 호출하여 bean객체를 생성한다. -->
+	<bean id="createBean1" class="com.itwill1.bean.create.CreateBean1" />
+	<bean id="createBean2" class="com.itwill1.bean.create.CreateBean2" />
+	
+	<!-- scope[singleton] -->
+	<bean id="singletonBean" scope="singleton" class="com.itwill1.bean.create.SingletonBean" /> 
+	
+	<!-- scope[singleton] -->
+	<bean id="prototypeBean" scope="prototype" class="com.itwill1.bean.create.PrototypeBean" />
+</beans>

@@ -2,6 +2,7 @@ package com.itwill.guest;
 
 import java.util.ArrayList;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +14,7 @@ public class GuestServiceImpl implements GuestService {
 	public GuestServiceImpl() {
 	
 	}
-	
+	@Autowired
 	public void setGuestDao(GuestDao guestDao) {
 		this.guestDao = guestDao;
 	}

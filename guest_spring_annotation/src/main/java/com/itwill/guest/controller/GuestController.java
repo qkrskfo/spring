@@ -54,4 +54,22 @@ public class GuestController {
 		}
 		return forwardPath;
 	}
+	
+	/*
+	@RequestMapping("/guest_view.do")
+	public String guest_view(HttpServletRequest request, HttpServletResponse response) {
+		String forwardPath ="";
+		try {
+			String quest_noStr = request.getParameter("guest_no");
+			Guest guest = guestService.selectByNo(Integer.parseInt(quest_noStr));
+			request.setAttribute("guest", guest);
+			forwardPath = "forward:/WEB-INF/views/guest_view.jsp";
+		} catch (Exception e) {
+			e.printStackTrace();
+			forwardPath="foward:/WEB-INF/views/guest_error.jsp";
+		}
+		return forwardPath;
+	}
+	*/
+	
 }

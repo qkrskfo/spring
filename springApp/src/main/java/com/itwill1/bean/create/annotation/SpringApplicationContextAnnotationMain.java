@@ -2,7 +2,7 @@ package com.itwill1.bean.create.annotation;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class SpringApplicationContextMain {
+public class SpringApplicationContextAnnotationMain {
 
 	public static void main(String[] args) {
 		/*

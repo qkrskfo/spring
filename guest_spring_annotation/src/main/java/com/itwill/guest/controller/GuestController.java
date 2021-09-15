@@ -55,7 +55,7 @@ public class GuestController {
 		return forwardPath;
 	}
 	
-	/*
+	
 	@RequestMapping("/guest_view.do")
 	public String guest_view(HttpServletRequest request, HttpServletResponse response) {
 		String forwardPath ="";
@@ -70,6 +70,90 @@ public class GuestController {
 		}
 		return forwardPath;
 	}
-	*/
+	
+	@RequestMapping("/guest_write_form.do")
+	public String guest_write_form() {
+		return "forward:/WEB-INF/views/guest_write_form.jsp";
+	}
+	
+	@RequestMapping("/guest_write_action.do")
+	public String guest_write_action(HttpServletRequest request, HttpServletResponse response) {
+		String forwardPath ="";
+		try {
+			String guest_name = request.getParameter("guest_name");
+			String guest_email = request.getParameter("guest_email");
+			String guest_homepage = request.getParameter("guest_homepage");
+			String guest_title = request.getParameter("guest_title");
+			String guest_content = request.getParameter("guest_content");
+			Guest guest = new Guest(0, guest_name, null, guest_email, guest_homepage, guest_title, guest_content);
+			guestService.insertGuest(guest);
+			//request.setAttribute("guest", guest);
+			forwardPath="redirect:guest_list.do";
+		} catch (Exception e) {
+			e.printStackTrace();
+			forwardPath="foward:/WEB-INF/views/guest_error.jsp";
+		}
+		return forwardPath;
+	}
+	
+	@RequestMapping("/guest_modify_form.do")
+	public String guest_modify_form(HttpServletRequest request, HttpServletRequest response) {
+		String forwardPath ="";
+		try {
+			String quest_noStr = request.getParameter("guest_no");
+			Guest guest = guestService.selectByNo(Integer.parseInt(quest_noStr));
+			request.setAttribute("guest", guest);
+			forwardPath="forward:/WEB-INF/views/guest_modify_form.jsp";
+		} catch (Exception e) {
+			e.printStackTrace();
+			forwardPath="foward:/WEB-INF/views/guest_error.jsp";
+		}
+		return forwardPath;
+	}
+	
+	@RequestMapping("/guest_modify_action.do")
+	public String guest_modify_action(HttpServletRequest request, HttpServletResponse response) {
+		String forwardPath ="";
+		try {
+			String guest_noStr=request.getParameter("guest_no");
+			String guest_name = request.getParameter("guest_name");
+			String guest_email = request.getParameter("guest_email");
+			String guest_homepage = request.getParameter("guest_homepage");
+			String guest_title = request.getParameter("guest_title");
+			String guest_content = request.getParameter("guest_content");
+			Guest updateGuest = new Guest(
+					Integer.parseInt(guest_noStr),guest_name,
+					null,guest_email,guest_homepage,
+					guest_title,guest_content);
+			guestService.updateGuest(updateGuest);
+			//request.setAttribute("guest", guest);
+			forwardPath="redirect:guest_view.do?guest_no="+guest_noStr;
+		} catch (Exception e) {
+			e.printStackTrace();
+			forwardPath="foward:/WEB-INF/views/guest_error.jsp";
+		}
+		return forwardPath;
+	}
+	
+	@RequestMapping("/guest_remove_action.do")
+	public String guest_remove_action(HttpServletRequest request, HttpServletResponse response) {
+		String forwardPath ="";
+		try {
+			String guest_noStr = request.getParameter("guest_no");
+			guestService.deleteGuest(Integer.parseInt(guest_noStr));
+			forwardPath = "redirect:guest_list.do";
+		} catch (Exception e) {
+			e.printStackTrace();
+			forwardPath="foward:/WEB-INF/views/guest_error.jsp";
+		}
+		
+		return forwardPath;
+	}
+	
+	@RequestMapping("/guest_error.do")
+	public String guest_error() {
+		return "forward:/WEB-INF/views/guest_error.jsp";
+	}
+	
 	
 }

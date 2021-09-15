@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	
+	<!-- 
+		com.itwill1.bean.create.annotation 패키지와 하위 패키지 전체를 스캔해서
+		모든 클래스의 annotation을 읽어서 해당 작업을 실행 (빈(bean) 등록)
+	
+	-->
+	
+	<context:component-scan base-package="com.itwill1.bean.create.annotation" />
+	
 	<!-- bean을 등록하면 applicationContext 초기화 시 기본생성자를 호출하여 bean객체를 생성한다. -->
 	
 	<!-- scope[singleton] -->
 
-	
 	<!-- scope[singleton] -->
 	
 </beans>

@@ -16,19 +16,19 @@ public class SpringApplicationContextAnnotationMain {
 		System.out.println("------------Spring Container초기화시작----------------");
 		ApplicationContext applicationContext=new ClassPathXmlApplicationContext("com/itwill2/di/2.bean_dependency_injection_annotation.xml");
 		System.out.println("------------Spring Container초기화끝------------------");
-	
+		/*
 		System.out.println("#### 1. Setter Injection(setter메쏘드를 통한 의존성주입)");
 		UserService userService=(UserService)applicationContext.getBean("userService");
 		userService.findUser(null);
 		userService.findUserList();
 		UserAnnotation setUser=(UserAnnotation)applicationContext.getBean("setUser");
 		System.out.println("#### "+setUser);
-		/*
+		*/
 		System.out.println("#### 2. Constructor Injection(생성자를 통한 의존성주입)");
 		UserService conUserService=(UserService)applicationContext.getBean("conUserService");
 		conUserService.findUser(null);
 		conUserService.findUserList();
-		*/
+		
 		
 	}
 

@@ -16,23 +16,26 @@ import com.itwill.user.exception.UserNotFoundException;
 
 
 
-@Component(value="userService")
+//@Component(value = "userService")
+@Component(value = "conUserService")
 public class UserServiceImplAnnotation implements UserService {
-
 	private UserDao userDao;
 	
 	private UserServiceImplAnnotation(){
 		System.out.println("#### UserServiceImplAnnotation() : 디폴트생성자호출");
-		
 	}
 	
 	@Autowired
+	public UserServiceImplAnnotation(UserDao userDao){
+		System.out.println("### UserServiceImplAnnotation("+userDao+") : 생성자호출");
+		this.userDao=userDao;
+	}
+	
+	//@Autowired
 	public void setUserDao(UserDao userDao) {
-		System.out.println("#### UserServiceImplAnnotation() : setUserDao("+userDao+")호출");
+		System.out.println("#### UserServiceImplAnnotation : setUserDao("+userDao+") 호출");
 		this.userDao = userDao;
 	}
-
-
 
 
 	public int create(User user) throws ExistedUserException,Exception{
@@ -45,8 +48,8 @@ public class UserServiceImplAnnotation implements UserService {
 	 * User 상세보기
 	 */
 	public User findUser(String userId) throws UserNotFoundException,Exception{
-		
 		System.out.println("#### UserServiceImplAnnotation : findUser() 호출");
+		userDao.findUser(userId);
 		return null;
 		
 	}
@@ -56,20 +59,21 @@ public class UserServiceImplAnnotation implements UserService {
 	public User login(String userId,String password) 
 			throws UserNotFoundException,PasswordMismatchException, Exception{
 		//입력되는 아이디로 User 찾아오기
-		System.out.println("# UserServiceImplAnnotation : login() 호출");
+		System.out.println("##### UserServiceImplAnnotation : login() 호출");
 		return null;
 		
 	}
 	public int update(User user) throws Exception{
-		System.out.println("# UserServiceImplAnnotation : update() 호출");
+		System.out.println("##### UserServiceImplAnnotation : update() 호출");
 		return 0;
 	}
 	public int remove(String userId) throws Exception{
-		System.out.println("# UserServiceImplAnnotation : remove() 호출");
+		System.out.println("#### UserServiceImplAnnotation : remove() 호출");
 		return 0;
 	}
 	public List<User> findUserList() throws Exception{
-		System.out.println("# UserServiceImplAnnotation : findUserList() 호출  ");
+		System.out.println("#### UserServiceImplAnnotation : findUserList() 호출  ");
+		userDao.findUserList();
 		return null;
 	} 
 	

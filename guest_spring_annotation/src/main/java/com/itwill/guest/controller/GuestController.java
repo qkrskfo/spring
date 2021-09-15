@@ -30,10 +30,6 @@ public class GuestController {
 
 	private GuestService guestService;
 	
-	public GuestController() {
-		// TODO Auto-generated constructor stub
-	}
-	
 	@Autowired
 	public void setGuestService(GuestService guestService) {
 		this.guestService = guestService;

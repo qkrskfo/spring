@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-//@Component("userService")
-@Service("userService")
+//@Component("guestService")
+@Service("guestService")
 public class GuestServiceImpl implements GuestService {
 	private GuestDao guestDao;
 

@@ -6,15 +6,29 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 
+//@Component
+//dao객체는 component와 같지만 repository로 씀.
+// 최종이 dao인 경우 이름을 써줘야함
+@Repository(value="guestDao")
 public class GuestDaoImplJDBC implements GuestDao {
 	private DataSource dataSource;
 
 	public GuestDaoImplJDBC() {
 		
 	}
-
+	
+	@Autowired
+	//오토와이어드는 기본적으로 타입으로 찾음
+	/*
+	 * setDataSource를 호출할 때
+	 *  인자타입 구현 객체를 beanFactory(ApplicationContext)에서 찾아서
+	 *  인자로 대입한다.
+	 */
 	public void setDataSource(DataSource dataSource) {
 		this.dataSource = dataSource;
 	}

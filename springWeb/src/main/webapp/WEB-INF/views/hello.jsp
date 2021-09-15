@@ -16,14 +16,15 @@
 	    HelloController객체얻기
 	 </li>
 	 <li>
-	 	DispatcherServlet이 HelloController객체의 handleRequest메쏘드 호출<br>
+	 	DispatcherServlet이 HelloController객체의 handleRequest메쏘드 호출<br>	
 	 		A . ### HelloController.handleRequest()호출<br>
 			B . ### HelloService.hello()메쏘드호출<br>
 			C . ### HelloDao.hello()메쏘드호출<br>
+			
 	 </li> 
 	 <li>
 	 	DispatcherServlet이 HelloController객체의 handleRequest메쏘드 호출후 
-	 	반환된 forwardPath로 forwarding..(model and view로 한것)
+	 	반환된 forwardPath로 forwarding..
 	 </li>  
 	 <li>
 	 	/WEB-INF/views/hello.jsp 응답

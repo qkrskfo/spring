@@ -16,8 +16,8 @@ import com.itwill.user.exception.UserNotFoundException;
 
 
 
-//@Component(value = "userService")
-@Component(value = "conUserService")
+@Component(value = "userService")
+//@Component(value = "conUserService")
 public class UserServiceImplAnnotation implements UserService {
 	private UserDao userDao;
 	
@@ -25,13 +25,15 @@ public class UserServiceImplAnnotation implements UserService {
 		System.out.println("#### UserServiceImplAnnotation() : 디폴트생성자호출");
 	}
 	
-	@Autowired
+	//2. Constructor Injection
+	//@Autowired
 	public UserServiceImplAnnotation(UserDao userDao){
 		System.out.println("### UserServiceImplAnnotation("+userDao+") : 생성자호출");
 		this.userDao=userDao;
 	}
 	
-	//@Autowired
+	//1. Setter Injection
+	@Autowired
 	public void setUserDao(UserDao userDao) {
 		System.out.println("#### UserServiceImplAnnotation : setUserDao("+userDao+") 호출");
 		this.userDao = userDao;

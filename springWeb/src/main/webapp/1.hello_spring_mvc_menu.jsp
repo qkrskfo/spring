@@ -19,7 +19,7 @@
 			<li><a href='hello3.do'>hello3.do[annotation]</a></li>
 			<li><a href='hello4.do'>hello4.do[annotation]</a></li>
 			<li><a href='hello5.do'>hello5.do[annotation]</a></li>
-			<li><a href='hello_redirect_jsp.do'>hello_redirect_jsp.do[jsp redirect]</a></li>
+			<li><a href='hello_redirect_jsp.do'>hello_redirect_jsp.do[jsp redirect] ( X )</a></li>
 			<li><a href='hello_redirect_servlet.do'>
 			            hello_redirect_servlet.do[servlet redirect]
 			    </a>

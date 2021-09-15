@@ -7,14 +7,16 @@
 	
 	<!-- web application 이 사용하는 bean -->
 	<bean id="helloController" class="com.itwill.hello.controller.HelloController">
-		<property name="helloService" ref="helloService" />
+		<property name="helloService" ref="helloService"/>
 	</bean>
 	
-	<bean id="" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+	
+	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<property name="mappings">
 			<value>
 				/hello.do=helloController
 			</value>
 		</property>
 	</bean>
+
 </beans>

@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 
-//@Component
+//@Component(value="guestDao")
 //dao객체는 component와 같지만 repository로 씀.
 // 최종이 dao인 경우 이름을 써줘야함
 @Repository(value="guestDao")

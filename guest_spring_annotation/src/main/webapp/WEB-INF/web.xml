@@ -20,7 +20,8 @@
 
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath:spring/application-config.xml</param-value>
+		<!-- <param-value>classpath:spring/application-config.xml</param-value> -->
+		<param-value>classpath:spring/application-config-annotation.xml</param-value>
 	</context-param>
 
 	<listener>
@@ -34,7 +35,8 @@
 		</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>classpath:spring/mvc-config.xml</param-value>
+		<!-- 	<param-value>classpath:spring/mvc-config.xml</param-value> -->
+			<param-value>classpath:spring/mvc-config-annotation.xml</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>

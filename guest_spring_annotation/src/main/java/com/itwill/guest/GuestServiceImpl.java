@@ -2,6 +2,11 @@ package com.itwill.guest;
 
 import java.util.ArrayList;
 
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
+//@Component("userService")
+@Service("userService")
 public class GuestServiceImpl implements GuestService {
 	private GuestDao guestDao;
 

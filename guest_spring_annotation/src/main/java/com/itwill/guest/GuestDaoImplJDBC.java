@@ -7,22 +7,26 @@ import java.util.ArrayList;
 
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
-
+//@Component("guestDao")
+@Repository("guestDao")
 public class GuestDaoImplJDBC implements GuestDao {
+	
 	private DataSource dataSource;
 
 	public GuestDaoImplJDBC() {
 		
 	}
 	
-	
-	
+	@Autowired
+	//@Qualifier("dataSource")
 	public void setDataSource(DataSource dataSource) {
 		this.dataSource = dataSource;
 	}
-
-
 
 	@Override
 	public int insertGuest(Guest guest) throws Exception {

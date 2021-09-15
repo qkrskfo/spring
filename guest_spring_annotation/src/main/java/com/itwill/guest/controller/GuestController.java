@@ -94,13 +94,13 @@ public class GuestController {
 			String guest_content = request.getParameter("guest_content");
 			Guest guest = new Guest(0, guest_name, null, guest_email, guest_homepage, guest_title, guest_content);
 			guestService.insertGuest(guest);
-			forwardPath="redirect:guest_view.do?guest_no="+guest.getGuest_no();
+			forwardPath="redirect:guest_list.do";
 		} catch (Exception e) {
 			e.printStackTrace();
 			forwardPath="foward:/WEB-INF/views/guest_error.jsp";
 		}
 		return forwardPath;
-	}
+	}  
 	
 	@RequestMapping(value="/guest_modify_form.do", method = RequestMethod.POST)
 	public String guest_modify_form(HttpServletRequest request, HttpServletRequest response) {

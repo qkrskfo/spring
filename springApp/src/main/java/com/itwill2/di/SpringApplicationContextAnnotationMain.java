@@ -13,8 +13,9 @@ public class SpringApplicationContextAnnotationMain {
 		 *  - Spring Container객체생성
 		 */
 		System.out.println("------------Spring Container초기화시작----------------");
-		ApplicationContext applicationContext=new ClassPathXmlApplicationContext("com/itwill2/di/2.bean_dependency_injection.xml");
+		ApplicationContext applicationContext=new ClassPathXmlApplicationContext("com/itwill2/di/2.bean_dependency_injection_annotation.xml");
 		System.out.println("------------Spring Container초기화끝------------------");
+		/*
 		System.out.println("#### 1. Setter Injection(setter메쏘드를 통한 의존성주입)");
 		UserService userService=(UserService)applicationContext.getBean("userService");
 		userService.findUser(null);
@@ -26,6 +27,7 @@ public class SpringApplicationContextAnnotationMain {
 		UserService conUserService=(UserService)applicationContext.getBean("conUserService");
 		conUserService.findUser(null);
 		conUserService.findUserList();
+		*/
 		
 	}
 

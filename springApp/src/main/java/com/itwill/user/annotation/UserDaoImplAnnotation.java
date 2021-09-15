@@ -2,13 +2,14 @@ package com.itwill.user.annotation;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import com.itwill.user.User;
 import com.itwill.user.UserDao;
 
-
+@Component(value="userDao")
 public class UserDaoImplAnnotation implements UserDao {
 	public UserDaoImplAnnotation() {
 		System.out.println("#### UserDaoImplAnnotation() : 디폴트생성자 호출  ");

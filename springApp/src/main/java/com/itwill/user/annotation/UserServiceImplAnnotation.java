@@ -4,9 +4,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.itwill.user.User;
+import com.itwill.user.UserDao;
 import com.itwill.user.UserService;
 import com.itwill.user.exception.ExistedUserException;
 import com.itwill.user.exception.PasswordMismatchException;
@@ -14,15 +16,25 @@ import com.itwill.user.exception.UserNotFoundException;
 
 
 
-
+@Component(value="userService")
 public class UserServiceImplAnnotation implements UserService {
 
+	private UserDao userDao;
+	
 	private UserServiceImplAnnotation(){
 		System.out.println("#### UserServiceImplAnnotation() : 디폴트생성자호출");
 		
 	}
 	
-	
+	@Autowired
+	public void setUserDao(UserDao userDao) {
+		System.out.println("#### UserServiceImplAnnotation() : setUserDao("+userDao+")호출");
+		this.userDao = userDao;
+	}
+
+
+
+
 	public int create(User user) throws ExistedUserException,Exception{
 		System.out.println("#### UserServiceImplAnnotation : create() 호출");
 		

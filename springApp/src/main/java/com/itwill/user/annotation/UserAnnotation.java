@@ -1,6 +1,10 @@
 package com.itwill.user.annotation;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
+@Component(value="setUser")
 public class UserAnnotation {
 	
 	private String userId;
@@ -25,7 +29,9 @@ public class UserAnnotation {
 	public String getUserId() {
 		return userId;
 	}
-
+	
+	@Autowired
+	@Value("guard")
 	public void setUserId(String userId) {
 		System.out.println("#### UserAnnotation : setUserId("+userId+") 호출");
 		this.userId = userId;
@@ -35,6 +41,8 @@ public class UserAnnotation {
 		return password;
 	}
 
+	@Autowired
+	@Value("1111")
 	public void setPassword(String password) {
 		System.out.println("#### UserAnnotation : setPassword(String password) 호출");
 		this.password = password;
@@ -44,6 +52,8 @@ public class UserAnnotation {
 		return name;
 	}
 
+	@Autowired
+	@Value("가아드")
 	public void setName(String name) {
 		System.out.println("#### UserAnnotation : setName(String name) 호출");
 		this.name = name;
@@ -53,6 +63,8 @@ public class UserAnnotation {
 		return email;
 	}
 
+	@Autowired
+	@Value("guard@gmail.com")
 	public void setEmail(String email) {
 		System.out.println("#### UserAnnotation :setEmail(String email) 호출");
 		this.email = email;

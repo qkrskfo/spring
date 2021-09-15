@@ -11,7 +11,7 @@ public class SpringApplicationContextAnnotationMain {
 		 */
 		System.out.println("------------Spring Container초기화시작----------------");
 		ApplicationContext applicationContext=
-				new ClassPathXmlApplicationContext("com/itwill1/bean/create/1.bean_create.xml");
+				new ClassPathXmlApplicationContext("com/itwill1/bean/create/annotation/1.bean_create_annotation.xml");
 		System.out.println("------------Spring Container초기화끝------------------");
 		
 		

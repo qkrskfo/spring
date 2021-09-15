@@ -13,6 +13,8 @@ public class SpringApplicationContextAnnotationMain {
 		ApplicationContext applicationContext=
 				new ClassPathXmlApplicationContext("com/itwill1/bean/create/1.bean_create.xml");
 		System.out.println("------------Spring Container초기화끝------------------");
+		
+		
 		System.out.println("------------------bean create---------------------");
 		CreateBean1 createBean1=(CreateBean1)applicationContext.getBean("createBean1");
 		System.out.println("#### "+createBean1);

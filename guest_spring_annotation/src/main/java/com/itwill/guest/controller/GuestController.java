@@ -1,11 +1,13 @@
 package com.itwill.guest.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class GuestController {
 
 	/*
+	<< 요청url (command) >>
 	/guest_main.do=com.itwill.guest.controller.GuestMainController
 	/guest_write_form.do=com.itwill.guest.controller.GuestWriteFormController
 	/guest_write_action.do=com.itwill.guest.controller.GuestWriteActionController
@@ -17,5 +19,10 @@ public class GuestController {
 	/guest_error.do=com.itwill.guest.controller.GuestErrorController
 	*/
 	
+	//이름은 내 마음대로 하면 되는거야
+	@RequestMapping("/guest_main.do")
+	public String guest_main() {
+		return "forward:/WEB-INF/views/guest_main.jsp";
+	}
 	
 }

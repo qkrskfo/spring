@@ -83,6 +83,12 @@ public class GuestController {
 		return "forward:/WEB-INF/views/guest_write_form.jsp";
 	}
 	
+	@RequestMapping(value="/guest_write_action.do", method=RequestMethod.GET)
+	public String guest_write_action_get() {
+		return "redirect:guest_main.do";
+	}
+	
+	
 	@RequestMapping(value="/guest_write_action.do", method=RequestMethod.POST)
 	public String guest_write_action(@ModelAttribute("guest") Guest guest) {
 		String forwardPath = "";

@@ -26,6 +26,7 @@
 		</property>
 	</bean>
 	
-	<!-- internalResourceViewResolver -->
-	<bean class="myInternalResourceViewResolver" />
+	<!-- InternalResourceViewResolver -->
+	<bean 	id="myInternalResourceViewResolver" 
+			class="org.springframework.web.servlet.view.InternalResourceViewResolver"/>
 </beans>

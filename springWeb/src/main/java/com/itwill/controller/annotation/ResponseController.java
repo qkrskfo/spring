@@ -20,4 +20,14 @@ public class ResponseController {
 		internalResourceView.setUrl("/WEB-INF/views/response_view_name.jsp");
 		return internalResourceView;
 	}
+	
+	/**** xml 출력 view [XML view] ****/
+	
+	@RequestMapping("/response_xml_view_object.do")
+	public View response_xml_view_object() {
+		XMLView xmlView = new XMLView();
+		return xmlView;
+		
+	}
+	
 }

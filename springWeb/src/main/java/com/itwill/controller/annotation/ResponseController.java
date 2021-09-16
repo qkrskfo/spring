@@ -16,12 +16,11 @@ public class ResponseController {
 		return "forward:/WEB-INF/views/response_view_name.jsp";
 	}
 	
-	
+	/*
+	 * forwading view객체반환
+	 */
 	@RequestMapping("/response_view_object.do")
 	public View response_view_object() {
-		/*
-		 * forwarding view
-		 */
 		InternalResourceView internalResourceView = new InternalResourceView();
 		//internalResourceView.setUrl("/WEB-INF/views/response_view_object.jsp");
 		internalResourceView.setUrl("/WEB-INF/views/response_view_name.jsp");
@@ -29,6 +28,9 @@ public class ResponseController {
 		// 받아서 renderMergedOutputModel 메소드를 호출해준데
 	}
 
+	/*
+	 * redirect view객체반환
+	 */
 	@RequestMapping("/response_redirect_view_object.do")
 	public View response_redirect_view_object() {
 		RedirectView redirectView = new RedirectView();
@@ -36,6 +38,9 @@ public class ResponseController {
 		return redirectView;
 	}
 	
+	/*
+	 * xml출력 view객체반환
+	 */
 	/**** xml 출력 view [XML view] ****/
 	@RequestMapping("/response_xml_view_object.do")
 	public View response_xml_view_object(Model model) {

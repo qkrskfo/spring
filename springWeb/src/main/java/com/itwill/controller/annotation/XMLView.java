@@ -7,7 +7,6 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.view.AbstractView;
 
 
@@ -30,6 +29,14 @@ public class XMLView extends AbstractView {
 			out.println("<friend>"+friend+"</friend>");
 		}
 		out.println("</friends>");
+		
+		/*********************forward**************************
+		RequestDispatcher rd = request.getRequestDispatcher("xxx.jsp");
+		rd.forward(request, response);
+		********************************************************/
+		/*********************redirect**************************
+		response.sendRedirect("xxx.do");
+		********************************************************/
 		
 	}
 

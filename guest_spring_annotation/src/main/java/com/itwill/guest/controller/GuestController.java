@@ -1,6 +1,7 @@
 package com.itwill.guest.controller;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -76,6 +78,23 @@ public class GuestController {
 		return forwardPath;
 	}
 	
+	@RequestMapping("/guest_write_form.do")
+	public String guest_write_forwm() {
+		return "forward:/WEB-INF/views/guest_write_form.jsp";
+	}
+	
+	@RequestMapping(value="/guest_write_action.do", method=RequestMethod.POST)
+	public String guest_write_action(@ModelAttribute("guest") Guest guest) {
+		String forwardPath = "";
+		try {
+			guestService.insertGuest(guest);
+			forwardPath="redirect:guest_list.do";
+		} catch (Exception e) {
+			e.printStackTrace();
+			forwardPath="forward:/WEB-INF/views/guest_error.jsp";
+		}
+		return forwardPath;
+	}
 	
 	/*
 	@RequestMapping("/guest_list.do")

@@ -25,5 +25,7 @@
 			</value>
 		</property>
 	</bean>
-
+	
+	<!-- internalResourceViewResolver -->
+	<bean class="myInternalResourceViewResolver" />
 </beans>

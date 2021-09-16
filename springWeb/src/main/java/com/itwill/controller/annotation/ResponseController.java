@@ -11,10 +11,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 public class ResponseController {
-	@RequestMapping("/response_view_name.do")
-	public String response_view_name() {
-		return "forward:/WEB-INF/views/response_view_name.jsp";
-	}
+	/* #### View 객체 반환 ### */
 	
 	/*
 	 * forwading view객체반환
@@ -28,6 +25,15 @@ public class ResponseController {
 		// 받아서 renderMergedOutputModel 메소드를 호출해준데
 	}
 
+	/*
+	 * forwarding view name(String)반환
+	 */
+	@RequestMapping("/response_view_name.do")
+	public String response_view_name() {
+		return "forward:/WEB-INF/views/response_view_name.jsp";
+	}
+	
+	
 	/*
 	 * redirect view객체반환
 	 */

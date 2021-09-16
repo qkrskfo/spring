@@ -21,7 +21,7 @@ public class XMLView extends AbstractView {
 		System.out.println("### DispatcherServlet이 View.renderMergedOutputModel() 호출한다.");
 		
 		ArrayList<String> friendList = (ArrayList<String>)model.get("friendList");
-		
+		/*** xml 출력 view [XML view] ***/
 		response.setContentType("text/xml;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.println("<?xml version='1.0' encoding='UTF-8' ?>");

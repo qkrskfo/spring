@@ -35,11 +35,13 @@ public class ResponseController {
 	@RequestMapping("/response_view_name.do")
 	public String response_view_name() {
 		/* 
-		  0 . Controller가 view name(String) 반환
-		  1 . DispatcherServlet객체는 view name(String)을 가지고 view객체를 얻기 위해서 ViewResolver객체에 View를 찾아달라고 요청한다.
-		  2 . DispatcherServlet객체는 InternalResourceViewResolver 객체에 view name을 넘겨준다
-		  3 . InternalResourceViewResolver 객체는 InternalResourceView 객체(URL:/WEB-INF/views/response_view_name.jsp)를 반환
-		  4 . DispatcherServlet객체는 반환받은 InternalResourceView 객체의 render메소드 호출: URL--> /WEB-INF/views/response_view_name.jsp forward	
+		  0 . Controller view name(String)반환
+		  1 . DispatcherServlet객체는  InternalResourceViewResolver 객체에 view name을 넘겨준다.
+		  	  (DispatcherServlet객체는  view name(String) 을가지고 View객체를 얻기위해서 ViewResolver객체에 View를 찾아달라고요청한다.)
+		  2 . InternalResourceViewResolver 객체는 넘겨받은 InternalResourceView 객체를 생성하고 view name을 url로 설정한후반환한다.
+		      (url:/WEB-INF/views/response_view_name.jsp)를 반환
+		  4 . DispatcherServlet객체는 반환받은 InternalResourceView 객체의 render 메쏘드호출한다: 	
+			  (/WEB-INF/views/response_view_name.jsp 로 forward가이루어진다)	
 		*/
 		return "forward:/WEB-INF/views/response_view_name.jsp";
 	}

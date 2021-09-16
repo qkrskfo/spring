@@ -14,6 +14,7 @@ public class RequestMappingGETPOSTController {
 	
 	@RequestMapping(value="/login.do", method = RequestMethod.POST)
 	public String login_ation_post() {
+		
 		return "forward:/WEB-INF/views/post_login_result.jsp";
 	}
 	

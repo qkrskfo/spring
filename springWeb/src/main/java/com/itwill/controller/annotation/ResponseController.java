@@ -21,6 +21,10 @@ public class ResponseController {
 		InternalResourceView internalResourceView = new InternalResourceView();
 		//internalResourceView.setUrl("/WEB-INF/views/response_view_object.jsp");
 		internalResourceView.setUrl("/WEB-INF/views/response_view_name.jsp");
+		/*
+		 * 1.InternalResourceView 객체(URL:/WEB-INF/views/response_view_object.jsp)반환
+		 * 2.URL--> /WEB-INF/views/response_view_object.jsp forward
+		 */
 		return internalResourceView; // 이걸 누가받아? dispatcher servlet이 받아
 		// 받아서 renderMergedOutputModel 메소드를 호출해준데
 	}
@@ -30,6 +34,12 @@ public class ResponseController {
 	 */
 	@RequestMapping("/response_view_name.do")
 	public String response_view_name() {
+		/* 
+		  0 . view name(String)
+		  1 . InternalResourceViewResolver 객체에 view name을 넘겨준다
+		  2 . InternalResourceView 객체(URL:/WEB-INF/views/response_view_name.jsp)를 반환
+		  3 . URL--> /WEB-INF/views/response_view_name.jsp forward	
+		*/
 		return "forward:/WEB-INF/views/response_view_name.jsp";
 	}
 	
@@ -41,6 +51,10 @@ public class ResponseController {
 	public View response_redirect_view_object() {
 		RedirectView redirectView = new RedirectView();
 		redirectView.setUrl("response_redirect_view_object.jsp");
+		/*
+		 * 1.RedirectView 객체(URL:response_redirect_view_object.jsp)반환
+		 * 2.URL--> response_redirect_view_object.jsp redirect응답
+		 */
 		return redirectView;
 	}
 	

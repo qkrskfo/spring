@@ -93,8 +93,8 @@ public class GuestController {
 	public String guest_write_action(@ModelAttribute("guest") Guest guest) {
 		String forwardPath = "";
 		try {
-			guestService.insertGuest(guest);
-			forwardPath="redirect:guest_list.do";
+			int pk = guestService.insertGuest(guest);
+			forwardPath="redirect:guest_view.do?guest_no="+pk;
 		} catch (Exception e) {
 			e.printStackTrace();
 			forwardPath="forward:/WEB-INF/views/guest_error.jsp";

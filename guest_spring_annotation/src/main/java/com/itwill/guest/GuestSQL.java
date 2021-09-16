@@ -11,4 +11,6 @@ public class GuestSQL {
 			"select * from guest where guest_no = ?";
 	public static final String GUEST_SELECT_ALL=
 			"select * from guest order by guest_date desc";
+	public static final String GUEST_SELECT_PK=
+			"select  guest_no_seq.currval pk from dual";
 }

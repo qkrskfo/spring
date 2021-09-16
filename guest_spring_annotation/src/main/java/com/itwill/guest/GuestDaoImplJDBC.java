@@ -37,10 +37,13 @@ public class GuestDaoImplJDBC implements GuestDao {
 		pstmt.setString(3, guest.getGuest_homepage());
 		pstmt.setString(4, guest.getGuest_title());
 		pstmt.setString(5, guest.getGuest_content());
+		pstmt.executeUpdate();
 		
-		// String sql = "seelct guest_no_seq.currval as pk from dual";
-		
-		return pstmt.executeUpdate();
+		PreparedStatement pstmt2 = con.prepareStatement(GuestSQL.GUEST_SELECT_PK);
+		ResultSet rs = pstmt2.executeQuery();
+		rs.next();
+		int pk = rs.getInt("pk");
+		return pk;
 	}
 /*
 /*

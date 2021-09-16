@@ -90,6 +90,7 @@ public class ResponseController {
 		*/
 		
 		return "redirect:response_redirect_view_name.jsp";
+		//redirect니까 원래 do로 들어가는게 맞는데 우리 머리터질 것 같아서 선생님이 jsp로 되게 해줬데
 	}
 	
 	

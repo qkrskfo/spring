@@ -7,8 +7,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.itwill.guest.Guest;
 import com.itwill.guest.GuestService;
@@ -43,6 +45,40 @@ public class GuestController {
 	}
 	
 	@RequestMapping("/guest_list.do")
+	public String guest_list(Model model) {
+		String forwardPath = "";
+		try {
+			ArrayList<Guest> guestList = guestService.selectAll();
+			model.addAttribute("guestList", guestList);
+			forwardPath = "forward:/WEB-INF/views/guest_list.jsp";
+		} catch (Exception e) {
+			e.printStackTrace();
+			forwardPath = "forward:/WEB-INF/views/guest_error.jsp";
+		}
+		return forwardPath;
+	}
+	
+	@RequestMapping("/guest_view.do")
+	public String guest_view(@RequestParam(value="guest_no", required=false, defaultValue="") String guest_no, Model model) {
+		String forwardPath="";
+		if(guest_no==null || guest_no.equals("")) {
+			forwardPath="redirect:guest_list.do";
+			return forwardPath;
+		}
+		try {
+			Guest guest = guestService.selectByNo(Integer.parseInt(guest_no));
+			model.addAttribute("guest", guest);
+			forwardPath="forward:/WEB-INF/views/guest_view.jsp";
+		} catch (Exception e) {
+			e.printStackTrace();
+			forwardPath="forward:/WEB-INF/views/guest_error.jsp";
+		}
+		return forwardPath;
+	}
+	
+	
+	/*
+	@RequestMapping("/guest_list.do")
 	public String guest_list(HttpServletRequest request, HttpServletResponse response) {
 		String forwardPath = "";
 		try {
@@ -56,6 +92,7 @@ public class GuestController {
 		return forwardPath;
 	}
 	
+
 	
 	@RequestMapping("/guest_view.do")
 	public String guest_view(HttpServletRequest request, HttpServletResponse response) {
@@ -159,6 +196,8 @@ public class GuestController {
 	public String guest_error() {
 		return "forward:/WEB-INF/views/guest_error.jsp";
 	}
+	*/
+	
 	
 	
 }

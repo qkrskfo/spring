@@ -1,6 +1,7 @@
 package com.itwill.controller.annotation;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,9 +16,26 @@ public class RequestMappingParameterController {
 		return "forward:/WEB-INF/views/guest_write_form.jsp";
 	}
 	
-	@RequestMapping(value="/parameter_guest_write_action.do", method = RequestMethod.POST)
-	public String model_attribute_guest_write_action() {
-		
+	@RequestMapping(value="/model_attribute_guest_write_action.do", method = RequestMethod.POST)
+	public String model_attribute_guest_write_action(@ModelAttribute("guest") Guest guest) {
+		/*
+		 * 1. Guest guest = Guest();
+		 * 2. String guest_name = request.getParameter("guest_name");
+			  String guest_email = request.getParameter("guest_email");
+			  String guest_homepage = request.getParameter("guest_homepage");
+			  String guest_title = request.getParameter("guest_title");
+			  String guest_content = request.getParameter("guest_content");
+		   3. guest.setGuest_name(guest_name) --> setProperty
+		      guest.setGuest_email(guest_email)
+		      guest.setGuest_homepage(guest_hompage)
+		      guest.setGuest_title(guest_title)
+		      guest.setGuest_content(guest_content)
+		   4. request.setAttribute("guest", guest);
+		      
+		   
+		 */
+		System.out.println("### @ModelAttribute ###");
+		System.out.println("### guest "+guest);
 		return "forward:/WEB-INF/views/guest_write_result.jsp";
 	}
 	

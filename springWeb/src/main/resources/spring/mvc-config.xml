@@ -26,7 +26,28 @@
 		</property>
 	</bean>
 	
-	<!-- InternalResourceViewResolver -->
+	<!-- View 객체 등록-->
+	<bean id="xmlView" class="com.itwill.controller.annotation.XMLView" />
+	
+	
+	
+	<!-- ViewResolver 객체 등록 -->
+	<!-- 1. BeanNameViewResolver -->
+	<bean id="beanNameViewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<property name="order" value="0" />
+	</bean>
+	
+	
+	<!-- 2. InternalResourceViewResolver (등록하지 않아도 생성) -->
 	<bean id="myInternalResourceViewResolver" 
-		  class="org.springframework.web.servlet.view.InternalResourceViewResolver"/>
+		  class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="order" value="1" />
+	</bean>
+	
 </beans>
+
+
+
+
+
+

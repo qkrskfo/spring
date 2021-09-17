@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%--
 	request.setAttribute("price0", 345345435);
 	request.setAttribute("name0", "kim eun hi");
@@ -32,8 +32,8 @@
 	   --> Spring CustomTag(eval) 의 속성안에서 사용가능한 표현언어(식)
 </p>
 <ul>
-	<li>문자열리터럴(EL):&dollar; </li>
-	<li>문자열리터럴(SPEL):</li>
+	<li>문자열리터럴(EL):${'KIM'.replace('K','N')} </li>
+	<li>문자열리터럴(SPEL):<s:eval expression="'KIM'.replace('K','N')" /></li>
 	<li>숫자리터럴(EL):</li>
 	<li>숫자리터럴(SPEL):</li>
 	<li>논리리터럴(EL):</li>

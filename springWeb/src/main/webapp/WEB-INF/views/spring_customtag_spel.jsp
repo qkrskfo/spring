@@ -55,9 +55,12 @@
 		
 	</li>
 	<li>SPEL + EL(문자열리터럴):
-		<s:eval expression="" />
+		<s:eval expression="'${name0}'.substring(1)" /> ==
+		<s:eval expression="name0.substring(1)" />
 	</li>
 	<li>SPEL + EL(숫자리터럴):
+		<s:eval expression="${price0}+3455" /> ==
+		<s:eval expression="price0+3455" />
 		
 	</li>
 	<li>SPEL(SCOPE객체에 등록된 숫자변수(속성이름)):

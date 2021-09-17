@@ -12,21 +12,12 @@ import javax.sql.DataSource;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 
 
-
-
-/*
- 사용자관리에서 데이타베이스와의 작업을 전담하는 클래스
- USERINFO 테이블에 사용자를 추가,삭제,검색,수정등의 작업을한다.
- */
-//@Component
 @Repository("userDao")
 public class UserDaoImplJDBC implements UserDao {
-	
 	/*
 	 * DataSource타입의구현객체 Container에서찾아서 injection
 	 */

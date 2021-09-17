@@ -114,15 +114,35 @@ public class ResponseController {
 		return xmlView;
 	}
 	
+	/*
+	 * xml출력 view name(String) 반환
+	 */
 	@RequestMapping("/response_xml_view_name.do")
 	public String response_xml_view_name(Model model) {
-		ArrayList<String> friendList = new ArrayList<String>();
+		ArrayList<String> friendList=new ArrayList<String>();
 		friendList.add("김수미");
 		friendList.add("김우미");
 		friendList.add("김미미");
 		friendList.add("김양미");
 		friendList.add("김가미");
 		model.addAttribute("friendList", friendList);
+		 /* 
+		  0 . Controller 가 view name(String)을 반환
+		  1 . DispatcherServlet객체는  View객체를 얻기위해 ViewResolver객체를 찾는다.
+		  2 . 여러개의 ViewResolver객체중에 우선순위가높은 ViewResolver 객체를 선택한다 (BeanNameViewResolver)
+		  3 . 선택된 ViewResolver(BeanNameViewResolver)객체에 Controller로부터 반환받은 view name(xmlView)을 주고 View객체를 요청한다.
+		  4 . BeanNameViewResolver 객체는 view name 을 사용하여 이름과일치하는 View객체를 찾는다.
+		  5 . BeanNameViewResolver View객체(XMLView)를 찾으면 DispatcherServlet에게 반환한다.
+		  5 . BeanNameViewResolver View객체(XMLView)를 찾지못하면  DispatcherServlet이 다음우선순위의 ViewResolver(InternalResourceViewResolver)를 선택한다.
+		  6 . DispatcherServlet객체는 반환받은 View객체(XMLView)객체의 render 메쏘드호출한다: 	
+		  7 . XML출력 	  
+			  
+		  << mcv-config-view-resolver.xml >>
+		  <!-- InternalResourceViewResolver -->
+		  <bean id="myInternalResourceViewResolver" 
+				class="org.springframework.web.servlet.view.InternalResourceViewResolver"/>	  
+			  
+		*/
 		return "xmlView";
 	}
 	

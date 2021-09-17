@@ -48,11 +48,23 @@ public class ResponseController {
 			  
 		  << mcv-config-view-resolver.xml >>
 		  <!-- InternalResourceViewResolver -->
-		  <bean id="myInternalResourceViewResolver" 
-				class="org.springframework.web.servlet.view.InternalResourceViewResolver"/>	  
-			  
+		  	<bean id="myInternalResourceViewResolver" 
+		  			class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+				<property name="order" value="1" />
+				<property name="prefix" value="/WEB-INF/views/" />
+				<property name="suffix" value=".jsp" />
+			</bean>
 		*/
-		return "forward:/WEB-INF/views/response_view_name.jsp";
+		
+		/*
+		<< Controller반환 String >>
+			1.forward:/WEB-INF/views/response_view_name.jsp ==> prefix,suffix설정적용안됨
+		    2.response_view_name   ==> prefix,suffix설정적용됨
+		    3.redirect:xxx.jsp     ==> prefix,suffix설정적용안됨
+		*/
+		
+		//return "forward:/WEB-INF/views/response_view_name.jsp";
+		return "response_view_name";
 	}
 	
 	
@@ -126,7 +138,7 @@ public class ResponseController {
 		friendList.add("김양미");
 		friendList.add("김가미");
 		model.addAttribute("friendList", friendList);
-		 /* 
+		/* 
 		  0 . Controller 가 view name(String)을 반환
 		  1 . DispatcherServlet객체는  View객체를 얻기위해 ViewResolver객체를 찾는다.
 		  2 . 여러개의 ViewResolver객체중에 우선순위가높은 ViewResolver 객체를 선택한다 (BeanNameViewResolver)

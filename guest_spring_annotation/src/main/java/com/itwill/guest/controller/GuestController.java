@@ -43,7 +43,7 @@ public class GuestController {
 	
 	@RequestMapping("/guest_main.do")
 	public String guest_main() {
-		return "forward:/WEB-INF/views/guest_main.jsp";
+		return "guest_main";
 	}
 	
 	@RequestMapping("/guest_list.do")
@@ -52,10 +52,10 @@ public class GuestController {
 		try {
 			ArrayList<Guest> guestList = guestService.selectAll();
 			model.addAttribute("guestList", guestList);
-			forwardPath = "forward:/WEB-INF/views/guest_list.jsp";
+			forwardPath = "guest_list";
 		} catch (Exception e) {
 			e.printStackTrace();
-			forwardPath = "forward:/WEB-INF/views/guest_error.jsp";
+			forwardPath = "guest_error";
 		}
 		return forwardPath;
 	}
@@ -70,17 +70,17 @@ public class GuestController {
 		try {
 			Guest guest = guestService.selectByNo(Integer.parseInt(guest_no));
 			model.addAttribute("guest", guest);
-			forwardPath="forward:/WEB-INF/views/guest_view.jsp";
+			forwardPath="guest_view";
 		} catch (Exception e) {
 			e.printStackTrace();
-			forwardPath="forward:/WEB-INF/views/guest_error.jsp";
+			forwardPath="guest_error";
 		}
 		return forwardPath;
 	}
 	
 	@RequestMapping("/guest_write_form.do")
 	public String guest_write_forwm() {
-		return "forward:/WEB-INF/views/guest_write_form.jsp";
+		return "guest_write_form";
 	}
 	
 	@RequestMapping(value="/guest_write_action.do", method=RequestMethod.GET)
@@ -97,7 +97,7 @@ public class GuestController {
 			forwardPath="redirect:guest_view.do?guest_no="+pk;
 		} catch (Exception e) {
 			e.printStackTrace();
-			forwardPath="forward:/WEB-INF/views/guest_error.jsp";
+			forwardPath="guest_error";
 		}
 		return forwardPath;
 	}
@@ -114,10 +114,10 @@ public class GuestController {
 		try {
 			Guest guest = guestService.selectByNo(Integer.parseInt(guest_no));
 			model.addAttribute("guest", guest);
-			forwardPath="forward:/WEB-INF/views/guest_modify_form.jsp";
+			forwardPath="guest_modify_form";
 		} catch (Exception e) {
 			e.printStackTrace();
-			forwardPath="foward:/WEB-INF/views/guest_error.jsp";
+			forwardPath="guest_error";
 		}
 		return forwardPath;
 	}
@@ -135,7 +135,7 @@ public class GuestController {
 			forwardPath="redirect:guest_view.do?guest_no="+guest.getGuest_no();
 		} catch (Exception e) {
 			e.printStackTrace();
-			forwardPath="foward:/WEB-INF/views/guest_error.jsp";
+			forwardPath="guest_error";
 		}
 		return forwardPath;
 	}
@@ -152,7 +152,7 @@ public class GuestController {
 			forwardPath = "redirect:guest_list.do";
 		} catch (Exception e) {
 			e.printStackTrace();
-			forwardPath="foward:/WEB-INF/views/guest_error.jsp";
+			forwardPath="guest_error";
 		}
 		
 		return forwardPath;
@@ -160,7 +160,7 @@ public class GuestController {
 	
 	@RequestMapping("/guest_error.do")
 	public String guest_error() {
-		return "forward:/WEB-INF/views/guest_error.jsp";
+		return "guest_error";
 	}
 	
 	

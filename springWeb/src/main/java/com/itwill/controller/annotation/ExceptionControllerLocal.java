@@ -35,7 +35,7 @@ public class ExceptionControllerLocal {
 	
 	/*######## @Exception Handler #######*/
 	@ExceptionHandler(Exception.class)
-	public String handle_runtime_exception(Exception e) {
+	public String handle_exception(Exception e) {
 		return "global_error_result";
 	}
 	

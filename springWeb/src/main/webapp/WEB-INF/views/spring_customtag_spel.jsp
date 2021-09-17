@@ -34,22 +34,28 @@
 <ul>
 	<li>문자열리터럴(EL):${'KIM'.replace('K','N')} </li>
 	<li>문자열리터럴(SPEL):<s:eval expression="'KIM'.replace('K','N')" /></li>
-	<li>숫자리터럴(EL):</li>
-	<li>숫자리터럴(SPEL):</li>
-	<li>논리리터럴(EL):</li>
-	<li>논리리터럴(SPEL):</li>
-	<li>변수1(EL):</li>
-	<li>변수2(EL Bean):</li>
+	<li>숫자리터럴(EL):${234+2132 }</li>
+	<li>숫자리터럴(SPEL):<s:eval expression="234-2132" /></li>
+	<li>논리리터럴(EL):${true}</li>
+	<li>논리리터럴(SPEL):<s:eval expression="true" /></li>
+	<li>변수1(EL):${price0},${name0}, ${price1}, ${name1}, ${married1}</li>
+	<li>변수2(EL Bean):${guest.guest_name}, ${guest.guest_email}</li>
 	<li>
 		변수1(SPEL):
+		<s:eval expression="price2" />,
+		<s:eval expression="name2" />,
+		<s:eval expression="married2" />
 		
 	</li>
 	<li>
 		변수2(SPEL Bean):
+		<s:eval expression="guest.guest_name" />,
+		<s:eval expression="guest.getGuest_email()" />,
+		<s:eval expression="guest.toString()" />
 		
 	</li>
 	<li>SPEL + EL(문자열리터럴):
-		
+		<s:eval expression="" />
 	</li>
 	<li>SPEL + EL(숫자리터럴):
 		

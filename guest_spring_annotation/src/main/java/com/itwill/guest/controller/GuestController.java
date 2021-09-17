@@ -41,6 +41,18 @@ public class GuestController {
 		this.guestService = guestService;
 	}
 
+	/*
+	 * <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	 * 		<property name="prefix" value="/WEB-INF/views/"/> 
+	 *  	<property name="suffix" value=".jsp"/> 
+	 * </bean>
+	 * 
+	 * << Controller반환 String >> 
+	 * 		1.forward:/WEB-INF/views/response_view_name.jsp ==>prefix,suffix설정적용안됨 
+	 * 		2.response_view_name ==> prefix,suffix설정적용됨
+	 * 		3.redirect:xxx.jsp ==> prefix,suffix설정적용안됨
+	 */
+
 	
 	@RequestMapping("/guest_main.do")
 	public String guest_main() {
@@ -48,21 +60,16 @@ public class GuestController {
 	}
 	
 	@RequestMapping("/guest_list.do")
-	public String guest_list(Model model) {
+	public String guest_list(Model model) throws Exception {
 		String forwardPath = "";
-		try {
-			ArrayList<Guest> guestList = guestService.selectAll();
-			model.addAttribute("guestList", guestList);
-			forwardPath = "guest_list";
-		} catch (Exception e) {
-			e.printStackTrace();
-			forwardPath = "guest_error";
-		}
+		ArrayList<Guest> guestList = guestService.selectAll();
+		model.addAttribute("guestList", guestList);
+		forwardPath = "guest_list";
 		return forwardPath;
 	}
 	
 	@RequestMapping("/guest_view.do")
-	public String guest_view(@RequestParam(value="guest_no", required=false, defaultValue="") String guest_no, Model model) {
+	public String guest_view(@RequestParam(value="guest_no", required=false, defaultValue="") String guest_no, Model model) throws Exception {
 		//required 속성의 default는 true이기 때문에 guest_no가 없을 시 false로 설정해줘야한다.
 		//required가 true일 경우에는 반드시 요구되기 때문에 400 에러가 나온다
 		//false일 경우엔 반드시 요구되지 않는다 라고 해서 null값이 들어가기때문에
@@ -75,14 +82,9 @@ public class GuestController {
 			forwardPath="redirect:guest_list.do";
 			return forwardPath;
 		}
-		try {
 			Guest guest = guestService.selectByNo(Integer.parseInt(guest_no));
 			model.addAttribute("guest", guest);
 			forwardPath="guest_view";
-		} catch (Exception e) {
-			e.printStackTrace();
-			forwardPath="guest_error";
-		}
 		return forwardPath;
 	}
 	
@@ -98,15 +100,10 @@ public class GuestController {
 	
 	
 	@RequestMapping(value="/guest_write_action.do", method=RequestMethod.POST)
-	public String guest_write_action(@ModelAttribute("guest") Guest guest) {
+	public String guest_write_action(@ModelAttribute("guest") Guest guest) throws Exception {
 		String forwardPath = "";
-		try {
-			int pk = guestService.insertGuest(guest);
-			forwardPath="redirect:guest_view.do?guest_no="+pk;
-		} catch (Exception e) {
-			e.printStackTrace();
-			forwardPath="guest_error";
-		}
+		int pk = guestService.insertGuest(guest);
+		forwardPath="redirect:guest_view.do?guest_no="+pk;
 		return forwardPath;
 	}
 	
@@ -117,16 +114,11 @@ public class GuestController {
 	
 	
 	@RequestMapping(value="/guest_modify_form.do", method = RequestMethod.POST)
-	public String guest_modify_form(@RequestParam(value="guest_no", required=false, defaultValue="") String guest_no, Model model) {
+	public String guest_modify_form(@RequestParam(value="guest_no", required=false, defaultValue="") String guest_no, Model model) throws Exception {
 		String forwardPath ="";
-		try {
 			Guest guest = guestService.selectByNo(Integer.parseInt(guest_no));
 			model.addAttribute("guest", guest);
 			forwardPath="guest_modify_form";
-		} catch (Exception e) {
-			e.printStackTrace();
-			forwardPath="guest_error";
-		}
 		return forwardPath;
 	}
 	
@@ -136,15 +128,10 @@ public class GuestController {
 	}
 	
 	@RequestMapping(value="/guest_modify_action.do", method = RequestMethod.POST)
-	public String guest_modify_action(@ModelAttribute("guest") Guest guest) {
+	public String guest_modify_action(@ModelAttribute("guest") Guest guest) throws Exception {
 		String forwardPath ="";
-		try {
 			guestService.updateGuest(guest);
 			forwardPath="redirect:guest_view.do?guest_no="+guest.getGuest_no();
-		} catch (Exception e) {
-			e.printStackTrace();
-			forwardPath="guest_error";
-		}
 		return forwardPath;
 	}
 	@RequestMapping(value="/guest_remove_action.do", method=RequestMethod.GET)
@@ -153,16 +140,10 @@ public class GuestController {
 	}
 	
 	@RequestMapping(value="/guest_remove_action.do", method = RequestMethod.POST)
-	public String guest_remove_action(@RequestParam(value="guest_no", required=false, defaultValue="") String guest_no) {
+	public String guest_remove_action(@RequestParam(value="guest_no", required=false, defaultValue="") String guest_no) throws Exception {
 		String forwardPath ="";
-		try {
-			guestService.deleteGuest(Integer.parseInt(guest_no));
-			forwardPath = "redirect:guest_list.do";
-		} catch (Exception e) {
-			e.printStackTrace();
-			forwardPath="guest_error";
-		}
-		
+		guestService.deleteGuest(Integer.parseInt(guest_no));
+		forwardPath = "redirect:guest_list.do";
 		return forwardPath;
 	}
 	

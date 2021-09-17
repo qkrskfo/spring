@@ -34,15 +34,6 @@ public class ExceptionControllerLocal {
 	}
 	
 	/*######## @Exception Handler #######*/
-	@ExceptionHandler(Exception.class)
-	public String handle_exception(Exception e) {
-		return "global_error_result";
-	}
-	
-	@ExceptionHandler(RuntimeException.class)
-	public String handle_runtime_exception(RuntimeException e) {
-		return "global_error_result";
-	}
 	
 	@ExceptionHandler(BusinessException1.class)
 	public String handle_business_exception1(BusinessException1 e) {

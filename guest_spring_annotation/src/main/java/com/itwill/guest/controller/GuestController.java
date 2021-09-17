@@ -102,6 +102,68 @@ public class GuestController {
 		return forwardPath;
 	}
 	
+	@RequestMapping(value="/guest_modify_form.do", method=RequestMethod.GET)
+	public String guest_modify_form_get() {
+		return "redirect:guest_main.do";
+	}
+	
+	
+	@RequestMapping(value="/guest_modify_form.do", method = RequestMethod.POST)
+	public String guest_modify_form(@ModelAttribute("guest_no") String guest_no, Model model) {
+		String forwardPath ="";
+		try {
+			Guest guest = guestService.selectByNo(Integer.parseInt(guest_no));
+			model.addAttribute("guest", guest);
+			forwardPath="forward:/WEB-INF/views/guest_modify_form.jsp";
+		} catch (Exception e) {
+			e.printStackTrace();
+			forwardPath="foward:/WEB-INF/views/guest_error.jsp";
+		}
+		return forwardPath;
+	}
+	
+	@RequestMapping(value="/guest_modify_action.do", method=RequestMethod.GET)
+	public String guest_modify_action_get() {
+		return "redirect:guest_main.do";
+	}
+	
+	@RequestMapping(value="/guest_modify_action.do", method = RequestMethod.POST)
+	public String guest_modify_action(@ModelAttribute("guest") Guest guest) {
+		String forwardPath ="";
+		try {
+			guestService.updateGuest(guest);
+			forwardPath="redirect:guest_view.do?guest_no="+guest.getGuest_no();
+		} catch (Exception e) {
+			e.printStackTrace();
+			forwardPath="foward:/WEB-INF/views/guest_error.jsp";
+		}
+		return forwardPath;
+	}
+	@RequestMapping(value="/guest_remove_action.do", method=RequestMethod.GET)
+	public String guest_remove_action_get() {
+		return "redirect:guest_main.do";
+	}
+	
+	@RequestMapping(value="/guest_remove_action.do", method = RequestMethod.POST)
+	public String guest_remove_action(@RequestParam(value="guest_no", required=false, defaultValue="") String guest_no) {
+		String forwardPath ="";
+		try {
+			guestService.deleteGuest(Integer.parseInt(guest_no));
+			forwardPath = "redirect:guest_list.do";
+		} catch (Exception e) {
+			e.printStackTrace();
+			forwardPath="foward:/WEB-INF/views/guest_error.jsp";
+		}
+		
+		return forwardPath;
+	}
+	
+	@RequestMapping("/guest_error.do")
+	public String guest_error() {
+		return "forward:/WEB-INF/views/guest_error.jsp";
+	}
+	
+	
 	/*
 	@RequestMapping("/guest_list.do")
 	public String guest_list(HttpServletRequest request, HttpServletResponse response) {

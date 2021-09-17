@@ -36,6 +36,7 @@ public class GuestController {
 	private GuestService guestService;
 	
 	@Autowired
+	//@Qualifier("guestService") guestService라는 id로 인젝션/지우면 type에 맞는 객체 인젝션
 	public void setGuestService(GuestService guestService) {
 		this.guestService = guestService;
 	}
@@ -62,6 +63,13 @@ public class GuestController {
 	
 	@RequestMapping("/guest_view.do")
 	public String guest_view(@RequestParam(value="guest_no", required=false, defaultValue="") String guest_no, Model model) {
+		//required 속성의 default는 true이기 때문에 guest_no가 없을 시 false로 설정해줘야한다.
+		//required가 true일 경우에는 반드시 요구되기 때문에 400 에러가 나온다
+		//false일 경우엔 반드시 요구되지 않는다 라고 해서 null값이 들어가기때문에
+		//if(guest_no == null) 이 충족된다.
+		//defaultValue는 값이 들어오지않으면 defaultValue값으로 설정해라는 뜻
+		//여기선 ""공백이니까 if(guest_no.equals(""))이 충족된다.
+		//예를들어 defaultValue = "89" 이런식으로 주면 ?guest_no=89가 디폴트값으로 들어간다.
 		String forwardPath="";
 		if(guest_no==null || guest_no.equals("")) {
 			forwardPath="redirect:guest_list.do";

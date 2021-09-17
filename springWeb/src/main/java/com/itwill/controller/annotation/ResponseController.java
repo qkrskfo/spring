@@ -41,7 +41,7 @@ public class ResponseController {
 		  2 . 현재생성된  ViewResolver객체는 InternalResourceViewResolver 객체만 존재하므로 
 		  	  InternalResourceViewResolver객체에 Controller로부터 반환받은 view name을 주고 View객체를 요청한다.
 		  	  
-		  3 . InternalResourceViewResolver 객체는 view name 이 forward: 로시작하므로  InternalResourceView 객체를 생성하고 view name을 url로 설정한후반환한다.
+		  3 . InternalResourceViewResolver 객체는 view name 이 forward:로 시작하므로(redirect가 아니라면)  InternalResourceView 객체를 생성하고 view name을 url로 설정한후반환한다.
 		      (url:/WEB-INF/views/response_view_name.jsp)를 반환
 		  4 . DispatcherServlet객체는 반환받은 InternalResourceView 객체의 render 메쏘드호출한다: 	
 			  (/WEB-INF/views/response_view_name.jsp 로 forward가이루어진다)	

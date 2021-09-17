@@ -64,32 +64,33 @@
 		
 	</li>
 	<li>SPEL(SCOPE객체에 등록된 숫자변수(속성이름)):
-		
+		<s:eval expression = "price0+price1/9" />
 	</li>
 	<li>SPEL(SCOPE객체에 등록된 문자열변수(속성이름)):
-		
+		<s:eval expression ="name0.replace('kim', 'sim').substring(4)" />
 	</li>
 	<li>EL(SCOPE객체에 등록된 빈객체(DTO):
-		
+		${guest.guest_date.substring(0,11)}
 	</li>
 	<li>SPEL(SCOPE객체에 등록된 빈객체(DTO):
-		
+		<s:eval expression="guest.guest_date.substring(0,11)" />
 	</li>
 	<li>
 		클래스생성자호출(EL에서는 호출불가능):<br>
-		
+		&dollar;{new java.text.DecimalFormat('###,###.0').format(price1)}
 	</li>
 	<li>
 		클래스생성자호출(SPEL에서는 호출가능):<br>
+		<s:eval expression="new java.text.DecimalFormat('###,###.0').format(price1)" />
 		
 		<br>
 		
 	</li>
 	<li>
 		@를 이용해서 SpringContainer에 등록된 빈사용가능
-		- @elBean:<br/>
-		- @elBean.member1:<br/>
-		- @elBean.printMembers():<br/>
+		- @elBean: <s:eval expression="@elBean.toString()"/><br/>
+		- @elBean.member1: <s:eval expression="@elBean.member1" /> <br/>
+		- @elBean.printMembers(): <s:eval expression="@elBean.printMembers()" /><br/>
 	</li>
 </ul>
 </body>

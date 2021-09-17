@@ -4,6 +4,9 @@ import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -11,9 +14,26 @@ import com.itwill.dto.Guest;
 
 @Controller
 public class SpringCustomTagSPELController {
+	
+	private MessageSource messageSource;
+	
+	@Autowired
+	@Qualifier("messageSource")
+	public void setMessageSource(MessageSource messageSource) {
+		this.messageSource = messageSource;
+	}
+
 	@RequestMapping("/jstl_fmt_i18n.do")
 	public String jstl_fmt_i18n() {
 		return "jstl_fmt_i18n";
+	}
+	
+	/*** SpringCustomTagSPELController 에서 국제화 해야함 ***/
+	//버튼이름 취소/cancle, 등록/submit 같은거
+	@RequestMapping("/spring_customtag_i18n.do")
+	public String spring_customtag_i18n() {
+		
+		return "spring_customtag_spel_i18n";
 	}
 	
 	@RequestMapping("/spring_customtag_spel.do")

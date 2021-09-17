@@ -109,7 +109,7 @@ public class GuestController {
 	
 	
 	@RequestMapping(value="/guest_modify_form.do", method = RequestMethod.POST)
-	public String guest_modify_form(@ModelAttribute("guest_no") String guest_no, Model model) {
+	public String guest_modify_form(@RequestParam(value="guest_no", required=false, defaultValue="") String guest_no, Model model) {
 		String forwardPath ="";
 		try {
 			Guest guest = guestService.selectByNo(Integer.parseInt(guest_no));

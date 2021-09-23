@@ -11,10 +11,27 @@
 	3. function객체를 반환
 	*/
 	
+	/********* 인자로 대입할 함수 **********/
+	function arg_func1() {
+		document.write("arg_func1()실행<br>");
+	}
+	function arg_func2() {
+		document.write("arg_func2()실행<br>");
+	}
 	
 	
-	/********함수(익명함수)를 인자로받음*********/
-	
+	/****함수(익명함수)를 인자로받아서실행할함수***/
+	function func3(funcArg){
+		document.write(">>> func3(funcArg)실행<br>");
+		//인자로 대입된함수를 호출
+		funcArg();
+	}
+	function func4(funcArg1, funcArg2){
+		document.write(">>> func4(funcArg1, funcArg2)실행<br>");
+		//인자로 대입된함수를 호출
+		funcArg1();
+		funcArg2();
+	}
 	
 	
 	
@@ -24,6 +41,13 @@
 <body>
 <h1>자바스크립트함수2</h1><hr>
 <script type="text/javascript">
+
+	func3(arg_func1);
+	func4(arg_func1, arg_func2);
+	
+	func3(function() {
+		document.write("### func3(funcArg)에 인자로 대입한 익명함수실행<br>");
+	});
 	
 	document.write("------------------kQuery라이브러리 사용-------------------<br>");
 	

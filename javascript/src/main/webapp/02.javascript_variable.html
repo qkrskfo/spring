@@ -65,6 +65,11 @@
 	console.log(nameArray[0]);
 	console.log(scoreArray[0]);
 	
+	//자바스크립트변수의 범위는 함수{}에 의해서만 생성된다.
+	for(var i=0; nameArray.length; i++) {
+		console.log(nameArray[i]+"-->"+scoreArray[i]);
+	}
+	console.log("i-->"+i); // 얘는 for문이 끝나도 사라지지 않아. i=5야
 	
 	console.log("--------------typeof------------");
 	console.log(typeof a1);

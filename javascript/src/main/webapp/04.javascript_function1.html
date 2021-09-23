@@ -38,9 +38,12 @@
 	
 	function func1() {
 		var localVar = "func1() local변수";
-		
+		document.write("func1()내부에서 실행:localVar="+localVar+"<br>");
 	}
 	
+	function func2(msg) {
+		
+	}
 	
 	
 	/*
@@ -63,6 +66,12 @@
 <h1>자바스크립트함수1</h1><hr>
 <script type="text/javascript">
 	
+	/*
+	A.선언적함수
+	*/
+	
+	func1();
+	window.func1();
 	
 	/*
 		1.함수를 변수에 대입

@@ -42,9 +42,14 @@
 	}
 	
 	function func2(msg) {
-		
+		document.write('func2(msg)실행 --> local msg:'+msg+"<br>");
 	}
 	
+	function add(a,b) {
+		var result=a+b;
+		document.write('add(a,b)실행-->local a,b,result <br>');
+		return result;
+	}
 	
 	/*
 		1.함수를 변수에 대입
@@ -72,6 +77,14 @@
 	
 	func1();
 	window.func1();
+	
+	func2('인자1');
+	window.func2('인자2');
+	
+	var r1 = add(1,2);
+	document.write("add(1,2)호출-->"+r1+"<br>");
+	document.write("add(5,7)호출-->"+add(5,7));
+	
 	
 	/*
 		1.함수를 변수에 대입

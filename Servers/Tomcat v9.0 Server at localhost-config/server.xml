@@ -156,7 +156,7 @@
         
 
 
-      <Context docBase="springWeb" path="/springWeb" reloadable="true" source="org.eclipse.jst.jee.server:springWeb"/></Host>
+      <Context docBase="javascript" path="/javascript" reloadable="true" source="org.eclipse.jst.jee.server:javascript"/></Host>
     </Engine>
   </Service>
 </Server>

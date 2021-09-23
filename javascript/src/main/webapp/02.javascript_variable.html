@@ -22,7 +22,7 @@
 	//e='상수변경1'; 상수는 변경이 불가능해
 	
 	console.log(d);
-	d=9999; //d는 true인 논리형변수였는데, 숫자형변수로 바꾼거임.
+	//d=9999; //d는 true인 논리형변수였는데, 숫자형변수로 바꾼거임.
 	console.log(d);
 	
 	var g=null;
@@ -38,6 +38,10 @@
 			2. JSON(JavasScript Object Notation)
 	*/
 	
+	var o1 = new Object();
+	var o2 = {};
+	var o3 = null;
+	
 	/*********Array************/
 	/*
 		 Array 객체생성
@@ -45,12 +49,51 @@
 			2. JSON(JavasScript Object Notation)
 	*/
 	
+	var array1 = new Array();
+	var array2 = [];
 	//자바스크립트변수의 범위는 함수에의해서만 생성된다.
+
+	/*** JSON을 사용한 객체(Object, Array) 생성***/
+	var student = {
+		'no' : 1,
+		'name':'KIM'
+	};
+	console.log(student);
+	
+	var nameArray=['KIM', 'LEE', 'PARK', 'CHOI', 'SIM'];
+	var scoreArray=[78,56,88,90,99];
+	console.log(nameArray[0]);
+	console.log(scoreArray[0]);
 	
 	
 	console.log("--------------typeof------------");
+	console.log(typeof a1);
+	console.log(typeof c);
+	console.log('boolean-->' + typeof d);
+	console.log(typeof o1);
+	console.log(typeof array1);
+	console.log(typeof student);
+	console.log(typeof nameArray);
+	console.log(typeof scoreArray);
+
+	if(typeof b == 'number') {
+		conseole.log('b는 number입니다.');
+	}
 	
+	console.log("---- undefined ----")
+	console.log(typeof h);
+	if(typeof h =='undefined') {
+		console.log('typeof h는 undefined입니다.');
+	}
 	
+	if(h==undefined) {
+		console.log('h는 undefined입니다.');
+	}
+	
+	console.log("--- null ---")
+	if(g==null) {
+		console.log('g는 null 입니다.')
+	}
 	
 	
 </script>

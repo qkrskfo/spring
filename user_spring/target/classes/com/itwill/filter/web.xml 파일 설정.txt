@@ -1,0 +1,28 @@
+<filter>
+		<filter-name>LoginCheck Filter</filter-name>
+		<filter-class>com.itwill.filter.LoginCheckFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>LoginCheck Filter</filter-name>
+		<url-pattern>/user_logout_action.do</url-pattern>
+		<url-pattern>/user_list.do</url-pattern>
+		<url-pattern>/user_view.do</url-pattern>
+		<url-pattern>/user_view_myinfo.do</url-pattern>
+		<url-pattern>/user_modify_form_myinfo.do</url-pattern>
+		<url-pattern>/user_modify_action_myinfo.do</url-pattern>
+		<url-pattern>/user_remove_action_myinfo.do</url-pattern>
+	</filter-mapping>
+
+<filter>
+	<filter-name>Encoding Filter</filter-name>
+	<filter-class>com.itwill.filter.EncodingFilter</filter-class>
+	<init-param>
+		<param-name>encoding</param-name>
+		<param-value>UTF-8</param-value>
+	</init-param>
+</filter>
+
+<filter-mapping>
+	<filter-name>Encoding Filter</filter-name>
+	<url-pattern>/*</url-pattern>
+</filter-mapping>

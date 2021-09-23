@@ -35,7 +35,8 @@
 	 -->
 	 <li><s:message code="nv.bc" arguments="유저, 유저리스트" argumentSeparator="," /></li> 
 	 <li><s:message code="nv.bc" arguments="USER, USER LIST" argumentSeparator="," /></li> 
-	 
+	 <li>Spring Container에 등록된  MessageSource객체를 @를 이용해 jsp에서 직접 호출</li>
+	 <li><s:eval expression="@messageSource.getMessage('header.title', new Object[]{}, new java.util.Locale('${pageContext.request.locale.language}'))" /></li>
 	 <li></li>
 	 <li></li> 
 	 <li>

@@ -30,7 +30,17 @@ public class SpringCustomTagSPELController {
 		//return "forward:/WEB-INF/views/jstl_fmt_i18n.jsp";
 		return "jstl_fmt_i18n";
 	}
-	/************Spring JSP에서 국제화*******************/
+	/************Spring JSP에서 국제화******
+	1. application-config.xml에 MessageSource빈설정
+	 <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+  		<property name="basenames" value="messages/guest,messages/messages,messages/user"/>
+  	 </bean>
+	*************/
+	@RequestMapping("/spring_customtag_spel_i18n.do")
+	public String spring_customtag_spel_i18n() {
+		return "spring_customtag_spel_i18n";
+	}
+	
 	
 	/************Spring Controller에서 국제화*******************
 	1. application-config.xml에 MessageSource빈설정
@@ -42,9 +52,7 @@ public class SpringCustomTagSPELController {
    	 
    	 3. Controller객체메쏘드에서 MessageSource객체 사용
    	 
-   	 	String msg = messageSource.getMessage("user.existed.exception",
-											null,
-											requestLocale);
+   	 	String msg = messageSource.getMessage("user.existed.exception", null, requestLocale);
    	 
    *************************************************************/
 	

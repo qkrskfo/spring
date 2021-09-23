@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- 
+ <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,18 +16,25 @@
     </bean>
 </xmp>
 <ol>
-	<li></li>
-	<li></li>
+	<li><s:message code="page.title" /></li>
+	<li><s:message code="page.login.header"/></li>
 	<!-- 
+		<< user_ko.properties>>
 		exception.userexisted={0} 사용자가 존재합니다..!!
+		<< user_en.properties>>
+		exception.userexisted = {0} user existed...!!
 	 -->
-	<li></li>
+	<li><s:message code="exception.userexisted" arguments="guard" /></li> <!-- arguments에 el 들어갈 수 있음 -->
+	<li><s:message code="exception.userexisted" arguments="xxxx" /></li>
 	<li></li> 
 	<!-- 
+	<< user_ko.properties >>
 	nv.bc=홈 < {0} < {1}
+	<< user_en.properties >>
 	nv.bc=HOME < {0} < {1}
 	 -->
-	 <li></li> 
+	 <li><s:message code="nv.bc" arguments="유저, 유저리스트" argumentSeparator="," /></li> 
+	 <li><s:message code="nv.bc" arguments="USER, USER LIST" argumentSeparator="," /></li> 
 	 
 	 <li></li>
 	 <li></li> 

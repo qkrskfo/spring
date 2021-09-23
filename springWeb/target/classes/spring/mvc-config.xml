@@ -29,6 +29,12 @@
 	<!-- View 객체 등록-->
 	<bean id="xmlView" class="com.itwill.controller.annotation.XMLView" />
 	
+	<!-- 
+	Controller가 반환하는 view name(String)
+	1. redirect:response_redirect_view_name.jsp
+	2. forward:/WEB-INF/views/response_view_name.jsp
+	3. xmlView
+	 -->
 	
 	
 	<!-- ViewResolver 객체 등록 -->

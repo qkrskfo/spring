@@ -55,9 +55,19 @@ public class SpringCustomTagSPELController {
 	public String spring_customtag_i18n(Locale requestLocale,Model model) {
 		//메시지를 붙여보내려면 인자에 model도 있어야해
 		
-				//Locale requestLocale = request.getLocale(); 인자에 Httpservletrequest 넣어야함
+		//Locale requestLocale = request.getLocale(); 인자에 Httpservletrequest 넣어야함
+		
+		/*
+		<< messags_ko.properties >>
+		user.existed.exception = {0}는 존재하는 아이디 입니다.
+		user.notfound.exception = {0}는 존재하지 않는 아이디입니다.
+		
+		<< messags_ko.properties >>
+		user.existed.exception = {0} User ID already exist.
+		user.notfound.exception = {0} User ID don't exist.
+		 */
 		String msg = messageSource.getMessage("user.existed.exception",
-											null,
+											new Object[] {"guard"},
 											requestLocale);
 		model.addAttribute("user_existed_exception_controller_msg", msg);
 		return "spring_customtag_spel_i18n";

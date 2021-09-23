@@ -68,19 +68,37 @@
 	   2.함수를 인자로 대입
  	*/
  	
- 	function func5(funcArg) {
-		document.write("func5(funcArg)실행<br>");
-		console.log(funcArg);
-	}
- 	
 	function arg_func5() {
 		document.write('arg_func5()실행<br>');
+	}
+
+	function func5(funcArg) {
+		document.write("func5(funcArg)실행<br>");
+		document.write('--- func5에서 인자로 받은 function 실행 ---<br>');
+		//console.log(funcArg);
+		funcArg();
+		document.write('------------------------------------<br>');
 	}
 	
 	/*
 	B. 익명함수
 	*/
 	
+	var funcVar6 = function() {
+		document.write('funcVar6변수에 대입된 익명함수실행<br>'); //함수의 내용을 변수로 받을 수 있음.
+	};
+	
+	var funcVar7 = function(a,b){
+		document.write('funcVar7('+a+','+b+')변수에 대입된 익명함수실행<br>'); //함수의 내용을 변수로 받을 수 있음.
+	};
+	
+	(function() {
+		document.write('변수에 대입도 안한 찐 익명함수실행<br>');
+	})(); // 이렇게 바로 실행
+	
+	(function(arg1,arg2){
+		document.write("이번엔 변수에 대입도 안하고 인자까지 받는 찐 익명함수2("+arg1+","+arg2+") 실행<br>");
+	})('KIM','LEE'); //호출하고 인자받고 실행까지 한번에
 	
 </script>
 </head>
@@ -118,11 +136,13 @@
 	/*
 	   2.함수를 인자로 대입
 	*/
-	func5(arg_func5());
+	func5(arg_func5);
 	
 	/*
 	B. 익명함수
 	*/
+	funcVar6();
+	funcVar7(10, 20);
 	
 	
 </script>

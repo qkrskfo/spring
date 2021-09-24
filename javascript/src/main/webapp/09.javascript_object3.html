@@ -4,19 +4,44 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
+	
 	/*
 	생성자함수
 	*/
 
+	
 	/*
 	학생객체를 생성해서 반환해주는 <<< 함수 >>> 작성
 	*/
+	function createStudent(id, name, kor, eng, math) {
+		var studentObject={
+				'id':id,
+				'name':name,
+				'kor':kor,
+				'eng':eng,
+				'math':math,
+				'tot':0,
+				'avg':0.0,
+				'calculateTot':function(){
+					this.tot=this.kor+this.eng+this.math;
+				},
+				'calculateAvg':function(){
+					this.avg=this.tot/3;
+				},
+				'toString':function(){
+					return '['+this.id+']'+this.name+','+this.kor+','+this.eng+','+this.math+','+this.tot+','+this.avg;
+				}
+		};
+		return studentObject;
+	}
 	
 	
 	
 	/****************학생객체****************/
-	
-	
+	var studentObject1 = createStudent('xxx', '엑스맨', 56, 90, 99);
+	var studentObject2 = createStudent('yyy', '와이맨', 88, 34, 59);
+	var studentObject3 = createStudent('zzz', '제트맨', 72, 81, 99);
+	var studentArray = [studentObject1, studentObject2, studentObject3];
 	
 </script>
 </head>
@@ -24,6 +49,11 @@
 <h1>생성자 함수2</h1><hr>
 <script type="text/javascript">
 	document.write('--------------student 리스트---------------------<br>');
+	for (var i = 0; i < studentArray.length; i++) {
+		studentArray[i].calculateTot();
+		studentArray[i].calculateAvg();
+		document.write(studentArray[i].toString()+"<br>");
+	}
 	
 </script>
 </body>

@@ -28,11 +28,36 @@
 		document.write("-----------------------------------------------<br>");
 		document.write("outer_function1 --> outer_var:"+outer_var+"<br>");
 		//06.javascript_function3.html:27 Uncaught ReferenceError: inner_var is not defined
-		document.write("outer_function1 --> inner_var:inner_var(접근안됨) <br>");
+		document.write("outer_function1 --> inner_var:inner var(접근안됨) <br>");
 		return inner_function1;
 	}
 	
+	function outer_function2() {
+		var outer_var = "outer2 var data";
+		return function(){
+			var inner_var = "inner2 var data";
+			document.write("익명 inner_function2 --> outer_var:"+outer_var+"<br>");
+			document.write("익명 inner_function2 --> inner_var:"+inner_var+"<br>");
+		};
+	}
 	
+	function outer_function3(outer_var) {
+		return function(){
+			var inner_var = "inner3 var data";
+			document.write("익명 inner_function3 --> outer_var:"+outer_var+"<br>");
+			document.write("익명 inner_function3 --> inner_var:"+inner_var+"<br>");
+		};
+	}
+	
+	function outer_function4(a,b) {
+		var c = a+b;
+		return function(d) {
+			document.write("익명 inner_function4 --> a :"+a+"<br>");
+			document.write("익명 inner_function4 --> b :"+b+"<br>");
+			document.write("익명 inner_function4 --> c :"+c+"<br>");
+			document.write("익명 inner_function4 --> d :"+d+"<br>");
+		}
+	}
 	
 </script>
 
@@ -49,6 +74,17 @@
 	//06.javascript_function3.html:37 Uncaught ReferenceError: inner_function1 is not defined
 	//inner_function1();
 	
+	var returnInnerFunction2 = outer_function2();
+	returnInnerFunction2();
+	
+	var returnInnerFunction3 = outer_function3("외부변수 데이터1");
+	returnInnerFunction3();
+	outer_function3("외부변수 데이터2")();
+	
+	var returnInnerFunction4 = outer_function4(100, 200); 
+	returnInnerFunction4(99999);
+	returnInnerFunction4(555555);
+	returnInnerFunction4(2222222);
 </script>
 </body>
 </html>

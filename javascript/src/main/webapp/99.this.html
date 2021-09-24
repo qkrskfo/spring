@@ -5,14 +5,22 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>this</h1>
+<h1>this</h1><hr>
 <script type="text/javascript">
-
-	function func1() {
-		document.write(this+"<br>");
+	function func1(){
+		document.write("1.this-->"+this+"<br>");
 	}
-	func1();
+	window.func1();
 	
+	var o = new Object();
+	o.func1=function(){
+		document.write("2.this-->"+this+"<br>");
+	};
+	o.func1();
+	document.write('-----------this변경(bind,apply,call)-----------------<br>');
+	window.func1.bind(o)();
+	o.func1.bind(window)();
+
 </script>
 </body>
 </html>

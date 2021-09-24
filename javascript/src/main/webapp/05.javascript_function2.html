@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title> 
-<script type="text/javascript" src='kQuery.js'></script>
+
 <script type="text/javascript" >
 	/*
 	1. function객체를 변수에대입(일급함수)
@@ -12,11 +12,11 @@
 	*/
 	
 	/********* 인자로 대입할 함수 **********/
-	function arg_func1() {
-		document.write("arg_func1()실행<br>");
+	function arg_func1(){
+		document.write("### arg_func1()실행<br>");
 	}
-	function arg_func2() {
-		document.write("arg_func2()실행<br>");
+	function arg_func2(){
+		document.write("### arg_func2()실행<br>");
 	}
 	
 	
@@ -33,6 +33,11 @@
 		funcArg2();
 	}
 	
+	function hello(name, funcArg) {
+		document.write(">>> hello(name, funcArg) 실행<br>");
+		var msg = name+"님 안녕하세요!!";
+		funcArg(msg);
+	}
 	
 	
 	
@@ -45,11 +50,26 @@
 	func3(arg_func1);
 	func4(arg_func1, arg_func2);
 	
+	func3(function(){
+		document.write("### func3(funcArg)에 인자로 대입한 익명함수 실행<br>");
+	});
+	
+	func4(function(){
+		document.write("### func4(funcArg1, funcArg2)에 첫번째인자로 대입한 익명함수 실행<br>");
+	}, function(){
+		document.write("### func4(funcArg1, funcArg2)에 두번째인자로 대입한 익명함수 실행<br>");
+	});
+	
 	/*
 	func3(function() {
 		document.write("### func3(funcArg)에 인자로 대입한 익명함수실행<br>");
 	});
 	*/
+	
+	hello("김경호", function(msg){
+		document.write('### msg:'+msg+"<br>");
+	});		
+	
 	
 	document.write("------------------kQuery라이브러리 사용-------------------<br>");
 	

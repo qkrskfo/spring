@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title> 
-
+<script type="text/javascript" src="kQuery.js"></script>
 <script type="text/javascript" >
 	/*
 	1. function객체를 변수에대입(일급함수)
@@ -32,6 +32,8 @@
 		funcArg1();
 		funcArg2();
 	}
+	
+	//kQuery.js로 뺐어!
 	/*
 	function hello(name, funcArg) {
 		document.write(">>> hello(name, funcArg) 실행<br>");
@@ -71,6 +73,8 @@
 	});
 	*/
 	
+	document.write("------------------kQuery라이브러리 사용-------------------<br>");
+	
 	hello("김경호", function(msg){
 		document.write('### msg:'+msg+"<br>");
 	});		
@@ -81,7 +85,7 @@
 	});
 	
 	
-	document.write("------------------kQuery라이브러리 사용-------------------<br>");
+	
 	
 	/*
 	<<javascript api document>

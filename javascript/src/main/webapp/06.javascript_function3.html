@@ -23,11 +23,13 @@
 			document.write("inner_function1 --> outer_var:"+outer_var+"<br>");
 			document.write("inner_function1 --> inner_var:"+inner_var+"<br>");
 		}
+		document.write("--------outer_function1의 내부에서 호출--------<br>");
 		inner_function1();	
+		document.write("-----------------------------------------------<br>");
 		document.write("outer_function1 --> outer_var:"+outer_var+"<br>");
 		//06.javascript_function3.html:27 Uncaught ReferenceError: inner_var is not defined
 		document.write("outer_function1 --> inner_var:inner_var(접근안됨) <br>");
-		return outer_var;
+		return inner_function1;
 	}
 	
 	
@@ -38,8 +40,12 @@
 <body>
 <h1>javascript inner function,closure(클로져)</h1><hr/>
 <script type="text/javascript">
-	var returnVar = outer_function1();
-	console.log(returnVar);
+
+	var returnInnerFunction1 = outer_function1();
+	document.write("--------outer_function1의 외부에서 호출--------<br>");
+	returnInnerFunction1();
+	document.write("-----------------------------------------------<br>");
+	
 	//06.javascript_function3.html:37 Uncaught ReferenceError: inner_function1 is not defined
 	//inner_function1();
 	

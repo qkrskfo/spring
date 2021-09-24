@@ -32,7 +32,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
+
 	var globalVar="global(window)변수";
+	
 	/*
 	A.선언적함수
 	*/
@@ -111,6 +113,8 @@
 	*/
 	
 	func1();
+	document.write('globalVar:'+globalVar+"<br>");
+	document.write('localVar:'+localVar+"<br>");
 	window.func1();
 	
 	func2('인자1');

@@ -39,6 +39,11 @@
 		funcArg(msg);
 	}
 	
+	function forEach(array, userCallbackFunction) {
+		for(var i =0; i<array.length; i++) {
+			userCallbackFunction(i, array[i]);
+		}
+	}
 	
 	
 </script>
@@ -69,6 +74,11 @@
 	hello("김경호", function(msg){
 		document.write('### msg:'+msg+"<br>");
 	});		
+	
+	var nameArray=["김경미", "김미숙", "홍길동", "정찬우", "강감찬"];
+	forEach(nameArray, function(index, name){
+		document.write("#####"+index+","+name+"<br>");
+	});
 	
 	
 	document.write("------------------kQuery라이브러리 사용-------------------<br>");

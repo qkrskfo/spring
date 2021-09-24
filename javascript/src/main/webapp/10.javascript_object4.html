@@ -19,9 +19,9 @@
 	function Student(id, name, kor, eng, math) {
 		/*
 		호출 new Student()
-		1. Object객체 생성(new Object())
-		2. this === 생성된 Object객체
-		3. 생성된 객체(this) 반환
+		1. Object객체생성(new Object())
+		2. 생성된 Object객체(this)에 속성메쏘드추가
+		3. 생성된 객체(this)반환
 		*/
 		this.id = id; //여기서 this는 window
 		this.name = name;
@@ -40,6 +40,32 @@
 			return '['+this.id+']'+this.name+','+this.kor+','+this.eng+','+this.math+','+this.tot+','+this.avg;
 		}
 	}
+	/*
+	function Student2(id, name, kor, eng, math) {
+		// 1. Object 객체 생성
+		var student = new Object();
+		
+		// 2. Object 객체에 속성, 메소드 추가
+		student.id = id; 
+		student.name = name;
+		student.kor = kor;
+		student.eng = eng;
+		student.math = math;
+		student.tot=0;
+		student.avg = 0.0;
+		student.calculateTot = function(){
+			this.tot = this.kor + this.eng + this.math;
+		};
+		student.calculateAvg = function(){
+			this.avg = this.tot/3;
+		};
+		student.toString = function(){
+			return '['+this.id+']'+this.name+','+this.kor+','+this.eng+','+this.math+','+this.tot+','+this.avg;
+		}
+		//3. 반환
+		return student;
+	}
+	*/
 	
 	/*
 	window.student('xzxz', '김', 34, 54, 78);
@@ -52,14 +78,14 @@
 	*/
 	
 	/****************학생객체****************/
+	/* 얘는 student2
+	var studentObject0 = new Student2('xxx', 'KIM', 34, 56, 90);
+	*/
 	var studentObject1 = new Student('xxx', 'KIM', 34, 56, 90);
 	var studentObject2 = new Student('yyy', 'DIM', 34, 56, 90);
 	var studentObject3 = new Student('zzz', 'BIM', 34, 56, 90);
 
-	//var studentArray = [studentObject1, studentObject2, studentObject3];
-	
-	
-
+	var studentArray = [studentObject1, studentObject2, studentObject3];
 	
 	
 </script>
@@ -68,13 +94,13 @@
 <h1>생성자 함수3</h1><hr>
 <script type="text/javascript">
 	document.write('--------------student 리스트---------------------<br>');
-	/*
+	
 	for (var i = 0; i < studentArray.length; i++) {
 		studentArray[i].calculateTot();
 		studentArray[i].calculateAvg();
 		document.write(studentArray[i].toString()+"<br>");
 	}
-	*/
+	
 </script>
 </body>
 </html>

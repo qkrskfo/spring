@@ -33,7 +33,7 @@
 		funcArg2();
 	}
 	
-	//kQuery.js로 뺐어!
+	//<< kQuery.js >>
 	/*
 	function hello(name, funcArg) {
 		document.write(">>> hello(name, funcArg) 실행<br>");
@@ -92,6 +92,15 @@
 	https://www.w3schools.com
 	*/
 	document.write('-----------javascript 라이브러리 사용---------<br>');
+	nameArray.forEach(function(name,index,arr){
+		document.write('### '+index+":"+name+"<br>");
+	});
+	
+	/*
+	for (var i = 0; i < nameArray.length; i++) {
+		document.write('### '+i+":"+nameArray[i]+"<br>");
+	}
+	*/
 	
 </script>
 </body>

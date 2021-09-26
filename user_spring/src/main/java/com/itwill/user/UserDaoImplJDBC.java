@@ -10,34 +10,20 @@ import java.util.Properties;
 import javax.sql.DataSource;
 
 import org.apache.commons.dbcp2.BasicDataSource;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Repository;
 
 
-/*
- 사용자관리에서 데이타베이스와의 작업을 전담하는 클래스
- USERINFO 테이블에 사용자를 추가,삭제,검색,수정등의 작업을한다.
- */
+
+@Repository("userDao")
 public class UserDaoImplJDBC implements UserDao {
 	/*
-	 * Connection을 반환해주는객체
+	 * DataSource타입의구현객체 Container에서찾아서 injection
 	 */
+	@Autowired
+	//@Qualifier("dataSource")
 	private DataSource dataSource;
-	/*
-	public UserDao() throws Exception {
-		InitialContext ic = new InitialContext();
-		dataSource = (DataSource) ic.lookup("java:/comp/env/jdbc/OracleDB");
-		System.out.println("UserDao()생성자:" + this + "-->" + dataSource);
-	}
-	*/
-	  public UserDaoImplJDBC() throws Exception { 
-		 
-	  }
-	  
-
-	public void setDataSource(DataSource dataSource) {
-		this.dataSource = dataSource;
-	}
-
-
 	/*
 	 * 사용자관리테이블에 새로운사용자생성
 	 */

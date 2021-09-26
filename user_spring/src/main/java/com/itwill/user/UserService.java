@@ -10,7 +10,7 @@ public interface UserService {
 	/*
 	 * 회원로그인
 	 */
-	User login(String userId, String password) throws Exception;
+	int login(String userId, String password) throws Exception;
 	/*
 	 * 회원전체리스트
 	 */

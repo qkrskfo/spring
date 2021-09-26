@@ -70,7 +70,7 @@
 										<td width=100 align=center bgcolor="E6ECDE" height="22">사용자
 											아이디</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10">
-											${loginUser.userId}
+											${sUserId}
 										</td>
 									</tr>
 									<tr>

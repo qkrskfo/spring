@@ -83,9 +83,14 @@ public class UserController {
 	public String user_login_action(@RequestParam(value="userId", required=false) String userId, @RequestParam(value="password") String password, Model model, HttpSession session) throws Exception {
 		String forwardPath = "";
 		int result = userService.login(userId, password);
-		if(result==0 || result ==1) {
-			model.addAttribute("msg", "존재하지 않는 아이디거나 비밀번호가 일치하지 않습니다.");
+		if(result==0) {
 			User fuser=new User(userId,password,"",""); 
+			model.addAttribute("msg1", "존재하지 않는 아이디거나 비밀번호가 일치하지 않습니다.");
+			model.addAttribute("fuser", fuser);
+			forwardPath = "user_login_form";
+		} else if(result==1) {
+			User fuser=new User(userId,password,"",""); 
+			model.addAttribute("msg2", "존재하지 않는 아이디거나 비밀번호가 일치하지 않습니다.");
 			model.addAttribute("fuser", fuser);
 			forwardPath = "user_login_form";
 		} else if(result==2) {
@@ -121,21 +126,22 @@ public class UserController {
 	@RequestMapping("/user_view_myinfo.do")
 	public String user_view_myinfo(Model model, HttpSession session) throws Exception {
 		String sUserId = (String)session.getAttribute("sUserId");
-		User user = userService.findUser(sUserId);
-		model.addAttribute("user", user);
+		if(sUserId==null||sUserId.equals("")) {
+			return "redirect:user_main.do";
+		}
+		User loginUser = userService.findUser(sUserId);
+		model.addAttribute("loginUser", loginUser);
 		return "user_view_myinfo";
 	}
 	
-	@RequestMapping(value="/user_modify_form.do", method=RequestMethod.GET)
-	public String user_modify_form_get() {
-		return "redirect:user_main.do";
-	}
-	
-	
-	@RequestMapping(value="/user_modify_form_myinfo.do", method = RequestMethod.POST)
+	@RequestMapping(value="/user_modify_form_myinfo.do")
 	public String user_modify_form_myinfo(HttpSession session, Model model) throws Exception {
-		User user = userService.findUser((String)session.getAttribute("sUserId"));
-		model.addAttribute("user", user);
+		String sUserId = (String)session.getAttribute("sUserId");
+		if(sUserId==null||sUserId.equals("")) {
+			return "redirect:user_main.do";
+		}
+		User loginUser = userService.findUser(sUserId);
+		model.addAttribute("loginUser", loginUser);
 		return "user_modify_form_myinfo";
 	}
 	
@@ -145,8 +151,11 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/user_modify_action_myinfo.do", method=RequestMethod.POST)
-	public String user_modify_action_myinfo(@ModelAttribute("user") User user, HttpSession session) throws Exception {
+	public String user_modify_action_myinfo(@ModelAttribute("loginUser") User user, HttpSession session) throws Exception {
 		String sUserId = (String)session.getAttribute("sUserId");
+		if(sUserId==null||sUserId.equals("")) {
+			return "redirect:user_main.do";
+		}
 		userService.update(new User(sUserId, user.getPassword(), user.getName(), user.getEmail()));
 		return "user_view_myinfo";
 	}

@@ -160,13 +160,13 @@ public class UserController {
 		return "user_view_myinfo";
 	}
 	
-	@RequestMapping(value="/user_remove_action.do", method=RequestMethod.GET)
-	public String user_remove_action_get() {
+	@RequestMapping(value="/user_remove_action_myinfo.do", method=RequestMethod.GET)
+	public String user_remove_action_myinfo_get() {
 		return "redirect:user_main.do";
 	}
 	
-	@RequestMapping(value="/user_remove_action.do", method = RequestMethod.POST)
-	public String user_remove_action(HttpSession session) throws Exception {
+	@RequestMapping(value="/user_remove_action_myinfo.do", method = RequestMethod.POST)
+	public String user_remove_action_myinfo(HttpSession session) throws Exception {
 		userService.remove((String)session.getAttribute("sUserId"));
 		session.invalidate();
 		return "redirect:user_main.do";

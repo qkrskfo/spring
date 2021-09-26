@@ -89,7 +89,7 @@ public class GuestController {
 	}
 	
 	@RequestMapping("/guest_write_form.do")
-	public String guest_write_forwm() {
+	public String guest_write_form() {
 		return "guest_write_form";
 	}
 	

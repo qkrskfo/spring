@@ -1,7 +1,19 @@
 package com.itwill.user.controller;
 
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.itwill.user.User;
+import com.itwill.user.UserService;
 
 @Controller
 public class UserController {
@@ -21,8 +33,70 @@ public class UserController {
 	/user_remove_action_myinfo.do
 	/user_error.do
 	 */
+	private UserService userService;
+	
+	@Autowired
+	public void setUserService(UserService userService) {
+		this.userService = userService;
+	}
+	
 	@RequestMapping("/user_main.do")
 	public String user_main() {
 		return "user_main";
 	}
+	
+	@RequestMapping("/user_write_form.do")
+	public String user_write_form() {
+		return "user_write_form";
+	}
+	
+	@RequestMapping(value="/user_write_action.do", method=RequestMethod.GET)
+	public String user_write_action_get() {
+		return "redirect:user_main.do";
+	}
+	
+	@RequestMapping(value="/user_write_action.do", method=RequestMethod.POST)
+	public String user_write_action(@ModelAttribute("user") User user) throws Exception {
+		userService.create(user);
+		return "user_login_form";
+	}
+	
+	@RequestMapping("/user_login_form.do")
+	public String user_login_form() {
+		return "user_login_form";
+	}
+	
+	@RequestMapping(value="/user_login_action.do", method=RequestMethod.GET)
+	public String user_login_action_get() {
+		return "redirect:user_login_form.do";
+	}
+	
+	@RequestMapping(value="/user_login_action.do", method=RequestMethod.POST)
+	public String user_login_action(@RequestParam(value="userId", required=false) String userId, @RequestParam(value="password") String password) throws Exception {
+		userService.login(userId, password);
+		return "user_main";
+	}
+	
+	@RequestMapping("/user_logout_action.do")
+	public String user_logout_action(HttpServletRequest request) {
+		String forwardPath ="";
+		request.getSession().invalidate();
+		forwardPath ="redirect:user_main.do";
+		return forwardPath;
+	}
+	
+	@RequestMapping("/user_list.do")
+	public String user_list(Model model) throws Exception {
+		String forwardPath ="";
+		List<User> userList = userService.findUserList();
+		model.addAttribute("userList", userList);
+		forwardPath = "user_list";
+		return forwardPath;
+	}
+	
+	public String user_view() {
+		String forwardPath = "";
+		return forwardPath;
+	}
+	
 }

@@ -1,9 +1,7 @@
 package com.itwill.user.controller;
 
-import java.util.Iterator;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -81,42 +79,33 @@ public class UserController {
 	
 	@RequestMapping("/user_logout_action.do")
 	public String user_logout_action(HttpSession session) {
-		String forwardPath ="";
 		session.invalidate();
-		forwardPath ="redirect:user_main.do";
-		return forwardPath;
+		return "redirect:user_main.do";
 	}
 	
 	@RequestMapping("/user_list.do")
 	public String user_list(Model model) throws Exception {
-		String forwardPath ="";
 		List<User> userList = userService.findUserList();
 		model.addAttribute("userList", userList);
-		forwardPath = "user_list";
-		return forwardPath;
+		return "user_list";
 	}
 	
 	@RequestMapping("/user_view.do")
 	public String user_view(@RequestParam(value="userId", required=false, defaultValue="") String userId, Model model) throws Exception {
-		String forwardPath = "";
 		if(userId==null || userId.equals("")) {
-			forwardPath="redirect:user_main.do";
-			return forwardPath;
+			return "redirect:user_main.do";
 		}
 		User user = userService.findUser(userId);
 		model.addAttribute("user", user);
-		forwardPath = "user_view";
-		return forwardPath;
+		return "user_view";
 	}
 	
 	@RequestMapping("/user_view_myinfo.do")
 	public String user_view_myinfo(Model model, HttpSession session) throws Exception {
-		String forwardPath = "";
 		String sUserId = (String)session.getAttribute("sUserId");
 		User user = userService.findUser(sUserId);
 		model.addAttribute("user", user);
-		forwardPath = "user_view_myinfo";
-		return forwardPath;
+		return "user_view_myinfo";
 	}
 	
 	@RequestMapping(value="/user_modify_form.do", method=RequestMethod.GET)
@@ -125,11 +114,41 @@ public class UserController {
 	}
 	
 	
-	@RequestMapping(value="/user_modify_form.do", method = RequestMethod.POST)
-	public String user_modify_form(@RequestParam(value="userId", required=false, defaultValue="") String userId, Model model) throws Exception {
-		String forwardPath ="";
-		
-		return forwardPath;
+	@RequestMapping(value="/user_modify_form_myinfo.do", method = RequestMethod.POST)
+	public String user_modify_form_myinfo(HttpSession session, Model model) throws Exception {
+		User user = userService.findUser((String)session.getAttribute("sUserId"));
+		model.addAttribute("user", user);
+		return "user_modify_form_myinfo";
 	}
+	
+	@RequestMapping(value="/user_modify_action_myinfo.do", method=RequestMethod.GET)
+	public String user_modify_action_myinfo_get() {
+		return "redirect:user_main.do";
+	}
+	
+	@RequestMapping(value="/user_modify_action_myinfo.do", method=RequestMethod.POST)
+	public String user_modify_action_myinfo(@ModelAttribute("user") User user, HttpSession session) throws Exception {
+		String sUserId = (String)session.getAttribute("sUserId");
+		userService.update(new User(sUserId, user.getPassword(), user.getName(), user.getEmail()));
+		return "user_view_myinfo";
+	}
+	
+	@RequestMapping(value="/user_remove_action.do", method=RequestMethod.GET)
+	public String user_remove_action_get() {
+		return "redirect:user_main.do";
+	}
+	
+	@RequestMapping(value="/user_remove_action.do", method = RequestMethod.POST)
+	public String user_remove_action(HttpSession session) throws Exception {
+		userService.remove((String)session.getAttribute("sUserId"));
+		session.invalidate();
+		return "redirect:user_main.do";
+	}
+	
+	@RequestMapping("/user_error.do")
+	public String user_error() {
+		return "user_error";
+	}
+	
 	
 }

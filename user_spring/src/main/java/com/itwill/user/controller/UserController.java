@@ -1,8 +1,10 @@
 package com.itwill.user.controller;
 
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -78,9 +80,9 @@ public class UserController {
 	}
 	
 	@RequestMapping("/user_logout_action.do")
-	public String user_logout_action(HttpServletRequest request) {
+	public String user_logout_action(HttpSession session) {
 		String forwardPath ="";
-		request.getSession().invalidate();
+		session.invalidate();
 		forwardPath ="redirect:user_main.do";
 		return forwardPath;
 	}
@@ -94,8 +96,39 @@ public class UserController {
 		return forwardPath;
 	}
 	
-	public String user_view() {
+	@RequestMapping("/user_view.do")
+	public String user_view(@RequestParam(value="userId", required=false, defaultValue="") String userId, Model model) throws Exception {
 		String forwardPath = "";
+		if(userId==null || userId.equals("")) {
+			forwardPath="redirect:user_main.do";
+			return forwardPath;
+		}
+		User user = userService.findUser(userId);
+		model.addAttribute("user", user);
+		forwardPath = "user_view";
+		return forwardPath;
+	}
+	
+	@RequestMapping("/user_view_myinfo.do")
+	public String user_view_myinfo(Model model, HttpSession session) throws Exception {
+		String forwardPath = "";
+		String sUserId = (String)session.getAttribute("sUserId");
+		User user = userService.findUser(sUserId);
+		model.addAttribute("user", user);
+		forwardPath = "user_view_myinfo";
+		return forwardPath;
+	}
+	
+	@RequestMapping(value="/user_modify_form.do", method=RequestMethod.GET)
+	public String user_modify_form_get() {
+		return "redirect:user_main.do";
+	}
+	
+	
+	@RequestMapping(value="/user_modify_form.do", method = RequestMethod.POST)
+	public String user_modify_form(@RequestParam(value="userId", required=false, defaultValue="") String userId, Model model) throws Exception {
+		String forwardPath ="";
+		
 		return forwardPath;
 	}
 	

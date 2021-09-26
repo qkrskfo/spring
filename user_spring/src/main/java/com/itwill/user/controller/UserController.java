@@ -56,9 +56,17 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/user_write_action.do", method=RequestMethod.POST)
-	public String user_write_action(@ModelAttribute("user") User user) throws Exception {
-		userService.create(user);
-		return "user_login_form";
+	public String user_write_action(@ModelAttribute("user") User user, Model model) throws Exception {
+		String forwardPath ="";
+		int result = userService.create(user);
+		if(result!=1) {
+			model.addAttribute("msg", user.getUserId()+"는 이미 존재하는 아이디입니다.");
+			model.addAttribute("fuser", user);
+			forwardPath = "user_write_form";
+		} else if(result==1) {
+			forwardPath ="redirect:user_login_form.do";
+		}
+		return forwardPath;
 	}
 	
 	@RequestMapping("/user_login_form.do")
@@ -72,9 +80,19 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/user_login_action.do", method=RequestMethod.POST)
-	public String user_login_action(@RequestParam(value="userId", required=false) String userId, @RequestParam(value="password") String password) throws Exception {
-		userService.login(userId, password);
-		return "user_main";
+	public String user_login_action(@RequestParam(value="userId", required=false) String userId, @RequestParam(value="password") String password, Model model, HttpSession session) throws Exception {
+		String forwardPath = "";
+		int result = userService.login(userId, password);
+		if(result==0 || result ==1) {
+			model.addAttribute("msg", "존재하지 않는 아이디거나 비밀번호가 일치하지 않습니다.");
+			User fuser=new User(userId,password,"",""); 
+			model.addAttribute("fuser", fuser);
+			forwardPath = "user_login_form";
+		} else if(result==2) {
+			session.setAttribute("sUserId", userId);
+			forwardPath = "redirect:user_main.do";
+		}
+		return forwardPath;
 	}
 	
 	@RequestMapping("/user_logout_action.do")

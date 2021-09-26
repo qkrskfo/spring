@@ -1,14 +1,9 @@
-<%@page import="java.net.URLEncoder"%>
 <%@page import="com.itwill.user.User"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="com.itwill.user.UserService"%>
+<%@page import="com.itwill.user.UserServiceImpl"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%
-String USER_NOT_FOUND_MSG = (String) request.getAttribute("USER_NOT_FOUND_MSG");
-ArrayList<User> userList = (ArrayList<User>) request.getAttribute("userList");
-%>
-
+    pageEncoding="UTF-8"%>
+<%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -17,13 +12,12 @@ ArrayList<User> userList = (ArrayList<User>) request.getAttribute("userList");
 <link rel=stylesheet href="css/styles.css" type="text/css">
 <link rel=stylesheet href="css/user.css" type="text/css">
 <script type="text/javascript">
-<%if (USER_NOT_FOUND_MSG != null) {%>
-	alert('<%=USER_NOT_FOUND_MSG%>
-	')
-<%}%>
-	
+function userList() {
+		f.action = "user_write_form.do";
+		f.submit();
+}
 </script>
-
+	
 <style type="text/css" media="screen">
 </style>
 </head>
@@ -34,15 +28,14 @@ ArrayList<User> userList = (ArrayList<User>) request.getAttribute("userList");
 		<!-- header start -->
 		<div id="header">
 			<!-- include_common_top.jsp start-->
-			<jsp:include page="include_common_top.jsp" />
-
+			<jsp:include page="include_common_top.jsp"/>
 			<!-- include_common_top.jsp end-->
 		</div>
 		<!-- header end -->
 		<!-- navigation start-->
 		<div id="navigation">
 			<!-- include_common_left.jsp start-->
-			<jsp:include page="include_common_left.jsp" />
+			<jsp:include page="include_common_left.jsp"/>
 			<!-- include_common_left.jsp end-->
 		</div>
 		<!-- navigation end-->
@@ -70,35 +63,31 @@ ArrayList<User> userList = (ArrayList<User>) request.getAttribute("userList");
 										<td align=center bgcolor="E6ECDE">이름</td>
 										<td align=center bgcolor="E6ECDE">이메일</td>
 									</tr>
-									<%
-									String sUserId=(String)session.getAttribute("sUserId");
-									for (User user : userList) {
-										if (!user.getUserId().equals(sUserId)) {
-									%>
-									<!-- loop start -->
-									<tr>
-										<td width=190 align=center bgcolor="ffffff" height="20">
-											<%=user.getUserId()%>
-										</td>
-										<td width=200 bgcolor="ffffff" style="padding-left: 10">
-											<a
-											href="user_view?userId=<%=URLEncoder.encode(user.getUserId(), "UTF-8")%>"
-											class="user"> <%=user.getName()%>
-										</a>
-										</td>
-										<td width=200 align=center bgcolor="ffffff"><%=user.getEmail()%>
-										</td>
-									</tr>
-									<!-- loop end -->
-									<%
-									}
-									}
-									%>
+									<!-- 회원리스트 start -->
+									<c:forEach items="${userList}" var="user">
+										<c:if test="${user.userId != sUserId}">
+											<tr>
+												<td width=190 align=center bgcolor="ffffff" height="20">
+													${user.userId}
+												</td>
+												<td width=200 bgcolor="ffffff" style="padding-left: 10">
+													<a href="user_view.do?userId=${user.userId}"
+													class="user">${user.name}</a>
+												</td>
+												<td width=200 align=center bgcolor="ffffff">${user.email}
+												</td>
+											</tr>
+										</c:if>
+									</c:forEach>
+									<!-- 회원리스트 end -->
+									
+									
 								</table>
 							</form> <br />
 							<table border="0" cellpadding="0" cellspacing="1">
 								<tr>
-									<td align="right"></td>
+									<td align="right"><!-- input type="button" value="사용자 추가"  onclick="userList();"/-->
+									</td>
 								</tr>
 							</table></td>
 					</tr>
@@ -110,7 +99,7 @@ ArrayList<User> userList = (ArrayList<User>) request.getAttribute("userList");
 		<!--wrapper end-->
 		<div id="footer">
 			<!-- include_common_bottom.jsp start-->
-			<jsp:include page="include_common_bottom.jsp" />
+			<jsp:include page="include_common_bottom.jsp"/>
 			<!-- include_common_bottom.jsp end-->
 		</div>
 	</div>

@@ -81,6 +81,15 @@ public class UserController {
 	
 	@RequestMapping(value="/user_login_action.do", method=RequestMethod.POST)
 	public String user_login_action(@RequestParam(value="userId", required=false) String userId, @RequestParam(value="password") String password, Model model, HttpSession session) throws Exception {
+		/* 
+		required 속성의 default는 true이기 때문에 guest_no가 없을 시 false로 설정해줘야한다.
+		required가 true일 경우에는 반드시 요구되기 때문에 400 에러가 나온다
+		false일 경우엔 반드시 요구되지 않는다 라고 해서 null값이 들어가기때문에
+		if(guest_no == null) 이 충족된다.
+		defaultValue는 값이 들어오지않으면 defaultValue값으로 설정해라는 뜻
+		여기선 ""공백이니까 if(guest_no.equals(""))이 충족된다.
+		예를들어 defaultValue = "89" 이런식으로 주면 ?guest_no=89가 디폴트값으로 들어간다.
+		*/
 		String forwardPath = "";
 		int result = userService.login(userId, password);
 		if(result==0) {

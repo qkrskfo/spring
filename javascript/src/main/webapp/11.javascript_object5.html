@@ -43,7 +43,7 @@
 		*/ 
 	}
 	
-	/************prototype******************/
+	/************prototype*****************
 	Student.prototype.calculateTot = function() {
 		this.tot = this.kor+this.eng+this.math;
 	}
@@ -55,11 +55,21 @@
 	Student.prototype.toString = function() {
 		return '['+this.id+']'+this.name+','+this.kor+','+this.eng+','+this.math+','+this.tot+','+this.avg;
 	}
-
+	*/
 	
 	/************prototype[JSON]******************/
 	
-	
+	Student.prototype={
+		'calculateTot' : function(){
+			this.tot = this.kor+this.eng+this.math;
+		},
+		'calculateAvg' : function(){
+			this.avg = this.tot/3;
+		},
+		'toString' : function(){
+			return '['+this.id+']'+this.name+','+this.kor+','+this.eng+','+this.math+','+this.tot+','+this.avg;
+		}
+	};
 	
 	/****************학생객체****************/
 	var studentArray = [new Student('xxx', '엑스맨', 34, 23, 99), 

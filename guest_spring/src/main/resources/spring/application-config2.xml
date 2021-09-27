@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	<beans profile="jdbcTemplate">
+		<context:property-placeholder
+			location="classpath:db/jdbc.properties" />
+		<bean id="dataSource"
+			class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+			<property name="driverClassName"
+				value="${jdbc.driverClassName}" />
+			<property name="url" value="${jdbc.url}" />
+			<property name="username" value="${jdbc.username}" />
+			<property name="password" value="${jdbc.password}" />
+		</bean>
+		
+	</beans>
+	<!-- 
+	web.xml  profile   이름기술
+	<context-param>
+		<param-name>spring.profiles.active</param-name>
+		<param-value>mybatis</param-value>
+	</context-param>
+	 -->
+	<beans profile="jdbc">
+		<context:property-placeholder
+			location="classpath:db/jdbc.properties" />
+		<bean id="dataSource"
+			class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+			<property name="driverClassName"
+				value="${jdbc.driverClassName}" />
+			<property name="url" value="${jdbc.url}" />
+			<property name="username" value="${jdbc.username}" />
+			<property name="password" value="${jdbc.password}" />
+		</bean>
+		<bean id="guestDao" class="com.itwill.guest.GuestDaoImplJDBC">
+			<property name="dataSource" ref="dataSource" />
+		</bean>
+		<bean id="guestService" class="com.itwill.guest.GuestServiceImpl">
+			<property name="guestDao" ref="guestDao" />
+		</bean>
+	</beans>
+	
+	<beans profile="mybatis">
+		<context:property-placeholder
+			location="classpath:db/jdbc.properties" />
+		<bean id="dataSource"
+			class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+			<property name="driverClassName"
+				value="${jdbc.driverClassName}" />
+			<property name="url" value="${jdbc.url}" />
+			<property name="username" value="${jdbc.username}" />
+			<property name="password" value="${jdbc.password}" />
+		</bean>
+		<bean id="sqlSessionFactory"
+			class="org.mybatis.spring.SqlSessionFactoryBean">
+			<property name="dataSource" ref="dataSource" />
+			<property name="mapperLocations">
+				<list>
+					<value>classpath:com/itwill/guest/mapper/GuestMapper.xml</value>
+				</list>
+			</property>
+		</bean>
+		<bean id="sqlSession"
+			class="org.mybatis.spring.SqlSessionTemplate">
+			<constructor-arg ref="sqlSessionFactory" />
+		</bean>
+		<!-- GuestDao 생성, DataSource객체 setter injection -->
+		<bean id="guestDao" class="com.itwill.guest.GuestDaoImplMyBatis">
+			<property name="sqlSession" ref="sqlSession" />
+		</bean>
+		<bean id="guestService" class="com.itwill.guest.GuestServiceImpl">
+			<property name="guestDao" ref="guestDao" />
+		</bean>
+	</beans>
+
+</beans>

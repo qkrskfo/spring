@@ -35,9 +35,6 @@
 				imgE2.setAttribute('width', '20px');
 				imgE2.setAttribute('height', '20px');
 				newDiv.insertBefore(imgE2, newTextNode);
-				
-				
-				
 
 		/*
 			2.DOM Tree에추가
@@ -49,10 +46,21 @@
 	}
 	
 	function remove(){
-		
+		if(count==0) {
+			return;
+		}
+		var removeDivE = document.getElementById("newDiv"+count);
+		var parentDivE = document.getElementById("parent");
+		parentDivE.removeChild(removeDivE);
+		count--;
 	}
+	
 	function update(){
-		
+		//var bodyE = document.getElementsByTagName('body')[0]
+		var bodyE = document.body;
+		bodyE.style.background="url('p_blue2.png')";
+		bodyE.style.backgroundRepeatX="no-repeat";
+		bodyE.style.backgroundRepeatY="no-repeat";
 	}
 </script>
 </head>
@@ -61,8 +69,12 @@
 	<hr>
 	<div id='parent'>
 		<!-- 
-	<div id="count0" style="1px dotted gold"></div>
- 	-->
+		<div id="newDiv1" style="border: 1px dotted gold;">
+			<img src="p_blue.png" width="20px" height="20px">
+			새로생성된DIV1 의 TextNode
+			<img src="p_red.png" width="20px" height="20px">
+		</div>
+ 		-->
 	</div>
 	<div id='menu'>
 		<input type="button" value="DOM Tree 추가" onclick="create()"> <input

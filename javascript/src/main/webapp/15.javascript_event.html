@@ -5,7 +5,8 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 	function inlineEventHandler(e){
-	
+		var msg = 'inlineEventhandler:'+e.target+","+e.type+", this:"+this;
+		console.log(msg);
 	}
 	function button2EventHandler(e){
 		
@@ -53,7 +54,10 @@
 <form name="f">
 	<input 	name="button1" 
 			type="button" 
-			value="event model[inline]"/>
+			value="event model[inline]"
+			onclick="inlineEventHandler(event);"
+			/>
+			
 	<input id="button2" name="button2" type="button" value="event model[DOM level0]"/>
 	<input name="button3" type="button" value="event model[DOM level2]"/>
 	<input name="button4" type="button" value="event remove"/>

@@ -5,7 +5,21 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 	function findById(){
+		var div1E = document.getElementById("div1");
+		var div2E = document.getElementById("div2");
+		var div3E = document.getElementById("div3");
+		var div4E = document.getElementById("div4");
 		
+		div1E.innerHTML="";
+		div1E.innerHTML+="<form>";
+		div1E.innerHTML+="검색어:<input type='search'>";
+		div1E.innerHTML+="<input type='submit' value='검색'";
+		div1E.innerHTML+="</form>";
+		
+		div2E.innerHTML='div 2 change';
+		div2E.style.border='3px dotted red';
+		
+		div3E.innerHTML="<img src='p_current.png' width='30px' height='30px'>";
 		/*
 		display		: none<-->block
 		visibility	: hidden<-->visible
@@ -23,7 +37,6 @@
 </script>
 </head>
 <body>
-	<h1>HTML DOM객체 찾기</h1>
 	<h1>HTML DOM객체 찾기</h1>
 	<hr>
 	<div id="div1">id=div1</div>

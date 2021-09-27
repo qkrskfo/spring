@@ -11,17 +11,30 @@
 			<< Node생성기능 document객체만가지는 기능 >>
 			1.div Element(tag)
 		 */
-		 var newDiv = document.createElement('div');
-			newDiv.style.border='1px dotted gold';
-		
+		var newDiv = document.createElement('div');
+		newDiv.style.border='1px dotted gold';
+		newDiv.setAttribute("id", "newDiv"+count);
+			
 				/*
 				1-1.TextNode생성
 				 */
-			
+				var newTextNode = document.createTextNode("새로생성된 div"+count+"의 TextNode");
+				newDiv.appendChild(newTextNode);
 				/*
 				1-2.img Element생성
+					<img src='p_red.png' width='20px' height='20px' />
 				 */
-			
+				var imgE1 = document.createElement('img');
+				imgE1.setAttribute('src', 'p_red.png');
+				imgE1.setAttribute('width', '20px');
+				imgE1.setAttribute('height', '20px');
+				newDiv.appendChild(imgE1); //이미지가 텍스트노드 뒤쪽에 들어감
+				
+				var imgE2 = document.createElement('img');
+				imgE2.setAttribute('src', 'p_blue.png');
+				imgE2.setAttribute('width', '20px');
+				imgE2.setAttribute('height', '20px');
+				newDiv.insertBefore(imgE2, newTextNode);
 				
 				
 				

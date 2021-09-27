@@ -24,19 +24,43 @@
 		display		: none<-->block
 		visibility	: hidden<-->visible
 		*/
-	
+		
+		//div4E.style.display='none';
+		div4E.style.visibility='hidden';
 		
 	}
-	function findByClass(){
 	
+	function findByClass(){
+		var divNodeList = document.getElementsByClassName('menu');
+		for (var i=0; i<divNodeList.length; i++) {
+			divNodeList[i].style.color='red';
+			divNodeList[i].style.background='pink';
+			divNodeList[i].style.border='1px dotted blue';
+			
+			
+			//divNodeList.item(i).style.color='red';
+			//divNodeList.item(i).style.background='pink';
+		}
 	}
+	
 	var count=0;
 	function findByTagName(){
+		var h1NodeList = document.getElementsByTagName("h1");
+		for(var i=0; i<h1NodeList.length; i++) {
+			h1NodeList[i].innerHTML='h1변경'+count++;
+		}
+		
+		var divNodeList = document.getElementsByTagName('div');
+		for(var i=0; i<divNodeList.length; i++) {
+			divNodeList[i].style.fontSize=count+'pt';
+			//count++;
+		}
 		
 	}
 </script>
 </head>
 <body>
+	<h1>HTML DOM객체 찾기</h1>
 	<h1>HTML DOM객체 찾기</h1>
 	<hr>
 	<div id="div1">id=div1</div>

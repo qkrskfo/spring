@@ -6,7 +6,7 @@
 <script type="text/javascript">
 	function inlineEventHandler(e){
 		var msg = 'inlineEventhandler:'+e.target+","+e.type+", this:"+this;
-		console.log(msg);
+		displayMessage(msg);
 	}
 	function button2EventHandler(e){
 		
@@ -23,8 +23,8 @@
 	
 	function event_regist(){
 		/*** DOM LEVEL - 0 ***/
-		
-		
+		var button2E=document.getElementById("button2");
+		button2E.onclick = ;
 		/*
 		https://www.w3schools.com/
 		*/
@@ -45,7 +45,7 @@
 	};
 	*/
 	function displayMessage(msg){
-		
+		document.getElementById("result").innerHTML+=msg+"<br>";
 	}
 </script>
 </head>

@@ -56,7 +56,27 @@
 			var msg='button3익명EventHandler2[mouseout]:'+e.target+","+e.type+",this:"+this;
 			displayMessage(msg);
 		});
+		
+		var olistE = document.getElementById('movie_rank');
+		//console.log(document.getElementsByTagName("li").length);
+		//console.log(olistE.getElementsByTagName("li").length);
+		var liNodeList = olistE.getElementsByTagName("li");
+		for(var i=0; i<liNodeList.length; i++) {
+			liNodeList[i].addEventListener('click', function(e) {
+				displayMessage("click한 영화: "+e.target.innerHTML);
+				if(e.target.style.background=='gray') {
+					e.target.style.background='white';
+				} else {
+					e.target.style.background='gray';
+				}
+			});
+		}
+		
 	}
+	
+	
+	
+	
 	/*
 	window.onload 이벤트발생시점
 	   -DOM Tree 생성직후 렌더링전에호출

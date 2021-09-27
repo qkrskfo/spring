@@ -9,41 +9,62 @@
 		displayMessage(msg);
 	}
 	function button2EventHandler(e){
-		
+		var msg = 'button2EventHandler:'+e.target+","+e.type+", this:"+this;
+		displayMessage(msg);
 	}
 	
 	function button3EventHandler1(e){
-	
+		var msg = 'button3EventHandler1[click]:'+e.target+","+e.type+", this:"+this;
+		displayMessage(msg);
 	}
 	function button3EventHandler2(e){
-		
+		var msg = 'button3EventHandler2[click]:'+e.target+","+e.type+", this:"+this;
+		displayMessage(msg);
 	}
 	
 	
-	
+	/*
+	이벤트등록함수(실행시점 DOMTree로딩완료시점에실행)
+		1. body맨마지막
+		2. window.onload 이벤트발생시호출 
+	*/
 	function event_regist(){
 		/*** DOM LEVEL - 0 ***/
 		var button2E=document.getElementById("button2");
-		button2E.onclick = ;
+		/*** CASE1 ***/
+		button2E.onclick = button2EventHandler;
+		/*********CASE2******
+		button2E.onclick=function(e){
+			var msg='button2EventHandler익명함수:'+e.target+","+e.type+",this:"+this;
+			displayMessage(msg);
+		}
+		*/
 		/*
 		https://www.w3schools.com/
 		*/
-		
 		/*** DOM LEVEL - 2 ***/
-		
-		
-		
-		
-		
+		var button3E = document.f.button3;
+		//var button3E = document.getElementById("button3");
+		//getElementById 대신, form 이름이 있으니까 f를쓴것.
+		button3E.addEventListener('click', button3EventHandler1);
+		button3E.addEventListener('click', button3EventHandler2);
+		button3E.addEventListener('mouseover', function(e){
+			var msg='button3익명EventHandler1[mouseover]:'+e.target+","+e.type+",this:"+this;
+			displayMessage(msg);
+		});
+		button3E.addEventListener('mouseout', function(e){
+			var msg='button3익명EventHandler2[mouseout]:'+e.target+","+e.type+",this:"+this;
+			displayMessage(msg);
+		});
 	}
 	/*
 	window.onload 이벤트발생시점
 	   -DOM Tree 생성직후 렌더링전에호출
- 	window.onload =  function(){
-		event_regist();
-		
-	};
 	*/
+	window.onload = function() {
+		event_regist();
+	};
+	
 	function displayMessage(msg){
 		document.getElementById("result").innerHTML+=msg+"<br>";
 	}
@@ -59,8 +80,8 @@
 			/>
 			
 	<input id="button2" name="button2" type="button" value="event model[DOM level0]"/>
-	<input name="button3" type="button" value="event model[DOM level2]"/>
-	<input name="button4" type="button" value="event remove"/>
+	<input id="button3" name="button3" type="button" value="event model[DOM level2]"/>
+	<input id=button4" name="button4" type="button" value="event remove"/>
 </form>
 <ol id='movie_rank'>
 	<li>조커</li>
@@ -80,7 +101,7 @@
 	
 </div>
 <script type="text/javascript">
-	
+	//event_regist();
 </script>
 
 </body>

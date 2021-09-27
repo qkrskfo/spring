@@ -5,8 +5,12 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="Student.js"></script>
 <script type="text/javascript">
-	
-	/****************학생객체****************/
+
+
+/****************학생객체****************/
+var studentArray = [new com.itwill.Student('xxx', '엑스맨', 34, 23, 99), 
+					new com.itwill.Student('yyy', '와이맨', 64, 82, 72),  
+					new com.itwill.Student('zzz', '제트맨', 93, 82, 51)];
 	
 </script>
 </head>
@@ -14,6 +18,11 @@
 <h1>생성자 함수5[package]</h1><hr>
 <script type="text/javascript">
 	document.write('--------------student 리스트---------------------<br>');
+	for(var i=0; i<studentArray.length; i++) {
+		studentArray[i].calculateTot();
+		studentArray[i].calculateAvg();
+		document.write(studentArray[i].toString()+"<br>");
+	}
 	
 </script>
 </body>

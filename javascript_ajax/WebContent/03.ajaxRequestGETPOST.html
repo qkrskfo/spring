@@ -17,36 +17,52 @@
 		/*
 		1. XMLHttpRequest객체생성
 		*/
+		xhr = new XMLHttpRequest();
+		
 		/*
 		2. 요청속성설정 
 		*/
+		xhr.open("post", "03.ajaxRequestGETPOST.jsp"); //비동기방식이 기본
 		/*
 		응답이 도착했을때 실행되는 콜백함수등록
 		*/
+		xhr.onreadystatechange = postResponseCallBack;
 		/*
 		POST 방식일경우는 요청헤더설정
 		*/
+		xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xhr.set
 		/*
 		3.요청
 		*/
-	
+		xhr.send("id="+idStr);
 		
 	}
 	function postResponseCallBack(){
-		
+		if(xhr.readyState==4) {
+			var responseStr = xhr.responseText;
+			document.getElementById('postResultSpan').innerHTML=responseStr;
+		} else {
+			//progress dialog
+			document.getElementById("postResultSpan").innerHTML="<img src='loading.gif' width='15px' height='15px'>";
+		}
+	
 	}
 	
 	window.onload=function(){
 		//이벤트등록
+		document.postForm.id.addEventListener('keyup', function(e){
+			ajaxRequestPost();
+		});
 		
 		
 	};
 </script>
 </head>
 <body>
-<h1>AJAX GET,POST요청</h1><hr/>
+<h1>AJAX POST요청</h1><hr/>
 <form id="postForm" name="postForm">
-	아이디[POST]:<input on type="text" name="id" id="id">
+	아이디[POST]:<input type="text" name="id" id="id" onkeyup="ajaxRequestPost();" >
 	<span id="postResultSpan"></span>
 </form>
 </body>

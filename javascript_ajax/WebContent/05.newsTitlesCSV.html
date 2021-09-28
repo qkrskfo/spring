@@ -35,7 +35,8 @@ h1.titleBackClass {
 	background-color:silver;
 	width: 80%;
 	margin:50px auto 50px auto;
-	padding: 20px 20px 20px 20px;
+	/*padding: 20px 20px 20px 20px;*/
+	padding: 20px;
 }
 
 #newsDiv {
@@ -44,6 +45,10 @@ h1.titleBackClass {
 	background: orange;
 	padding-left: 5%;
 }
+
+#newsDiv > ul > li:nth-child(3){
+		color:red;
+	}
 </style>
 <script type="text/javascript" src="httpRequest.js"></script>
 <script type="text/javascript">
@@ -71,9 +76,8 @@ h1.titleBackClass {
 				<li>한국인들 실직·이직 공포에 시달린다[ITWILL뉴스-2021. 4. 14 오후 12:33:32]</li>
 			</ul>
 			 */
-			
-		}
 	}
+	
 	window.onload = function() {
 		
 	};

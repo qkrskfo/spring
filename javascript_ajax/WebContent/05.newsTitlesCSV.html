@@ -58,10 +58,13 @@ h1.titleBackClass {
 	}
 
 	function requestNews() {
-	
+		sendRequest('05.newsTitlesCSV.jsp', null, responseNews, 'GET');
 
 	}
 	function responseNews() {
+			if(xhr.readyState==4) {
+				console.log(xhr.responseText);
+			}
 		
 			/*
 			<ul>
@@ -85,7 +88,7 @@ h1.titleBackClass {
 </head>
 <body>
 	<div id="content">
-		<h1 class="titleBackClass">실시간늬우스[CSV]</h1>
+		<h1 class="titleBackClass" onclick="requestNews();">실시간늬우스[CSV]</h1>
 		<hr>
 		<div id="newsDiv" class="titleBackClass">
 		 

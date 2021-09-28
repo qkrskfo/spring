@@ -6,10 +6,23 @@
 <script type="text/javascript" src="httpRequest.js"></script>
 <script type="text/javascript">
 	function requestServerTime(){
+		//console.log('ajax server request...');
+		/*
+		var xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = responseServerTime;
+		xhr.open(method, ulr, async, user, password);
+		*/
+		sendRequest('04.server_clock.jsp', null, responseServerTime, 'GET' );
 	}
-	function responseServerTime(){
+	
+	function responseServerTime() {
+		if(xhr.readyState==4) {
+			document.getElementById("serverTimeSpan").innerHTML=xhr.responseText;
+		}
 	};
+	
 	window.onload=function(){
+		window.setInterval(requestServerTime,1000);
 	};
 </script>
 </head>

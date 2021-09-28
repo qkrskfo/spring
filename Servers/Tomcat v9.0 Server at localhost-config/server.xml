@@ -156,7 +156,7 @@
         
 
 
-      <Context docBase="javascript" path="/javascript" reloadable="true" source="org.eclipse.jst.jee.server:javascript"/><Context docBase="user_spring" path="/user_spring" reloadable="true" source="org.eclipse.jst.jee.server:user_spring"/><Context docBase="guest_spring" path="/guest_spring" reloadable="true" source="org.eclipse.jst.jee.server:guest_spring"/></Host>
+      <Context docBase="javascript_ajax" path="/javascript_ajax" reloadable="true" source="org.eclipse.jst.jee.server:javascript_ajax"/></Host>
     </Engine>
   </Service>
 </Server>

@@ -4,28 +4,48 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
+	/*
+		page기반 요청
+		1. submit버튼 클릭[form.submit()]
+		2. anchor tag 클릭
+		
+		요청--> 기존페이지 DOM tree제거(UI사라짐) --> 응답(HTML) --> 응답HTML로 DOM Tree 다시 생성 --> UI랜더링
+	*/
+	
     var xhr=null;
 	function ajaxRequestIdCheck(){
+		/*
+		console.log('ajaxRequestIdCheck');
 		   var idStr = document.f.id.value;
 		   if(idStr.length==0 || idStr.trim()==''){
 			   return;
 		   }
-		   
+		 */
+		 var idStr = document.f.id.value;
+		 if(idStr.length==0 || idStr.trim()=="") {
+			 return;
+		 }
+		 
 			/*
 			AJAX요청순서
 			*/
 			/*
 			1. XMLHttpRequest객체생성
 			*/
+			xhr = new XMLHttpRequest(); //비동기 통신하는 객체
 			/*
-			2. 요청속성설정 
+			2. 요청속성설정 [요청속성이란: 어디로 요청할건데? open('방식', 'url(상대경로)', 비동기요청(true기본값임))]
 			*/
+			//var params = "id="+idStr;
+			xhr.open('GET', '02.ajaxRequest.jsp?id='+idStr, true);
 			/*
 			응답이 도착했을때 실행되는 콜백함수등록
 			*/
 			/*
 			3.요청
 			*/
+			xhr.send(null); //post방식일때만 데이터를 넣고, get방식은 null
+			
 			
 	}	
 	/*
@@ -47,12 +67,11 @@
 </script>
 </head>
 <body>
-<h1>ajax요청</h1><hr/>
-<form name="f" id="f" action="">
-	아이디:<input type="text" name="id" id="id" 
-			onkeyup="ajaxRequestIdCheck();">
-	<span id="msg"></span>
-</form>
+	<h1>ajax요청</h1><hr/>
+	<form name="f" id="f" action="">
+		아이디:<input type="text" name="id" id="id" onkeyup="ajaxRequestIdCheck();">
+		<span id="msg"></span>
+	</form>
 </body>
 </html>
 

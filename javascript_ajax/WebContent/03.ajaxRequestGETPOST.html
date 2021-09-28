@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	var xhr=null;
+	function ajaxRequestPost(){
+		var idStr=document.postForm.id.value;
+		if(idStr.trim()==''){
+			document.getElementById('postResultSpan').innerHTML='';
+			return;
+		}
+		/*
+		AJAX요청순서
+		*/
+		/*
+		1. XMLHttpRequest객체생성
+		*/
+		/*
+		2. 요청속성설정 
+		*/
+		/*
+		응답이 도착했을때 실행되는 콜백함수등록
+		*/
+		/*
+		POST 방식일경우는 요청헤더설정
+		*/
+		/*
+		3.요청
+		*/
+	
+		
+	}
+	function postResponseCallBack(){
+		
+	}
+	
+	window.onload=function(){
+		//이벤트등록
+		
+		
+	};
+</script>
+</head>
+<body>
+<h1>AJAX GET,POST요청</h1><hr/>
+<form id="postForm" name="postForm">
+	아이디[POST]:<input on type="text" name="id" id="id">
+	<span id="postResultSpan"></span>
+</form>
+</body>
+</html>

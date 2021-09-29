@@ -38,8 +38,14 @@
 	}
 	function displayResult(){
 		if(xhr.readyState==4){
-			var jsonObject = JSON.parse(xhr.responseText);
-			console.log(jsonObject);
+			var jsonStr=xhr.responseText;
+			var jsonObject = JSON.parse(jsonStr);
+			var venueArray = jsonObject.response.groups[0].items;
+			for(var i=0;i<venueArray.length;i++){
+				var venue = venueArray[i].venue;
+				console.log(venue.name);
+			}
+			
 		}
 	}
 	

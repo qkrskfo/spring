@@ -13,8 +13,8 @@ public class ApiExamSearchBlog {
 
 
     public static void main(String[] args) {
-        String clientId = "YOUR_CLIENT_ID"; //애플리케이션 클라이언트 아이디값"
-        String clientSecret = "YOUR_CLIENT_SECRET"; //애플리케이션 클라이언트 시크릿값"
+        String clientId = "4XW1NDXIE042PYDOA5ISWYB25ESRHPJZN4HGGWECIM22V3TT"; //애플리케이션 클라이언트 아이디값"
+        String clientSecret = "4ZTOF5RTH4XPCVZVVX4QRNA41PYWM2KOSFL5DLNUK4X3ASD1"; //애플리케이션 클라이언트 시크릿값"
 
 
         String text = null;

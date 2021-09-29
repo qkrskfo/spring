@@ -3,19 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src='httpRequestConstructorFunction.js'></script>
+<script type="text/javascript" src="httpRequest.js"></script>
 <script type="text/javascript">
 	
 	
 	function hideForm(){
+		var contentNode = document.getElementById("content");
+		if(contentNode!=null){
+			contentNode.style.display='none';
+		}
 	}
 	
 	
 	function showForm(){
-		
+		var contentNode = document.getElementById("content");
+		if(contentNode==null){
+			sendRequest('guest_write_form.html', null, displayForm, 'GET');
+		}else{
+			contentNode.style.display='block';
+		}
 	}
 	function displayForm(){
-		
+		if(xhr.readyState==4){
+			document.getElementById("formContent").innerHTML=xhr.responseText;
+		}
 	}
 </script>
 </head>

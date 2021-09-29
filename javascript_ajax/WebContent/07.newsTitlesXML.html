@@ -52,7 +52,7 @@ ul {
 			/*
 			<?xml version="1.0" encoding="UTF-8" ?>
 			<result>
-			    <count>9</count> //카운트의 자식노드(텍스트노드)의 값이 9인거야. 카운트가 9가 아님!!!
+			    <count>9</count>
 			    <data>
 			        <newsList>
 			            <news>
@@ -66,22 +66,47 @@ ul {
 			</result>
 			*/
 		if(xhr.readyState==4){	
-		   var xmlDocument = xhr.responseXML;
-		  // var xmlStr = xhr.responseText;
-		  //console.log(xmlDocument);	
-		  //console.log(xmlStr);	
-		}	
-				
-				
-			     /*
+		    var xmlDocument = xhr.responseXML;
+		    /*
+		  	var countNodeList = xmlDocument.getElementsByTagName('count');
+		   	var countElement  = countNodeList[0];
+		   	var countTextNode = countElement.firstChild;
+		   	var countStr = countTextNode.nodeValue;
+		   	*/
+		   	var countStr = 
+		   		xmlDocument.getElementsByTagName('count')[0]
+		   		.firstChild
+		   		.nodeValue;
+		   if(countStr.trim()==0){
+			   return;
+		   }
+		   
+		   var newsNodeList = xmlDocument.getElementsByTagName("news");
+		   var html="<ol>";
+		   for(var i=0;i<newsNodeList.length;i++){
+			   /*
 				 <news>
 			                <title>참으로 수고 많으셨습니다</title>
 			                <company>연합뉴스</company>
 			                <date>2020. 3. 16 오전 11:24:31</date>
 			     </news>
 				*/
-	};
-	
+				/*
+				var newsElement = newsNodeList[i];
+				var titleNodeList = newsElement.getElementsByTagName("title");
+				var titleElement = titleNodeList[0];
+				var titleTextNode = titleElement.firstChild;
+				var titleStr=titleTextNode.nodeValue;
+				*/
+				var titleStr = newsNodeList[i].getElementsByTagName("title")[0].firstChild.nodeValue;
+				var companyStr = newsNodeList[i].getElementsByTagName("company")[0].firstChild.nodeValue;
+				var dateStr = newsNodeList[i].getElementsByTagName("date")[0].firstChild.nodeValue;
+				html+="<li>"+titleStr+"["+companyStr+"-"+dateStr+"][XML]</li>"
+		   }//end for
+		   html+="</ol>";
+		   document.getElementById("newsDiv").innerHTML=html;	
+		}//end if
+	}//end function
 	window.onload=function(){
 		setInterval(requestNews,3000);
 	};

@@ -63,10 +63,43 @@ h1.titleBackClass {
 	}
 	function responseNews() {
 			if(xhr.readyState==4) {
-				console.log(xhr.responseText);
+				//console.log(xhr.responseText);
+				var newsCSV = xhr.responseText;
+				var newsCSVArray = newsCSV.split("#");
+				var newsCount = newsCSVArray[0];
+				if(newsCount.trim()=='0') {
+					return;
+				}
+				var newsListArray = newsCSVArray[1].split('|');
+				var html="<ul>";
+				for(var i=0; i<newsListArray.length; i++) {
+					//console.log(i+"---->"+newsListArray[i]);
+					/*
+					title1, company1, date1
+					*/
+					var newsArray = newsListArray[i].split(',');
+					html+="<li>"+newsArray[0]+"["+newsArray[1]+"-"+newsArray[2]+"] </li>";
+				}
+				html+="</ul>";
+				//console.log(html);
+				document.getElementById("newsDiv").innerHTML=html;
 			}
-		
 			/*
+			0#
+			1#title1, company1, date1
+			2#title1, company1, date1|title2, company2, date2
+			*/
+			/*
+			<<CSV>>
+			9#참으로 수고 많으셨습니다...,연합뉴스,2021. 9. 29 오전 9:26:09|
+			IS 60개국 테러 위협 영상 공개…한국도 포함 포토,SBS뉴스,2021. 9. 29 오전 9:26:09|
+			통일부 남북 당국회담 실무접촉서 입장차,KBS뉴스,2021. 9. 29 오전 9:26:09|내년도 수도권 집값·전세값↑…2∼3년후 조정,TBC뉴스,2021. 9. 29 오전 9:26:09|
+			국토부 폴크스바겐 경유차 연비 3단계로 조사,OMY뉴스,2021. 9. 29 오전 9:26:09|
+			日롯데 신격호 소송 이해하는가 건강문제 제기,조선뉴스,2021. 9. 29 오전 9:26:09|
+			국가유공자 부인 위장 재혼시 유족자격 있다,YTN뉴스,2021. 9. 29 오전 9:26:09|
+			청소년에 한달 100건 성매매 강요 조폭 징역 6년,CBS뉴스,2021. 9. 29 오전 9:26:09|
+			한국인들 실직·이직 공포에 시달린다,ITWILL뉴스,2021. 9. 29 오전 9:26:09
+			
 			<ul>
 				<li>참으로 수고 많으셨습니다...[연합뉴스-2021. 4. 14 오후 12:33:32]</li>
 				<li>IS 60개국 테러 위협 영상 공개…한국도 포함 포토[SBS뉴스-2021. 4. 14 오후 12:33:32]</li>
@@ -82,7 +115,8 @@ h1.titleBackClass {
 	}
 	
 	window.onload = function() {
-		
+		setInterval(requestNews, 3000) 
+			
 	};
 </script>
 </head>
@@ -91,13 +125,13 @@ h1.titleBackClass {
 		<h1 class="titleBackClass" onclick="requestNews();">실시간늬우스[CSV]</h1>
 		<hr>
 		<div id="newsDiv" class="titleBackClass">
-		 
+		<!-- 
 		<ul>
 			<li>뉴스1[조상일보]2019-10-07</li>		
 			<li>뉴스2[동앙일보]2019-10-07</li>		
 			<li>뉴스3[중상일보]2019-10-07</li>		
 		</ul>
-		
+		-->
 		</div>
 	</div>
 </body>

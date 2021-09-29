@@ -24,8 +24,8 @@
 	function requestOpenApi(pos){
 		var crd = pos.coords;
 		console.log("현재위치는:"+crd.latitude+","+crd.longitude);
-		var latitude=37.499597;
-		var longitude=127.031372;
+		var latitude=37.42251291166661;
+		var longitude=-122.08414871066125;
 		latitude=crd.latitude;
 		longitude=crd.longitude;
 		/*
@@ -41,11 +41,13 @@
 			var jsonStr=xhr.responseText;
 			var jsonObject = JSON.parse(jsonStr);
 			var venueArray = jsonObject.response.groups[0].items;
+			var html="<ul>";
 			for(var i=0;i<venueArray.length;i++){
 				var venue = venueArray[i].venue;
-				console.log(venue.name);
+				html+="<li><img src='"+venue.categories[0].icon.prefix+"64"+venue.categories[0].icon.suffix+"'>"+venue.name+"["+venue.location.address+"]</li>";
 			}
-			
+			html+="</ul>";
+			document.getElementById("printDiv").innerHTML=html;
 		}
 	}
 	

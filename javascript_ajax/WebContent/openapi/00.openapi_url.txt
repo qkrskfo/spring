@@ -1,4 +1,4 @@
-﻿<< 조선일보 xml>>
+﻿﻿<< 조선일보 xml>>
 http://www.chosun.com/site/data/rss/ent.xml
 <<foursquare JSON>>
 https://api.foursquare.com/v2/venues/explore?ll=37.499597,127.031372&radius=250&limit=50&oauth_token=45HKGUJ5WESVY2X1GD0BNDOGWABCPCG2GUH5BWBR2NUXZG5L&v=20160613
@@ -36,16 +36,3 @@ http://api.androidhive.info/contacts/
 	....
 	]
 }
-네이버뉴스회사
-http://www.naver.com/include/newsstand/press_info.json
-네이버실검
-https://www.naver.com/srchrank?frm=main&ag=all&gr=1&ma=-2&si=0&en=0&sp=0
-
-
-
-
-
-
-
-
-

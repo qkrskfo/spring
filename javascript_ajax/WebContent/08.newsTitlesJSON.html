@@ -41,10 +41,11 @@
 	}
 	
 </style>
-
+<script type="text/javascript" src="httpRequest.js"></script>
 <script type="text/javascript">
 	
 	function requestNews() {
+		sendRequest('08.newsTitlesJSON.jsp', null, responseNews, 'GET');
 	}
 	
 	function responseNews() {
@@ -65,10 +66,33 @@
 						]
 			}
 			*/
+			if(xhr.readyState==4) {
+				var jsonStr = xhr.responseText;
+				var jsonObject = JSON.parse(jsonStr);
+				
+				/*
+				var jsonObject={'a':1, 'b':'test'};
+				var jsonArray=['kim', 'bim'];
+				console.log(jsonObject);
+				console.log(jsonArray);
+				*/
+				if(jsonObject.count==0) {
+					return;
+				}
+				var html="<ul>";
+				for(var i =0; i<jsonObject.data.length; i++) {
+					var titleStr = jsonObject.data[i].newsTitle;
+					var companyStr = jsonObject.data[i].company;
+					var dateStr = jsonObject.data[i].date;
+					html+="<li>"+titleStr+"["+companyStr+"-"+dateStr+"]</li>[JSON]";
+				}
+				html+="</ul>";
+				document.getElementById("newsDiv").innerHTML = html;
+			}
 	
 	}
 	window.onload = function() {
-		
+		setInterval(requestNews, 3000);
 	};
 </script>
 </head>

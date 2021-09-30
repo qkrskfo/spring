@@ -1,0 +1,29 @@
+body {
+	background-color:#F1F7E7;
+	color:#0C7B93;
+	font-family:Helvetica;
+	font-size:14pt;
+	margin:0px;
+	padding:0px;
+}
+
+h1 {
+	margin:0px;
+	padding:0px;
+}
+/*
+css를 클리어하는 css가 있데
+*/
+
+#header h1 a {
+	background-color: #A8E6CF;
+	display:block;
+	text-decoration:none;
+	text-align:center;
+	font-weight:bold;
+	font-size:20pt;
+	padding:10px 0px;
+	border-bottom: 1px solid #316B83;
+	color:#316B83;
+	text-shadow: 1px 1px 2px #000;
+}

@@ -71,5 +71,7 @@ css를 클리어하는 css가 있데
 #header div.menuButton{
 	position: absolute;
 	top: 9px;
-	left:6px;
+	left: 6px;
+	background-image:url(images/menu.png);
+	background-position: center;
 }

@@ -48,11 +48,12 @@ label.error {
 			var html="";
 			for(var i=0; i<guestListJsonArray.length; i++) {
 				//console.log(guestListJsonArray[i]);
-				html+=`<div class="guest_item">
+				html+=`
+					<div class="guest_item">
 						<h3 class="guest_title" guest_no="126">
-							<a href="">타이틀[HTML]</a>
+							<a href="">${guestListJsonArray[i].guest_title}[JSON]</a>
 						</h3>
-						</div>`;
+					</div>`;
 			}
 			document.querySelector("#guest_list").innerHTML=html;
 		}

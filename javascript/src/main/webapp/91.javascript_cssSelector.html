@@ -15,7 +15,18 @@
 				    all elements in the document 
 				    that matches a specified CSS selector(s), as a static NodeList object.
 			*/
-		   
+		   window.onload=function(){
+				var divElement=document.querySelector('div');
+				divElement.style.border='4px solid blue';
+				document.querySelector('div').style.background='rgb(100,200,0)';
+				
+				var pNodeList = document.querySelectorAll('p');
+				for(var i=0;i<pNodeList.length;i++){
+					pNodeList[i].style.border='4px double pink';
+					pNodeList[i].style.background='rgb(34,67,250)';
+					
+				}
+			};
 		
 		</script>
 	</head>

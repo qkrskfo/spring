@@ -43,7 +43,13 @@ label.error {
 	
 	/****guest_list[JSON] 콜백 함수****/
 	function displayGuestListJSON() {
-		
+		if(xhr.readyState==4 && xhr.status==200) {
+			var guestListJsonArray = JSON.parse(xhr.responseText);
+			for(var i=0; i<guestListJsonArray.length; i++) {
+				//console.log(guestListJsonArray[i]);
+				
+			}
+		}
 	}
 	/****guest_list[XML] 콜백 함수****/
 	

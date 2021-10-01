@@ -21,13 +21,53 @@ label.error {
 <script src="guest.js" type="text/javascript"></script>
 -->
 <script type="text/javascript">
+	/**%%% 응답 도착했을 때 실행되는 콜백 함수 %%%**/
+	/****guest_list[HTML] 콜백 함수****/
+	function displayGuestListHTML() {
+		if(xhr.readyState==4) {
+			if(xhr.status==200) {
+				//console.log(xhr.responseText);
+				document.querySelector('#guest_list').innerHTML=xhr.responseText;
+				/*
+				<div class="guest_item">
+					<h3 class="guest_title"  guest_no="126">
+						<a href=''>타이틀[HTML]</a>
+					</h3>
+				</div>
+				 */
+			}else {
+				alert('error발생!!!');
+			}
+		} 
+	}
+	
+	/****guest_list[JSON] 콜백 함수****/
+	function displayGuestListJSON() {
+		
+	}
+	/****guest_list[XML] 콜백 함수****/
+	
+	
+
 	/**%%% 메뉴 UI이벤트 처리시작 %%%**/
 	window.onload=function() {
 		/** guest_list[HTML]메뉴 이벤트 **/
 		document.querySelector('#menu-a a').addEventListener('click', function(e){
-			alert('guest_list [html]');
+			//alert('guest_list [html]');
+			
+			//ajax요청
+			sendRequest('guest/guest_list_html.jsp', null, displayGuestListHTML, 'GET');
+			
 			e.preventDefault();
 		});
+		
+		/** guest_list[JSON]메뉴 이벤트 **/
+		document.querySelector('#menu-b a').addEventListener('click', function(e){
+			//ajax요청
+			sendRequest('guest/guest_list_json.jsp', null, displayGuestListJSON, 'GET');
+			e.preventDefault();
+		});
+		
 	};
 	/**%%% 메뉴 UI이벤트 처리 끝 %%%**/
 </script>

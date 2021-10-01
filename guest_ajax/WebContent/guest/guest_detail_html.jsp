@@ -2,17 +2,17 @@
 <%@page import="com.itwill.guest.Guest"%>
 <%@page import="com.itwill.guest.GuestDao"%>
 <%@page import="java.util.ArrayList"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%--@include file="loginCheck.jspf" --%>	
 <%
     String guest_no = request.getParameter("guest_no");
 	if(guest_no==null||guest_no.equals(""))guest_no="1";
 	String method=request.getMethod();
-	System.out.println("*********jQuery Ajax¿äÃ»Á¤º¸*********");
-	System.out.println("0.jQuery Ajax¿äÃ»URL    :" + request.getRequestURI());
-	System.out.println("1.jQuery Ajax¿äÃ»¹æ½Ä    :"+method);
-	System.out.println("2.jQuery Ajax¿äÃ»ÆÄ¶ó¸ÞÅ¸:"+guest_no);
+	System.out.println("*********jQuery Ajaxìš”ì²­ì •ë³´*********");
+	System.out.println("0.jQuery Ajaxìš”ì²­URL    :" + request.getRequestURI());
+	System.out.println("1.jQuery Ajaxìš”ì²­ë°©ì‹    :"+method);
+	System.out.println("2.jQuery Ajaxìš”ì²­íŒŒë¼ë©”íƒ€:"+guest_no);
 	System.out.println("*************************************");	
 	GuestDao dao = new GuestDaoImpl();
 	Guest guest = dao.selectByNo(Integer.parseInt(guest_no.trim()));
@@ -21,23 +21,23 @@
 <div class='guest_detail'>
  -->
 	<div class="guest_date">
-		³¯Â¥:<%=guest.getGuest_date()%>
+		ë‚ ì§œ:<%=guest.getGuest_date()%>
 	</div>
 	<div class="guest_name">
-		ÀÌ¸§:<%=guest.getGuest_name()%>
+		ì´ë¦„:<%=guest.getGuest_name()%>
 	</div>
 	<div class="guest_email">
-		ÀÌ¸ÞÀÏ:<%=guest.getGuest_email()%>
+		ì´ë©”ì¼:<%=guest.getGuest_email()%>
 	</div>
 	<div class="guest_homepage">
-		È¨ÆäÀÌÁö:<%=guest.getGuest_homepage()%>
+		í™ˆíŽ˜ì´ì§€:<%=guest.getGuest_homepage()%>
 	</div>
 	<div class="guest_content">
-		³»¿ë:<%=guest.getGuest_content()%>
+		ë‚´ìš©:<%=guest.getGuest_content()%>
 	</div>
 	<div class='guest_delete'>
-		<input type="button" value="»èÁ¦" guest_no="<%=guest.getGuest_no()%>">
-		<input type="button" value="¼öÁ¤" guest_no="<%=guest.getGuest_no()%>">
+		<input type="button" value="ì‚­ì œ" guest_no="<%=guest.getGuest_no()%>">
+		<input type="button" value="ìˆ˜ì •" guest_no="<%=guest.getGuest_no()%>">
 	</div>
 <!-- 	
 </div>	

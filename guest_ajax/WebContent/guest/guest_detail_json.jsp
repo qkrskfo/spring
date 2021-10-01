@@ -2,7 +2,7 @@
 <%@page import="com.itwill.guest.Guest"%>
 <%@page import="com.itwill.guest.GuestDao"%>
 <%@page import="java.util.ArrayList"%>
-<%@ page language="java" contentType="text/plain; charset=UTF-8"
+<%@ page language="java" contentType="application/json; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
 String guest_no=request.getParameter("guest_no");

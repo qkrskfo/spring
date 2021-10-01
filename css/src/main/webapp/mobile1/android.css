@@ -58,8 +58,6 @@ h1{
 #footer{
 	display: none;
 }
-
-
 #header div.menuButton{
 	position: absolute;
 	top:9px;
@@ -71,6 +69,10 @@ h1{
 	line-height: 32px;
 	border-radius: 6px;
 }
+#header div.menuButtonPress{
+	background-image: url(images/menu_pressed.png);
+}
+
 #header div.menuButton:hover{
 	cursor:progress;
 }

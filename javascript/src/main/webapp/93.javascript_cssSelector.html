@@ -8,13 +8,14 @@
 div,span{
 	width: 100px;
 	height: 40px;
-	float: left;
+	float:left;
 	padding: 10px;
 	margin: 10px;
 	background-color: #EEEEEE;
 }
 </style>
 <script type="text/javascript">
+
 </script>
 </head>
 <body style="padding: 10px;">
@@ -28,14 +29,22 @@ div,span{
 	<div class="myClass">DIV class="myClass"</div>
 	<script type="text/javascript">
 		/*******(,or)  #content or div**********/
-		
+		var nodeList1 = document.querySelectorAll("#content,div");
+		for (var i = 0; i < nodeList1.length; i++) {
+			nodeList1[i].style.border='3px solid blue';
+			
+		}
 		/********class가 myClass인 모든 엘레멘트*****/
-		
+		var nodeList2=document.querySelectorAll('.myClass');
+		for (var i = 0; i < nodeList2.length; i++) {
+			nodeList2.item(i).style.color='green';
+			
+		}
 		/********div 엘레멘트중에서 class가 myClass인 모든 엘레멘트*****/
-		
-		/********(p 엘레멘트중에서) id가 content인 엘레멘트*****/
+		document.querySelector('div.myClass').style.backgroundColor='gold';
+		/********id가 content인 엘레멘트*****/
+		document.querySelector('#content').style.backgroundColor='aliceblue'
 		
 	</script>
 </body>
 </html>
-

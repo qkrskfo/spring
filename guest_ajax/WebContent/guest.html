@@ -84,7 +84,24 @@ label.error {
 	
 	/****guest_list[XML] 콜백 함수****/
 	function displayGuestListXML(){
-		
+		if(xhr.readyState==4 && xhr.status==200) {
+			var xmlDocument = xhr.responseXML;
+			var guestNodeList = xmlDocument.getElementsByTagName('guest');
+			var html="";
+			for (let i=0; i<guestNodeList.length; i++) {
+				//let 변수는 scope가 이 scope로 한정됨.
+				var guest_noStr = guestNodeList[i].getElementsByTagName("guest_no")[0].firstChild.nodeValue;
+				var guest_titleStr = guestNodeList[i].getElementsByTagName("guest_title")[0].firstChild.nodeValue;
+				html+=`
+					<div class="guest_item">
+						<h3 class="guest_title" guest_no="126">
+							<a href="">${guest_titleStr}[XML]</a>
+						</h3>
+					</div>
+				`;
+			}
+			document.querySelector('#guest_list').innerHTML=html;
+		}
 	}
 	
 
@@ -116,6 +133,10 @@ label.error {
 		
 	};
 	/**%%% 메뉴 UI이벤트 처리 끝 %%%**/
+	
+	/****** loading dialog *******/
+	function 
+	
 </script>
 </head>
 <body>

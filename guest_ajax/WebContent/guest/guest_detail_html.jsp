@@ -2,7 +2,7 @@
 <%@page import="com.itwill.guest.Guest"%>
 <%@page import="com.itwill.guest.GuestDao"%>
 <%@page import="java.util.ArrayList"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/plain; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%--@include file="loginCheck.jspf" --%>	
 <%

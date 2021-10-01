@@ -2,7 +2,7 @@
 <%@page import="com.itwill.guest.Guest"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.itwill.guest.GuestDao"%>
-<%@ page language="java" contentType="text/html; charset=utf-8"
+<%@ page language="java" contentType="text/plain; charset=utf-8"
     pageEncoding="utf-8"%>
 <%
 

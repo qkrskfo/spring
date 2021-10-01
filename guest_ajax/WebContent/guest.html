@@ -36,7 +36,8 @@ label.error {
 				</div>
 				 */
 				 
-				document.querySelector('#guest_list').innerHTML=xhr.responseText; 
+				document.querySelector('#guest_list').innerHTML=xhr.responseText;
+				showLoadingDialog(false);
 			}else {
 				alert('error발생!!!');
 			}
@@ -73,12 +74,13 @@ label.error {
 				//console.log(guestListJsonArray[i]);
 				html+=`
 					<div class="guest_item">
-						<h3 class="guest_title" guest_no="126">
+						<h3 class="guest_title" guest_no="${guestListJsonArray[i].guest_no}">
 							<a href="">${guestListJsonArray[i].guest_title}[JSON]</a>
 						</h3>
 					</div>`;
 			}
 			document.querySelector("#guest_list").innerHTML=html;
+			showLoadingDialog(false);
 		}
 	}
 	
@@ -86,6 +88,18 @@ label.error {
 	function displayGuestListXML(){
 		if(xhr.readyState==4 && xhr.status==200) {
 			var xmlDocument = xhr.responseXML;
+			/*
+			<< XML >>
+			<guest_list>
+				<guest>
+					<guest_no>1</guest_no>
+					<guest_title>방명록 사용법1</guest_title>
+				</guest>
+				<guest>..</guest>
+				<guest>..</guest>
+				...
+			</guest_list>
+			*/
 			var guestNodeList = xmlDocument.getElementsByTagName('guest');
 			var html="";
 			for (let i=0; i<guestNodeList.length; i++) {
@@ -94,13 +108,24 @@ label.error {
 				var guest_titleStr = guestNodeList[i].getElementsByTagName("guest_title")[0].firstChild.nodeValue;
 				html+=`
 					<div class="guest_item">
-						<h3 class="guest_title" guest_no="126">
+						<h3 class="guest_title" guest_no="${guest_noStr}">
 							<a href="">${guest_titleStr}[XML]</a>
 						</h3>
 					</div>
 				`;
 			}
 			document.querySelector('#guest_list').innerHTML=html;
+			showLoadingDialog(false);
+			/*
+			<< HTML >>
+			<div class="guest_item">
+					<h3 class="guest_title"  guest_no="126">
+						<a href="">타이틀[XML]</a>
+					</h3>
+			</div>
+			<div class="guest_item">..</div>
+			<div class="guest_item">..</div>
+			 */
 		}
 	}
 	
@@ -112,8 +137,8 @@ label.error {
 			//alert('guest_list [html]');
 			
 			//ajax요청
-			sendRequest('guest/guest_list_html.jsp', null, displayGuestListHTML, 'GET');
-			
+			sendRequest('guest/guest_list_html.jsp',null,displayGuestListHTML ,'GET');
+			showLoadingDialog(true);
 			e.preventDefault();
 		});
 		
@@ -121,6 +146,7 @@ label.error {
 		document.querySelector('#menu-b a').addEventListener('click', function(e){
 			//ajax요청
 			sendRequest('guest/guest_list_json.jsp', null, displayGuestListJSON, 'GET');
+			showLoadingDialog(true);
 			e.preventDefault();
 		});
 		
@@ -128,6 +154,7 @@ label.error {
 		document.querySelector('#menu-c a').addEventListener('click', function(e){
 			//ajax요청
 			sendRequest('guest/guest_list_xml.jsp', null, displayGuestListXML, 'GET');
+			showLoadingDialog(true);
 			e.preventDefault();
 		});
 		
@@ -135,7 +162,19 @@ label.error {
 	/**%%% 메뉴 UI이벤트 처리 끝 %%%**/
 	
 	/****** loading dialog *******/
-	function 
+	function showLoadingDialog(isVisible){
+		if(isVisible){
+			var dialogDivE = document.createElement('div');
+			dialogDivE.setAttribute('id','loading');
+			dialogDivE.innerHTML='loading...';
+			dialogDivE.style.display='block';
+			var guestListDivE = document.querySelector('#guest_list');
+			document.querySelector('#content').insertBefore(dialogDivE , guestListDivE);
+		}else{
+			var loadingDivE = document.querySelector('#loading');
+			document.querySelector('#content').removeChild(loadingDivE);
+		}	
+	}
 	
 </script>
 </head>

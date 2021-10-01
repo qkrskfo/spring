@@ -156,7 +156,7 @@
         
 
 
-      <Context docBase="javascript_ajax" path="/javascript_ajax" reloadable="true" source="org.eclipse.jst.jee.server:javascript_ajax"/><Context docBase="css" path="/css" reloadable="true" source="org.eclipse.jst.jee.server:css"/></Host>
+      <Context docBase="javascript_ajax" path="/javascript_ajax" reloadable="true" source="org.eclipse.jst.jee.server:javascript_ajax"/><Context docBase="css" path="/css" reloadable="true" source="org.eclipse.jst.jee.server:css"/><Context docBase="guest_ajax" path="/guest_ajax" reloadable="true" source="org.eclipse.jst.jee.server:guest_ajax"/></Host>
     </Engine>
   </Service>
 </Server>

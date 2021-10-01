@@ -8,7 +8,7 @@
 <%
 	String guest_no = request.getParameter("guest_no");
 	if (guest_no == null || guest_no.equals(""))
-		guest_no = "8";
+		guest_no = "1";
 	String method = request.getMethod();
 	System.out.println("*********jQuery Ajax요청정보*********");
 	System.out.println("1.jQuery Ajax요청방식    :" + method);

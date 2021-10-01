@@ -6,13 +6,14 @@
         <link  rel="stylesheet" href='desktop.css' type="text/css" media="only screen and (min-width:601px)"/> 
         <link  rel="stylesheet" href='android.css' type="text/css" media="only screen and (max-width:600px)"/> 
       	<script type="text/javascript">
-	      	window.onload = function() {
-	      		//메뉴숨기기
-	      		var ulNodeList = document.getElementsByClassName("ul");
-	      		for(var i=0; i<ulNodeList.length; i++) {
-	      			ulNodeList[i].style.display='none';
-	      		}
-	      	};
+	      	window.onload=function(){
+				//메뉴숨기기
+				var ulNodeList=document.getElementsByTagName("ul");
+	    		for(var i=0;i<ulNodeList.length;i++){
+					ulNodeList[i].style.display='none';
+				}
+	    		
+			};
       	</script>
     </head>
     <body>

@@ -28,10 +28,10 @@ css를 클리어하는 css가 있데
 	text-shadow: 1px 1px 2px #000;
 }
 
-#hedaer ul {
-	list-style:none;
+#header ul{
+	list-style: none;
 	margin:0px;
-	padding:0px;
+	padding: 0px;
 }
 
 #header ul li a {
@@ -39,32 +39,30 @@ css를 클리어하는 css가 있데
 	display:block;
 	text-decoration:none;
 	border:1px solid #999;
+	margin-bottom:-1px;
 	color:#222;
 	font-size:17pt;
 	font-weight:bold;
 	padding: 12px 10px 12px 10px;
 }
 
-#header ul li:first-child a {
-	border-top-left-radius:50px;
-	border-top-right-radius:50px;
-}
+#header ul li:first-child a{
+	border-top-left-radius:10px; 
+	border-top-right-radius:10px; 
 
-#header ul li:last-child a {
-	border-bottom-left-radius:50px;
-	border-bottom-right-radius:50px;
 }
-
+#header ul li:last-child a{
+	border-bottom-left-radius:10px; 
+	border-bottom-right-radius:10px; 
+}
 #header ul li a:hover {
-	background-color:skyblue;
-	color:aliceblue;
+	background-color: skyblue;
+	color:aliceblue;	
 }
-
-#content, #sidebar {
+#content,#sidebar{
 	padding: 10px;
 }
-
-#footer {
+#footer{
 	display: none;
 }
 
@@ -74,4 +72,11 @@ css를 클리어하는 css가 있데
 	left: 6px;
 	background-image:url(images/menu.png);
 	background-position: center;
+	background-size: cover;
+	line-height: 32px;
+	border-radius: 6px;
+}
+
+#header div.menuButton:hover{
+	cursor:progress;
 }

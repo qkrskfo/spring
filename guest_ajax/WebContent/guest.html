@@ -27,7 +27,7 @@ label.error {
 		if(xhr.readyState==4) {
 			if(xhr.status==200) {
 				//console.log(xhr.responseText);
-				document.querySelector('#guest_list').innerHTML=xhr.responseText;
+				
 				/*
 				<div class="guest_item">
 					<h3 class="guest_title"  guest_no="126">
@@ -35,6 +35,8 @@ label.error {
 					</h3>
 				</div>
 				 */
+				 
+				document.querySelector('#guest_list').innerHTML=xhr.responseText; 
 			}else {
 				alert('error발생!!!');
 			}
@@ -45,6 +47,27 @@ label.error {
 	function displayGuestListJSON() {
 		if(xhr.readyState==4 && xhr.status==200) {
 			var guestListJsonArray = JSON.parse(xhr.responseText);
+			
+			/*
+			<< JSON >>
+			[
+				{
+				"guest_no": "1",
+				"guest_title": "방명록 사용법1",
+				},{},{}
+			]
+			*/
+			/*
+			<< HTML >>
+			<div class="guest_item">
+					<h3 class="guest_title"  guest_no="126">
+						<a href=''>타이틀[HTML]</a>
+					</h3>
+			</div>
+			<div class="guest_item">..</div>
+			...
+			 */
+			
 			var html="";
 			for(var i=0; i<guestListJsonArray.length; i++) {
 				//console.log(guestListJsonArray[i]);
@@ -58,8 +81,11 @@ label.error {
 			document.querySelector("#guest_list").innerHTML=html;
 		}
 	}
-	/****guest_list[XML] 콜백 함수****/
 	
+	/****guest_list[XML] 콜백 함수****/
+	function displayGuestListXML(){
+		
+	}
 	
 
 	/**%%% 메뉴 UI이벤트 처리시작 %%%**/
@@ -78,6 +104,13 @@ label.error {
 		document.querySelector('#menu-b a').addEventListener('click', function(e){
 			//ajax요청
 			sendRequest('guest/guest_list_json.jsp', null, displayGuestListJSON, 'GET');
+			e.preventDefault();
+		});
+		
+		/** guest_list[XML]메뉴 이벤트 **/
+		document.querySelector('#menu-c a').addEventListener('click', function(e){
+			//ajax요청
+			sendRequest('guest/guest_list_xml.jsp', null, displayGuestListXML, 'GET');
 			e.preventDefault();
 		});
 		

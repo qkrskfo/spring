@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>WELCOME TO AJAX</title>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="guest.css" type="text/css" media="screen" />
+<style type="text/css">
+input.error, textarea.error {
+	border: 1px solid orange;
+}
+
+label.error {
+	margin-left: 10px;
+	color: orange;
+}
+</style>
+<script src="./js/httpRequest.js" type="text/javascript"></script>
+
+<!--
+<script src="guest.js" type="text/javascript"></script>
+-->
+<script type="text/javascript">
+	
+</script>
+</head>
+<body>
+	<div id="container">
+		<div id="header">
+			<h1>WELCOME TO AJAX</h1>
+		</div>
+		<div id="sidebar">
+
+			<h2>회원관리메뉴</h2>
+			<div class="menus">
+				<div class="menu" id="menu-a">
+					<h3>
+						<a href="test.jsp">방명록 리스트[html]</a>
+					</h3>
+				</div>
+				<div class="menu" id="menu-b">
+					<h3>
+						<a href="#">방명록 리스트[json]</a>
+					</h3>
+				</div>
+				<div class="menu" id="menu-c">
+					<h3>
+						<a href="#">방명록 리스트[xml]</a>
+					</h3>
+				</div>
+				<div class="menu" id="menu-d">
+					<h3>
+						<a href="#">방명록 쓰기</a>
+					</h3>
+				</div>
+
+				<form id="guest_login_form" method="get" action="vfbfcv">
+					<fieldset>
+						<legend>로그인</legend>
+						<p>
+							<label for="guest_id">아이디:</label> <input type="text"
+								id="guest_id" name="guest_id" />
+						</p>
+						<p>
+							<label for="guest_pass">패쓰워드:</label> <input type="text"
+								name="guest_pass" id="guest_pass" />
+						</p>
+						<p>
+							<input type="submit" name="write" value="로그인" id="write" /> <input
+								type="reset" name="cancle" value="취소" id="cancle" />
+
+						</p>
+						<div id="msg"></div>
+					</fieldset>
+				</form>
+				<form id="guest_logout_form">
+					<div>
+						<span id="idSpan"></span>님 로그인<br /> <a id="guest_logout_a"
+							href='#'>로그아웃</a>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div id="content">
+			<!--  
+			<div id='loading'>loading..</div>
+			-->
+			<div id="guest_list">
+
+				<!-- 
+              
+                 -->
+			</div>
+		</div>
+		<div id="footer">
+			<p>This page was built for javascript ajax demonstration purposes.</p>
+		</div>
+
+	</div>
+
+</body>
+</html>

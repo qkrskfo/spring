@@ -1,48 +1,41 @@
-body {
-	background-color:#F1F7E7;
-	color:#0C7B93;
-	font-family:Helvetica;
-	font-size:14pt;
-	margin:0px;
-	padding:0px;
+body{
+	background-color: #ddd;
+	color:#222222;
+	font-family: Helvetica;
+	font-size: 14pt;
+	margin: 0px;
+	padding: 0px;
 }
-
-h1 {
-	margin:0px;
-	padding:0px;
+h1{
+	margin: 0px;
+	padding: 0px;
 }
-/*
-css를 클리어하는 css가 있데
-*/
-
-#header h1 a {
-	background-color: #A8E6CF;
-	display:block;
-	text-decoration:none;
-	text-align:center;
-	font-weight:bold;
-	font-size:20pt;
-	padding:10px 0px;
-	border-bottom: 1px solid #316B83;
-	color:#316B83;
-	text-shadow: 1px 1px 2px #000;
+#header h1 a{
+	background-color: #ccc;
+	display: block;
+	text-decoration: none;
+	text-align: center;
+	font-weight: bold;
+	font-size: 20pt;
+	padding: 10px 0px 10px 0px;
+	border-bottom: 1px solid #666;
+	color:#222;
+	text-shadow: 1px 1px 1px #fff;
 }
-
 #header ul{
 	list-style: none;
 	margin:0px;
 	padding: 0px;
 }
-
-#header ul li a {
-	background-olor:#fff;
-	display:block;
-	text-decoration:none;
-	border:1px solid #999;
+#header ul li a{
+	background-color: #fff;
+	display: block;
+	text-decoration: none;
+	border: 1px solid #999999;
 	margin-bottom:-1px;
 	color:#222;
-	font-size:17pt;
-	font-weight:bold;
+	font-size: 17pt;
+	font-weight: bold;
 	padding: 12px 10px 12px 10px;
 }
 
@@ -66,17 +59,22 @@ css를 클리어하는 css가 있데
 	display: none;
 }
 
+
 #header div.menuButton{
 	position: absolute;
-	top: 9px;
-	left: 6px;
-	background-image:url(images/menu.png);
+	top:9px;
+	left:6px;
+	height: 30px;
+	background-image: url(images/menu.png);
 	background-position: center;
-	background-size: cover;
+	background-size:cover;
 	line-height: 32px;
 	border-radius: 6px;
 }
-
 #header div.menuButton:hover{
 	cursor:progress;
+}
+
+#header ul.hide{
+	display: none;
 }

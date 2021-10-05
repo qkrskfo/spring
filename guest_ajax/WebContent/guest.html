@@ -201,6 +201,7 @@ label.error {
 		
 		/** 방명록쓰기폼 submit form 이벤트처리2
 		/*** 방명록쓰기폼submit 이벤트,방명록상세보기  이벤트처리
+		//처음 로딩 시 존재하지 않는 노드가 동적으로 추가될 때 DOMNodeInserted 이벤트처리 [DOMNodeInserted이벤트]
 		/*******************************************************************************
 		최초 dom tree loading완료 시에는 guest_write_form이라는 id selector가 존재하지 않으므로 이벤트 처리 안됨
 		(최초 dom tree loading완료시에는 <form id="guest_write_form" action="xzxz"> 나 <div class="guest_item"> 이 존재하지않으므로이벤트처리안됨)

@@ -241,7 +241,7 @@ label.error {
 			e.preventDefault();
 		});
 		
-		/** 방명록쓰기폼 submit form 이벤트처리1
+		/** 방명록쓰기폼 submit form 이벤트처리(X)
 		//처리할 수 없다
 		//최초 dom tree loading완료 시에는 guest_write_form이라는 id selector가 존재하지 않으므로 이벤트 처리 안됨
 		//guest_list에 처리하면 됨
@@ -249,6 +249,18 @@ label.error {
 			alert('submit');
 		});
 		**/
+		
+		/*********************방명록상세보기  이벤트처리( X )******************
+		최초 dom tree loading완료시에는 <div class="guest_item"> 이 존재하지않으므로이벤트처리안됨
+		  var guestTitleAnchorElementNodeList = document.querySelectorAll('.guest_item > .guest_title > a');
+		  console.log(guestTitleAnchorElementNodeList);	
+		  for(var i=0;i<guestTitleAnchorElementNodeList.length;i++){
+			  guestTitleAnchorElementNodeList[i].addEventListener('click',function(e){
+				  	console.log(e.target);
+				  	//상세보기
+			  });	
+		  }
+		**********************************************************************/  
 		
 		/** 방명록쓰기폼 submit form 이벤트처리2
 		/*** 방명록쓰기폼submit 이벤트,방명록상세보기  이벤트처리
@@ -261,10 +273,15 @@ label.error {
 		document.querySelector('#guest_list').addEventListener('DOMNodeInserted',function(e){
 			if(e.target.id=='guest_write_form'){
 				console.log('아이디가 guest_write_form일 때 DOMNodeInserted-->'+e.target); //한개
-				/************************************************************
-				'#guest_list(<div id="guest_list">)에 DOM Node추가될때 DOMNodeInserted이벤트발생하고
-				 그때 #guest_write_form(<form id="guest_write_form" action="xxxd">)에 submit이벤트를 처리
-				*************************************************************/
+				/*************************************************************************************
+				 insert되는 노드가 <form id="guest_write_form" action="xzxz">일때는 submit이벤트를 처리
+				 
+				 	<form id="guest_write_form" action="xzxz"  >
+					 	이름:<input type="text" id="guest_name" name="guest_name"/>
+					 	제목:<input type="text" id="guest_title" name="guest_title"/>
+				 		....
+				 	</form>  
+			     *************************************************************************************/
 				var guestWriteFormElement = e.target;
 				guestWriteFormElement.addEventListener('submit',function(e1){
 					
@@ -287,15 +304,24 @@ label.error {
 				*************************************************************/
 				var divElement = e.target;
 				divElement.querySelector('.guest_title > a').addEventListener('click', function(e2){
-					var guest_no = e2.target.parentElement.getAttribute("guest_no"); //이게 H3 Element래 -> 이거만 구하면 detail에 id를 전송해줄 수 있어. =parentNode
+					console.log("guest_item 클래스 Node의 자식수:"+e2.target.parentElement.parentElement.childElementCount);
+					var childCount = e2.target.parentElement.parentElement.childElementCount;
 					
-					//alert('guest_detail');
-					//방명록 상세보기(HTML)
-					sendRequest('guest/guest_detail_html.jsp', 'guest_no='+guest_no, function(){
-						displayGuestDetailHTML(e2.target);
-					}, 'GET');
-					//sendRequest('guest/guest_detail_xml.jsp', 'guest_no='+guest_no, displayGuestDetailXML, 'GET');
-					//sendRequest('guest/guest_detail_json.jsp', 'guest_no='+guest_no, displayGuestDetailJSON, 'GET');
+					if(childCount > 1){
+						//guest detail ajax요청안함
+					}else{
+						//guest detail ajax요청
+						var guest_no = e2.target.parentElement.getAttribute("guest_no"); //이게 H3 Element래 -> 이거만 구하면 detail에 id를 전송해줄 수 있어. =parentNode
+						//방명록 상세보기(HTML)
+						sendRequest('guest/guest_detail_html.jsp', 'guest_no='+guest_no, function(){
+							displayGuestDetailHTML(e2.target);
+						}, 'GET');
+						
+						//방명록 상세보기(XML)
+						//sendRequest('guest/guest_detail_xml.jsp','guest_no=1',displayGuestDetailXML,'GET');
+						//방명록 상세보기(JSON)
+						//sendRequest('guest/guest_detail_json.jsp','guest_no=1',displayGuestDetailJSON,'GET');
+					}
 					e2.preventDefault();
 				});	
 			}

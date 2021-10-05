@@ -170,9 +170,35 @@ label.error {
 		/** guest_insert_form[HTML] 이벤트 **/
 		document.querySelector('#menu-d a').addEventListener('click', function(e){
 			//ajax 요청
-			
 			sendRequest('guest_insert_form.html', null, displayGuestInsertForm, 'GET');
 			e.preventDefault();
+		});
+		
+		/** 방명록쓰기폼 submit form 이벤트처리1
+		//처리할 수 없다
+		//최초 dom tree loading완료 시에는 guest_write_form이라는 id selector가 존재하지 않으므로 이벤트 처리 안됨
+		//guest_list에 처리하면 됨
+		document.querySelector('#guest_write_form').addEventListener('submit', function(e){
+			alert('submit');
+		});
+		**/
+		
+		/** 방명록쓰기폼 submit form 이벤트처리2
+		/*******************************************************************************
+		최초 dom tree loading완료 시에는 guest_write_form이라는 id selector가 존재하지 않으므로 이벤트 처리 안됨
+		최초 dom tree loading완료시 #guest_list에 DOMNodeInserted이벤트 등록
+		*******************************************************************************/
+		document.querySelector('#guest_list').addEventListener('DOMNodeInserted', function(e){
+			if(e.target.id=='guest_write.form') {
+				/*******************************************************************************
+					#guest_list에 DOM Node가 추가될 때 DOMNodeInserted이벤트 발생하고
+					그때 #guest_write_form에 submit이벤트를 처리
+				*******************************************************************************/
+				var guestWriteFormElement = e.target;
+				guestWriteFormElement.addEventListener('submit', function(e1){
+					alert('submit');
+				});
+			}
 		});
 		
 		/* document.querySelector('#guest_list').addEventListener('DOMNodeInserted',function(e){

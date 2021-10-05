@@ -309,6 +309,9 @@ label.error {
 					}else{
 						//guest detail ajax요청
 						var guest_no = e2.target.parentElement.getAttribute("guest_no");
+						
+						console.log()
+						
 						//방명록 상세보기(HTML)
 						sendRequest('guest/guest_detail_html.jsp','guest_no='+guest_no,function(){
 							displayGuestDetailHTML(e2.target);

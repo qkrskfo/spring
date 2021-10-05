@@ -21,66 +21,72 @@ label.error {
 <script src="guest.js" type="text/javascript"></script>
 -->
 <script type="text/javascript">
-/*%%%%%%%%%%%%%%%%%%%%%%%%%%% AJAX응답도착했을때실행되는콜백함수시작 %%%%%%%%%%%%%%%%%%%%%%*/
-	/*********************guest_list[HTML]콜백함수*****************/
-	function displayGuestListHTML(){
-		if(xhr.readyState==4){
-			if(xhr.status==200){
+	/*%%%%%%%%%%%%%%%%%%%%%%%%%%% AJAX응답도착했을때실행되는콜백함수시작 %%%%%%%%%%%%%%%%%%%%%%*/
+	/****guest_list[HTML] 콜백 함수****/
+	function displayGuestListHTML() {
+		if(xhr.readyState==4) {
+			if(xhr.status==200) {
+				//console.log(xhr.responseText);
 				
 				/*
 				<div class="guest_item">
-						<h3 class="guest_title"  guest_no="126">
-							<a href=''>타이틀[HTML]</a>
-						</h3>
+					<h3 class="guest_title"  guest_no="126">
+						<a href=''>타이틀[HTML]</a>
+					</h3>
 				</div>
-				<div class="guest_item">..</div>
-				...
 				 */
+				 
 				document.querySelector('#guest_list').innerHTML=xhr.responseText;
 				showLoadingDialog(false);
-			}else{
+			}else {
 				alert('error발생!!!');
 			}
-		}
+		} 
 	}
-	/*********************guest_list[JSON]콜백함수*****************/
-	function displayGuestListJSON(){
-		if(xhr.readyState==4 && xhr.status==200){
-				var guestListJsonArray = JSON.parse(xhr.responseText);
-				/*
-				<< JSON >>
-				[
-					{
-					"guest_no": "1",
-					"guest_title": "방명록 사용법1",
-					},{},{}
-				]
-				*/
-				/*
-				<< HTML >>
-				<div class="guest_item">
-						<h3 class="guest_title"  guest_no="126">
-							<a href=''>타이틀[JSON]</a>
+	
+	/****guest_list[JSON] 콜백 함수****/
+	function displayGuestListJSON() {
+		if(xhr.readyState==4 && xhr.status==200) {
+			var guestListJsonArray = JSON.parse(xhr.responseText);
+			
+			/*
+			<< JSON >>
+			[
+				{
+				"guest_no": "1",
+				"guest_title": "방명록 사용법1",
+				},{},{}
+			]
+			*/
+			/*
+			<< HTML >>
+			<div class="guest_item">
+					<h3 class="guest_title"  guest_no="126">
+						<a href=''>타이틀[HTML]</a>
+					</h3>
+			</div>
+			<div class="guest_item">..</div>
+			...
+			 */
+			
+			var html="";
+			for(var i=0; i<guestListJsonArray.length; i++) {
+				//console.log(guestListJsonArray[i]);
+				html+=`
+					<div class="guest_item">
+						<h3 class="guest_title" guest_no="${guestListJsonArray[i].guest_no}">
+							<a href="">${guestListJsonArray[i].guest_title}[JSON]</a>
 						</h3>
-				</div>
-				<div class="guest_item">..</div>
-				...
-				 */
-				var html="";
-				for(var i=0;i<guestListJsonArray.length;i++){
-					html+=`<div class="guest_item">
-								<h3 class="guest_title"  guest_no="${guestListJsonArray[i].guest_no}">
-									<a href="">${guestListJsonArray[i].guest_title}[JSON]</a>
-								</h3>
-							</div>`;				
-				} 
-				document.querySelector('#guest_list').innerHTML=html;
-				showLoadingDialog(false);
+					</div>`;
+			}
+			document.querySelector("#guest_list").innerHTML=html;
+			showLoadingDialog(false);
 		}
 	}
-	/*********************guest_list[XML]콜백함수*****************/
+	
+	/****guest_list[XML] 콜백 함수****/
 	function displayGuestListXML(){
-		if(xhr.readyState==4&& xhr.status==200){
+		if(xhr.readyState==4 && xhr.status==200) {
 			var xmlDocument = xhr.responseXML;
 			/*
 			<< XML >>
@@ -96,12 +102,13 @@ label.error {
 			*/
 			var guestNodeList = xmlDocument.getElementsByTagName('guest');
 			var html="";
-			for(var i=0;i<guestNodeList.length;i++){
+			for (let i=0; i<guestNodeList.length; i++) {
+				//let 변수는 scope가 이 scope로 한정됨.
 				var guest_noStr = guestNodeList[i].getElementsByTagName("guest_no")[0].firstChild.nodeValue;
 				var guest_titleStr = guestNodeList[i].getElementsByTagName("guest_title")[0].firstChild.nodeValue;
 				html+=`
 					<div class="guest_item">
-						<h3 class="guest_title"  guest_no="${guest_noStr}">
+						<h3 class="guest_title" guest_no="${guest_noStr}">
 							<a href="">${guest_titleStr}[XML]</a>
 						</h3>
 					</div>
@@ -119,10 +126,9 @@ label.error {
 			<div class="guest_item">..</div>
 			<div class="guest_item">..</div>
 			 */
-			
-			 
 		}
 	}
+	
 	/*************************guest_insert_form[HTML]콜백함수**************************/
 	function displayGuestInsertForm(){
 		if(xhr.readyState==4){
@@ -145,7 +151,7 @@ label.error {
 		}
 		
 	}
-	/***************************guest_detail[HTML]**************************/
+	/*************************guest_detail[HTML]**************************/
 	function displayGuestDetailHTML(clickElement){
 		if(xhr.readyState==4){
 			var detailHtmlData = xhr.responseText;
@@ -165,17 +171,18 @@ label.error {
 			<div class="guest_content">내용:방명록처럼 사용하시면 됩니다1</div>
 			...
 			*/
-			var guestDetailDivElement=document.createElement('div');
-			guestDetailDivElement.setAttribute('class','guest_detail');
-			guestDetailDivElement.style.display='block';
+			var guestDetailDivElement = document.createElement('div');
+			guestDetailDivElement.setAttribute('class', 'guest_detail');
 			guestDetailDivElement.innerHTML=detailHtmlData;
 			
 			clickElement.parentElement.parentElement.appendChild(guestDetailDivElement);
+			
 			
 			/*
 			<<보여줘여할 HTML>>
 			<div class="guest_item">
 				<h3 class="guest_title" guest_no="1"><a href="">방명록 사용법1[HTML]</a></h3>
+				<div class='guest_detail'>
 				<div class='guest_detail' style='display:block'>
 					<div class="guest_date">날짜:2021-10-01 14:31:31</div>
 					<div class="guest_name">이름:김경가	</div>
@@ -184,54 +191,66 @@ label.error {
 				</div>
 			</div>	
 			*/
-			
-			
-			
 		}
 	}
-	/***************************guest_detail[JSON]**************************/
-	/***************************guest_detail[XML]**************************/
 	
+	/*************************guest_detail[JSON]**************************/
+	function displayGuestDetailJSON(){
+		
+	}
 	
+	/*************************guest_detail[XML]**************************/
+	function displayGuestDetailXML(){
+		
+	}
 	
-/*%%%%%%%%%%%%%%%%%%%%%%%%% AJAX응답도착했을때실행되는콜백함수끝 %%%%%%%%%%%%%%%%%%%%%%%%*/
-	
-/*%%%%%%%%%%%%%%%%%%%%%%%%%%%메뉴 UI이벤트처리시작[DOM트리로딩후]%%%%%%%%%%%%%%%%%%%%%%%%%*/
-	window.onload=function(){
-		/*******************guest_list[HTML]메뉴이벤트****************************/
-		document.querySelector('#menu-a a').addEventListener('click',function(e){
+	/*%%%%%%%%%%%%%%%%%%%%%%%%% AJAX응답도착했을때실행되는콜백함수끝 %%%%%%%%%%%%%%%%%%%%%%%%*/
+
+	/**%%% 메뉴 UI이벤트 처리시작 (DOM트리 로딩 후) %%%**/
+	window.onload=function() {
+		/** guest_list[HTML]메뉴 이벤트 **/
+		document.querySelector('#menu-a a').addEventListener('click', function(e){
+			//alert('guest_list [html]');
+			
 			//ajax요청
 			sendRequest('guest/guest_list_html.jsp',null,displayGuestListHTML ,'GET');
 			showLoadingDialog(true);
 			e.preventDefault();
 		});
-		/*******************guest_list[JSON]메뉴이벤트****************************/
-		document.querySelector('#menu-b a').addEventListener('click',function(e){
+		
+		/** guest_list[JSON]메뉴 이벤트 **/
+		document.querySelector('#menu-b a').addEventListener('click', function(e){
 			//ajax요청
-			sendRequest('guest/guest_list_json.jsp',null,displayGuestListJSON ,'GET');
+			sendRequest('guest/guest_list_json.jsp', null, displayGuestListJSON, 'GET');
 			showLoadingDialog(true);
 			e.preventDefault();
 		});
-		/*******************guest_list[XML]메뉴이벤트****************************/
-		document.querySelector('#menu-c a').addEventListener('click',function(e){
+		
+		/** guest_list[XML]메뉴 이벤트 **/
+		document.querySelector('#menu-c a').addEventListener('click', function(e){
 			//ajax요청
-			sendRequest('guest/guest_list_xml.jsp',null,displayGuestListXML ,'GET');
+			sendRequest('guest/guest_list_xml.jsp', null, displayGuestListXML, 'GET');
 			showLoadingDialog(true);
 			e.preventDefault();
 		});
-		/********************guest_insert_form[HTML]이벤트**********************/
-		document.querySelector('#menu-d a').addEventListener('click',function(e){
+		
+		/** guest_insert_form[HTML] 이벤트 **/
+		document.querySelector('#menu-d a').addEventListener('click', function(e){
+			//ajax 요청
 			sendRequest('guest_insert_form.html',null,displayGuestInsertForm,'GET');
 			showLoadingDialog(true);
 			e.preventDefault();
 		});
 		
-		/*********************방명록쓰기폼submit 이벤트처리( X )******************
-		최초 dom tree loading완료시에는<form id="guest_write_form" action="xzxz">  이 존재하지않으므로이벤트처리안됨
-		document.querySelector('#guest_write_form').addEventListener('submit',function(e){
+		/** 방명록쓰기폼 submit form 이벤트처리(X)
+		//처리할 수 없다
+		//최초 dom tree loading완료 시에는 guest_write_form이라는 id selector가 존재하지 않으므로 이벤트 처리 안됨
+		//guest_list에 처리하면 됨
+		document.querySelector('#guest_write_form').addEventListener('submit', function(e){
 			alert('submit');
 		});
-		*/
+		**/
+		
 		/*********************방명록상세보기  이벤트처리( X )******************
 		최초 dom tree loading완료시에는 <div class="guest_item"> 이 존재하지않으므로이벤트처리안됨
 		  var guestTitleAnchorElementNodeList = document.querySelectorAll('.guest_item > .guest_title > a');
@@ -243,16 +262,18 @@ label.error {
 			  });	
 		  }
 		**********************************************************************/  
-		//<<< 처음로딩시에는 존재하지않는 노드가 동적으로추가될때 DOMNodeInserted 이벤트처리[DOMNodeInserted이벤트] >>
-		/**********************방명록쓰기폼submit 이벤트,방명록상세보기 클릭 이벤트처리********************
-		최초 dom tree loading완료시에는 <form id="guest_write_form" action="xzxz"> 나 <div class="guest_item">.. 이 존재하지않으므로이벤트처리안됨
-		최초 dom tree loading완료시에 #guest_list에 DOMNodeInserted 이벤트를 등록 
-		**********************************************************************************************/
+		
+		/** 방명록쓰기폼 submit form 이벤트처리2
+		/*** 방명록쓰기폼submit 이벤트,방명록상세보기  이벤트처리
+		//처음 로딩 시 존재하지 않는 노드가 동적으로 추가될 때 DOMNodeInserted 이벤트처리 [DOMNodeInserted이벤트]
+		/*******************************************************************************
+		최초 dom tree loading완료 시에는 guest_write_form이라는 id selector가 존재하지 않으므로 이벤트 처리 안됨
+		(최초 dom tree loading완료시에는 <form id="guest_write_form" action="xzxz"> 나 <div class="guest_item"> 이 존재하지않으므로이벤트처리안됨)
+		최초 dom tree loading완료시 #guest_list에 DOMNodeInserted이벤트 등록
+		*******************************************************************************/
 		document.querySelector('#guest_list').addEventListener('DOMNodeInserted',function(e){
-			/************************************************************
-			<div id="guest_list"> 에 DOM Node추가될때 DOMNodeInserted 이벤트가발생
-			*************************************************************/ 
 			if(e.target.id=='guest_write_form'){
+				console.log('아이디가 guest_write_form일 때 DOMNodeInserted-->'+e.target); //한개
 				/*************************************************************************************
 				 insert되는 노드가 <form id="guest_write_form" action="xzxz">일때는 submit이벤트를 처리
 				 
@@ -262,29 +283,18 @@ label.error {
 				 		....
 				 	</form>  
 			     *************************************************************************************/
-				console.log('아이디가 guest_write_form일때 DOMNodeInserted-->'+e.target);
-				
-				
 				var guestWriteFormElement = e.target;
 				guestWriteFormElement.addEventListener('submit',function(e1){
-					var params =
-						`guest_name=${guestWriteFormElement.guest_name.value}&guest_title=${guestWriteFormElement.guest_title.value}&guest_content=${guestWriteFormElement.guest_content.value}&guest_email=${guestWriteFormElement.guest_email.value}&guest_homepage=${guestWriteFormElement.guest_homepage.value}`;
-					/*
-					guest_name=${guestWriteFormElement.guest_name.value}&
-					guest_title=${guestWriteFormElement.guest_title.value}&
-					guest_content=${guestWriteFormElement.guest_content.value}&
-					guest_email=${guestWriteFormElement.guest_email.value}&
-					guest_homepage=${guestWriteFormElement.guest_homepage.value}
-					*/
+					
+					var params = `guest_name=${guestWriteFormElement.guest_name.value}&guest_title=${guestWriteFormElement.guest_title.value}&guest_content=${guestWriteFormElement.guest_content.value}&guest_email=${guestWriteFormElement.guest_email.value}&guest_homepage=${guestWriteFormElement.guest_homepage.value}`;
 					console.log(params);
 					sendRequest('guest/guest_insert_action.jsp',params,displayGuestInsertAction,'POST');
 					e1.preventDefault();
 				});
-			
-			}else if(e.target.className=='guest_item'){
-				console.log('클래스이름이 guest_item일때 DOMNodeInserted-->'+e.target);
+			} else if(e.target.className=='guest_item') {
+				console.log('클래스이름이 guest_item일 때 DOMNodeInserted-->'+e.target); //여러개
 				/*************************************************************************************
-				 insert되는 노드가 <div class="guest_item">... 일때는 click 이벤트를 처리
+				 insert되는 노드가 <div class="guest_item"> 일때는 click 이벤트를 처리
 			    	<div class="guest_item">
 						<h3 class="guest_title" guest_no="1"><a href="">방명록 사용법1[HTML]</a></h3>
 					</div>
@@ -328,9 +338,40 @@ label.error {
 		});
 		
 	};
-/*%%%%%%%%%%%%%%%%%%%%%%%%%%%메뉴 UI이벤트처리끝[DOM트리로딩후]%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+		
+		/**********************방명록상세보기  이벤트처리********************
+		최초 dom tree loading완료시에는 <div class="guest_item"> 가 존재하지않으므로이벤트처리안됨
+		최초 dom tree loading완료시에 #guest_list에 DOMNodeInserted이벤트를 등록
+		
+		<div class="guest_item">
+			<h3 class="guest_title"  guest_no="226"><a href=''>방명록사용법1[HTML]</a></h3>
+		</div>
+		<div class="guest_item">
+			<h3 class="guest_title"  guest_no="226"><a href=''>방명록사용법2[HTML]</a></h3>
+		</div>
+		...
+	 
+		//onload시 guest_item selector를 찾을 수 없음 : 이유는? 돔트리에 없으니까..처음엔 빈 화면이다가 방명록 리스트를 누르고 나서 생기잖아..
+		// 리스트 클릭 후 존재하니까, 그때를 찾아내야해.
+		var guestTitleAnchorElementNodeList = document.querySelectorAll('.guest_item > .guest_title > a');
+		for(var i=0; i<guestTitleAnchorElementNodeList.length; i++) {
+			guestTitleAnchorElementNodeList[i].addEventListener('click', function(e){
+				console.log(e.target);
+				//상세보기
+			});
+		}
+		*/	
 
-/*%%%%%%%%%%%%%%%%%%%%%%%%%%%loading dialog생성삭제함수 시작%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+	
+	
+	
+	
+	
+	
+	/**%%% 메뉴 UI이벤트 처리 끝 %%%**/
+	/** 동적으로 추가되는 Node이벤트 처리 [DOMNodeInserted이벤트]**/
+	
+	/****** loading dialog 생성삭제 함수 시작 *******/
 	function showLoadingDialog(isVisible){
 		if(isVisible){
 			var dialogDivE = document.createElement('div');
@@ -344,7 +385,8 @@ label.error {
 			document.querySelector('#content').removeChild(loadingDivE);
 		}	
 	}
-/*%%%%%%%%%%%%%%%%%%%%%%%%%%%loading dialog생성삭제함수 끝%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+	/****** loading dialog 생성삭제 함수 끝 *******/
+	
 </script>
 </head>
 <body>
@@ -391,6 +433,7 @@ label.error {
 						<p>
 							<input type="submit" name="write" value="로그인" id="write" /> <input
 								type="reset" name="cancle" value="취소" id="cancle" />
+
 						</p>
 						<div id="msg"></div>
 					</fieldset>
@@ -401,7 +444,7 @@ label.error {
 							href='#'>로그아웃</a>
 					</div>
 				</form>
-				 -->
+				-->
 			</div>
 		</div>
 		<div id="content">

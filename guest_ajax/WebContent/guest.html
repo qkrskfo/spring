@@ -197,6 +197,7 @@ label.error {
 				var guestWriteFormElement = e.target;
 				guestWriteFormElement.addEventListener('submit', function(e1){
 					alert('submit');
+					e1.preventDefault();
 				});
 			}
 		});

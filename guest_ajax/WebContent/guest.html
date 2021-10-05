@@ -310,26 +310,31 @@ label.error {
 						//guest detail ajax요청
 						var guest_no = e2.target.parentElement.getAttribute("guest_no");
 						
-						console.log()
-						
-						//방명록 상세보기(HTML)
-						sendRequest('guest/guest_detail_html.jsp','guest_no='+guest_no,function(){
-							displayGuestDetailHTML(e2.target);
-						},'GET');
-						
-						//방명록 상세보기(XML)
-						//sendRequest('guest/guest_detail_xml.jsp','guest_no=1',displayGuestDetailXML,'GET');
-						//방명록 상세보기(JSON)
-						//sendRequest('guest/guest_detail_json.jsp','guest_no=1',displayGuestDetailJSON,'GET');
-						
+						console.log(e2.target.innerHTML.trim().endsWith('[HTML]'));
+						if(e2.target.innerHTML.trim().endsWith('[HTML]')) {
+							//방명록 상세보기(HTML)
+							sendRequest('guest/guest_detail_html.jsp','guest_no='+guest_no,function(){
+								displayGuestDetailHTML(e2.target);
+							},'GET');
+						} else if(e2.target.innerHTML.trim().endsWith('[JSON]')) {
+							//방명록 상세보기(JSON)
+							sendRequest('guest/guest_detail_json.jsp','guest_no=1',function(){
+								//displayGuestDetailJSON(e2.target);
+								console.log('displayGuestDetailJSON(e2.target)호출');
+							},'GET');
+						} else if(e2.target.innerHTML.trim().endsWith('[XML]')) {
+							//방명록 상세보기(XML)
+							sendRequest('guest/guest_detail_xml.jsp','guest_no=1',function(){
+								//displayGuestDetailXML(e2.target);
+								console.log('displayGuestDetailXML(e2.target)호출');
+							},'GET');
+						}
+						//XML과 JSON일때는 DETAIL이 나오지 않음.
 					}
 					e2.preventDefault();
 				});	
 			}
-			 
-			 
 		});
-		
 	};
 /*%%%%%%%%%%%%%%%%%%%%%%%%%%%메뉴 UI이벤트처리끝[DOM트리로딩후]%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
 

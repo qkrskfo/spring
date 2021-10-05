@@ -134,14 +134,16 @@ label.error {
 		if(xhr.readyState==4) {
 			var insert_form_html = xhr.responseText;
 			document.querySelector('#guest_list').innerHTML=insert_form_html;
+			showLoadingDialog(false);
 		}
 	}
 	
 	/*** guest_insert_action[text] 콜백 함수 ***/
 	function displayGuestInsertAction(){
 		if(xhr.readyState==4){
-			
+			console.log('displayGuestInsertAction');
 		}
+		
 	}
 	
 	/*%%%%%%%%%%%%%%%%%%%%%%%%% AJAX응답도착했을때실행되는콜백함수끝 %%%%%%%%%%%%%%%%%%%%%%%%*/
@@ -195,30 +197,22 @@ label.error {
 		최초 dom tree loading완료 시에는 guest_write_form이라는 id selector가 존재하지 않으므로 이벤트 처리 안됨
 		최초 dom tree loading완료시 #guest_list에 DOMNodeInserted이벤트 등록
 		*******************************************************************************/
-		document.querySelector('#guest_list').addEventListener('DOMNodeInserted', function(e){
-			if(e.target.id=='guest_write.form') {
-				/*******************************************************************************
-					#guest_list에 DOM Node가 추가될 때 DOMNodeInserted이벤트 발생하고
-					그때 #guest_write_form에 submit이벤트를 처리
-				*******************************************************************************/
+		document.querySelector('#guest_list').addEventListener('DOMNodeInserted',function(e){
+			if(e.target.id=='guest_write_form'){
+				/************************************************************
+				'#guest_list에 DOM Node추가될때 DOMNodeInserted이벤트발생하고
+				 그때 #guest_write_form에 submit이벤트를 처리
+				*************************************************************/
 				var guestWriteFormElement = e.target;
-				guestWriteFormElement.addEventListener('submit', function(e1){
+				guestWriteFormElement.addEventListener('submit',function(e1){
+					
 					var params = 'guest_name=name&guest_title=title&guest_content=content&guest_email=email&guest_homepage=homepage';
-					sendRequest('guest/guest_insert_action.jsp', params, displayGuestInsertAction, 'POST');
+					sendRequest('guest/guest_insert_action.jsp',params,displayGuestInsertAction,'POST');
 					e1.preventDefault();
 				});
+				
 			}
 		});
-		
-		/* document.querySelector('#guest_list').addEventListener('DOMNodeInserted',function(e){
-			if (e.target.tagName = 'DIV' && e.target.className == 'guest_item') {
-				e.target.querySelector('a').addEventListener('click',function(e2){
-					console.log(e.target.querySelector('[guest_no]').getAttribute('guest_no'));
-					e2.preventDefault();
-				})
-			}
-		}); */
-		
 		
 	};
 	

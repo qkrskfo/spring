@@ -129,19 +129,25 @@ label.error {
 		}
 	}
 	
-	/*** guest_insert_form[HTML] 콜백 함수 ***/
+	/*************************guest_insert_form[HTML]콜백함수**************************/
 	function displayGuestInsertForm(){
-		if(xhr.readyState==4) {
+		if(xhr.readyState==4){
 			var insert_form_html = xhr.responseText;
 			document.querySelector('#guest_list').innerHTML=insert_form_html;
 			showLoadingDialog(false);
 		}
 	}
-	
-	/*** guest_insert_action[text] 콜백 함수 ***/
+	/*************************guest_insert_action[text]콜백함수**************************/
 	function displayGuestInsertAction(){
 		if(xhr.readyState==4){
-			console.log('displayGuestInsertAction');
+			var recvStr = xhr.responseText;
+			if(recvStr.trim()=='true'){
+				//리스트를 보여줌
+				sendRequest('guest/guest_list_html.jsp',null,displayGuestListHTML,'GET');
+				showLoadingDialog(true);
+			}else if(recvStr.trim()=='false'){
+				alert('쓰기실패');
+			}
 		}
 		
 	}
@@ -179,7 +185,8 @@ label.error {
 		/** guest_insert_form[HTML] 이벤트 **/
 		document.querySelector('#menu-d a').addEventListener('click', function(e){
 			//ajax 요청
-			sendRequest('guest_insert_form.html', null, displayGuestInsertForm, 'GET');
+			sendRequest('guest_insert_form.html',null,displayGuestInsertForm,'GET');
+			showLoadingDialog(true);
 			e.preventDefault();
 		});
 		
@@ -206,7 +213,8 @@ label.error {
 				var guestWriteFormElement = e.target;
 				guestWriteFormElement.addEventListener('submit',function(e1){
 					
-					var params = 'guest_name=name&guest_title=title&guest_content=content&guest_email=email&guest_homepage=homepage';
+					var params = `guest_name=${guestWriteFormElement.guest_name.value}&guest_title=${guestWriteFormElement.guest_title.value}&guest_content=${guestWriteFormElement.guest_content.value}&guest_email=${guestWriteFormElement.guest_email.value}&guest_homepage=${guestWriteFormElement.guest_homepage.value}`;
+					console.log(params);
 					sendRequest('guest/guest_insert_action.jsp',params,displayGuestInsertAction,'POST');
 					e1.preventDefault();
 				});

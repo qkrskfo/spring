@@ -224,18 +224,22 @@ label.error {
 				});
 			} else if(e.target.className=='guest_item') {
 				console.log('클래스이름이 guest_item일 때 DOMNodeInserted-->'+e.target); //여러개
-				/************************************************************
-				 <div id="guest_list"> 에 DOM Node추가될때 DOMNodeInserted 이벤트가발생하고
-				 그때 <div class="guest_item"> 에 click이벤트를 처리
-				
-				<div class="guest_item">
-				<h3 class="guest_title" guest_no="1"><a href="">방명록 사용법1[HTML]</a></h3>
-				</div>
-				<div class="guest_item">
-					<h3 class="guest_title" guest_no="2"><a href="">방명록 사용법2[HTML]</a></h3>
-				</div>
-				...
+				/*************************************************************************************
+				 insert되는 노드가 <div class="guest_item"> 일때는 click 이벤트를 처리
+			    	<div class="guest_item">
+						<h3 class="guest_title" guest_no="1"><a href="">방명록 사용법1[HTML]</a></h3>
+					</div>
+					<div class="guest_item">
+						<h3 class="guest_title" guest_no="2"><a href="">방명록 사용법2[HTML]</a></h3>
+					</div>
+					...
 				*************************************************************/
+				var divElement = e.target;
+				divElement.querySelector('.guest_title > a').addEventListener('click', function(e2){
+					//alert('guest_detail');
+					//방명록 상세보기
+					e2.preventDefault();
+				});	
 			}
 		});
 		

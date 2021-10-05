@@ -21,7 +21,7 @@ label.error {
 <script src="guest.js" type="text/javascript"></script>
 -->
 <script type="text/javascript">
-	/**%%% 응답 도착했을 때 실행되는 콜백 함수 %%%**/
+	/*%%%%%%%%%%%%%%%%%%%%%%%%%%% AJAX응답도착했을때실행되는콜백함수시작 %%%%%%%%%%%%%%%%%%%%%%*/
 	/****guest_list[HTML] 콜백 함수****/
 	function displayGuestListHTML() {
 		if(xhr.readyState==4) {
@@ -129,6 +129,15 @@ label.error {
 		}
 	}
 	
+	/*** guest_insert_form[HTML] 콜백 함수 ***/
+	function displayGuestInsertForm(){
+		if(xhr.readyState==4) {
+			var insert_form_html = xhr.responseText;
+			document.querySelector('#guest_list').innerHTML=insert_form_html;
+		}
+	}
+	
+	/*%%%%%%%%%%%%%%%%%%%%%%%%% AJAX응답도착했을때실행되는콜백함수끝 %%%%%%%%%%%%%%%%%%%%%%%%*/
 
 	/**%%% 메뉴 UI이벤트 처리시작 %%%**/
 	window.onload=function() {
@@ -158,8 +167,33 @@ label.error {
 			e.preventDefault();
 		});
 		
+		/** guest_insert_form[HTML] 이벤트 **/
+		document.querySelector('#menu-d a').addEventListener('click', function(e){
+			//ajax 요청
+			
+			sendRequest('guest_insert_form.html', null, displayGuestInsertForm, 'GET');
+			e.preventDefault();
+		});
+		
+		/* document.querySelector('#guest_list').addEventListener('DOMNodeInserted',function(e){
+			if (e.target.tagName = 'DIV' && e.target.className == 'guest_item') {
+				e.target.querySelector('a').addEventListener('click',function(e2){
+					console.log(e.target.querySelector('[guest_no]').getAttribute('guest_no'));
+					e2.preventDefault();
+				})
+			}
+		}); */
+		
+		
 	};
+	
+	
+	
+	
+	
+	
 	/**%%% 메뉴 UI이벤트 처리 끝 %%%**/
+	/** 동적으로 추가되는 Node이벤트 처리 [DOMNodeInserted이벤트]**/
 	
 	/****** loading dialog 생성삭제 함수 시작 *******/
 	function showLoadingDialog(isVisible){

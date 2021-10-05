@@ -151,6 +151,56 @@ label.error {
 		}
 		
 	}
+	/*************************guest_detail[HTML]**************************/
+	function displayGuestDetailHTML(clickElement){
+		if(xhr.readyState==4){
+			var htmlData = xhr.responseText;
+			/*
+			<< h3 a click >>
+			<div class="guest_item">
+				<h3 class="guest_title" guest_no="1"><a href="">방명록 사용법1[HTML]</a></h3>
+			</div>	
+			*/
+			
+			/*
+			<< guest_detail 받은데이타>>
+			<div class="guest_date">날짜:2021-10-01 14:31:31</div>
+			<div class="guest_name">이름:김경가	</div>
+			<div class="guest_email">이메일:guard1@naver.com</div>
+			<div class="guest_homepage">홈페이지:http://www.naver.com</div>
+			<div class="guest_content">내용:방명록처럼 사용하시면 됩니다1</div>
+			...
+			*/
+			var guestDetailDivElement = document.createElement('div');
+			guestDetailDivElement.setAttribute('class', 'guest_detail');
+			guestDetailDivElement.innerHTML=detailHtmlData;
+			
+			
+			
+			/*
+			<<보여줘여할 HTML>>
+			<div class="guest_item">
+				<h3 class="guest_title" guest_no="1"><a href="">방명록 사용법1[HTML]</a></h3>
+				<div class='guest_detail'>
+					<div class="guest_date">날짜:2021-10-01 14:31:31</div>
+					<div class="guest_name">이름:김경가	</div>
+					<div class="guest_email">이메일:guard1@naver.com</div>
+					...
+				</div>
+			</div>	
+			*/
+		}
+	}
+	
+	/*************************guest_detail[JSON]**************************/
+	function displayGuestDetailJSON(){
+		
+	}
+	
+	/*************************guest_detail[XML]**************************/
+	function displayGuestDetailXML(){
+		
+	}
 	
 	/*%%%%%%%%%%%%%%%%%%%%%%%%% AJAX응답도착했을때실행되는콜백함수끝 %%%%%%%%%%%%%%%%%%%%%%%%*/
 
@@ -236,8 +286,15 @@ label.error {
 				*************************************************************/
 				var divElement = e.target;
 				divElement.querySelector('.guest_title > a').addEventListener('click', function(e2){
+					var guest_no = e2.target.parentElement.getAttribute("guest_no"); //이게 H3 Element래 -> 이거만 구하면 detail에 id를 전송해줄 수 있어. =parentNode
+					
 					//alert('guest_detail');
-					//방명록 상세보기
+					//방명록 상세보기(HTML)
+					sendRequest('guest/guest_detail_html.jsp', 'guest_no='+guest_no, function(){
+						displayGuestDetailHTML(e2.target);
+					}, 'GET');
+					//sendRequest('guest/guest_detail_xml.jsp', 'guest_no='+guest_no, displayGuestDetailXML, 'GET');
+					//sendRequest('guest/guest_detail_json.jsp', 'guest_no='+guest_no, displayGuestDetailJSON, 'GET');
 					e2.preventDefault();
 				});	
 			}

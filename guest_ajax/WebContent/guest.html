@@ -137,9 +137,16 @@ label.error {
 		}
 	}
 	
+	/*** guest_insert_action[text] 콜백 함수 ***/
+	function displayGuestInsertAction(){
+		if(xhr.readyState==4){
+			
+		}
+	}
+	
 	/*%%%%%%%%%%%%%%%%%%%%%%%%% AJAX응답도착했을때실행되는콜백함수끝 %%%%%%%%%%%%%%%%%%%%%%%%*/
 
-	/**%%% 메뉴 UI이벤트 처리시작 %%%**/
+	/**%%% 메뉴 UI이벤트 처리시작 (DOM트리 로딩 후) %%%**/
 	window.onload=function() {
 		/** guest_list[HTML]메뉴 이벤트 **/
 		document.querySelector('#menu-a a').addEventListener('click', function(e){
@@ -196,7 +203,8 @@ label.error {
 				*******************************************************************************/
 				var guestWriteFormElement = e.target;
 				guestWriteFormElement.addEventListener('submit', function(e1){
-					alert('submit');
+					var params = 'guest_name=name&guest_title=title&guest_content=content&guest_email=email&guest_homepage=homepage';
+					sendRequest('guest/guest_insert_action.jsp', params, displayGuestInsertAction, 'POST');
 					e1.preventDefault();
 				});
 			}

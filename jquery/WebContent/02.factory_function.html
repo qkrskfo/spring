@@ -14,14 +14,21 @@
 	    div element jQuery wrapper객체생성
 */
 
-window.jQuery('#id');
-window.$('h1');
-jQuery(document);
-$(function(){});
 
-console.log(typeof jQuery);
-console.log(typeof $);
-
+	console.log("1."+window.jQuery); // jQuery와 $는 function property임
+	console.log("2."+window.$);
+	
+	//window.jQuery('#id');
+	//window.$('h1');
+	
+	var jQueryWrapperObject1 = jQuery('h1');
+	
+	var jQueryWrapperObject2 = $('h2');
+	
+	console.log("3.factory function return:"+jQueryWrapperObject1);
+	console.log("4.factory function return:"+jQueryWrapperObject2);
+	//객체를 만들어주니까 factory function이래
+	
 </script>
 </head>
 <body>

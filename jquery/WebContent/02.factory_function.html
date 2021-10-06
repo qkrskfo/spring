@@ -22,12 +22,28 @@
 	//window.$('h1');
 	
 	var jQueryWrapperObject1 = jQuery('h1');
-	
 	var jQueryWrapperObject2 = $('h2');
 	
 	console.log("3.factory function return:"+jQueryWrapperObject1);
 	console.log("4.factory function return:"+jQueryWrapperObject2);
 	//객체를 만들어주니까 factory function이래
+	
+	jQueryWrapperObject1.css('blue');
+	jQueryWrapperObject2.css('red');
+	
+	$('h3').css('tomato');
+	$('h4').css('yellow');
+	jQuery('h5').css('pink');
+	
+	$('h1').text('오늘은 jQuery를 공부합니다.');
+	$('h2').text('중요한 내용은 factory function입니다.');
+	$('h3').text('오늘은 비가오네요.');
+	$('h4').text('마지막까지 힘내세요');
+	$('h5').text('수요일이네요.');
+	
+	$('h6').css('seagreen').text('하라씨가 좋아하는 색~');
+	
+	console.log("5. $('h1').css()-->"+$('h1').css());
 	
 </script>
 </head>

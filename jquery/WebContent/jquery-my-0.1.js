@@ -7,7 +7,7 @@ window.jQuery=function(selector){
 		1. selector를 사용해서 Node검색
 		*/
 		var elementNodeList = document.querySelectorAll(selector);
-		var elementNode = document.querySelector(selector);
+		var elementNode=document.querySelector(selector);
 		
 		var jQueryWrapperObject={
 			//이건 javascript object객체임(json객체)
@@ -15,19 +15,24 @@ window.jQuery=function(selector){
 			'elementNodeList':elementNodeList,
 			'elementNode':elementNode,
 			'css':function(colorArg){
-				if(colorArg) {
-					for(var i=0; i<this.elementNodeList.length; i++){
+				if(colorArg){
+					for(var i=0;i<this.elementNodeList.length;i++){
 						this.elementNodeList[i].style.color=colorArg;
 					}
-				} else if(colorArg==undefined) {
-					return this.elementNodeList.style.color;
-				}	
+				}else if(colorArg === undefined){
+					return this.elementNode.style.color;
+				}
+				
 				return this;
 			},
 			'text':function(textArg){
-				for(var i=0; i<this.elementNodeList.length; i++) {
-					this.elementNodeList[i].firstChild.nodeValue=textArg;
-				}
+				if(textArg){
+					for(var i=0;i<this.elementNodeList.length;i++){
+						this.elementNodeList[i].firstChild.nodeValue=textArg;
+					}
+				}else if(textArg === undefined){
+					return this.elementNode.firstChild.nodeValue;
+				}	
 				return this;
 			}
 			//근데 02번에 만든거랑 이거랑 무슨 차이야..ㅠㅠ

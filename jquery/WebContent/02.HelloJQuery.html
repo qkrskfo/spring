@@ -31,18 +31,36 @@
 		/*
 		1.tag selector
 		*/
+		$('h2').addClass('highlight1');
+		$('h2').css('color', 'blue');
 		/*
 		2. filter selector(pseudo class)
 		*/
+		//$('div').addClass('evenClass');
+		$('div:even').addClass('evenClass'); //필터클래스 even짝수
+		$('div:odd').addClass('oddClass'); //필터클래스 odd홀수
 		/*
 		3.DOM순회(id selector)
 		*/
+		$('#root').children().each(function(i,e){
+			console.log(i+"-->"+e+":"+e.firstChild.nodeValue); //e는 표준객체 element는 type도 찍힌데..
+		}); //제이쿼리에서는 for문을 쓰지않아. 얘네가 알아서 돌려주니까!
 		/*
 		4.DOM Node변경
 		*/
+		$('#h31').text("<u> .text() </u>");
+		$('#h32').text("<u> .html() </u>");
 		/*
 		5. 이벤트(event)
 		*/
+		$('#send').click(function(e){
+			console.log("이벤트객체:"+e);
+			console.log("이벤트타겟:"+e.target);
+			console.log("이벤트타겟:"+e.target.firstChild.nodeValue);
+			//6. effect
+			//$('h2').fadeToggle();
+			$('div').slideToggle();
+		});
 		
 	});
 	
@@ -73,7 +91,7 @@
 	
 	<h2>5. jQuery로 이벤트 처리</h2>
 	<button id="send">전송</button>
-		
+	
 
 	<script type="text/javascript">
 		

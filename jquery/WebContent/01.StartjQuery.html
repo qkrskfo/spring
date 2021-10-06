@@ -44,7 +44,23 @@
 		console.log("3.factory function return:"+jQueryWrapperObject1);
 		console.log("4.factory function return:"+jQueryWrapperObject2);
 		
+		jQueryWrapperObject1.css('color','blue');
+		jQueryWrapperObject2.css('color','gold');
 		
+		$('h3').css('color','tomato');
+		$('h4').css('color','purple');
+		$('h5').css('color','pink');
+		
+		$('h1').text('오늘은 jQuery를 공부합니다.');
+		$('h2').text('중요한내용은 factory function입니다.');
+		$('h3').text('오늘은 비가오네여.');
+		$('h4').text('마지막까지 힘내세요.');
+		$('h5').text('수요일이네요');
+		
+		$('h6').css('color','seagreen').text('하라씨가 좋아하는 색 ~~~~');
+		
+		console.log("5. $('h1').css('color')--> "+$('h1').css('color')); //이게 getter임. return해주세요~
+		console.log("6. $('h1').text()--> "+$('h1').text()); 
 	 }
 	
 	 
@@ -101,5 +117,11 @@
 	<h5>Bye Bye!!! h5</h5>
 	<h5>Bye Bye!!! h5</h5>
 	<h5>Bye Bye!!! h5</h5>
+	<h6>Bye Bye!!! h5</h6>
+	<h6>Bye Bye!!! h5</h6>
+	<h6>Bye Bye!!! h5</h6>
+	<h6>Bye Bye!!! h5</h6>
+	<h6>Bye Bye!!! h5</h6>
+	<h6>Bye Bye!!! h5</h6>
 </body>
 </html>

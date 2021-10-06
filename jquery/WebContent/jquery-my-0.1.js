@@ -7,7 +7,9 @@ window.jQuery=function(selector){
 		*/
 	} else if(typeof selector=='object') {
 		/*
-		css selector
+		javascript의 표준객체
+		(dom객체, json, array, ...)
+			(document부터 dom tree에 있는 객체가 뭐라도 들어오면..)
 		*/
 	} else if(typeof selector=='function') {
 		/*

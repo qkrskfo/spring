@@ -13,9 +13,8 @@
 	4 . $('<div></div>')					:태그문자열
 	    div element jQuery wrapper객체생성
 */
-
-	window.onload=function(){
-		/*** DOM TREE 로딩 후 실행 ***/
+	$(function(){
+		alert('DOM Tree 로딩 직후에 호출되는 코드');
 		console.log("1."+window.jQuery); // jQuery와 $는 function property임
 		console.log("2."+window.$);
 		
@@ -45,6 +44,41 @@
 		
 		console.log("5. $('h1').css();--> "+$('h1').css());
 		console.log("6. $('h1').text();--> "+$('h1').text());
+	});
+	
+	
+	window.onload=function(){
+		/*** DOM TREE 로딩 후 실행 ***
+		console.log("1."+window.jQuery); // jQuery와 $는 function property임
+		console.log("2."+window.$);
+		
+		//window.jQuery('#id');
+		//window.$('h1');
+		
+		var jQueryWrapperObject1 = jQuery('h1');
+		var jQueryWrapperObject2 = $('h2');
+		console.log("3.factory function return:"+jQueryWrapperObject1);
+		console.log("4.factory function return:"+jQueryWrapperObject2);
+		//객체를 만들어주니까 factory function이래
+		
+		jQueryWrapperObject1.css('blue');
+		jQueryWrapperObject2.css('gold');
+		
+		$('h3').css('tomato');
+		$('h4').css('yellow');
+		jQuery('h5').css('pink');
+		
+		$('h1').text('오늘은 jQuery를 공부합니다.');
+		$('h2').text('중요한내용은 factory function입니다.');
+		$('h3').text('오늘은 비가오네여.');
+		$('h4').text('마지막까지 힘내세요.');
+		$('h5').text('수요일이네요');
+		
+		$('h6').css('seagreen').text('하라씨가 좋아하는 색 ~~~~');
+		
+		console.log("5. $('h1').css();--> "+$('h1').css());
+		console.log("6. $('h1').text();--> "+$('h1').text());
+		****************/
 	};
 </script>
 </head>

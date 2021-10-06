@@ -50,8 +50,14 @@ window.jQuery=function(selector){
 		*/
 	} else if(typeof selector=='function') {
 		/*
-		css selector
+		function객체
 		*/
+		//window.onlad=selector;
+		/*
+		인자로 대입된 function을 DOM tree 생성 직후 & 랜더링 직전 호출하도록
+		window.onload이벤트에 등록
+		*/
+		window.addEventListener('load',selector);
 	}
 }
 

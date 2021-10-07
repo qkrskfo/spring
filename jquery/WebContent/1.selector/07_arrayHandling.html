@@ -23,6 +23,9 @@ $(function() {
 	console.log('2. li element 반환:'+$('#nameList > li').get(0));
 	console.log('3. li element value 반환:'+$('#nameList > li').get(0).firstChild.nodeValue);
 	var liElement = $('#nameList > li').get(0);
+	
+	var liElementJqueryWrapperObject=$(); ///$() 이건 jquery factory function***중요해!!!
+	
 	var nameStr = liElement.firstChild.nodeValue;
 	console.log('--> index 0. nameStr: '+nameStr);
 	

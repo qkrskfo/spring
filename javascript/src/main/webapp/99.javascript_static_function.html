@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+/********************************************/
+	function Member(id,name){
+		this.id=id;
+		this.name=name;
+	}
+	Member.prototype.instance_method1=function(){
+		console.log('Member객체 instance_method1():'+this.id+","+this.name);
+	}
+	Member.prototype.instance_method2=function(){
+		console.log('Member객체 instance_method2():'+this.id+","+this.name);
+	}
+	Member.static_method1=function(){
+		console.log('Memberfunction의 static method1()');
+	};
+	Member.static_method2=function(){
+		console.log('Memberfunction의 static method2()');
+	};
+/********************************************/
+
+</script>
+
+</head>
+<body>
+<h1>javascript static function</h1><hr/>
+<script type="text/javascript">
+	var member1=new Member(1,'KIM');
+	var member2=new Member(2,'SIM');
+	member1.instance_method1()
+	member1.instance_method2()
+	member2.instance_method1()
+	member2.instance_method2()
+	/****************static method호출************/
+	/*
+	member1.static_method1();
+	member1.static_method2();
+	member2.static_method1();
+	member2.static_method2();
+	*/
+	Member.static_method1();
+	Member.static_method2();
+	
+</script>
+</body>
+</html>

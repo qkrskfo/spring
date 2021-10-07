@@ -67,4 +67,6 @@ window.jQuery=function(selector){
 	}
 }
 
+
+
 window.$=window.jQuery;

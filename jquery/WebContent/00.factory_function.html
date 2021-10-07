@@ -46,9 +46,8 @@
 		console.log("6. $('h1').text();--> "+$('h1').text());
 		
 		$('h1').each(function(i,e){
-			console.log(i+'--->'+e);
-			//e.style.border='1px double seagreen';
-			console.log(e.firstChilde.nodeValue);
+			console.log(i+'--->'+ e);
+			console.log(e.firstChild.nodeValue);
 		});
 	});
 	

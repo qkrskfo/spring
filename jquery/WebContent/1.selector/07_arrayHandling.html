@@ -9,7 +9,7 @@
 $(function() {
 	
 	/*
-	Element는 브라우저 객체
+	Element는 브라우저 객체, 표준객체
 	Node는 최상위 객체
 	*/
 	
@@ -29,6 +29,7 @@ $(function() {
 	var liElementJqueryWrapperObject=$(liElement); 
 		//$() 이건 jquery factory function***중요해!!!
 	var nameStr2 = liElementJqueryWrapperObject.text();
+		// 표준객체로 핸들링하기 귀찮으면 wrapping을 해주면 된데 $(liElement) 가 래핑한것
 	
 	console.log('--> index 0. nameStr1: '+nameStr1);
 	console.log('--> index 0. nameStr2: '+nameStr2);

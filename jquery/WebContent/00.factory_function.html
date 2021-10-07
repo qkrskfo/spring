@@ -48,7 +48,7 @@
 		$('h1').each(function(i,e){
 			console.log(i+'--->'+ e);
 			console.log('표준객체:'+ e.firstChild.nodeValue);
-			//console.log('제이쿼리객체:'+$(e).text());
+			console.log('제이쿼리객체:'+$(e).text());
 		});
 		/***********jQuery[,$] static function 호출***************/
 		//jQuery.each();
@@ -61,8 +61,11 @@
 		/* 2. $(document), $(document.joinForm), $(Element) : 표준객체 */
 		$(document);
 		var h1Element = document.getElementsByTagName('h1')[0];
-		var h1Str = $(h1Element).text();
-		console.log("h1Str-->"+h1Str);
+		var h1Str1 = h1Element.firstChild.nodeValue;
+		console.log("h1Str1-->"+h1Str1);
+		
+		var h1Str2 = $(h1Element).text();
+		console.log("h1Str2-->"+h1Str2);
 		
 	});
 	

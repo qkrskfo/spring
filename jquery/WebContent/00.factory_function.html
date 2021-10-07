@@ -47,10 +47,9 @@
 		
 		$('h1').each(function(i,e){
 			console.log(i+'--->'+ e);
-			console.log('표준객체:'+e.firstChild.nodeValue);
+			console.log('표준객체:'+ e.firstChild.nodeValue);
 			console.log('제이쿼리객체:'+$(e).text());
 		});
-		
 		/***********jQuery[,$] static function 호출***************/
 		//jQuery.each();
 		//jQuery.ajax();
@@ -61,21 +60,14 @@
 		
 	});
 	
-	
 	window.onload=function(){
-		/*** DOM TREE 로딩 후 실행 ***
-		console.log("1."+window.jQuery); // jQuery와 $는 function property임
+		/**********DOM Tree로딩후실행**********
+		console.log("1."+window.jQuery);
 		console.log("2."+window.$);
-		
-		//window.jQuery('#id');
-		//window.$('h1');
-		
-		var jQueryWrapperObject1 = jQuery('h1');
-		var jQueryWrapperObject2 = $('h2');
+		var jQueryWrapperObject1   = jQuery('h1');
+		var jQueryWrapperObject2   = $('h2');
 		console.log("3.factory function return:"+jQueryWrapperObject1);
 		console.log("4.factory function return:"+jQueryWrapperObject2);
-		//객체를 만들어주니까 factory function이래
-		
 		jQueryWrapperObject1.css('blue');
 		jQueryWrapperObject2.css('gold');
 		
@@ -93,8 +85,10 @@
 		
 		console.log("5. $('h1').css();--> "+$('h1').css());
 		console.log("6. $('h1').text();--> "+$('h1').text());
-		****************/
+		**********************************************/
 	};
+	
+	
 </script>
 </head>
 <body>

@@ -47,7 +47,8 @@
 		
 		$('h1').each(function(i,e){
 			console.log(i+'--->'+ e);
-			console.log(e.firstChild.nodeValue);
+			console.log('표준객체:'+e.firstChild.nodeValue);
+			console.log('제이쿼리객체:'+$(e).text());
 		});
 		
 		/***********jQuery[,$] static function 호출***************/

@@ -22,12 +22,16 @@ $(function() {
 	console.log('1. li element array 반환:'+listElementArray);
 	console.log('2. li element 반환:'+$('#nameList > li').get(0));
 	console.log('3. li element value 반환:'+$('#nameList > li').get(0).firstChild.nodeValue);
+	
 	var liElement = $('#nameList > li').get(0);
+	var nameStr1 = liElement.firstChild.nodeValue;
 	
-	var liElementJqueryWrapperObject=$(); ///$() 이건 jquery factory function***중요해!!!
+	var liElementJqueryWrapperObject=$(liElement); 
+		//$() 이건 jquery factory function***중요해!!!
+	var nameStr2 = liElementJqueryWrapperObject.text();
 	
-	var nameStr = liElement.firstChild.nodeValue;
-	console.log('--> index 0. nameStr: '+nameStr);
+	console.log('--> index 0. nameStr1: '+nameStr1);
+	console.log('--> index 0. nameStr2: '+nameStr2);
 	
 	/*
 	.text()

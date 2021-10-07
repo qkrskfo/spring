@@ -53,6 +53,30 @@ window.jQuery=function(selector){
 		javascript 표준객체(Node,Document,Element,Text)
 			(document부터 dom tree에 있는 객체가 뭐라도 들어오면..)
 		*/
+		if(selector instanceof Document){
+			console.log('Document');
+		} else if(selector instanceof Element) {
+			//console.log('selector->'+selector);
+			//console.log('Element');
+			
+			/**객체 복사붙여넣기 ******************/
+				var jQueryWrapperObject={
+				//이건 javascript object객체임(json객체)
+					'elementNode':selector,
+					'text':function(textArg){
+						if(textArg){
+							this.elementNode.firstChild.nodeValue=textArg;
+						}else if(textArg === undefined){
+							return this.elementNode.firstChild.nodeValue;
+						}	
+						return this;
+					}
+				};
+			/**객체 복사붙여넣기 끝 ******************/
+			return jQueryWrapperObject;
+			
+		}
+		
 	} else if(typeof selector=='function') {
 		/*
 		function객체

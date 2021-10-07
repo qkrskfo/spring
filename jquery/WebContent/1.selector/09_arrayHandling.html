@@ -33,6 +33,34 @@
 				{'id':'guard5','name':'cim','address':'경기도'}
 		];
 		
+		memberNameArray.sort(function(name1,name2){
+			/*
+			양수반환 :   교환해줘
+			음수반환 : 교환하지마
+			*/
+			if(name1 > name2){
+				return -1;
+			}else{
+				return 1;
+			}
+		});
+		$('.sorted1').html(memberNameArray.join(','));
+		
+		memberScoreArray.sort(function(score1,score2){
+			return score2-score1;
+		});
+		$('.sorted2').html(memberScoreArray.join(','));
+		
+		memberArray.sort(function(m1,m2){
+			if(m1.name > m2.name){
+				return 1;
+			}else{
+				return -1;
+			}
+		});
+		$.each(memberArray,function(i,m){
+			$('.sorted3').append(m.id+","+m.name+","+m.address+"<br>");
+		});
 		
 		
 		

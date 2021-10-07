@@ -15,8 +15,15 @@
 				{'id':'guard4','name':'kim4','address':'경기파'},
 				{'id':'guard5','name':'kim5','address':'경기솔'}
 		];
-		$.each(memberNameArray, function(i,name){
-			$('#memberNameList').append("<li>"+name+"</li>");
+		
+		$('h2').append(memberArray.length+"명");
+		
+		$.each(memberNameArray,function(i,name){
+			$('#memberNameList').append("<li>"+i+"번째 요소 "+name+"</li>");
+		});
+		
+		$.each(memberArray,function(i,member){
+			$('#memberList').append(`<li>[${member.id}] ${member.name}, ${member.address}</li>`)
 		});
 		
 		

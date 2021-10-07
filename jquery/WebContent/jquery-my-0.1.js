@@ -67,6 +67,12 @@ window.jQuery=function(selector){
 	}
 }
 
+window.jQuery.each = function(){
+	
+};
+window.jQuery.ajax = function(){
+	
+};
 
 
 window.$=window.jQuery;

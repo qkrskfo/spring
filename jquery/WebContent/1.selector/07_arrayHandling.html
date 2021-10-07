@@ -9,9 +9,20 @@
 $(function() {
 	
 	/*
+	Element는 브라우저 객체
+	Node는 최상위 객체
+	*/
+	
+	/*
 	The .get() method grants us access to the DOM nodes underlying each jQuery object.
 	Suppose we had a simple unordered list on the page:
+		get메소드는 array를 반환(element객체로)
 	*/
+	var listElementArray = $('#nameList > li').get();
+	console.log('1. li element array 반환:'+listElementArray);
+	console.log('2. li element 반환:'+$('#nameList > li').get(0));
+	console.log('3. li element value 반환:'+$('#nameList > li').get(0).firstChild.nodeValue);
+	var liElement = $('#nameList > li').get(0);
 	/*
 	.text()
 	Get the combined text contents of each element in the set of matched elements,
@@ -20,6 +31,7 @@ $(function() {
 	.text('string')
 	A string of text to set as the content of each matched element
 	*/
+	
 	
 	
 });

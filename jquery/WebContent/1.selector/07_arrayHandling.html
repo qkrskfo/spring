@@ -24,15 +24,17 @@ $(function() {
 	console.log('3. li element value 반환:'+$('#nameList > li').get(0).firstChild.nodeValue);
 	
 	var liElement = $('#nameList > li').get(0);
-	var nameStr1 = liElement.firstChild.nodeValue;
 	
+	var nameStr1 = liElement.firstChild.nodeValue;
+	console.log('--> 표준객체[liElement] index 0. nameStr1: '+nameStr1);
+		
 	var liElementJqueryWrapperObject=$(liElement); 
 		//$() 이건 jquery factory function***중요해!!!
 	var nameStr2 = liElementJqueryWrapperObject.text();
 		// 표준객체로 핸들링하기 귀찮으면 wrapping을 해주면 된데 $(liElement) 가 래핑한것
+	console.log('--> jQueryWrapper객체[$(liElement)] index 0. nameStr2: '+nameStr2);
 	
-	console.log('--> index 0. nameStr1: '+nameStr1);
-	console.log('--> index 0. nameStr2: '+nameStr2);
+	
 	
 	/*
 	.text()

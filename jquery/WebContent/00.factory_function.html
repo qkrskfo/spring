@@ -50,9 +50,13 @@
 			console.log(e.firstChild.nodeValue);
 		});
 		
-		/*** jQuery[,$] static function 호출***/
-		jQuery.each();
-		jQuery.ajax();
+		/***********jQuery[,$] static function 호출***************/
+		//jQuery.each();
+		//jQuery.ajax();
+		$.each(['KIM','SIM','KAN','GOO','LIM'],function(index,name){
+			console.log(index+"-->"+name);
+		});
+		$.ajax();
 		
 	});
 	

@@ -15,6 +15,9 @@
 				{'id':'guard4','name':'kim4','address':'경기파'},
 				{'id':'guard5','name':'kim5','address':'경기솔'}
 		];
+		$.each(memberNameArray, function(i,name){
+			$('#memberNameList').append("<li>"+name+"</li>");
+		});
 		
 		
 	});

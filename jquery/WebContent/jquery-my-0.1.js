@@ -67,8 +67,11 @@ window.jQuery=function(selector){
 	}
 }
 
-window.jQuery.each = function(){
-	
+/**************static function****************/
+window.jQuery.each = function(array,funcArg){
+	for(var i=0;i<array.length;i++){
+		funcArg(i,array[i]);
+	}
 };
 window.jQuery.ajax = function(){
 	

@@ -17,10 +17,27 @@
 		/*
 		$.grep(); // grep은 static function($)임
 		*/
-		var filterNameArray = $.grep(memberNameArray, function(){
-			
+		var filterNameArray = $.grep(memberNameArray, function(name, i){
+			if(name.startsWith('k')) {
+				return true;				
+			} else {
+				return false;
+			}
 		});
+		console.log(filterNameArray);
+		$('.selected1').append(filterNameArray.join(','));
 		
+		var filterMemberArray = $.grep(memberArray, function(member,i){
+			if(member.address=='경기도'){
+				return true;
+			} else {
+				return false;
+			}
+		});
+		console.log(filterMemberArray);
+		$.each(filterMemberArray,function(i,m){
+			$('.selected2').append(m.id+","+m.name+","+m.address+"<br>");
+		});
 		
 	});
 </script>

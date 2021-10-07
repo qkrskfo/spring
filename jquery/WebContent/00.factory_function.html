@@ -44,6 +44,12 @@
 		
 		console.log("5. $('h1').css();--> "+$('h1').css());
 		console.log("6. $('h1').text();--> "+$('h1').text());
+		
+		$('h1').each(function(i,e){
+			console.log(i+'--->'+e);
+			//e.style.border='1px double seagreen';
+			console.log(e.firstChilde.nodeValue);
+		});
 	});
 	
 	

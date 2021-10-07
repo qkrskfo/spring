@@ -4,7 +4,9 @@ window.jQuery=function(selector){
 	if(typeof selector=='string') {
 		/*
 		css selector
-		1. selector를 사용해서 Node검색
+		 1.selector를 사용해서 DOM Tree Node(Element)검색
+		 2.jQueryWrapper객체를 생성하고 css,text,each함수추가
+		 3.jQueryWrapper객체반환
 		*/
 		var elementNodeList = document.querySelectorAll(selector);
 		var elementNode=document.querySelector(selector);
@@ -34,10 +36,14 @@ window.jQuery=function(selector){
 					return this.elementNode.firstChild.nodeValue;
 				}	
 				return this;
-			}
-			//근데 02번에 만든거랑 이거랑 무슨 차이야..ㅠㅠ
-			//메소드를 만들려면 json에서 어떤식으로 만들어야하죠?
-			
+				//근데 02번에 만든거랑 이거랑 무슨 차이야..ㅠㅠ
+				//메소드를 만들려면 json에서 어떤식으로 만들어야하죠?
+			},
+			'each':function(funcArg){
+				for(var i=0;i < this.elementNodeList.length;i++){
+					funcArg(i,this.elementNodeList[i]);
+				}
+			 }
 			
 		};
 		return jQueryWrapperObject;

@@ -6,9 +6,29 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
 function ajaxRequestPost(){
-
+	if($('#id').val().trim()==''){
+		$('#postResultSpan').html('');
+		return;
+	}
+	//jquery ajax요청
+	$.ajax({
+		url:'03.ajaxRequestGETPOST.jsp',
+		method:'POST',
+		data:$('#postForm').serialize(),
+		beforeSend:function(){
+			$('#postResultSpan').html('loading...');
+		},
+		success:function(responseStr){
+			$('#postResultSpan').html(responseStr);
+		}
+	});
 }
 
+$(function(){
+	$('#id').on('keyup', function(e){
+		ajaxRequestPost(); //윈도우에 소속된 펑션을 자꾸 만들지마!	
+	});
+});
 	
 </script>
 </head>

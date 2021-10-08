@@ -76,6 +76,18 @@ ul {
 					if(count=='0'){
 						return;
 					}
+					
+					var html='<ul>';
+					jqXmlDoc.find('news').each(function(i, newsElement){
+						//뉴스를 만날때마다 이 펑션을 실행해줄거야
+						//console.log("newsElement:"+newsElement);
+						var title = $(newsElement).find('title').text();
+						var company = $(newsElement).find('company').text();
+						var date = $(newsElement).find('date').text();
+						html+=`<li>${title}[${company}]${date}[XML]</li>`;
+					});
+					html+='</ul>';
+					$('#newsDiv').html(html);
 				}
 			});
 		}, 3000);

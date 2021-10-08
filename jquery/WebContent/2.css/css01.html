@@ -28,11 +28,16 @@ td {
 <script type="text/javascript">
 	$(function() {
 		//#1.스타일 속성이름에 해당하는 속성값 가져오기
+		var h2BackgroundColorStr = $('h2').css('background');
+		console.log('h1 background-->'+h2BackgroundColorStr);
 		
 		//#2. style 적용
-	
-		//#3. 동적스타일변경
+		$('h2').css('background', 'orange');
 		
+		//#3. 동적스타일변경
+		$('tr').css('background', function(){
+			return 'pink';
+		});
 		
 	
 		

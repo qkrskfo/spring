@@ -36,15 +36,25 @@ td {
 			element 속성(attribute) 접근
 			*/
 			//set
-			
+			$('#p_image').attr('src', 'icon1.png');
+			$('#p_image').attr('width', '20px');
+			$('#p_image').attr('height', '20px');
 			
 			//get
-			
+			console.log($('#p_image').attr('src'));
+			console.log($('#p_image').attr('width'));
+			console.log($('#p_image').attr('height'));
 			
 			/*
-			input element접근
+			form 태그안에 있는 input element접근
 			*/
 			//read
+			console.log("1. $('#id').val():"+$('#id').val()); //inputElement.val
+			console.log("1. $('#id').attr('value'): (변화X)"+$('#id').attr('value')); 
+				//attr은 쓰면 안됨. attr는 최초 들어있던 값만 나옴.
+			console.log("2. $('#name').val():"+$('#name').val());
+			console.log("3. $('#alias').val():"+$('#alias').val());
+			console.log("4. $('#job option:selected').val():"+$('#job option:selected').val());
 			
 			/*
 			 입력 엘레멘트의 값을 접근할때는  .val() 을사용
@@ -53,6 +63,12 @@ td {
 		     */
 			
 			//set
+			$('#id').val('yyyy');
+			$('#name').val('김변경');
+			$('#alias').val('제임스딘');
+			$('#job').val('프리렌서');
+			//$('#job option:eq(1)').attr('selected', 'selected');
+			//$("#job").val("2").prop("selected", true); 얘는 안되넹
 			
 		     e.preventDefault();
 		

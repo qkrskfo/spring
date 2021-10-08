@@ -26,13 +26,39 @@ label.error {
 	/*%%%%%%%%%%%%%%%%%%%%%%%%%%%메뉴 UI이벤트처리시작[DOM트리로딩후]%%%%%%%%%%%%%%%%%%%%%%%%%*/
 	$(function() {
 		/**방명록리스트[html]이벤트처리**/
+		$('#menu-a a').click(function(e){
+			//ajax요청(서버에 요청)
+			$.ajax({
+				url:'guest/guest_list_html.jsp',
+				method:'GET',
+				dataType:'html',
+				success:function(html){
+					$('#guest_list').html(html);
+				}
+			});
+			e.preventDefault();
+		});
 		
 		/**방명록리스트[JSON]이벤트처리**/
-		
+		$('#menu-b a').click(function(e){
+			e.preventDefault();
+		});
 		/**방명록리스트[XML]이벤트처리***/
-		
+		$('#menu-c a').click(function(e){
+			e.preventDefault();
+		});
 		/**방명록쓰기폼로드 이벤트처리******/
-		
+		$('#menu-d a').click(function(e){
+			// ajax 요청
+			$.ajax({
+				url:'guest_insert_form.html',
+				method:'GET',
+				success:function(responseHtml){
+					$('#guest_list').html(responseHtml);
+				}
+			});
+			e.preventDefault();
+		});
 		/**방명록쓰기이벤트처리[동적이벤트처리]******/
 		// 현재DOM Tree에 동적이벤트추가에는 항상 상위엘레멘트의 참조가필요
 		
@@ -85,7 +111,7 @@ label.error {
 				</div>
 				<div class="menu" id="menu-d">
 					<h3>
-						<a href="#">방명록 쓰기</a>
+						<a href="#">방명록 쓰기폼</a>
 					</h3>
 				</div>
 

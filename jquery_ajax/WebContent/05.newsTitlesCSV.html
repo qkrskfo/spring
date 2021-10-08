@@ -46,12 +46,36 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
 <script type="text/javascript">
-	
-	function requestNews(){
+	$(function(){
+		//DOM tree laoding후실행
+		setInterval(function(){
+			$.ajax({
+				url:'05.newsTitlesCSV.jsp',
+				method:'GET',
+				dataType:'text',
+				success:function(newsCSV){
+					/*
+					0#
+					2#title1,company1,date1|title2,company2,date2
+					*/
+					var newsCSVArray = newsCSV.split('#');
+					if(newsCSVArray[0].trim()=='0'){
+						return;
+					}
+					var newsListArray =newsCSVArray[1].split('|');
+					
+					var html='<ul>';
+					for(var i=0;i<newsListArray.length;i++){
+						var newsArray = newsListArray[i].split(',');
+						html+=`<li>${newsArray[0]}[${newsArray[1]}]${newsArray[2]}[CSV]</li>`;
+					}
+					html+='</ul>';
+					$('#newsDiv').html(html)
+				}
+			});
+		},3000);
 		
-	}
-	
-	
+	});
 </script>
 </head>
 <body>

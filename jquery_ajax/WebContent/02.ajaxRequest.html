@@ -10,6 +10,20 @@ function ajaxRequestIdCheck() {
 		/*
 		JQuery AJAX요청
 		 */
+		 var idStr =$('#id').val();
+		if(idStr.length==0 || idStr.trim()='') {
+			return;
+		}
+		/*
+		jQuery AJAX 요청
+		*/
+		$.ajax({
+			url:'02.ajaxRequest.jsp',
+			method:'GET',
+			data:'id='+idStr,
+			dataType:'text',
+			success:responseCallBack
+		});
 }
 /*
 응답이 성공적으로  완전히도착했을때 실행되는 사용자정의 콜백함수

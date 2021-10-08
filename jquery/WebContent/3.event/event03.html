@@ -10,6 +10,13 @@ div, pre {
 	margin: 10px;
 }
 
+/*이렇게해도 똑같음 위에 div랑
+#mouseArea {
+	background: #FFFF00;
+	padding: 10px;
+	margin: 10px;
+}*/
+
 table {
 	border: 1px solid #AAA;
 }
@@ -28,7 +35,11 @@ td {
 </style>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
+
 	var clickCount = 0;
+	var enterCount = 0;
+	var leaveCount = 0;
+	
 	$(function(){
 		/*
 		$('h2').click(function(e){
@@ -40,7 +51,22 @@ td {
 		$('h2').on('click', function(e){
 			$(e.target).html('jQuery에서 제공하는 Event핸들링 메소드['+ ++clickCount +']');
 		});
-	})
+		
+		$('#mouseArea').on('mouseenter mouseleave click', function(e){
+			if(e.type=='mouseenter') {
+				enterCount++;
+			} else if (e.type=='mouseleave') {
+				leaveCount++;
+			} else if (e.type='click') {
+				clickCount++;
+			}
+			$('#spResult').html('mouse enter count:'+enterCount+'<br>'+
+								'mouse leave count:'+leaveCount+'<br>'+
+								'mouse click count:'+clickCount+'<br>'
+								 );
+		});
+		
+	});
 </script>
 
 </head>

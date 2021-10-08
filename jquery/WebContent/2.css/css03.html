@@ -29,7 +29,11 @@ td {
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 $(function(){
-
+	$('td').click(function(e){
+		var clickTdElement = e.target;
+		console.log("e.target:"+clickTdElement);
+		$(clickTdElement).toggleClass('selected');
+	});
 	
 	
 });
@@ -41,7 +45,7 @@ $(function(){
 	<div>
 		<table>
 			<tr>
-				<td>#1</td>
+				<td class="selected">#1</td>
 				<td>#2</td>
 				<td>#3</td>
 				<td>#4</td>

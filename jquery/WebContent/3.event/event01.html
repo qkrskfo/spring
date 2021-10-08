@@ -39,6 +39,20 @@ td {
 			});
 		}
 		*/
+		$('td').click(function(e){
+			console.log('---------------td click event------------------');
+			console.log(e);
+			console.log(e.target.firstChild.nodeValue);
+			console.log(this);
+			console.log(this.firstChild.nodeValue);
+		});
+		$('td').mouseenter(function(e){
+			console.log('---------------mouseenter click event------------------');
+			console.log(e);
+			console.log(e.target.firstChild.nodeValue);
+			console.log(this);
+			console.log(this.firstChild.nodeValue);
+		});
 	
 		
 		

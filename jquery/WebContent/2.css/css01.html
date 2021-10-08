@@ -44,6 +44,17 @@ td {
 			}
 		});
 		
+		$('span').addClass(function(i, currentClass){
+			console.log(i +'-->'+currentClass);
+			if(currentClass==='myClass') {
+				$(this).removeClass('myClass');
+				//this.style.classList
+				return '';
+			} else {
+				return 'myClass';
+			}
+		});
+		
 	
 		
 		

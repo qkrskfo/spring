@@ -44,12 +44,7 @@ ul {
 </style>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
-	
-	function requestNews() {
-		
-		
-	}
-	function responseNews(xmlDocument,status,xhr) {
+
 			/*
 			<?xml version="1.0" encoding="UTF-8" ?>
 			<result>
@@ -66,7 +61,25 @@ ul {
 			    </data>
 			</result>
 			*/
-	}
+
+	$(function(){
+		setInterval(function(){
+			$.ajax({
+				url:'07.newsTitlesXML.jsp',
+				method:'GET',
+				dataType:'xml',
+				success:function(xmlDocument) {
+					//console.log(xmlDocument);
+					var jqXmlDoc = $(xmlDocument); //xmlDocument는 표준객체
+					//var $xmlDoc = $(xmlDocument); --> jquery 객체( $, jq )
+					var count = jqXmlDoc.find('count').text().trim();
+					if(count=='0'){
+						return;
+					}
+				}
+			});
+		}, 3000);
+	});
 </script>
 </head>
 <body>

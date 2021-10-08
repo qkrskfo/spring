@@ -29,7 +29,12 @@ td {
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 $(function() {
-	
+	$('#txtInput').keyup(function(e){
+		$('#txtKeyCode').val(e.key+'['+e.keyCode+']');
+		if(e.keyCode==13){
+			alert('가입하시겠습니다?');
+		}
+	});
 });
 </script>
 </head>
@@ -37,7 +42,7 @@ $(function() {
 	<h2>jQuery에서 제공하는 Event 핸들링 메소드</h2>
 	<div>
 		text:<input type="text" id="txtInput" /> <br/>
-		keyCode:<input type="text" id="txtKeyCode" />
+		keyCode:<input type="text" id="txtKeyCode"  value="sdasdas"/>
 	</div>
 </body>
 </html>

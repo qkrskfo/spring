@@ -28,7 +28,19 @@ td {
 </style>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
-	
+	var clickCount = 0;
+	$(function(){
+		/*
+		$('h2').click(function(e){
+			var h2E = e.target;
+			$(h2E).html('jQuery에서 제공하는 Event 핸들링 메소드['+ ++clickCount +']');
+		});
+		*/
+		
+		$('h2').on('click', function(e){
+			$(e.target).html('jQuery에서 제공하는 Event핸들링 메소드['+ ++clickCount +']');
+		});
+	})
 </script>
 
 </head>

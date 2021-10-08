@@ -46,7 +46,19 @@ h1.titleBackClass {
 </style>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
-	
+	$(function(){
+		setInterval(function(){
+			
+			$.ajax({
+				url:'06.newsTitlesHTML.jsp',
+				method:'GET',
+				success:function(responseHtml){
+					$('#newsDiv').html(responseHtml);
+				}
+			});
+			
+		},3000);
+	});
 </script>
 </head>
 <body>

@@ -35,8 +35,13 @@ td {
 		$('h2').css('background', 'orange');
 		
 		//#3. 동적스타일변경
-		$('tr').css('background', function(){
-			return 'pink';
+		$('tr').css('background-color', function(i, value){
+			console.log(i+'-->'+value);
+			if(value=='rgb(255, 255, 0)') {
+				return 'pink';
+			} else {
+				return 'aliceblue';			
+			}
 		});
 		
 	

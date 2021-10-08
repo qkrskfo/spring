@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<guest_list>
+	<guest>
+		<guest_no>8</guest_no>
+		<guest_name>김경호</guest_name>
+		<guest_date>2021-08-04 10:23:06</guest_date>
+		<guest_email>guard@google.com</guest_email>
+		<guest_homepage>http://www.itwill.co.kr</guest_homepage>
+		<guest_title>오늘은 덥나요!!</guest_title>
+		<guest_content>곧 가을이오겠죠!!! 이제 가을이여요~~~</guest_content>
+	</guest>
+</guest_list>

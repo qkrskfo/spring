@@ -1,11 +1,47 @@
-﻿<!DOCTYPE html>
+﻿﻿<!DOCTYPE html>
 <html>
 <head>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script type="text/javascript">
         $(function(){
         	$('h1').click(function(e){
-        	
+        		/**************기본효과(slide)***************
+        		
+        		$(e.target).next().hide(1000,function(){
+        			///hide끝나면실행하는function
+        		});
+        		$(e.target).next().show(1000,function(){
+        			///show끝나면실행하는function
+        		});
+        		$(e.target).next().toggle(1000,function(){
+        			//hide,show 끝나면실행하는function
+        		});
+        		
+        		/**************slide효과***************
+        		$(e.target).next().slideUp(1000,function(){
+        			//slideUp끝나면실행하는function
+        		});
+        		$(e.target).next().slideDown(1000,function(){
+        			//slideDown끝나면실행하는function
+        		});
+        		*/
+        		$(e.target).next().slideToggle(1000,function(){
+        			//slideToggle끝나면실행하는function
+        		});
+        		
+        		/**************fade효과***************
+        		$(e.target).next().fadeOut(1000,function(){
+        			//fadeOut끝나면실행하는function
+        		});
+        		$(e.target).next().fadeIn(1000,function(){
+        			//fadeOut끝나면실행하는function
+        		});
+        		
+        		$(e.target).next().fadeToggle(1000,function(){
+        			//fadeToggle끝나면실행하는function
+        		});
+        		*/
+        		
         	});
         });
     </script>

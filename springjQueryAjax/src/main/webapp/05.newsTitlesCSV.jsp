@@ -1,6 +1,6 @@
+<%@page import="com.itwil.ajax.News"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="com.itwill.ajax.News"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/plain; charset=UTF-8"
     pageEncoding="UTF-8"%>

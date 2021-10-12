@@ -19,6 +19,7 @@ label.error {
 }
 </style>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
 <script type="text/javascript">
 	/*****browser locale[navigator.language] 에따른message 동적설정***/
 </script>
@@ -145,6 +146,15 @@ label.error {
 		});
 		유효성체크, 플러그인을 쓰려면 submit 체크를 직접 쓰면 안돼요*/ 
 		
+		
+		
+		/**방명록쓰기이벤트처리[form validator]******/
+		/************form validator**************
+		HOMEPAGE :   https://jqueryvalidation.org/
+	    API      :   https://jqueryvalidation.org/validate/
+		    1. .validate() function은 DOM tree loading시에 미리 호출되어있어야한다.
+		    2. .validate() function은 DOM tree insert 될때 미리 호출되어있어야한다.
+		*****************************************/
 		
 
 		

@@ -120,30 +120,29 @@ label.error {
 		
 		
 		/**방명록쓰기이벤트처리[동적이벤트처리]******/
-		// 현재DOM Tree에 동적이벤트추가에는 항상 상위엘레멘트의 참조가필요
-		$('#guest_list').on('submit', '#guest_write_form', function(e){
-			alert('submit');
-			//유효성 체크 후 통과하면 submit요청
+		//현재DOM Tree에 동적이벤트추가에는 항상 상위엘레멘트의 참조가필요
+		$('#guest_list').on('submit','#guest_write_form',function(e){
+			alert('submit!!!');
+			//유효성체크후 통과하면 submit요청
 			$.ajax({
-				url:'guest/guest_write_action.jsp',
+				url:'guest/guest_insert_action.jsp',
 				method:'POST',
 				data:$(e.target).serialize(),
-				dataType:'text',
+				dataType: "text",
 				success:function(resultText){
-					if(resultText.trim()=='true') {
+					if(resultText.trim()=='true'){
 						alert('성공');
-						//리스트 보여주기
+						//리스트 보여주기(이벤트 발생시키기)
 						$('#menu-a a').trigger('click');
-					} else if(resultText.trim()=='false') {
-						alert('실패');
+					}else if(resultText.trim()=='false'){
 						
-					}
+					}			
 				}
-				
 			});
 			
 			e.preventDefault();
 		});
+			
 
 		
 		

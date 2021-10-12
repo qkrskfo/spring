@@ -130,7 +130,44 @@ label.error {
 		</div>	
 		*/
 		$('#guest_list').on('click','.guest_title a',function(e){
-			alert('상세보기');
+			var titleStr = $(e.target).text();
+			if(titleStr.endsWith('[HTML]')) {
+				/**** 방명록 상세보기 [HTML] ****/
+					$.ajax({
+						url:'guest/guest_detail_html.jsp',
+						data:'guest_no=3',
+						method:'GET',
+						dataType:'html',
+						success:function(htmlData){
+							/*
+							<< guest_detail 받은데이터 >>
+								<div class="guest_date">날짜:2021-10-01 14:31:31</div>
+								<div class="guest_name">이름:김경가	</div>
+								<div class="guest_email">이메일:guard1@naver.com</div>
+								..
+							<< 보여줘여할 HTML >>
+								<div class="guest_item">
+									<h3 class="guest_title" guest_no="1"><a href="">방명록 사용법1[HTML]</a></h3>
+									<div class='guest_detail' style='display:block'>
+										<div class="guest_date">날짜:2021-10-01 14:31:31</div>
+										<div class="guest_name">이름:김경가	</div>
+										<div class="guest_email">이메일:guard1@naver.com</div>
+										...
+									</div>
+								</div>	
+							*/
+							$("<div class='guest_detail' style='display:block'></div>").html(htmlData).insertAfter(e.target.parentElement); //$(h3의 anker를 여기에).parent 해도 된데
+						}
+						
+					})
+				
+			} else if(titleStr.endsWith('[JSON]')) {
+				/**** 방명록 상세보기 [JSON] ****/
+				
+			} else if(titleStr.endsWith('[XML]')) {
+				/**** 방명록 상세보기 [XML] ****/
+				
+			}
 			e.preventDefault();
 		});
 		

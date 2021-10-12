@@ -125,7 +125,9 @@ label.error {
 		/*
 		$('#guest_list').on('submit','#guest_write_form',function(e){
 			alert('submit!!!');
+			
 			//유효성체크후 통과하면 submit요청
+			
 			$.ajax({
 				url:'guest/guest_insert_action.jsp',
 				method:'POST',
@@ -137,28 +139,56 @@ label.error {
 						//리스트 보여주기(이벤트 강제로 발생시키기)
 						$('#menu-a a').trigger('click');
 					}else if(resultText.trim()=='false'){
-						
+						alert('실패');
 					}			
 				}
 			});
 			
 			e.preventDefault();
 		});
-		유효성체크, 플러그인을 쓰려면 submit 체크를 직접 쓰면 안돼요*/ 
+		//유효성체크, 플러그인을 쓰려면 submit 체크를 직접 쓰면 안돼요 */
 		
 		
 		
-		/**방명록쓰기이벤트처리[form validator]******/
+		/**방명록쓰기이벤트처리[form validator plugin]******/
 		/************form validator**************
 		HOMEPAGE :   https://jqueryvalidation.org/
 	    API      :   https://jqueryvalidation.org/validate/
 		    1. $(form).validate() function은 DOM tree loading시에 미리 호출되어있어야한다.
-		    2. $(form).validate() function은 DOM tree insert 될때 미리 호출되어있어야한다.
+		    2. $(form).validate() function은 DOM tree insert[DOMNodeInserted 이벤트] 될때 미리 호출되어있어야한다.
 		*****************************************/
-		$('#guest_write_form').validate({
+		$('#guest_list').on('DOMNodeInserted','#guest_write_form',function(){
+			console.log("#guest_write_form 이 #guest_list자식으로 DOMNodeInserted 될때호출");
+			$('#guest_write_form').validate({
+				rules:{},
+				messages:{},
+				submitHandler:function(f){
+					console.lg(e.target);
+					/*
+					form의 submit을 클릭하면 유효성체크하고 유효성을 통과하면 함수호출
+					*/
+					$.ajax({
+						url:'guest/guest_insert_action.jsp',
+						method:'POST',
+						data:$(f).serialize(),
+						dataType: "text",
+						success:function(resultText){
+							if(resultText.trim()=='true'){
+								//alert('성공');
+								//리스트보여주기(이벤트 강제로 발생시키기)
+								$('#menu-a a').trigger('click');
+							}else if(resultText.trim()=='false'){
+								alert('실패');
+								
+							}			
+						}
+					});
+				}
+				
+			});
+			//end validate
 			
-		});
-
+		});//end DOMNodeInserted event
 		
 		
 		

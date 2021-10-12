@@ -136,7 +136,7 @@ label.error {
 			
 			if(titleStr.endsWith('[HTML]')){
 				/************방명록상세보기[HTML]*********************/
-				if($(h3Element).parent().children().length > 0){
+				if($(h3Element).parent().children().length > 1){
 					//상세정보가 존재한다면
 					$(h3Element).next().slideToggle(1000);
 				} else {
@@ -145,7 +145,7 @@ label.error {
 						url:'guest/guest_detail_html.jsp',
 						data:params,
 						method:'GET',
-						dataType: "html",
+						dataType: 'html',
 						success:function(htmlData){
 						/*
 							<< guest_detail 받은데이타>>
@@ -164,7 +164,6 @@ label.error {
 									</div>
 								</div>	
 								*/
-							var h3Element=e.target.parentElement;
 							$("<div class='guest_detail' style='display:none'></div>").html(htmlData).insertAfter(h3Element);
 							$(h3Element).next().slideToggle(1000);
 						}

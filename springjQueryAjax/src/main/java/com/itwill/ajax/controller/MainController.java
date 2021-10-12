@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MainController {
 	@RequestMapping(value = "02.ajaxRequest.do")
 	public String ajaxRequest() {
-		return "forward:/WEB-INF/views/02.ajaxRequest.jsp";
+		//return "forward:/WEB-INF/views/02.ajaxRequest.jsp";
+		return "02.ajaxRequest";
 	}
 	
 	

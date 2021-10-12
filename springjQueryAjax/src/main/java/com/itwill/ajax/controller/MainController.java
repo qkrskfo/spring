@@ -1,6 +1,7 @@
 package com.itwill.ajax.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -27,9 +28,21 @@ public class MainController {
 		return msg;
 	}
 	
-	
+	/*
 	@RequestMapping(value = "03.ajaxRequestGETPOST.do")
 	public String ajaxRequestGETPOST() {
 		return "03.ajaxRequestGETPOST";
+	}
+	*/
+	@RequestMapping(value = "03.ajaxRequestGETPOST.do", produces="text/plain;charset=utf-8")
+	@ResponseBody
+	public String ajaxRequestGETPOST(@RequestParam(required=true, defaultValue="") String id) {
+		String msg="";
+		if(id.startsWith("guard")){
+			msg="사용가능";
+		}else{
+			msg="사용불가능";
+		}
+		return msg;
 	}
 }

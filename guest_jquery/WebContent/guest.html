@@ -122,6 +122,21 @@ label.error {
 
 		/**방명록상세보기이벤트처리[동적이벤트처리]******/
 		// 현재DOM Tree에 동적이벤트추가에는 항상 상위엘레멘트의 참조가필요
+		/*
+		<div id="guest_list">
+			<div class="guest_item">
+				<h3 class="guest_title" guest_no="1"><a href="">방명록 사용법1[HTML]</a></h3>
+			</div>
+		</div>	
+		*/
+		$('#guest_list').on('click','.guest_title a',function(e){
+			alert('상세보기');
+			e.preventDefault();
+		});
+		
+		
+		
+		
 		
 		/************form validator**************
 		 https://jqueryvalidation.org/

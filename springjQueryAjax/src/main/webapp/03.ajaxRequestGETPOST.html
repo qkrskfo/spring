@@ -12,7 +12,7 @@ function ajaxRequestPost(){
 	}
 	//jquery ajax요청
 	$.ajax({
-		url:'03.ajaxRequestGETPOST.jsp',
+		url:'03.ajaxRequestGETPOST.do',
 		method:'POST',
 		data:$('#postForm').serialize(),
 		beforeSend:function(){
@@ -22,12 +22,13 @@ function ajaxRequestPost(){
 			$('#postResultSpan').html(responseStr);
 		}
 	});
+	
 }
-
 $(function(){
-	$('#id').on('keyup', function(e){
-		ajaxRequestPost(); //윈도우에 소속된 펑션을 자꾸 만들지마!	
+	$('#id').on('keyup',function(e){
+		ajaxRequestPost();
 	});
+	
 });
 	
 </script>

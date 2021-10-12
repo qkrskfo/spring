@@ -10,6 +10,8 @@ public class MainController {
 		//return "forward:/WEB-INF/views/02.ajaxRequest.jsp";
 		return "02.ajaxRequest";
 	}
-	
-	
+	@RequestMapping(value = "03.ajaxRequestGETPOST.do")
+	public String ajaxRequestGETPOST() {
+		return "03.ajaxRequestGETPOST";
+	}
 }

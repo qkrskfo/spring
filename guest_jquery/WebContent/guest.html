@@ -132,43 +132,45 @@ label.error {
 		$('#guest_list').on('click','.guest_title a',function(e){
 			var titleStr = $(e.target).text();
 			var h3Element=e.target.parentElement;
-			var params = 'guest_no='+${h3Element}.attr('guest_no');
+			var params = 'guest_no='+$(h3Element).attr('guest_no');
 			
 			if(titleStr.endsWith('[HTML]')){
 				/************방명록상세보기[HTML]*********************/
-				if(){
-					
+				if($(h3Element).parent().children().length > 0){
+					//상세정보가 존재한다면
+					$(h3Element).next().slideToggle(1000);
 				} else {
-					
+					//상세정보가 없다면
+					$.ajax({
+						url:'guest/guest_detail_html.jsp',
+						data:params,
+						method:'GET',
+						dataType: "html",
+						success:function(htmlData){
+						/*
+							<< guest_detail 받은데이타>>
+								<div class="guest_date">날짜:2021-10-01 14:31:31</div>
+								<div class="guest_name">이름:김경가	</div>
+								<div class="guest_email">이메일:guard1@naver.com</div>
+							    ..
+							<<보여줘여할 HTML>>
+								<div class="guest_item">
+									<h3 class="guest_title" guest_no="1"><a href="">방명록 사용법1[HTML]</a></h3>
+									<div class='guest_detail' style='display:block'>
+										<div class="guest_date">날짜:2021-10-01 14:31:31</div>
+										<div class="guest_name">이름:김경가	</div>
+										<div class="guest_email">이메일:guard1@naver.com</div>
+										...
+									</div>
+								</div>	
+								*/
+							var h3Element=e.target.parentElement;
+							$("<div class='guest_detail' style='display:none'></div>").html(htmlData).insertAfter(h3Element);
+							$(h3Element).next().slideToggle(1000);
+						}
+					});
 				}
-				$.ajax({
-					url:'guest/guest_detail_html.jsp',
-					data:params,
-					method:'GET',
-					dataType: "html",
-					success:function(htmlData){
-					/*
-						<< guest_detail 받은데이타>>
-							<div class="guest_date">날짜:2021-10-01 14:31:31</div>
-							<div class="guest_name">이름:김경가	</div>
-							<div class="guest_email">이메일:guard1@naver.com</div>
-						    ..
-						<<보여줘여할 HTML>>
-							<div class="guest_item">
-								<h3 class="guest_title" guest_no="1"><a href="">방명록 사용법1[HTML]</a></h3>
-								<div class='guest_detail' style='display:block'>
-									<div class="guest_date">날짜:2021-10-01 14:31:31</div>
-									<div class="guest_name">이름:김경가	</div>
-									<div class="guest_email">이메일:guard1@naver.com</div>
-									...
-								</div>
-							</div>	
-							*/
-						var h3Element=e.target.parentElement;
-						$("<div class='guest_detail' style='display:none'></div>").html(htmlData).insertAfter(h3Element);
-						$(h3Element).next().slideToggle(1000);
-					}
-				});
+				
 			}else if(titleStr.endsWith('[JSON]')){
 				/************방명록상세보기[JSON]*********************/
 			}else if(titleStr.endsWith('XML')){
@@ -176,9 +178,6 @@ label.error {
 			}
 			e.preventDefault();
 		});
-		
-		
-		
 		
 		
 		/************form validator**************

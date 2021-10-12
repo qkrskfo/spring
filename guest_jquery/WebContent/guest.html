@@ -131,11 +131,19 @@ label.error {
 		*/
 		$('#guest_list').on('click','.guest_title a',function(e){
 			var titleStr = $(e.target).text();
+			var h3Element=e.target.parentElement;
+			var params = 'guest_no='+${h3Element}.attr('guest_no');
+			
 			if(titleStr.endsWith('[HTML]')){
 				/************방명록상세보기[HTML]*********************/
+				if(){
+					
+				} else {
+					
+				}
 				$.ajax({
 					url:'guest/guest_detail_html.jsp',
-					data:'guest_no=3',
+					data:params,
 					method:'GET',
 					dataType: "html",
 					success:function(htmlData){

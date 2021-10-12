@@ -1,4 +1,4 @@
-package com.itwil.ajax;
+package com.itwill.ajax;
 
 public class News {
 	private String title;

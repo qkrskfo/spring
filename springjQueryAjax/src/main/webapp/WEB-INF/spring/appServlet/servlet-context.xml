@@ -21,7 +21,7 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="com.itwil.ajax" />
+	<context:component-scan base-package="com.itwill.ajax" />
 	
 	
 	

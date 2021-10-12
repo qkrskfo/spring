@@ -116,10 +116,16 @@ label.error {
 			});
 			e.preventDefault();
 		});
+		
+		
+		
 		/**방명록쓰기이벤트처리[동적이벤트처리]******/
 		// 현재DOM Tree에 동적이벤트추가에는 항상 상위엘레멘트의 참조가필요
 		
 
+		
+		
+		
 		/**방명록상세보기이벤트처리[동적이벤트처리]******/
 		// 현재DOM Tree에 동적이벤트추가에는 항상 상위엘레멘트의 참조가필요
 		/*
@@ -138,7 +144,7 @@ label.error {
 				/************방명록상세보기[HTML]*********************/
 				if($(h3Element).parent().children().length > 1){
 					//상세정보가 존재한다면
-					$(h3Element).next().slideToggle(1000);
+					$(h3Element).next().slideToggle(500);
 				} else {
 					//상세정보가 없다면
 					$.ajax({
@@ -172,8 +178,61 @@ label.error {
 				
 			}else if(titleStr.endsWith('[JSON]')){
 				/************방명록상세보기[JSON]*********************/
+				/*
+				<< guest_detail 받은데이타>>
+				[
+					{
+					"guest_no": "1",
+					"guest_name": "김경가",
+					"guest_date": "2021-10-01 14:31:31",
+					"guest_email": "guard1@naver.com",
+					"guest_title": "방명록 사용법1",
+					"guest_content": "방명록처럼 사용하시면 됩니다1"
+					}
+				]
+				 
+				<<보여줘여할 HTML>>
+					<div class="guest_item">
+						<h3 class="guest_title" guest_no="1"><a href="">방명록 사용법1[JSON]</a></h3>
+						<div class='guest_detail' style='display:block'>
+							<div class="guest_date">날짜:2021-10-01 14:31:31</div>
+							<div class="guest_name">이름:김경가	</div>
+							<div class="guest_email">이메일:guard1@naver.com</div>
+							...
+						</div>
+					</div>	
+					*/
+				
+				
 			}else if(titleStr.endsWith('XML')){
 				/************방명록상세보기[XML]*********************/
+				/*
+				<< guest_detail 받은데이타>>
+				<guest_list>
+					<guest>
+						<guest_no>1</guest_no>
+						<guest_name>김경가</guest_name>
+						<guest_date>2021-10-01 14:31:31</guest_date>
+						<guest_email>guard1@naver.com</guest_email>
+						<guest_homepage>http://www.naver.com</guest_homepage>
+						<guest_title>방명록 사용법1</guest_title>
+						<guest_content>방명록처럼 사용하시면 됩니다1</guest_content>
+					</guest>
+				</guest_list>
+				   
+				<<보여줘여할 HTML>>
+					<div class="guest_item">
+						<h3 class="guest_title" guest_no="1"><a href="">방명록 사용법1[XML]</a></h3>
+						<div class='guest_detail' style='display:block'>
+							<div class="guest_date">날짜:2021-10-01 14:31:31</div>
+							<div class="guest_name">이름:김경가	</div>
+							<div class="guest_email">이메일:guard1@naver.com</div>
+							...
+						</div>
+					</div>	
+					*/
+				
+				
 			}
 			e.preventDefault();
 		});

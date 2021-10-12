@@ -157,6 +157,8 @@ label.error {
 		    1. $(form).validate() function은 DOM tree loading시에 미리 호출되어있어야한다.
 		    2. $(form).validate() function은 DOM tree insert[DOMNodeInserted 이벤트] 될때 미리 호출되어있어야한다.
 		*****************************************/
+		/**방명록쓰기이벤트처리.validate() function 호출[validator plugin]**/
+		
 		$('#guest_list').on('DOMNodeInserted','#guest_write_form',function(){
 			console.log("#guest_write_form 이 #guest_list자식으로 DOMNodeInserted 될때호출");
 			$('#guest_write_form').validate({
@@ -340,19 +342,23 @@ label.error {
 						</div>
 					</div>	
 					*/
-				
-				
 			}
 			e.preventDefault();
 		});
 		
 		
-		/************form validator**************
-		 https://jqueryvalidation.org/
-		    1. .validate() function은 DOM tree loading시에 미리 호출되어있어야한다.
-		    2. .validate() function은 DOM tree insert 될때 미리 호출되어있어야한다.
-		 *****************************************/
-		/**방명록쓰기이벤트처리.validate() function 호출[validator plugin]**/
+		/** 방명록 삭제나 수정 이벤트처리 [동적이벤틏처리] **/
+		// 현재 DOM Tree에 동적 이벤트 추가에는 항상 상위엘레멘트의 참조가 필요
+		
+		
+		$('#guest_list').on('click', ".guest_delete input[value='삭제']", function(e){
+			alert('삭제:'+$(e.target).attr('guest_no'));
+		});
+		
+		$('#guest_list').on('click', ".guest_delete input[value='수정']", function(e){
+			alert('수정폼:'+$(e.target).attr('guest_no'));
+		});
+		
 		
 		/****************jQuery ajax global event handler************/
 		/*
@@ -364,10 +370,9 @@ label.error {
 		    	div element jQuery wrapper객체생성
 		*/
 	
-		/* %%%%%%% 메뉴 UI이벤트 처리 시작 [DOM트리 로딩 후] %%%%%%% */
-		 
-		 
-		/* %%%%%%% jQuery Ajax Global Event %%%%%%% */
+		/*%%%%%%%%%%%%%%%%%%%%%%%%%%%메뉴 UI이벤트처리시작[DOM트리로딩후]%%%%%%%%%%%%%%%%%%%%%%%%%*/
+		
+		/*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% jQuery Ajax Gloaba event %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
 		$(document).ajaxStart(function(){
 			//progress dialog show
 			/** jquery 팩토리 function을 이용한 jquery wrapper element(tag)생성 **/

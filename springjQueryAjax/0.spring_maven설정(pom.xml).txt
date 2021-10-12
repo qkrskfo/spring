@@ -1,5 +1,5 @@
 ***************************************************************
- 	pom.xml파일 spring-framework.version,java compiler설정 
+ 	pom.xml파일 spring-framework.version,java compiler설정, context path 설정
 ****************************************************************
 
 
@@ -27,3 +27,9 @@
             ..
         </plugins> 
       </build>
+      
+  C. web contextPath 설정
+  ###############################################
+  	<artifactId>springjQueryAjax</artifactId> 와
+	<name>springjQueryAjax</name> 을 동일하게 설정
+	(name의 값을 artifactId값으로 넣으면 됨)

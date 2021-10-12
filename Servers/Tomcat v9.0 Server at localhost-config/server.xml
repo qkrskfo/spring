@@ -156,7 +156,7 @@
         
 
 
-      </Host>
+      <Context docBase="springjQueryAjax" path="/ajax" reloadable="true" source="org.eclipse.jst.jee.server:springjQueryAjax"/></Host>
     </Engine>
   </Service>
 </Server>

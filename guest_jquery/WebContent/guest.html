@@ -160,8 +160,16 @@ label.error {
 		$('#guest_list').on('DOMNodeInserted','#guest_write_form',function(){
 			console.log("#guest_write_form 이 #guest_list자식으로 DOMNodeInserted 될때호출");
 			$('#guest_write_form').validate({
-				rules:{},
-				messages:{},
+				rules:{
+					guest_name:{
+						required:true
+					}
+				},
+				messages:{
+					guest_name:{
+						required: "아이디를 입력하세요"
+					}
+				},
 				submitHandler:function(f){
 					console.lg(e.target);
 					/*

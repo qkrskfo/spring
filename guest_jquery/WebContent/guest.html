@@ -132,6 +132,8 @@ label.error {
 				success:function(resultText){
 					if(resultText.trim()=='true') {
 						alert('성공');
+						//리스트 보여주기
+						$('#menu-a a').trigger('click');
 					} else if(resultText.trim()=='false') {
 						alert('실패');
 						

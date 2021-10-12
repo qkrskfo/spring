@@ -16,8 +16,13 @@ public class MainController {
 	}
 	*/
 	
-	@RequestMapping(value="02.ajaxRequest.do", produces="text/plain;charset=utf-8")
+	@RequestMapping(value="02.ajaxRequest", produces="text/plain;charset=utf-8")
 	@ResponseBody
+	/*
+	 * << @ResponseBody >>
+	 * - ViewResolver --> View를 사용하지 않는다
+	 * - MessageConverter(text, xml, json)가 클라이언트로 응답한다.
+	 */
 	public String ajaxRequest(@RequestParam(required=true, defaultValue="") String id) {
 		String msg="";
 		if(id.startsWith("guard")){
@@ -34,7 +39,7 @@ public class MainController {
 		return "03.ajaxRequestGETPOST";
 	}
 	*/
-	@RequestMapping(value = "03.ajaxRequestGETPOST.do", produces="text/plain;charset=utf-8")
+	@RequestMapping(value = "03.ajaxRequestGETPOST", produces="text/plain;charset=utf-8")
 	@ResponseBody
 	public String ajaxRequestGETPOST(@RequestParam(required=true, defaultValue="") String id) {
 		String msg="";

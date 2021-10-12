@@ -152,10 +152,12 @@ label.error {
 		/************form validator**************
 		HOMEPAGE :   https://jqueryvalidation.org/
 	    API      :   https://jqueryvalidation.org/validate/
-		    1. .validate() function은 DOM tree loading시에 미리 호출되어있어야한다.
-		    2. .validate() function은 DOM tree insert 될때 미리 호출되어있어야한다.
+		    1. $(form).validate() function은 DOM tree loading시에 미리 호출되어있어야한다.
+		    2. $(form).validate() function은 DOM tree insert 될때 미리 호출되어있어야한다.
 		*****************************************/
-		
+		$('#guest_write_form').validate({
+			
+		});
 
 		
 		

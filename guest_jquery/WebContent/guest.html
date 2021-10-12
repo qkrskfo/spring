@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="guest.css" type="text/css" media="screen" />
 <style type="text/css">
 input.error, textarea.error {
-	border: 1px solid red;
+	border: 1px solid pink;
 }
 
 label.error {
@@ -162,14 +162,21 @@ label.error {
 			$('#guest_write_form').validate({
 				rules:{
 					guest_name:{
-						required:true
+						required:true,
+						minlength:3,
+						maxlength:10
 					}
 				},
 				messages:{
 					guest_name:{
 						required: "아이디를 입력하세요"
+						minlength: "이름은 {0}글자 이상입니다.",
+						maxlength: "이름은 {0}글자 이하입니다."
+						
 					}
 				},
+				errorClass:'error', 
+				validClass:'valid',
 				submitHandler:function(f){
 					console.lg(e.target);
 					/*

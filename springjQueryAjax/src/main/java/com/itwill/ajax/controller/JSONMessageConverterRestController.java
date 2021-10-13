@@ -44,6 +44,33 @@ public class JSONMessageConverterRestController {
 	}
 	
 	
+	@RequestMapping(value="08.newsTitlesJSON", produces="application/json;charset=utf-8")
+	public Map newsTitlesJSON() {
+		List<News> newsList = this.getNewsList();
+		HashMap map = new HashMap();
+		map.put("count", newsList.size());
+		map.put("data", newsList);
+		return map;
+	}
+	
+	/*
+	{
+		"count":9,
+		"data": [
+					{
+						"newsTitle":"참으로 수고 많으셨습니다…",
+						"company":"연합뉴스",
+						"date":"2020. 10. 16 오후 12:44:38"
+					},
+					{
+						"newsTitle":"IS 60개국 테러 위협 영상 공개…한국도 포함 포토",
+						"company":"SBS뉴스",
+						"date":"2020. 10. 16 오후 12:44:38"
+					}
+				]
+	}
+	*/
+	
 	private List<News> getNewsList() {
 		List<News> newsList = new ArrayList<News>();
 		newsList.add(new News("참으로 수고 많으셨습니다...", "연합뉴스", new Date().toLocaleString()));

@@ -17,6 +17,12 @@ public class GuestRestController {
 	@Autowired
 	private GuestService guestService;
 	
+	@RequestMapping(value="guest/guest_list_json", produces="application/json;charset=utf-8")
+	public List<Guest> quest_list_json() throws Exception {
+		return guestService.selectAll();
+	}
+	
+	
 	@RequestMapping(value="guest/guest_list_html", produces="text/html;charset=utf-8")
 	public String quest_list_html() throws Exception {
 		/*

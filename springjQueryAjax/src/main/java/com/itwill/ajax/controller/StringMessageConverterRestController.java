@@ -40,6 +40,7 @@ public class StringMessageConverterRestController {
 			e.printStackTrace();
 		}
 		return msg;
+		//restController 또는 responseBody가 컨버터를 작동시키기 때문에 메시지가 바로 나오는 것
 	}
 	
 	@RequestMapping(value="04.server_clock", produces="text/plain;charset=utf-8")
@@ -47,7 +48,7 @@ public class StringMessageConverterRestController {
 		return new Date().toLocaleString();
 	}
 	
-	@RequestMapping(value="05.newTitlesCSV", produces="text/plain;charset=utf-8")
+	@RequestMapping(value="05.newsTitlesCSV", produces="text/plain;charset=utf-8")
 	public String newsTitlesCSV() {
 		List<News> newsList= this.getNewsList();
 		/*

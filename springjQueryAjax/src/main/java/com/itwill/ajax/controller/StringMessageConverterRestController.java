@@ -42,7 +42,30 @@ public class StringMessageConverterRestController {
 		return msg;
 	}
 	
+	@RequestMapping(value="04.server_clock", produces="text/plain;charset=utf-8")
+	public String server_clock() {
+		return new Date().toLocaleString();
+	}
 	
+	@RequestMapping(value="05.newTitlesCSV", produces="text/plain;charset=utf-8")
+	public String newsTitlesCSV() {
+		List<News> newsList= this.getNewsList();
+		/*
+			3#title1,company1,date1|title2,company2,date2|title3,company3,date3
+			2#title1,company1,date1|title2,company2,date2
+			0#
+		*/
+		StringBuffer sb=new StringBuffer();
+		sb.append(newsList.size()+"#");
+		for(int i=0;i<newsList.size();i++){
+			News tempNews=newsList.get(i);
+			sb.append(tempNews.getTitle()+","+tempNews.getCompany()+","+tempNews.getDate());
+			if(i!=(newsList.size()-1)){	
+				sb.append("|");
+			}
+		}
+		return sb.toString();
+	}
 	
 
 	

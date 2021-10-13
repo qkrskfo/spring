@@ -9,7 +9,7 @@
 $(function(){
 	window.setInterval(function(){
 		$.ajax({
-			url:'04.server_clock.jsp',
+			url:'04.server_clock',
 			method:'GET',
 			success:function(serverTimeStr){
 				$('#serverTimeSpan').html(serverTimeStr);

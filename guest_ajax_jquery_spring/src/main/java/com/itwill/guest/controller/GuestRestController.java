@@ -17,6 +17,16 @@ public class GuestRestController {
 	@Autowired
 	private GuestService guestService;
 	
+	@RequestMapping(value = "guest/guest_detail_xml", produces = "text/xml;charset=UTF-8")
+	public String guest_detail_xml() throws Exception {
+		return "";
+	}
+	
+	@RequestMapping(value = "guest/guest_detail_json", produces = "application/json;charset=UTF-8")
+	public List<Guest> guest_detail_json(@RequestParam(value = "guest_no")int  guest_no) throws Exception {
+		return null;
+	}
+	
 	
 	@RequestMapping(value = "guest/guest_list_xml",
 			produces = "text/xml;charset=utf-8")
@@ -28,7 +38,7 @@ public class GuestRestController {
 			<guest></guest>
 		<guest_list>
 		 */
-		GuestResultList guestResultList = new GuestResultList();
+		GuestResultList guestResultList=new GuestResultList();
 		guestResultList.setGuestList(guestService.selectAll());
 		return guestResultList;
 	}
@@ -97,14 +107,6 @@ public class GuestRestController {
 		}
 		return msg;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 }

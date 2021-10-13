@@ -16,7 +16,7 @@ import com.itwill.ajax.News;
 			<version>2.9.6</version>
 </dependency>
  */
-
+@RestController
 public class XMLMessageConverterRestController {
 	
 	
@@ -27,6 +27,12 @@ public class XMLMessageConverterRestController {
 	 *      
 	 * - jackson XML Converter에서만 출력가능     
 	*/
+	
+	@RequestMapping(value="newsTitleXML", produces="text/xml;charset=utf-8")
+	public News newsTitleXML() {
+		News news = this.getNewsList().get(0);
+		return news;
+	}
 	
 	
 	private List<News> getNewsList() {

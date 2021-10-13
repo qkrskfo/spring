@@ -1,6 +1,9 @@
 package com.itwill.ajax;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
+@XmlRootElement//JAXB //이름을 안주면 클래스 이름을 소문자로 만들어서 쏩니다
 public class News {
 	private String title;
 	private String company;
@@ -15,7 +18,7 @@ public class News {
 		this.company = company;
 		this.date = date;
 	}
-
+	@XmlElement(name="newsTitle")
 	public String getTitle() {
 		return title;
 	}

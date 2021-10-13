@@ -1,5 +1,6 @@
 package com.itwill.ajax;
 
+
 public class News {
 	private String title;
 	private String company;

@@ -2,7 +2,12 @@ package com.itwill.guest;
 
 import java.util.ArrayList;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
 public class GuestServiceImpl implements GuestService {
+	@Autowired
 	private GuestDao guestDao;
 
 	public GuestServiceImpl() {

@@ -8,20 +8,21 @@ import java.util.ArrayList;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 
-
+@Repository
 public class GuestDaoImplJDBC implements GuestDao {
 	
 	@Autowired
-	private GuestDao guestDao;
+	private DataSource dataSource;
 
 	public GuestDaoImplJDBC() {
 		
 	}
 	
 	public void setDataSource(DataSource dataSource) {
-		this.guestDao = guestDao;
+		this.dataSource = dataSource;
 	}
 
 	@Override

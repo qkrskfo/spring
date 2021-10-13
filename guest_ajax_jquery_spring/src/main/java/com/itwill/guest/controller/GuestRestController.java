@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.itwill.guest.Guest;
@@ -32,9 +33,33 @@ public class GuestRestController {
 		return htmlSb.toString();
 	}
 	
-	@RequestMapping(value="guest/guest_detail_html")
-	public String guest_detail_html() throws Exception {
+	@RequestMapping(value="guest/guest_detail_html", produces="text/html;charset=utf-8")
+	public String guest_detail_html(@RequestParam int guest_no) throws Exception {
 		
+		Guest guest = guestService.selectByNo(guest_no);
+		
+		StringBuffer htmlSb=new StringBuffer();
+		htmlSb.append("<div class=\"guest_date\">");
+		htmlSb.append("날짜:"+guest.getGuest_date());
+		htmlSb.append("</div>");
+		htmlSb.append("<div class=\"guest_name\">");
+		htmlSb.append("이름:"+guest.getGuest_name());
+		htmlSb.append("</div>");
+		htmlSb.append("<div class=\"guest_email\">");
+		htmlSb.append("이메일:"+guest.getGuest_email());
+		htmlSb.append("</div>");
+		htmlSb.append("<div class=\"guest_homepage\">");
+		htmlSb.append("홈페이지:"+guest.getGuest_homepage());
+		htmlSb.append("</div>");
+		htmlSb.append("<div class=\"guest_content\">");
+		htmlSb.append("내용:"+guest.getGuest_content());
+		htmlSb.append("</div>");
+		htmlSb.append("<div class=\"guest_delete\">");
+		htmlSb.append("<input type=\"button\" value=\"삭제\" guest_no=\""+guest.getGuest_no()+"\">");
+		htmlSb.append("<input type=\"button\" value=\"수정\" guest_no=\""+guest.getGuest_no()+"\">");
+		htmlSb.append("</div>");
+		
+		return htmlSb.toString();
 	}
 	
 }

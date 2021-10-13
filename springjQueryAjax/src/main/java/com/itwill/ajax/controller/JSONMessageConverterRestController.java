@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.itwill.ajax.News;
-/*
+
+/* json은 의존성 추가해줘야 함(converter를 추가해주는 것)
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-annotations</artifactId>
@@ -27,7 +28,21 @@ import com.itwill.ajax.News;
 			<version>2.9.6</version>
 		</dependency>
 */
+
+
+@RestController
 public class JSONMessageConverterRestController {
+	
+	@RequestMapping(value="newsTitleJson", produces="application/json;charset=utf-8")
+	public News newsTitleJSON() {
+		return this.getNewsList().get(0);
+	}
+	
+	@RequestMapping(value="newsTitleListJson", produces="application/json;charset=utf-8")
+	public List<News> newsTitleListJSON() {
+		return this.getNewsList();
+	}
+	
 	
 	private List<News> getNewsList() {
 		List<News> newsList = new ArrayList<News>();

@@ -3,6 +3,8 @@ package com.itwill.ajax;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @XmlRootElement//JAXB //이름을 안주면 클래스 이름을 소문자로 만들어서 쏩니다
 public class News {
 	private String title;
@@ -19,6 +21,7 @@ public class News {
 		this.date = date;
 	}
 	@XmlElement(name="newsTitle")
+	@JsonProperty(value="newsTitle")
 	public String getTitle() {
 		return title;
 	}

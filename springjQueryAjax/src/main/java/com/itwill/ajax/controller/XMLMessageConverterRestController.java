@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.itwill.ajax.News;
+import com.itwill.ajax.NewsListResult;
 
 /*
 << jackson 라이브러리가 의존성추가되어있는경우에는 MappingJackson2XmlHttpMessageConverter 우선적으로 사용되어짐 >>
@@ -33,6 +34,23 @@ public class XMLMessageConverterRestController {
 		News news = this.getNewsList().get(0);
 		return news;
 	}
+	
+	//arrayList엔 annotation이 없어서 자동으로 변환되지 않음
+	@RequestMapping(value="newsTitleListXML", produces="text/xml;charset=utf-8") 
+	public List<News> newsTitleListXML() {
+		return this.getNewsList();
+	}
+	
+	//계속 406이면 DTO에 xmlRootElement를 넣었는지 확인해보기
+	@RequestMapping(value={"newsTitleListResultXML", "07.newsTitlesXML"}, produces="text/xml;charset=utf-8") //매핑 2개한것. 배열형식
+	public NewsListResult newsTitleListResultXML() {
+		NewsListResult newsListResult = new NewsListResult();
+		newsListResult.setCount(getNewsList().size());
+		newsListResult.setNewsList(getNewsList());
+		return newsListResult;
+		//annotation이 붙으려면 내가 만든 객체여야 함
+	}
+	
 	
 	
 	private List<News> getNewsList() {

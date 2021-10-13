@@ -8,15 +8,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class MainController {
-	/*
-	@RequestMapping(value = "02.ajaxRequest.do")
+	
+	@RequestMapping(value = "02.ajaxRequest1")
 	public String ajaxRequest() {
 		//return "forward:/WEB-INF/views/02.ajaxRequest.jsp";
 		return "02.ajaxRequest";
 	}
-	*/
 	
-	@RequestMapping(value="02.ajaxRequest", produces="text/plain;charset=utf-8")
+	@RequestMapping(value="02.ajaxRequest2", produces="text/plain;charset=utf-8")
 	@ResponseBody
 	/*
 	 * << @ResponseBody >>
@@ -33,13 +32,13 @@ public class MainController {
 		return msg;
 	}
 	
-	/*
-	@RequestMapping(value = "03.ajaxRequestGETPOST.do")
+	
+	@RequestMapping(value = "03.ajaxRequestGETPOST1")
 	public String ajaxRequestGETPOST() {
 		return "03.ajaxRequestGETPOST";
 	}
-	*/
-	@RequestMapping(value = "03.ajaxRequestGETPOST", produces="text/plain;charset=utf-8")
+	
+	@RequestMapping(value = "03.ajaxRequestGETPOST2", produces="text/plain;charset=utf-8")
 	@ResponseBody
 	public String ajaxRequestGETPOST(@RequestParam(required=true, defaultValue="") String id) {
 		String msg="";

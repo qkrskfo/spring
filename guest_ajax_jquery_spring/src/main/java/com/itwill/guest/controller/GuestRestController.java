@@ -28,8 +28,9 @@ public class GuestRestController {
 			<guest></guest>
 		<guest_list>
 		 */
-		
-		return 
+		GuestResultList guestResultList = new GuestResultList();
+		guestResultList.setGuestList(guestService.selectAll());
+		return guestResultList;
 	}
 	
 	@RequestMapping(value = "guest/guest_list_json",

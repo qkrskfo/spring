@@ -7,17 +7,21 @@ import java.util.ArrayList;
 
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 
 
 public class GuestDaoImplJDBC implements GuestDao {
-	private DataSource dataSource;
+	
+	@Autowired
+	private GuestDao guestDao;
 
 	public GuestDaoImplJDBC() {
 		
 	}
 	
 	public void setDataSource(DataSource dataSource) {
-		this.dataSource = dataSource;
+		this.guestDao = guestDao;
 	}
 
 	@Override

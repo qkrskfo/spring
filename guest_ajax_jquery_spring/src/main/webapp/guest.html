@@ -46,7 +46,7 @@ label.error {
 		$('#menu-b a').click(function(e){
 			//ajax요청
 			$.ajax({
-				url:'guest/guest_list_json.jsp',
+				url:'guest/guest_list_json',
 				method:'GET',
 				dataType: "json",
 				success:function(jsonArray){
@@ -73,7 +73,7 @@ label.error {
 		$('#menu-c a').click(function(e){
 			//ajax요청
 			$.ajax({
-				url:'guest/guest_list_xml.jsp',
+				url:'guest/guest_list_xml',
 				method:'GET',
 				dataType: "xml",
 				success: function(xmlDocument){

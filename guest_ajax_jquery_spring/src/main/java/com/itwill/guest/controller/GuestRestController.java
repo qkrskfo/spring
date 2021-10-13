@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.itwill.guest.Guest;
+import com.itwill.guest.GuestResultList;
 import com.itwill.guest.GuestService;
 
 @RestController
@@ -16,33 +17,48 @@ public class GuestRestController {
 	@Autowired
 	private GuestService guestService;
 	
-	@RequestMapping(value="guest/guest_list_json", produces="application/json;charset=utf-8")
-	public List<Guest> quest_list_json() throws Exception {
+	
+	@RequestMapping(value = "guest/guest_list_xml",
+			produces = "text/xml;charset=utf-8")
+	public GuestResultList guest_list_xml() throws Exception{
+		/*
+		<guest_list>
+			<guest></guest>
+			<guest></guest>
+			<guest></guest>
+		<guest_list>
+		 */
+		
+		return 
+	}
+	
+	@RequestMapping(value = "guest/guest_list_json",
+			produces = "application/json;charset=utf-8")
+	public List<Guest> guest_list_json() throws Exception{
 		return guestService.selectAll();
 	}
 	
-	
-	@RequestMapping(value="guest/guest_list_html", produces="text/html;charset=utf-8")
-	public String quest_list_html() throws Exception {
+	@RequestMapping(value = "guest/guest_list_html",
+			produces = "text/html;charset=utf-8")
+	public String guest_list_html() throws Exception{
 		/*
 		 <div class="guest_item">
-		 	<h3 class="guest_title" guest_no="1"><a href="">방명록 사용법[HTML]</a></h3>
-		 </div>
+			<h3 class="guest_title"  guest_no="1"><a href="">방명록 사용법1[HTML]</a></h3>
+		</div>
 		 */
-		List<Guest> guestList = guestService.selectAll();
-		StringBuffer htmlSb = new StringBuffer();
+		List<Guest> guestList=guestService.selectAll();
+		StringBuffer htmlSb=new StringBuffer();
 		for (Guest guest : guestList) {
 			htmlSb.append("<div class=\"guest_item\">");
-			htmlSb.append("<h3 class=\"guest_title\" guest_no=\""+guest.getGuest_no()+"\"><a href=\"\">"+guest.getGuest_title()+"[HTML]</a></h3>");
+			htmlSb.append("<h3 class=\"guest_title\"  guest_no=\""+guest.getGuest_no()+"\"><a href=\"\">"+guest.getGuest_title()+"[HTML]</a></h3>");
 			htmlSb.append("</div>");
 		}
 		return htmlSb.toString();
 	}
-	
-	@RequestMapping(value="guest/guest_detail_html", produces="text/html;charset=utf-8")
-	public String guest_detail_html(@RequestParam int guest_no) throws Exception {
-		
-		Guest guest = guestService.selectByNo(guest_no);
+	@RequestMapping(value = "guest/guest_detail_html",
+					produces = "text/html;charset=utf-8")
+	public String guest_detail_html(@RequestParam int guest_no)throws Exception{
+		Guest guest=guestService.selectByNo(guest_no);
 		
 		StringBuffer htmlSb=new StringBuffer();
 		htmlSb.append("<div class=\"guest_date\">");
@@ -67,8 +83,8 @@ public class GuestRestController {
 		
 		return htmlSb.toString();
 	}
-	
-	@RequestMapping(value="guest/guest_insert_action", produces="text/plain;charset=utf-8")
+	@RequestMapping(value = "guest/guest_insert_action",
+			produces = "text/plain;charset=utf-8")
 	public String guest_insert_action(@ModelAttribute Guest guest) {
 		String msg="false";
 		try {
@@ -80,5 +96,14 @@ public class GuestRestController {
 		}
 		return msg;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }

@@ -4,6 +4,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -60,6 +61,19 @@ public class GuestRestController {
 		htmlSb.append("</div>");
 		
 		return htmlSb.toString();
+	}
+	
+	@RequestMapping(value="guest/guest_insert_action", produces="text/plain;charset=utf-8")
+	public String guest_insert_action(@ModelAttribute Guest guest) {
+		String msg="false";
+		try {
+			guestService.insertGuest(guest);
+			msg="true";
+		} catch (Exception e) {
+			e.printStackTrace();
+			msg="false";
+		}
+		return msg;
 	}
 	
 }

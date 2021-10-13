@@ -6,14 +6,16 @@
 <link rel="stylesheet" href="style.css" />
 <link rel="stylesheet" href="guest.css" type="text/css" media="screen" />
 <style type="text/css">
+
 input.error, textarea.error {
-	border: 1px solid pink;
+	border: 1px solid red;
 }
 
 label.error {
 	margin-left: 10px;
 	color: orange;
 }
+
 .valid {
 	border: 1px solid green;
 }
@@ -24,11 +26,12 @@ label.error {
 	/*****browser locale[navigator.language] 에따른message 동적설정***/
 </script>
 <script type="text/javascript">
-	/*%%%%%%%%%%%%%%%%%%%%%%%%%%%메뉴 UI이벤트처리시작[DOM트리로딩후]%%%%%%%%%%%%%%%%%%%%%%%%%*/
+	
 	$(function() {
+	/*%%%%%%%%%%%%%%%%%%%%%%%%%%%메뉴 UI이벤트처리시작[DOM트리로딩후]%%%%%%%%%%%%%%%%%%%%%%%%%*/
 		/**방명록리스트[html]이벤트처리**/
 		$('#menu-a a').click(function(e){
-			//ajax요청(서버에 요청)
+			//ajax요청
 			$.ajax({
 				url:'guest/guest_list_html',
 				method:'GET',
@@ -39,30 +42,33 @@ label.error {
 			});
 			e.preventDefault();
 		});
-		
 		/**방명록리스트[JSON]이벤트처리**/
 		$('#menu-b a').click(function(e){
-			//ajax 요청
+			//ajax요청
 			$.ajax({
 				url:'guest/guest_list_json.jsp',
 				method:'GET',
-				dataType:"json",
+				dataType: "json",
 				success:function(jsonArray){
-					var html="";
-					$.each(jsonArray, function(i, guest){
+					/*
+					<div class="guest_item">
+						<h3 class="guest_title"  guest_no="1"><a href="">방명록 사용법1[HTML]</a></h3>
+					</div>
+					*/
+					var html='';
+					$.each(jsonArray,function(i,guest){
 						html+=`
 							<div class="guest_item">
-								<h3 class="guest_title" guest_no="${guest.guest_no}"><a href="">${guest.guest_title} [JSON]</a></h3>
+							<h3 class="guest_title"  guest_no="${guest.guest_no}"><a href="">${guest.guest_title}[JSON]</a></h3>
 							</div>
 						`;
 					});
 					$('#guest_list').html(html);
+					
 				}
 			});
 			e.preventDefault();
 		});
-		
-		
 		/**방명록리스트[XML]이벤트처리***/
 		$('#menu-c a').click(function(e){
 			//ajax요청
@@ -82,7 +88,6 @@ label.error {
 						..
 					</guest_list>
 					*/
-					
 					var html='';
 					$(xmlDocument).find('guest').each(function(i,guestElement){
 						/*
@@ -103,11 +108,9 @@ label.error {
 			});
 			e.preventDefault();
 		});
-		
-		
 		/**방명록쓰기폼로드 이벤트처리******/
 		$('#menu-d a').click(function(e){
-			// ajax 요청
+			//ajax요청
 			$.ajax({
 				url:'guest_insert_form.html',
 				method:'GET',
@@ -118,14 +121,11 @@ label.error {
 			e.preventDefault();
 		});
 		
-		
-		
 		/**방명록쓰기이벤트처리[동적이벤트처리]******/
 		//현재DOM Tree에 동적이벤트추가에는 항상 상위엘레멘트의 참조가필요
 		/*
 		$('#guest_list').on('submit','#guest_write_form',function(e){
 			alert('submit!!!');
-			
 			//유효성체크후 통과하면 submit요청
 			
 			$.ajax({
@@ -135,20 +135,19 @@ label.error {
 				dataType: "text",
 				success:function(resultText){
 					if(resultText.trim()=='true'){
-						alert('성공');
-						//리스트 보여주기(이벤트 강제로 발생시키기)
+						//alert('성공');
+						//리스트보여주기(이벤트 강제로 발생시키기)
 						$('#menu-a a').trigger('click');
 					}else if(resultText.trim()=='false'){
 						alert('실패');
+						
 					}			
 				}
 			});
 			
 			e.preventDefault();
 		});
-		//유효성체크, 플러그인을 쓰려면 submit 체크를 직접 쓰면 안돼요 */
-		
-		
+		*/
 		
 		/**방명록쓰기이벤트처리[form validator plugin]******/
 		/************form validator**************
@@ -157,8 +156,6 @@ label.error {
 		    1. $(form).validate() function은 DOM tree loading시에 미리 호출되어있어야한다.
 		    2. $(form).validate() function은 DOM tree insert[DOMNodeInserted 이벤트] 될때 미리 호출되어있어야한다.
 		*****************************************/
-		/**방명록쓰기이벤트처리.validate() function 호출[validator plugin]**/
-		
 		$('#guest_list').on('DOMNodeInserted','#guest_write_form',function(){
 			console.log("#guest_write_form 이 #guest_list자식으로 DOMNodeInserted 될때호출");
 			$('#guest_write_form').validate({
@@ -212,7 +209,7 @@ label.error {
 					form의 submit을 클릭하면 유효성체크하고 유효성을 통과하면 함수호출
 					*/
 					$.ajax({
-						url:'guest/guest_insert_action.jsp',
+						url:'guest/guest_insert_action',
 						method:'POST',
 						data:$(f).serialize(),
 						dataType: "text",
@@ -235,10 +232,8 @@ label.error {
 		});//end DOMNodeInserted event
 		
 		
-		
-		
 		/**방명록상세보기이벤트처리[동적이벤트처리]******/
-		// 현재DOM Tree에 동적이벤트추가에는 항상 상위엘레멘트의 참조가필요
+		//현재DOM Tree에 동적이벤트추가에는 항상 상위엘레멘트의 참조가필요
 		/*
 		<div id="guest_list">
 			<div class="guest_item">
@@ -254,38 +249,22 @@ label.error {
 			if(titleStr.endsWith('[HTML]')){
 				/************방명록상세보기[HTML]*********************/
 				if($(h3Element).parent().children().length > 1){
-					//상세정보가 존재한다면
+					//상세정보 존재
 					$(h3Element).next().slideToggle(500);
-				} else {
-					//상세정보가 없다면
+				}else{
+					//상세정보 존재	안함(ajax요청)
 					$.ajax({
 						url:'guest/guest_detail_html',
 						data:params,
 						method:'GET',
-						dataType: 'html',
+						dataType: "html",
 						success:function(htmlData){
-						/*
-							<< guest_detail 받은데이타>>
-								<div class="guest_date">날짜:2021-10-01 14:31:31</div>
-								<div class="guest_name">이름:김경가	</div>
-								<div class="guest_email">이메일:guard1@naver.com</div>
-							    ..
-							<<보여줘여할 HTML>>
-								<div class="guest_item">
-									<h3 class="guest_title" guest_no="1"><a href="">방명록 사용법1[HTML]</a></h3>
-									<div class='guest_detail' style='display:block'>
-										<div class="guest_date">날짜:2021-10-01 14:31:31</div>
-										<div class="guest_name">이름:김경가	</div>
-										<div class="guest_email">이메일:guard1@naver.com</div>
-										...
-									</div>
-								</div>	
-								*/
 							$("<div class='guest_detail' style='display:none'></div>").html(htmlData).insertAfter(h3Element);
-							$(h3Element).next().slideToggle(1000);
+							$(h3Element).next().slideToggle(500);
 						}
 					});
 				}
+				
 				
 			}else if(titleStr.endsWith('[JSON]')){
 				/************방명록상세보기[JSON]*********************/
@@ -313,8 +292,6 @@ label.error {
 						</div>
 					</div>	
 					*/
-				
-				
 			}else if(titleStr.endsWith('XML')){
 				/************방명록상세보기[XML]*********************/
 				/*
@@ -346,45 +323,54 @@ label.error {
 			e.preventDefault();
 		});
 		
-		
-		/** 방명록 삭제나 수정 이벤트처리 [동적이벤틏처리] **/
-		// 현재 DOM Tree에 동적 이벤트 추가에는 항상 상위엘레멘트의 참조가 필요
-		
-		
-		$('#guest_list').on('click', ".guest_delete input[value='삭제']", function(e){
+		/**방명록삭제[수정]이벤트처리[동적이벤트처리]******/
+		//현재DOM Tree에 동적이벤트추가에는 항상 상위엘레멘트의 참조가필요
+		/*
+		<div class="guest_detail" style="">
+			..
+			<div class="guest_delete">
+				<input type="button" value="삭제" guest_no="1">
+				<input type="button" value="수정" guest_no="1">
+			</div>
+		</div>	
+		*/
+		$('#guest_list').on('click',".guest_delete input[value='삭제']",function(e){
 			alert('삭제:'+$(e.target).attr('guest_no'));
-		});
-		
-		$('#guest_list').on('click', ".guest_delete input[value='수정']", function(e){
+		});		
+		$('#guest_list').on('click',".guest_delete input[value='수정']",function(e){
 			alert('수정폼:'+$(e.target).attr('guest_no'));
-		});
+		});		
 		
 		
 		/****************jQuery ajax global event handler************/
 		/*
-		<<< jQuery factory functin에 들어갈수있는인자>>>
+		<<< jQuery factory function에 들어갈수있는인자>>>
 			1 . $('#id')   		: css selector문자열
 			2 . $(document)		: 표준객체
 			3 . $(function(){})	: 함수
 			4 . $('<div></div>'): 태그문자열
 		    	div element jQuery wrapper객체생성
-		*/
+		 */
+	/*%%%%%%%%%%%%%%%%%%%%%%%%%%%메뉴 UI이벤트처리시작[DOM트리로딩후]%%%%%%%%%%%%%%%%%%%%%%%%%*/
 	
-		/*%%%%%%%%%%%%%%%%%%%%%%%%%%%메뉴 UI이벤트처리시작[DOM트리로딩후]%%%%%%%%%%%%%%%%%%%%%%%%%*/
+	/*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% jQuery Ajax Gloaba event %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+	$(document).ajaxStart(function(){
+		//progress dialog show
+		/***********jquery 팩토리function을 이용한 jQuery wraper element(tag)객체 생성*********/
+		$("<div id='loading'>loading...</div>").insertBefore('#guest_list').show();
 		
-		/*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% jQuery Ajax Gloaba event %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
-		$(document).ajaxStart(function(){
-			//progress dialog show
-			/** jquery 팩토리 function을 이용한 jquery wrapper element(tag)생성 **/
-			$("<div id='loading'>loading</div>").insertBefore('#guest_list').show();
-			//1.
-		});
-		$(document).ajaxComplete(function(){
-			//progress dialog hide
-			$('#loading').hide();
-			$('#loading').remove();
-		});
-			
+		
+	});
+	$(document).ajaxComplete(function(){
+		//progress dialog hide
+		$('#loading').hide();
+		$('#loading').remove();
+	});		
+	
+	
+	
+	
+	
 	});
 </script>
 </head>
@@ -394,8 +380,7 @@ label.error {
 			<h1>WELCOME TO JQUERY</h1>
 		</div>
 		<div id="sidebar">
-
-			<h2>회원관리메뉴</h2>
+			<h2>방명록메뉴</h2>
 			<div class="menus">
 				<div class="menu" id="menu-a">
 					<h3>
@@ -417,19 +402,18 @@ label.error {
 						<a href="#">방명록 쓰기폼</a>
 					</h3>
 				</div>
-
+				<!-- 
 				<div class="menu" id="menu-e">
 					<h3>
 						<a href="#">json</a>
 					</h3>
 				</div>
-
 				<div class="menu" id="menu-f">
 					<h3>
 						<a href="#">xml</a>
 					</h3>
 				</div>
-				<!-- 
+				
 				<form id="guest_login_form" method="get" action="vfbfcv">
 					<fieldset>
 						<legend>로그인</legend>
@@ -444,7 +428,6 @@ label.error {
 						<p>
 							<input type="submit" name="write" value="로그인" id="write" /> <input
 								type="reset" name="cancle" value="취소" id="cancle" />
-
 						</p>
 						<div id="msg"></div>
 					</fieldset>

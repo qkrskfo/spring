@@ -44,6 +44,15 @@
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>
+		<!--
+		web.xml
+		- <url-pattern>/</url-pattern>
+		
+		mvc-config.xml에 추가해주어야 함		
+		- <mvc:default-servlet-handler />
+		- 확장자 패턴을 사용하지않고 모든 요청을 처리하려면 반드시 추가
+		- 정적 리소스 요청처리 (html, jsp, image(gif, png, jpeg), css)를 위해 필요함
+		-->
 	</servlet-mapping>
 
 </web-app>

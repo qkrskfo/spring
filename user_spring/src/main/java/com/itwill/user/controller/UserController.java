@@ -132,7 +132,6 @@ public class UserController {
 			session.setAttribute("sUserId", user.getUserId());
 			forwardPath = "redirect:user_main";
 		}
-
 		return forwardPath;
 	}
 	
@@ -174,7 +173,7 @@ public class UserController {
 	}
 	*/
 	
-		
+	@LoginCheck	
 	@RequestMapping("/user_logout_action")
 	public String user_logout_action(HttpSession session) {
 		session.invalidate();
@@ -338,10 +337,11 @@ public class UserController {
 		return "redirect:user_main.do";
 	}
 	*/
-	
+	/* 에러는 안만드셨나?
 	@RequestMapping("/user_error")
 	public String user_error() {
 		return "user_error";
 	}
+	*/
 	
 }

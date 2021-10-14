@@ -17,22 +17,24 @@ import com.itwill.user.UserService;
 
 @Controller
 public class UserController {
+	
 	/*
 	<<요청command>>
-	/user_main.do
-	/user_write_form.do
-	/user_write_action.do
-	/user_login_form.do
-	/user_login_action.do
-	/user_logout_action.do
-	/user_list.do
-	/user_view.do
-	/user_view_myinfo.do
-	/user_modify_form_myinfo.do
-	/user_modify_action_myinfo.do
-	/user_remove_action_myinfo.do
-	/user_error.do
+	/user_main
+	/user_write_form
+	/user_write_action
+	/user_login_form
+	/user_login_action
+	/user_logout_action
+	/user_list
+	/user_view
+	/user_view_myinfo
+	/user_modify_form_myinfo
+	/user_modify_action_myinfo
+	/user_remove_action_myinfo
+	/user_error
 	 */
+	@Autowired
 	private UserService userService;
 	
 	@Autowired
@@ -40,16 +42,17 @@ public class UserController {
 		this.userService = userService;
 	}
 	
-	@RequestMapping("/user_main.do")
+	@RequestMapping(value="/user_main")
 	public String user_main() {
 		return "user_main";
 	}
 	
-	@RequestMapping("/user_write_form.do")
+	@RequestMapping("/user_write_form")
 	public String user_write_form() {
 		return "user_write_form";
 	}
 	
+	/*
 	@RequestMapping(value="/user_write_action.do", method=RequestMethod.GET)
 	public String user_write_action_get() {
 		return "redirect:user_main.do";
@@ -89,7 +92,7 @@ public class UserController {
 		defaultValue는 값이 들어오지않으면 defaultValue값으로 설정해라는 뜻
 		여기선 ""공백이니까 if(guest_no.equals(""))이 충족된다.
 		예를들어 defaultValue = "89" 이런식으로 주면 ?guest_no=89가 디폴트값으로 들어간다.
-		*/
+		*
 		String forwardPath = "";
 		int result = userService.login(userId, password);
 		if(result==0) {
@@ -185,6 +188,6 @@ public class UserController {
 	public String user_error() {
 		return "user_error";
 	}
-	
+	*/
 	
 }

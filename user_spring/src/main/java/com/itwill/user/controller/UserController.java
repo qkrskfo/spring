@@ -251,7 +251,6 @@ public class UserController {
 		return "user_modify_form_myinfo";
 	}
 	
-	
 	/*
 	@RequestMapping(value="/user_modify_form_myinfo.do")
 	public String user_modify_form_myinfo(HttpSession session, Model model) throws Exception {
@@ -264,6 +263,22 @@ public class UserController {
 		return "user_modify_form_myinfo";
 	}
 	*/
+	
+	@GetMapping(value="/user_modify_action_myinfo")
+	public String user_modify_action_myinfo_get() {
+		return "user_view_myinfo";
+	}
+	
+	@PostMapping(value="/user_modify_action_myinfo")
+	public String user_modify_action_myinfo(@ModelAttribute User user, HttpSession session) throws Exception {
+		String forwardPath ="";
+		String loginUserId = (String)session.getAttribute("sUserId");
+		user.setUserId(loginUserId);
+		userService.update(user);
+		forwardPath ="user_view_myinfo";
+		return forwardPath;
+	}
+	
 	/*
 	@RequestMapping(value="/user_modify_action_myinfo.do", method=RequestMethod.GET)
 	public String user_modify_action_myinfo_get() {
@@ -279,7 +294,9 @@ public class UserController {
 		userService.update(new User(sUserId, user.getPassword(), user.getName(), user.getEmail()));
 		return "user_view_myinfo";
 	}
+	*/
 	
+	/*
 	@RequestMapping(value="/user_remove_action_myinfo.do", method=RequestMethod.GET)
 	public String user_remove_action_myinfo_get() {
 		return "redirect:user_main.do";

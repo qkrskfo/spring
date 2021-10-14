@@ -42,7 +42,7 @@
 		document.f.submit();
 	}
 	function userList() {
-		f.action = "user_list";
+		f.action = "user_view_myinfo";
 		f.submit();
 	}
 </script>

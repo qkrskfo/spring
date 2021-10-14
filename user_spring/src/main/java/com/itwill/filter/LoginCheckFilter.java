@@ -22,7 +22,7 @@ public class LoginCheckFilter implements Filter {
 		
 		String sUserId=(String)req.getSession().getAttribute("sUserId");
 		if(sUserId==null) {
-			resp.sendRedirect("user_main.do");
+			resp.sendRedirect("user_main");
 			return;
 		}
 		

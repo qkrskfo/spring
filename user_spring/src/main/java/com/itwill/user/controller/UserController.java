@@ -307,7 +307,7 @@ public class UserController {
 		String forwardPath = "";
 		String loginUser = (String)request.getSession().getAttribute("sUserId");
 		userService.remove(loginUser);
-		forwardPath ="redirect:user_logout_acton";
+		forwardPath ="redirect:user_logout_action";
 		return forwardPath;
 	}
 	

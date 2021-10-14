@@ -156,6 +156,7 @@ label.error {
 		    1. $(form).validate() function은 DOM tree loading시에 미리 호출되어있어야한다.
 		    2. $(form).validate() function은 DOM tree insert[DOMNodeInserted 이벤트] 될때 미리 호출되어있어야한다.
 		*****************************************/
+	
 		$('#guest_list').on('DOMNodeInserted','#guest_write_form',function(){
 			console.log("#guest_write_form 이 #guest_list자식으로 DOMNodeInserted 될때호출");
 			$('#guest_write_form').validate({
@@ -205,9 +206,9 @@ label.error {
 				errorClass:'error',
 				validClass:'valid',
 				submitHandler:function(f){
-					/*
-					form의 submit을 클릭하면 유효성체크하고 유효성을 통과하면 함수호출
-					*/
+					
+					//form의 submit을 클릭하면 유효성체크하고 유효성을 통과하면 함수호출
+					
 					$.ajax({
 						url:'guest/guest_insert_action',
 						method:'POST',
@@ -227,6 +228,7 @@ label.error {
 				}
 				
 			});
+			
 			//end validate
 			
 		});//end DOMNodeInserted event
@@ -251,16 +253,18 @@ label.error {
 				if($(h3Element).parent().children().length > 1){
 					//상세정보 존재
 					$(h3Element).next().slideToggle(500);
+					
 				}else{
 					//상세정보 존재	안함(ajax요청)
 					$.ajax({
 						url:'guest/guest_detail_html',
 						data:params,
 						method:'GET',
-						dataType: "html",
+						dataType: "text",
 						success:function(htmlData){
 							$("<div class='guest_detail' style='display:none'></div>").html(htmlData).insertAfter(h3Element);
 							$(h3Element).next().slideToggle(500);
+							
 						}
 					});
 				}
@@ -292,7 +296,7 @@ label.error {
 						</div>
 					</div>	
 					*/
-			}else if(titleStr.endsWith('XML')){
+			}else if(titleStr.endsWith('[XML]')){
 				/************방명록상세보기[XML]*********************/
 				/*
 				<< guest_detail 받은데이타>>
@@ -366,7 +370,6 @@ label.error {
 		$('#loading').hide();
 		$('#loading').remove();
 	});		
-	
 	
 	
 	

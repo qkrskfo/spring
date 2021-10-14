@@ -8,16 +8,13 @@
 <link rel="stylesheet" href="style.css" />
 <link rel="stylesheet" href="guest.css" type="text/css" media="screen" />
 <style type="text/css">
-
 input.error, textarea.error {
 	border: 1px solid red;
 }
-
 label.error {
 	margin-left: 10px;
 	color: orange;
 }
-
 .valid {
 	border: 1px solid green;
 }
@@ -59,11 +56,19 @@ label.error {
 					*/
 					var html='';
 					$.each(jsonArray,function(i,guest){
+						/**************
 						html+=`
 							<div class="guest_item">
 							<h3 class="guest_title"  guest_no="${guest.guest_no}"><a href="">${guest.guest_title}[JSON]</a></h3>
 							</div>
 						`;
+						****************/
+						html += "<div class='guest_item'>";
+						html += "<h3 class='guest_title'  guest_no='"+guest.guest_no+"'><a href=''>"
+								+ guest.guest_title
+								+ "[JSON]</a></h3>";
+						html += "</div>";
+						
 					});
 					$('#guest_list').html(html);
 					

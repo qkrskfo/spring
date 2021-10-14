@@ -23,7 +23,22 @@
 			/*  ==> /a ,/b ,/a.html
 			/** ==> /a ,/b ,/a.html , /a/v, /d/f.do,/d/g.html 
 	-->
+	
+	<mvc:resources mapping="/js/**" location="/js/" cache-period="0"/>
+	<mvc:resources mapping="/css/**" location="/css/" cache-period="0"/>
+	<mvc:resources mapping="/image/**" location="/image/" cache-period="0"/>
+	
+	
 	<mvc:interceptors>
+		<!-- cache interceptor 설정 -->
+		<mvc:interceptor>
+          <mvc:mapping path="/**"/>
+          <bean class="org.springframework.web.servlet.mvc.WebContentInterceptor">
+               <property name="cacheSeconds" value="0"/>
+          </bean>
+     	</mvc:interceptor>
+	
+	
 		<!-- mapping할때 불편해서 이거 안쓸래
 		<mvc:interceptor>
 			<mvc:mapping path="/**"/>
@@ -45,6 +60,8 @@
 	        <mvc:exclude-mapping path="/image/**"/>
 			<bean class="com.itwill.user.controller.AuthLoginAnnotationInterceptor"/>
 		</mvc:interceptor>
+
+		
 	</mvc:interceptors>
 	
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

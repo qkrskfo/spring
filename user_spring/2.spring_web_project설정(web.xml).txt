@@ -1,52 +1,6 @@
-1. pom.xml파일 java compiler설정
-
-   A.java.version 와 spring-framework.version 설정
-   ################################################ 
-     <properties>
-		<java-version>1.8</java-version>
-		<org.springframework-version>4.3.25.RELEASE</org.springframework-version>
-		..
-	  </properties>   
-   
-   B.java compiler설정
-   ################################################    
-     <build>
-       <plugins>
-             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
-                <configuration>
-                    <source>${java-version}</source>
-                    <target>${java-version}</target>
-                </configuration>
-            </plugin>
-            ..
-        </plugins> 
-      </build>
-     
-   
-	
-	C. log4j dependency설정
-	################################################ 
-		<dependency>
-		    <groupId>log4j</groupId>
-		    <artifactId>log4j</artifactId>
-		    <version>1.2.17</version>
-		</dependency>
-	  
-	   log4j.xml파일을 resources 디렉토리에 생성(classpath root)
-	  
-    D. oracle driver dependency설정
-   	################################################ 
-	   	<!-- oracle driver -->
-		<dependency>
-		    <groupId>com.oracle.database.jdbc</groupId>
-		    <artifactId>ojdbc6</artifactId>
-		    <version>11.2.0.4</version>
-		</dependency>
-   
-2. web.xml파일 설정
+***************************************************************
+ 	web.xml파일 설정 
+****************************************************************	
 
      A. spring 인코딩 필터설정
      
@@ -96,7 +50,3 @@
 	        <url-pattern>*.do</url-pattern>
 	    </servlet-mapping>
      
-   
-    
-    
-    

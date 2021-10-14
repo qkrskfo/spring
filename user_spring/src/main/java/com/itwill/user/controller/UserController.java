@@ -7,7 +7,9 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -37,10 +39,12 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
+	/*
 	@Autowired
 	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
+	*/
 	
 	@RequestMapping(value="/user_main")
 	public String user_main() {
@@ -52,13 +56,39 @@ public class UserController {
 		return "user_write_form";
 	}
 	
+	
+	@GetMapping(value="/user_write_action")
+	public String user_write_action_get() {
+		return "redirect:user_write_form";
+	}
+	
+	@PostMapping(value="/user_write_action")
+	public String user_write_action(@ModelAttribute User user, Model model) {
+		String forwardPath ="";
+		try {
+			int result = userService.create(user);
+			if(result>0) {
+				forwardPath = "redirect:user_login_form";
+			} else {
+				model.addAttribute("msg", user.getUserId()+"는 이미 존재하는 아이디입니다.");
+				model.addAttribute("fuser", user);
+				forwardPath ="user_write_form";
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+			forwardPath ="user_error";
+		}
+		return forwardPath;
+	}
+	
+		
 	/*
-	@RequestMapping(value="/user_write_action.do", method=RequestMethod.GET)
+	@RequestMapping(value="/user_write_action", method=RequestMethod.GET)
 	public String user_write_action_get() {
 		return "redirect:user_main.do";
 	}
 	
-	@RequestMapping(value="/user_write_action.do", method=RequestMethod.POST)
+	@RequestMapping(value="/user_write_action", method=RequestMethod.POST)
 	public String user_write_action(@ModelAttribute("user") User user, Model model) throws Exception {
 		String forwardPath ="";
 		int result = userService.create(user);
@@ -71,12 +101,15 @@ public class UserController {
 		}
 		return forwardPath;
 	}
+	*/
 	
-	@RequestMapping("/user_login_form.do")
+	
+	@RequestMapping("/user_login_form")
 	public String user_login_form() {
 		return "user_login_form";
 	}
 	
+	/*	
 	@RequestMapping(value="/user_login_action.do", method=RequestMethod.GET)
 	public String user_login_action_get() {
 		return "redirect:user_login_form.do";
@@ -111,7 +144,10 @@ public class UserController {
 		}
 		return forwardPath;
 	}
+	*/
 	
+	
+	/*	
 	@RequestMapping("/user_logout_action.do")
 	public String user_logout_action(HttpSession session) {
 		session.invalidate();

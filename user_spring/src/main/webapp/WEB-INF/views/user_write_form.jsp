@@ -12,7 +12,7 @@
 </style>
 <script type="text/javascript">
 	function userLoginForm(){
-		location.href='user_login_form.do';
+		location.href='user_login_form';
 	}
 	function userCreate() {
 		if (document.f.userId.value == "") {
@@ -46,12 +46,12 @@
 			f.password.select();
 			return false;
 		}
-		document.f.action = "user_write_action.do";
+		document.f.action = "user_write_action";
 		document.f.method = 'POST';
 		document.f.submit();
 	}
 	function userList() {
-		f.action = "user_list.jsp";
+		f.action = "user_list";
 		f.submit();
 	}
 </script>

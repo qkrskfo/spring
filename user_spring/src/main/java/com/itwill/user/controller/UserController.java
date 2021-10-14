@@ -3,6 +3,7 @@ package com.itwill.user.controller;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -199,9 +200,14 @@ public class UserController {
 	}
 	*/
 	
-	public String user_view() throws Exception {
+	@RequestMapping(value="/user_view")
+	public String user_view(@RequestParam(name="userId") String user_id, Model model) throws Exception {
 		String forwardpath ="";
-		
+		User findUser = userService.findUser(user_id);
+		if(findUser!=null) {
+			model.addAttribute("user", findUser);
+		} 
+		forwardpath = "user_view";
 		return forwardpath;
 	}
 	/*
@@ -216,6 +222,14 @@ public class UserController {
 	}
 	*/
 	
+	@RequestMapping(value="user_view_myinfo")
+	public String user_view_myinfo(HttpSession session, HttpServletRequest request) throws Exception {
+		String loginUserId = (String)session.getAttribute("sUserId");
+		User sUser = userService.findUser(loginUserId);
+		request.setAttribute("loginUser", sUser); //model을 써도 되고 HttpServletRequest를 써도 됨
+		return "user_view_myinfo";
+	}
+	
 	/*
 	@RequestMapping("/user_view_myinfo.do")
 	public String user_view_myinfo(Model model, HttpSession session) throws Exception {
@@ -227,7 +241,8 @@ public class UserController {
 		model.addAttribute("loginUser", loginUser);
 		return "user_view_myinfo";
 	}
-	
+	*/
+	/*
 	@RequestMapping(value="/user_modify_form_myinfo.do")
 	public String user_modify_form_myinfo(HttpSession session, Model model) throws Exception {
 		String sUserId = (String)session.getAttribute("sUserId");

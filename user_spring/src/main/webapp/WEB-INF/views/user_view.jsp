@@ -7,7 +7,7 @@
 <c:if test="${empty user}">
 	<script>
 		alert('존재하지않는 회원입니다.');
-		location.href = 'user_list.do';
+		location.href = 'user_list';
 	</script>
 </c:if>
 <c:if test="${!empty user}">
@@ -20,7 +20,7 @@
 	<link rel=stylesheet href="css/user.css" type="text/css">
 	<script type="text/javascript">
 		function userList() {
-			location.href = 'user_list.do';
+			location.href = 'user_list';
 		}
 	</script>
 	</head>

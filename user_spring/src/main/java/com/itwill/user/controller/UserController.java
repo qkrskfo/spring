@@ -64,20 +64,15 @@ public class UserController {
 	}
 	
 	@PostMapping(value="/user_write_action")
-	public String user_write_action(@ModelAttribute User user, Model model) {
+	public String user_write_action(@ModelAttribute User user, Model model) throws Exception {
 		String forwardPath ="";
-		try {
-			int result = userService.create(user);
-			if(result>0) {
-				forwardPath = "redirect:user_login_form";
-			} else {
-				model.addAttribute("msg", user.getUserId()+"는 이미 존재하는 아이디입니다.");
-				model.addAttribute("fuser", user);
-				forwardPath ="user_write_form";
-			}
-		}catch (Exception e) {
-			e.printStackTrace();
-			forwardPath ="user_error";
+		int result = userService.create(user);
+		if(result>0) {
+			forwardPath = "redirect:user_login_form";
+		} else {
+			model.addAttribute("msg", user.getUserId()+"는 이미 존재하는 아이디입니다.");
+			model.addAttribute("fuser", user);
+			forwardPath ="user_write_form";
 		}
 		return forwardPath;
 	}
@@ -116,29 +111,26 @@ public class UserController {
 	}
 	
 	@PostMapping(value="/user_login_action")
-	public String user_login_action(@ModelAttribute User user, HttpSession session, Model model) {
+	public String user_login_action(@ModelAttribute User user, HttpSession session, Model model) throws Exception {
 		String forwardPath = "";
-		try {
-			int result = userService.login(user.getUserId(), user.getPassword());
-			if(result==0) {
-				//아이디 존재 안함
-				model.addAttribute("msg1", user.getUserId()+"는 존재하지 않는 아이디입니다.");
-				model.addAttribute("fuser", user);
-				forwardPath ="user_login_form";
-			} else if(result==1) {
-				//패스워드 불일치
-				model.addAttribute("msg2", "패스워드가 일치하지 않습니다.");
-				model.addAttribute("fuser", user);
-				forwardPath ="user_login_form";
-			} else if(result==2) {
-				//패스워드 일치(로그인 성공)
-				session.setAttribute("sUserId", user.getUserId());
-				forwardPath = "redirect:user_main";
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			forwardPath ="user_error";
+
+		int result = userService.login(user.getUserId(), user.getPassword());
+		if(result==0) {
+			//아이디 존재 안함
+			model.addAttribute("msg1", user.getUserId()+"는 존재하지 않는 아이디입니다.");
+			model.addAttribute("fuser", user);
+			forwardPath ="user_login_form";
+		} else if(result==1) {
+			//패스워드 불일치
+			model.addAttribute("msg2", "패스워드가 일치하지 않습니다.");
+			model.addAttribute("fuser", user);
+			forwardPath ="user_login_form";
+		} else if(result==2) {
+			//패스워드 일치(로그인 성공)
+			session.setAttribute("sUserId", user.getUserId());
+			forwardPath = "redirect:user_main";
 		}
+
 		return forwardPath;
 	}
 	
@@ -188,16 +180,13 @@ public class UserController {
 	}
 	
 	@RequestMapping("/user_list")
-	public String user_list(Model model) {
+	public String user_list(Model model) throws Exception {
 		String forwardPath ="";
-		try {
-			List<User> userList = userService.findUserList();
-			model.addAttribute("userList", userList);
-			forwardPath = "user_list";
-		}catch (Exception e) {
-			e.printStackTrace();
-			forwardPath="user_error";
-		}
+
+		List<User> userList = userService.findUserList();
+		model.addAttribute("userList", userList);
+		forwardPath = "user_list";
+
 		return forwardPath;
 	}
 	
@@ -210,14 +199,9 @@ public class UserController {
 	}
 	*/
 	
-	public String user_view() {
+	public String user_view() throws Exception {
 		String forwardpath ="";
-		try {
-			
-		}catch (Exception e) {
-			e.printStackTrace();
-			forwardpath="user_error";
-		}
+		
 		return forwardpath;
 	}
 	/*

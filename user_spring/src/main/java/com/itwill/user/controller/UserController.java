@@ -182,7 +182,13 @@ public class UserController {
 	}
 	
 	@RequestMapping("/user_list")
-	public String user_list(Model model) throws Exception {
+	public String user_list(Model model, HttpSession session) throws Exception {
+		/*
+		String sUserId = (String)session.getAttribute("sUserId");
+		if(sUserId==null) {
+			return "redirect:user_main";
+		}
+		*/
 		String forwardPath ="";
 
 		List<User> userList = userService.findUserList();

@@ -109,6 +109,24 @@ public class UserController {
 		return "user_login_form";
 	}
 	
+	@GetMapping(value="/user_login_action")
+	public String user_login_action_get() {
+		return "redirect:user_login_form";
+	}
+	
+	@PostMapping(value="/user_login_action")
+	public String user_login_action(@ModelAttribute User user) {
+		String forwardPath = "";
+		try {
+			int result = userService.login(user.getUserId(), user.getPassword());
+		} catch (Exception e) {
+			e.printStackTrace();
+			forwardPath ="user_error";
+		}
+		return forwardPath;
+	}
+	
+	
 	/*	
 	@RequestMapping(value="/user_login_action.do", method=RequestMethod.GET)
 	public String user_login_action_get() {

@@ -208,6 +208,7 @@ public class UserController {
 	}
 	*/
 	
+	@LoginCheck
 	@RequestMapping(value="/user_view")
 	public String user_view(@RequestParam(name="userId") String user_id, Model model) throws Exception {
 		String forwardpath ="";
@@ -230,6 +231,7 @@ public class UserController {
 	}
 	*/
 	
+	@LoginCheck
 	@RequestMapping(value="user_view_myinfo")
 	public String user_view_myinfo(HttpSession session, HttpServletRequest request) throws Exception {
 		String loginUserId = (String)session.getAttribute("sUserId");
@@ -251,6 +253,7 @@ public class UserController {
 	}
 	*/
 	
+	@LoginCheck
 	@RequestMapping(value="/user_modify_form_myinfo")
 	public String user_modify_form_myinfo(HttpSession session, Model model) throws Exception {
 		String loginUserId = (String)session.getAttribute("sUserId");
@@ -272,11 +275,13 @@ public class UserController {
 	}
 	*/
 	
+	@LoginCheck
 	@GetMapping(value="/user_modify_action_myinfo")
 	public String user_modify_action_myinfo_get() {
 		return "redirect:user_view_myinfo";
 	}
 	
+	@LoginCheck
 	@PostMapping(value="/user_modify_action_myinfo")
 	public String user_modify_action_myinfo(@ModelAttribute User user, HttpSession session) throws Exception {
 		String forwardPath ="";
@@ -304,11 +309,13 @@ public class UserController {
 	}
 	*/
 	
+	@LoginCheck
 	@GetMapping(value="/user_remove_action_myinfo")
 	public String user_remove_action_myinfo_get() {
 		return "redirect:user_main";
 	}
 	
+	@LoginCheck
 	@PostMapping(value="/user_remove_action_myinfo")
 	public String user_remove_action_myinfo(HttpServletRequest request) throws Exception {
 		String forwardPath = "";

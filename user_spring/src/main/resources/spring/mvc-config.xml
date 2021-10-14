@@ -18,12 +18,14 @@
 	<mvc:view-controller path="/" view-name="user_main"/>
 	
 	<!-- intercrepter -->
+	<!-- 
+		<mvc:mapping path="/**"/>
+			/*  ==> /a ,/b ,/a.html
+			/** ==> /a ,/b ,/a.html , /a/v, /d/f.do,/d/g.html 
+	-->
 	<mvc:interceptors>
+		<!-- mapping할때 불편해서 이거 안쓸래
 		<mvc:interceptor>
-			<!-- 
-				/*  ==> /a ,/b ,/a.html
-				/** ==> /a ,/b ,/a.html , /a/v, /d/f.do,/d/g.html 
-			 -->
 			<mvc:mapping path="/**"/>
 			<mvc:exclude-mapping path="/user_main"/>       
 	        <mvc:exclude-mapping path="/user_write_form"/>  
@@ -34,6 +36,14 @@
 	        <mvc:exclude-mapping path="/js/**"/>
 	        <mvc:exclude-mapping path="/image/**"/>
 			<bean class ="com.itwill.user.controller.AuthLoginInterceptor" />
+		</mvc:interceptor>
+		-->
+		<mvc:interceptor>
+			<mvc:mapping path="/**"/>
+			<mvc:exclude-mapping path="/css/**"/>
+	        <mvc:exclude-mapping path="/js/**"/>
+	        <mvc:exclude-mapping path="/image/**"/>
+			<bean class="com.itwill.user.controller.AuthLoginAnnotationInterceptor"/>
 		</mvc:interceptor>
 	</mvc:interceptors>
 	

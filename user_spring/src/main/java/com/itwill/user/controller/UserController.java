@@ -242,6 +242,16 @@ public class UserController {
 		return "user_view_myinfo";
 	}
 	*/
+	
+	@RequestMapping(value="/user_modify_form_myinfo")
+	public String user_modify_form_myinfo(HttpSession session, Model model) throws Exception {
+		String loginUserId = (String)session.getAttribute("sUserId");
+		User loginUser = userService.findUser(loginUserId);
+		model.addAttribute("loginUser", loginUser);
+		return "user_modify_form_myinfo";
+	}
+	
+	
 	/*
 	@RequestMapping(value="/user_modify_form_myinfo.do")
 	public String user_modify_form_myinfo(HttpSession session, Model model) throws Exception {
@@ -253,7 +263,8 @@ public class UserController {
 		model.addAttribute("loginUser", loginUser);
 		return "user_modify_form_myinfo";
 	}
-	
+	*/
+	/*
 	@RequestMapping(value="/user_modify_action_myinfo.do", method=RequestMethod.GET)
 	public String user_modify_action_myinfo_get() {
 		return "redirect:user_main.do";

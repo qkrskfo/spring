@@ -38,11 +38,11 @@
 			return false;
 		}
 		
-		document.f.action = "user_modify_action_myinfo.do";
+		document.f.action = "user_modify_action_myinfo";
 		document.f.submit();
 	}
 	function userList() {
-		f.action = "user_list.do";
+		f.action = "user_list";
 		f.submit();
 	}
 </script>

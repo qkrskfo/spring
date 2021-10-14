@@ -1,5 +1,6 @@
 package com.itwill.user.controller;
 
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -115,10 +116,25 @@ public class UserController {
 	}
 	
 	@PostMapping(value="/user_login_action")
-	public String user_login_action(@ModelAttribute User user) {
+	public String user_login_action(@ModelAttribute User user, HttpSession session, Model model) {
 		String forwardPath = "";
 		try {
 			int result = userService.login(user.getUserId(), user.getPassword());
+			if(result==0) {
+				//아이디 존재 안함
+				model.addAttribute("msg1", user.getUserId()+"는 존재하지 않는 아이디입니다.");
+				model.addAttribute("fuser", user);
+				forwardPath ="user_login_form";
+			} else if(result==1) {
+				//패스워드 불일치
+				model.addAttribute("msg2", "패스워드가 일치하지 않습니다.");
+				model.addAttribute("fuser", user);
+				forwardPath ="user_login_form";
+			} else if(result==2) {
+				//패스워드 일치(로그인 성공)
+				session.setAttribute("sUserId", user.getUserId());
+				forwardPath = "redirect:user_main";
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			forwardPath ="user_error";
@@ -164,21 +180,47 @@ public class UserController {
 	}
 	*/
 	
-	
-	/*	
-	@RequestMapping("/user_logout_action.do")
+		
+	@RequestMapping("/user_logout_action")
 	public String user_logout_action(HttpSession session) {
 		session.invalidate();
-		return "redirect:user_main.do";
+		return "redirect:user_main";
 	}
 	
-	@RequestMapping("/user_list.do")
+	@RequestMapping("/user_list")
+	public String user_list(Model model) {
+		String forwardPath ="";
+		try {
+			List<User> userList = userService.findUserList();
+			model.addAttribute("userList", userList);
+			forwardPath = "user_list";
+		}catch (Exception e) {
+			e.printStackTrace();
+			forwardPath="user_error";
+		}
+		return forwardPath;
+	}
+	
+	/*
+	@RequestMapping("/user_list")
 	public String user_list(Model model) throws Exception {
 		List<User> userList = userService.findUserList();
 		model.addAttribute("userList", userList);
 		return "user_list";
 	}
+	*/
 	
+	public String user_view() {
+		String forwardpath ="";
+		try {
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			forwardpath="user_error";
+		}
+		return forwardpath;
+	}
+	/*
 	@RequestMapping("/user_view.do")
 	public String user_view(@RequestParam(value="userId", required=false, defaultValue="") String userId, Model model) throws Exception {
 		if(userId==null || userId.equals("")) {
@@ -188,7 +230,9 @@ public class UserController {
 		model.addAttribute("user", user);
 		return "user_view";
 	}
+	*/
 	
+	/*
 	@RequestMapping("/user_view_myinfo.do")
 	public String user_view_myinfo(Model model, HttpSession session) throws Exception {
 		String sUserId = (String)session.getAttribute("sUserId");

@@ -10,7 +10,7 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 /*
 ①HandlerInterceptor 인터페이스
-②HandlerInterceptorAdapter 추상클래스
+②HandlerInterceptorAdapter 추상클래스 상속, 메소드 재정의
 	- public boolean preHandle(HttpServletRequest request, HttpServletResponse response,Object handler)
      	Controller 요청 전 실행
 	

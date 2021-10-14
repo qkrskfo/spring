@@ -181,6 +181,7 @@ public class UserController {
 		return "redirect:user_main";
 	}
 	
+	@LoginCheck
 	@RequestMapping("/user_list")
 	public String user_list(Model model, HttpSession session) throws Exception {
 		/*

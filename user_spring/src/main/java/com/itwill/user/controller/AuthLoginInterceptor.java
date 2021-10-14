@@ -7,10 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
-
 /*
-①HandlerInterceptor 인터페이스
-②HandlerInterceptorAdapter 추상클래스 상속, 메소드 재정의
+①HandlerInterceptor 인터페이스 구현
+②HandlerInterceptorAdapter 추상클래스 상속 메쏘드재정의
 	- public boolean preHandle(HttpServletRequest request, HttpServletResponse response,Object handler)
      	Controller 요청 전 실행
 	
@@ -33,6 +32,9 @@ public class AuthLoginInterceptor extends HandlerInterceptorAdapter {
 		// 1. handler 종류 확인
 		// 우리가 관심 있는 것은 Controller에 있는 메서드이므로 HandlerMethod 타입인지 체크
 		if (handler instanceof HandlerMethod == false) {
+			/*
+			 * Controller객체,css,image,js(static resource)
+			 */
 			// return true이면 Controller에 있는 메서드가 아니므로, 그대로 컨트롤러로 진행
 			return true;
 		}

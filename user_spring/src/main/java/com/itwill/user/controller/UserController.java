@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -266,7 +267,7 @@ public class UserController {
 	
 	@GetMapping(value="/user_modify_action_myinfo")
 	public String user_modify_action_myinfo_get() {
-		return "user_view_myinfo";
+		return "redirect:user_view_myinfo";
 	}
 	
 	@PostMapping(value="/user_modify_action_myinfo")
@@ -275,7 +276,7 @@ public class UserController {
 		String loginUserId = (String)session.getAttribute("sUserId");
 		user.setUserId(loginUserId);
 		userService.update(user);
-		forwardPath ="user_view_myinfo";
+		forwardPath ="redirect:user_view_myinfo";
 		return forwardPath;
 	}
 	
@@ -296,6 +297,20 @@ public class UserController {
 	}
 	*/
 	
+	@GetMapping(value="/user_remove_action_myinfo")
+	public String user_remove_action_myinfo_get() {
+		return "redirect:user_main";
+	}
+	
+	@PostMapping(value="/user_remove_action_myinfo")
+	public String user_remove_action_myinfo(HttpServletRequest request) throws Exception {
+		String forwardPath = "";
+		String loginUser = (String)request.getSession().getAttribute("sUserId");
+		userService.remove(loginUser);
+		forwardPath ="redirect:user_logout_acton";
+		return forwardPath;
+	}
+	
 	/*
 	@RequestMapping(value="/user_remove_action_myinfo.do", method=RequestMethod.GET)
 	public String user_remove_action_myinfo_get() {
@@ -308,11 +323,11 @@ public class UserController {
 		session.invalidate();
 		return "redirect:user_main.do";
 	}
+	*/
 	
-	@RequestMapping("/user_error.do")
+	@RequestMapping("/user_error")
 	public String user_error() {
 		return "user_error";
 	}
-	*/
 	
 }

@@ -830,10 +830,9 @@
     	$("#tab1 a[href='#profile1']").tab('show');
     	$('#tab1 a').on('show.bs.tab',function(e){
     		var requestId=$(e.target).attr('href');
-    		if(requestId=='#home'){
-    			
+    		if(requestId=='#home1'){
     			$(requestId).find('p').html('ajax home receive data-->'+requestId);
-    		}else if(requestId=='#profile'){
+    		}else if(requestId=='#profile1'){
     			$(requestId).find('p').html('ajax profile receive data-->'+requestId);
     		}else if(requestId=='#messages1'){
     			$(requestId).find('p').html('ajax messages1 receive data-->'+requestId);

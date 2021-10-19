@@ -707,10 +707,15 @@
     <script type="text/javascript">
     	$('.pages a').on('click', function(e){
     		//alert($(e.target).text());
-    		console.log($(e.target).text()+"page요청");
+    		//console.log($(e.target).text()+"page요청");
+    		alert($(e.target).text()+"page요청");
     		//페이지 기반 요청 시 
-    		location.href='board_detail.jsp?pageno='+$(e.target).text();
-    		//아작스 기반 요청 시 $.ajax();
+    		//location.href='board_detail.jsp?pageno='+$(e.target).text();
+    		//아작스 기반 요청 시 
+    		//$.ajax();
+    		$('.pages').children().removeClass('active');
+    		$(e.target).parent().addClass("active");
+    	
     	});
     	
     </script>

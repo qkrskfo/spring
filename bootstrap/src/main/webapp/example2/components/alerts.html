@@ -561,7 +561,7 @@
           <div class="col-lg-9 col-md-8 order-md-2">
             <h6 class="text-muted text-normal text-uppercase">Color Variations</h6>
             <hr class="margin-bottom-1x">
-            <div class="alert alert-default alert-dismissible fade show margin-bottom-1x"><span class="alert-close" data-dismiss="alert"></span>
+            <div id ="alert0" class="alert alert-default alert-dismissible fade show margin-bottom-1x"><span class="alert-close" data-dismiss="alert"></span>
               <h3>Hello World!</h3>
               <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro minus sint optio explicabo eum perspiciatis ipsam adipisci, excepturi repellendus debitis fugit laborum quae, aspernatur ex neque hic nihil, reiciendis veritatis.</p>
             </div>
@@ -702,6 +702,18 @@
     <!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
     <script src="../js/vendor.min.js"></script>
     <script src="../js/scripts.min.js"></script>
+    
+    <script type="text/javascript">
+    	console.log('jquery:-->'+$);
+    	
+    	setTimeout(function(){
+    		$('#alert0').alert('close');
+    	}, 2000)
+			
+		
+    </script>
+    
+    
     <script type="text/javascript">
     	$('#alert1').on('close.bs.alert',function(e){
     		alert('alert창이 닫힐때실행!!!!');

@@ -561,11 +561,13 @@
           <div class="col-lg-9 col-md-8 order-md-2">
             <h6 class="text-muted text-normal text-uppercase">Tabs with Dropdown</h6>
             <hr class="margin-bottom-1x">
-            <ul class="nav nav-tabs" role="tablist">
+            <ul id="tab1" class="nav nav-tabs" role="tablist" >
               <li class="nav-item"><a class="nav-link active" href="#home1" data-toggle="tab" role="tab">Home</a></li>
               <li class="nav-item"><a class="nav-link" href="#profile1" data-toggle="tab" role="tab">Profile</a></li>
               <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button">Dropdown</a>
-                <div class="dropdown-menu"><a class="dropdown-item" href="#messages1" data-toggle="tab" role="tab">Messages</a><a class="dropdown-item" href="#settings1" data-toggle="tab" role="tab">Settings</a></div>
+                <div class="dropdown-menu">
+                	<a class="dropdown-item" href="#messages1" data-toggle="tab" role="tab">Messages</a>
+                	<a class="dropdown-item" href="#settings1" data-toggle="tab" role="tab">Settings</a></div>
               </li>
             </ul>
             <div class="tab-content">
@@ -821,5 +823,30 @@
     <!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
     <script src="../js/vendor.min.js"></script>
     <script src="../js/scripts.min.js"></script>
+    <script type="text/javascript">
+    	/*
+    	anchor tag를 선택
+    	*/
+    	$("#tab1 a[href='#profile1']").tab('show');
+    	$('#tab1 a').on('show.bs.tab',function(e){
+    		var requestId=$(e.target).attr('href');
+    		if(requestId=='#home'){
+    			
+    			$(requestId).find('p').html('ajax home receive data-->'+requestId);
+    		}else if(requestId=='#profile'){
+    			$(requestId).find('p').html('ajax profile receive data-->'+requestId);
+    		}else if(requestId=='#messages1'){
+    			$(requestId).find('p').html('ajax messages1 receive data-->'+requestId);
+    		}else if(requestId=='#settings1'){
+    			$(requestId).find('p').html('ajax settings1 receive data-->'+requestId);
+    		}
+    		
+    	});
+    	
+    </script>
   </body>
 </html>
+
+
+
+

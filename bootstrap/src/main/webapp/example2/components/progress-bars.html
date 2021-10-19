@@ -763,5 +763,18 @@
     <!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
     <script src="../js/vendor.min.js"></script>
     <script src="../js/scripts.min.js"></script>
+    <script type="text/javascript">
+    
+    	var count=0;
+    	var setVar= setInterval(function(){
+    		count++;
+    		console.log(count);
+    		$('.progress-bar').attr("aria-valuenow", count).css('width',count+'%').text(count+'%');
+    		if(count==100)clearInterval(setVar);
+    	},100);
+    	
+    	
+    	
+    </script>
   </body>
 </html>

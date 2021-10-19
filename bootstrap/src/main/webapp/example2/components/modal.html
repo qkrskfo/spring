@@ -870,6 +870,36 @@
     <script src="../js/vendor.min.js"></script>
     <script src="../js/scripts.min.js"></script>
     <script type="text/javascript">
+    	$('#modalSmall').on('show.bs.modal', function(e){
+    		//alert(e.target); 
+    		//보이기 전이 언젠지 이렇게 알 수 있으니까, 이때 ajax 데이터를 받아오면 됨(?)
+    		
+    		//ajax 요청
+    		/*
+    		$.ajax({
+    			success:function(){
+    				
+    			}
+    		});
+    		*/
+    		
+    		$(e.target).find('.modal-title').html('상품제목');
+    		$(e.target).find('.modal-body p').html('상품상세정보[ajax receive data]');
+    	});
+    	
+    	/*
+    	$('#modalSmall').on('shown.bs.modal', function(e){
+    		alert(e.target); //보이고나서 (이때는 딱히 이벤트 처리를 할 일이 없징)
+    	});
+    	*/
+    	
+	    setTimeout(function(){
+			$('#modalDefault').modal('show');
+			setTimeout(function(){
+				$('#modalDefault').modal('hide');
+			}, 1000);
+		},2000);
+    
     	/*
     	$('#modalSmall').modal({
     		backdrop: 'static',
@@ -879,11 +909,12 @@
     	$('#modalSmall').modal('show');	
     	
     	*/
+    	/*
     	$('#modalSmall').on('show.bs.modal',function(e){
     		$(e.target).find('.modal-title').html('ajax receive title');
     		$(e.target).find('.modal-body p').html('ajax receive body');
     	});
-    	$('#modalDefault #loginBtn').on('click',function(e){
+    	$('#modalDefault #loginBtn').on('click',function(e){ */
     		/*
     		$.ajax({
     			url:'login'
@@ -893,11 +924,13 @@
     		});
     		*/
     		//$('#modalDefault').modal('dispose');
-    		
+    		/*
     		setInterval(function(){
     			$('#modalDefault').modal('hide');
     		},1000);
     	});
+    	*/
+    	
     	
     </script>
   </body>

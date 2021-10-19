@@ -770,7 +770,9 @@
     		count++;
     		console.log(count);
     		$('.progress-bar').attr("aria-valuenow", count).css('width',count+'%').text(count+'%');
-    		if(count==100)clearInterval(setVar);
+    		if(count==100) {
+    			clearInterval(setVar);
+    		}
     	},100);
     	
     	

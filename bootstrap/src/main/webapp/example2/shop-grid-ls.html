@@ -1126,5 +1126,11 @@
     <!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
     <script src="js/vendor.min.js"></script>
     <script src="js/scripts.min.js"></script>
+    <script type="text/javascript">
+    	$('.product-thumb,.product-title').on('click', function(e){
+    		alert("product_detail.jsp?pno="+$(e.target).text());
+    		e.preventDefault();
+    	});
+    </script>
   </body>
 </html>

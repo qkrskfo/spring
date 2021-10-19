@@ -815,5 +815,11 @@
     <!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
     <script src="../js/vendor.min.js"></script>
     <script src="../js/scripts.min.js"></script>
+    <script type="text/javascript">
+    	$('a.btn').on('click', function(e){
+    		alert($(e.target).text()+"을 클릭했어요");
+    		e.preventDefault();
+    	})
+    </script>
   </body>
 </html>

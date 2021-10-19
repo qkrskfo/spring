@@ -704,5 +704,15 @@
     <!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
     <script src="../js/vendor.min.js"></script>
     <script src="../js/scripts.min.js"></script>
+    <script type="text/javascript">
+    	$('.pages a').on('click', function(e){
+    		//alert($(e.target).text());
+    		console.log($(e.target).text()+"page요청");
+    		//페이지 기반 요청 시 
+    		location.href='board_detail.jsp?pageno='+$(e.target).text();
+    		//아작스 기반 요청 시 $.ajax();
+    	});
+    	
+    </script>
   </body>
 </html>

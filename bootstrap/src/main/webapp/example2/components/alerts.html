@@ -710,19 +710,12 @@
     		$('#alert0').alert('close');
     	}, 2000)
 			
-		
-    </script>
-    
-    
-    <script type="text/javascript">
-    	$('#alert1').on('close.bs.alert',function(e){
-    		alert('alert창이 닫힐때실행!!!!');
-    	});
-    	$('#alert1').on('closed.bs.alert',function(e){
+		$('#alert1').on('closed.bs.alert',function(e){
     		alert('alert창이 닫힌후실행!!!!');
     	});
-    
+    	
     </script>
+    
   </body>
 </html>
 

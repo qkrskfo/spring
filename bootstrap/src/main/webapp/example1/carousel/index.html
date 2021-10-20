@@ -69,13 +69,13 @@
 <main role="main">
 
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
-  
+	
     <ol class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
       <li data-target="#myCarousel" data-slide-to="1"></li>
       <li data-target="#myCarousel" data-slide-to="2"></li>
     </ol>
-  
+   
     <div class="carousel-inner">
       <div class="carousel-item active">
         <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label=" :  " preserveAspectRatio="xMidYMid slice" focusable="false"><title> </title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em"> </text></svg>
@@ -83,7 +83,7 @@
         <div class="container">
           <div class="carousel-caption text-left">
             <h1>Example headline.</h1>
-            <p>111111111111111111111111111111111111<img src='1.gif'></p>
+            <p>111111111111111111111111111111111111<img src='1.png'></p>
             <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
           </div>
         </div>
@@ -94,7 +94,7 @@
         <div class="container">
           <div class="carousel-caption">
             <h1>Another example headline.</h1>
-            <p>22222222222222222222222222222222222222<img src='1.gif'></p>
+            <p>22222222222222222222222222222222222222<img src='2.png'></p>
             <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
           </div>
         </div>
@@ -105,7 +105,7 @@
         <div class="container">
           <div class="carousel-caption text-right">
             <h1>One more for good measure.</h1>
-            <p>33333333333333333333333333333333333333<img src='1.gif'></p>
+            <p>33333333333333333333333333333333333333<img src='3.jpg'></p>
             <p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
           </div>
         </div>
@@ -120,7 +120,7 @@
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="sr-only">Next</span>
     </a>
-   
+    
   </div>
 
 
@@ -215,65 +215,25 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript">
-	
-	$('#myCarousel').carousel({
-		interval: 100,
-		pause: 'hover',
-		ride:'false',
-		touch:true
-	});
-	/*
-	$('#myCarousel').carousel('prev');
-	$('#myCarousel').carousel('next');
-	$('#myCarousel').carousel('pause');
-	$('#myCarousel').carousel('2');
-	*/
-	$('#myCarousel').on('slide.bs.carousel', function(e){
-		console.log('#myCarousel->'+e.target);
-		console.log(e.relatedTarget);
-		$(e.relatedTarget).find('.container h1').html('ajax receive title');
-	});
-	
-	/*
 		$('#myCarousel').carousel({
-			interval: false,
+			interval: 3000,
 			pause: "hover",
-			wrap: true,
-			ride:false
+			ride:'false',
+			touch:true,
+			
 		});
-		
-		$('#myCarousel').on('slide.bs.carousel slid.bs.carousel',function(e){
-			//console.log(e.currentTarget);
-			//console.log(e.target);
-			console.log(e.relatedTarget);
-			console.log(e.direction);
-			/*
-			$.ajax({
-				url:'',
-				method:'GET',
-				success:function(data){
-					$(e.relatedTarget).html(data);
-				}
-			});
-			*/
-			/*
-			<div class="carousel-item">
-		        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label=" :  " preserveAspectRatio="xMidYMid slice" focusable="false"><title> </title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em"> </text></svg>
-		
-		        <div class="container">
-		          <div class="carousel-caption text-right">
-		            <h1>One more for good measure.</h1>
-		            <p>33333333333333333333333333333333333333</p>
-		            <p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
-		          </div>
-		        </div>
-		      </div>
-		    </div>
-			*//*
-			$(e.relatedTarget).find('.container .carousel-caption p').first().html('ajax receiver data!!!');
-		});
-		
+		/*
+		$('#myCarousel').carousel('prev');
+		$('#myCarousel').carousel('next');
+		$('#myCarousel').carousel('pause');
+		$('#myCarousel').carousel(2);
 		*/
+		$('#myCarousel').on('slide.bs.carousel',function(e){
+			console.log("#myCarousel-->"+e.target);
+			console.log(e.relatedTarget);
+			$(e.relatedTarget).find('.container h1').html('ajax receive title');
+		});
+		
 		
 	
 	</script>

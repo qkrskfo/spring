@@ -13,7 +13,9 @@ public class UserDaoTestMain {
 		UserDao userDao = (UserDao)applicationContext.getBean("userDao");
 		System.out.println(userDao);
 		
-		//System.out.println("create-->"+userDao.create(new User("zzz", "zzz", "zzz", "zzz")));
+		//System.out.println("1. create-->"+userDao.create(new User("zzz", "zzz", "zzz", "zzz")));
+		
+		System.out.println("2.findUser-->"+userDao.findUser("zzz"));
 	}
 
 }

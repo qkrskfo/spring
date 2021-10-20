@@ -114,7 +114,7 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
-			<version>${spring-framework.version}</version>
+			<version>${org.springframework-version}</version>
 		</dependency>
 
 

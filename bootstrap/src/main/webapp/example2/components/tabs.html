@@ -841,7 +841,12 @@
     	*/
     	$("#tab1 a[href='#profile1']").tab('show');
     	
-    	
+    	/*
+    	모든 tab a 선택
+    	*/
+    	$("a[data-toggle='tab']").on('show.bs.tab', function(e){
+    		console.log(e.target);
+    	});
     	
     </script>
   </body>

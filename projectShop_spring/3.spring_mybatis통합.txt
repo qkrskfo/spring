@@ -16,12 +16,10 @@
 		<artifactId>spring-jdbc</artifactId>
 		<version>${org.springframework-version}</version>
 	</dependency>
-2. mybatis-config.xml파일삭제
-	###########mybatis-config.xml###################
-	#################################################
 	
-3. org.mybatis.spring.SqlSessionFactoryBean	을 
-   application-config.xml에 등록 
+2. com/itwill/shop/user/mapper/ 디렉토리에 UserMapper.xml 파일 생성
+	
+3. org.mybatis.spring.SqlSessionFactoryBean	을 application-config.xml에 등록 
 	###############applicationContext.xml############
 	<bean  id="sqlSessionFactory" 
 			class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -30,7 +28,7 @@
 		          value="classpath:mybatis-config.xml"/>
 		<property name="mapperLocations">
 			<list>
-				<value>com/itwill/user/mapper/UserMapper.xml</value>
+				<value>com/itwill/shop/user/mapper/UserMapper.xml</value>
 			</list>
 		</property>          
 	</bean>

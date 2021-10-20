@@ -14,7 +14,7 @@
 	<dependency>
 		<groupId>org.springframework</groupId>
 		<artifactId>spring-jdbc</artifactId>
-		<version>${spring-framework.version}</version>
+		<version>${org.springframework-version}</version>
 	</dependency>
 2. mybatis-config.xml파일삭제
 	###########mybatis-config.xml###################

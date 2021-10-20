@@ -33,8 +33,7 @@ public class UserDaoMyBatisImpl implements UserDao {
 
 	@Override
 	public User findUser(String userId) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectOne(NAMESPACE+"findUser", userId);
 	}
 
 	@Override

@@ -5,5 +5,7 @@
 		insert into userinfo(userid,password,name,email) 
 		values(#{userId},#{password},#{name},#{email})
 	</insert>
-
+	<select id="findUser" parameterType="java.lang.String" resultType="com.itwill.shop.user.User">
+		select userid,password,name,email from userinfo where userid=#{userId}
+	</select>
 </mapper>

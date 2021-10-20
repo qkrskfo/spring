@@ -677,7 +677,7 @@
             
             <h6 class="text-muted text-normal text-uppercase padding-top-2x">Default Bootstrap Toast</h6>
             <hr class="margin-bottom-1x">
-            <div class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">
+            <div id="toast1" class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">
               <div class="toast-header">
                 <div class="d-inline-block align-middle bg-primary rounded mr-2" style="width: 25px; height: 25px;"></div><strong class="mr-auto">Bootstrap</strong><small>11 mins ago</small>
                 <button class="ml-2 close" type="button" data-dismiss="toast" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -822,6 +822,7 @@
     <script src="../js/vendor.min.js"></script>
     <script src="../js/scripts.min.js"></script>
     <script type="text/javascript">
+    /*
 	   $('#toast-top-center').toast({
 		   animation:true,
 		   autohide:true,
@@ -832,7 +833,23 @@
     		console.log(e.target.innerHTML);
     		$(e.target).find('.toast-body').html('토스트먹고싶어 오이말고!!!');
     	});
-    	
+    */
+    
+    setTimeout(function(){
+    	$('#toast1').toast('hide');
+    }, 2000);
+    
+    setTimeout(function(){
+    	$('#toast1').toast('show');
+    }, 4000);
+    
+    $('#toast-top-center').on('show.bs.toast', function(e){
+    	console.log(e.target);
+    	$(e.target).find('.toast-header .mr-auto').html("토스트제목");
+    	$(e.target).find('.toast-body').html("토스트내용");
+    });
+		
+	
     	
     	
     	

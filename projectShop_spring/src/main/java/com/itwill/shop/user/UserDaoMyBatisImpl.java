@@ -15,8 +15,7 @@ public class UserDaoMyBatisImpl implements UserDao {
 	
 	@Override
 	public int create(User user) throws Exception {
-		sqlSession.insert(NAMESPACE+"create", user);
-		return 0;
+		return sqlSession.insert(NAMESPACE+"create", user);
 	}
 
 	@Override

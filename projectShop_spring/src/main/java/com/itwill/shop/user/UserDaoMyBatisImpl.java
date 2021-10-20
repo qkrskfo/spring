@@ -2,8 +2,11 @@ package com.itwill.shop.user;
 
 import java.util.List;
 
-public class UserDaoMyBatisImpl implements UserDao {
+import org.apache.ibatis.session.SqlSession;
 
+public class UserDaoMyBatisImpl implements UserDao {
+	private SqlSession sqlSession;
+	
 	@Override
 	public int create(User user) throws Exception {
 		// TODO Auto-generated method stub

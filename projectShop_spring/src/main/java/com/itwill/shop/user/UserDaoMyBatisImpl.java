@@ -7,12 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 @Repository
 public class UserDaoMyBatisImpl implements UserDao {
+	
+	public final static String NAMESPACE="com.itwill.shop.user.mapper.UserMapper.";
+	
 	@Autowired
 	private SqlSession sqlSession;
 	
 	@Override
 	public int create(User user) throws Exception {
-		// TODO Auto-generated method stub
+		sqlSession.insert(NAMESPACE+"create", user);
 		return 0;
 	}
 

@@ -11,28 +11,23 @@
 input.error, textarea.error {
 	border: 1px solid red;
 }
-
 label.error {
 	margin-left: 10px;
 	color: orange;
 }
-
 .valid {
 	border: 1px solid green;
 }
 </style>
-
-
-
-<!-- jquery, jquery-validation -->
+<!-- jquery , jquery-validation -->
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script type="text/javascript"
 	src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
-	
+
 <script type="text/javascript">
 	$(function() {
-		/*#### 회원가입, 메인버튼 이벤트 처리 ####*/
+		/*##########회원가입,메인버튼 이벤트처리#############*/
 		$('#member_create_btn').click(function(e) {
 			$('#f').trigger('submit');
 		});
@@ -91,7 +86,6 @@ label.error {
 					required : "이메일을 입력해 주세요",
 					email : '이메일 형식에 맞게 입력해주세요'
 				}
-
 			},
 			errorClass : 'error',
 			validClass : 'valid',
@@ -103,7 +97,6 @@ label.error {
 			}
 		});
 	});
-
 </script>
 </head>
 <body bgcolor=#FFFFFF text=#000000 leftmargin=0 topmargin=0
@@ -182,8 +175,7 @@ label.error {
 
 							<table border=0 cellpadding=0 cellspacing=1>
 								<tr>
-									<td align=center><input id="member_create_btn"
-										type="button" value="회원 가입"> &nbsp; <input
+									<td align=center><input id="member_create_btn" type="button" value="회원 가입"> &nbsp; <input
 										id="shop_main_btn" type="button" value="메인"></td>
 								</tr>
 							</table>

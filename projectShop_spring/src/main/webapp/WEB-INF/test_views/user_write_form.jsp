@@ -15,6 +15,5 @@
 	email<input type="text" name="email" value="guard999@gmail.com"><br>
 	<input type="submit" value="가입">
 </form>
-
 </body>
 </html>

@@ -4,10 +4,10 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
 <c:if test="${empty(product)}">
-<script>
-	alert('매진된상품입니다.');
-	location.href='product_list';
-</script>
+	<script>
+		alert('매진된상품입니다.');
+		location.href='product_list';
+	</script>
 </c:if>
 
 <c:if test="${!empty(product)}">
@@ -38,7 +38,6 @@
 			document.add_cart_form.submit();
 		}
 	}
-
 	function order_create_form() {
 		if (!isLogin) {
 			alert('로그인 하세요');

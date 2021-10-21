@@ -16,9 +16,9 @@ import org.springframework.stereotype.Repository;
 
 
 
-@Repository("userDao")
+//@Repository
 public class UserDaoImplJDBC implements UserDao {
-	@Autowired
+	//@Autowired
 	private DataSource dataSource;
 	/*
 	 * 사용자관리테이블에 새로운사용자생성

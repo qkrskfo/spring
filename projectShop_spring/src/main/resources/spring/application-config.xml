@@ -11,13 +11,13 @@
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
 	
-
 	<bean  id="sqlSessionFactory" 
 			class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"/>
 		<property name="mapperLocations">
 			<list>
 				<value>classpath:com/itwill/shop/user/mapper/UserMapper.xml</value>
+				<value>classpath:com/itwill/shop/product/mapper/ProductMapper.xml</value>
 			</list>
 		</property>          
 	</bean>
@@ -25,7 +25,4 @@
 			class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg index="0" ref="sqlSessionFactory"/>
 	</bean>
-
-		
-	
 </beans>

@@ -1,3 +1,6 @@
+--userinfo
+--select,update,delete,...
+
 --guard1 멤버한사람의  카트에 제품번호 존재여부
 select count(*)  as p_count from cart c join userinfo u on c.userid=u.userid where u.userid='guard1' and c.p_no=1;
 

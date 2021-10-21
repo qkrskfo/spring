@@ -16,11 +16,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+import com.itwill.shop.controller.interceptor.LoginCheck;
 import com.itwill.shop.user.User;
 import com.itwill.shop.user.UserService;
-
-
-
 /*
 <<요청command>>
 /user_main
@@ -48,7 +46,6 @@ public class UserController {
 	public String user_write_form_ajax() {
 		return "user_write_form_ajax";
 	}
-	//@RequestMapping(value = "user_write_action",method = RequestMethod.POST)
 	@PostMapping(value ="user_write_action" )
 	public String user_write_action_post(@ModelAttribute User user,Model model) throws Exception{
 		String forwardPath="";
@@ -93,15 +90,15 @@ public class UserController {
 	}
 	@GetMapping(value = "/user_login_action")
 	public String user_login_action_get() {
-		return "redirect:user_login_form";
+		return "redirect:shop_main";
 	}
-	
+	@LoginCheck
 	@RequestMapping(value = "/user_logout_action")
 	public String user_logout_action(HttpSession session) {
 		session.invalidate();
 		return "redirect:shop_main";
 	}
-	
+	@LoginCheck
 	@RequestMapping(value = "/user_view_myinfo")
 	public String user_view_myinfo(HttpSession session,HttpServletRequest request) throws Exception {
 		String loginUserId=(String)session.getAttribute("sUserId");
@@ -109,7 +106,7 @@ public class UserController {
 		request.setAttribute("loginUser", loginUser);
 		return "user_view_myinfo";
 	}
-	
+	@LoginCheck
 	@RequestMapping(value = "/user_modify_form_myinfo")
 	public String user_modify_form_myinfo(HttpSession session,Model model)throws Exception {
 		String loginUserId = (String)session.getAttribute("sUserId");
@@ -117,7 +114,7 @@ public class UserController {
 		model.addAttribute("loginUser",loginUser);
 		return "user_modify_form_myinfo";
 	}
-	
+	@LoginCheck
 	@PostMapping(value = "/user_modify_action_myinfo")
 	public String user_modify_action_myinfo_post(@ModelAttribute User user,HttpSession session) throws Exception {
 		String forwardPath="";
@@ -127,7 +124,7 @@ public class UserController {
 		forwardPath="redirect:user_view_myinfo";
 		return forwardPath;
 	}
-	
+	@LoginCheck
 	@GetMapping(value = "/user_modify_action_myinfo")
 	public String user_modify_action_myinfo_get() {
 		
@@ -142,6 +139,7 @@ public class UserController {
 		forwardPath="redirect:user_logout_action";
 		return forwardPath;
 	}
+	@LoginCheck
 	@GetMapping(value = "user_remove_action_myinfo")
 	public String user_remove_action_myinfo_get() {
 		return "redirect:user_main";

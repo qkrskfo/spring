@@ -31,8 +31,9 @@ public class GuestDaoImplJDBC implements GuestDao {
 		pstmt.setString(3, guest.getGuest_homepage());
 		pstmt.setString(4, guest.getGuest_title());
 		pstmt.setString(5, guest.getGuest_content());
+		pstmt.executeUpdate();
 		con.close();
-		return pstmt.executeUpdate();
+		return 0;
 	}
 
 	/*

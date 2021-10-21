@@ -1,6 +1,7 @@
 package com.itwill.shop.cart;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public interface CartService {
 
@@ -17,7 +18,7 @@ public interface CartService {
 	/*
 	 * 카트보기
 	 */
-	ArrayList<CartItem> getCartList(String sUserId) throws Exception;
+	List<CartItem> getCartList(String sUserId) throws Exception;
 
 	/*
 	 * 카트아이템1개보기

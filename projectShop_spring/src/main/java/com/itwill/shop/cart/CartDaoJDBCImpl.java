@@ -14,7 +14,7 @@ import org.springframework.stereotype.Repository;
 
 import com.itwill.shop.product.Product;
 import com.itwill.shop.user.User;
-@Repository
+//@Repository("cartDao")
 public class CartDaoJDBCImpl implements CartDao {
 	@Autowired
 	private DataSource dataSource;

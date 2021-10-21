@@ -1,6 +1,7 @@
 package com.itwill.shop.cart;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public interface CartDao {
 
@@ -27,7 +28,7 @@ public interface CartDao {
 	/*
 	 * cart list
 	 */
-	ArrayList<CartItem> getCartList(String sUserId) throws Exception;
+	List<CartItem> getCartList(String sUserId) throws Exception;
 
 	/*
 	 * cart pk delete

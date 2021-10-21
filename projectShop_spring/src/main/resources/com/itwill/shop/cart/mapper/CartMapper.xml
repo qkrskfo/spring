@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itwill.shop.cart.mapper.CartMapper">
+
+	<resultMap id="cartItemResultMap" type="com.itwill.shop.cart.CartItem">
+		<result column="CART_NO" property="cart_no"/> <!-- COLUMN명 대소문자 관계없음 -->
+		<result column="CART_QTY" property="cart_qty"/>
+		<!-- user랑 product는 객체로 매핑해야하잖아 association으로 매핑하면됨-->
+		<association property="user" javaType="com.itwill.shop.user.User" autoMapping="true"> 
+			<!-- association은 column안씀 -->
+			<!-- autoMapping으로 자동매핑을 켜지만 pk는 넣어주자~ -->
+			<result column="USERID" property="userId"/>
+		</association>
+		<association property="product" javaType="com.itwill.shop.product.Product" autoMapping="true">
+			<!-- column의 이름은 sql에서 뽑힌 이름이어야 함. alias를 줬으면 alias 이름으로 바꿔야함 -->
+			<result column="P_NO" property="p_no"/>
+		</association>
+	</resultMap>
+
+	<select id="getCartList" parameterType="java.lang.String" resultMap="cartItemResultMap">
+		select * 
+		from cart c 
+		join userinfo u 
+		on c.userid=u.userid 
+		join product p 
+		on p.p_no=c.p_no
+		where u.userid=#{userId}
+	</select>
+</mapper>

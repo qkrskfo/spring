@@ -1,6 +1,7 @@
 package com.itwill.shop.cart;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,7 +31,7 @@ public class CartServiceImpl implements CartService {
 	 * 카트보기
 	 */
 	@Override
-	public ArrayList<CartItem> getCartList(String sUserId) throws Exception{
+	public List<CartItem> getCartList(String sUserId) throws Exception{
 		return cartDao.getCartList(sUserId);
 	}
 	/*

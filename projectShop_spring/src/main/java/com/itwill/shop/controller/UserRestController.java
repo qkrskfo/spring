@@ -12,17 +12,16 @@ import com.itwill.shop.user.UserService;
 /*
 <<요청command>>
 /user_id_duplicate_check
-
  */
 @RestController
 public class UserRestController {
 	@Autowired
 	private UserService userService;
 	
-	@RequestMapping(value = "/user_id_duplicate_check_rest", produces="text/plain;charset=UTF-8")
+	@RequestMapping(value = "/user_id_duplicate_check_rest",produces = "text/plain;charset=UTF-8")
 	public String user_id_duplicate_check(@RequestParam String userId) throws Exception{
 		boolean isDuplicate= userService.isDuplcateUserId(userId);
-		System.out.println(isDuplicate+"-->"+userId);
+		System.out.println(!isDuplicate+"-->"+userId);
 		return !isDuplicate+"";
 	}
 	

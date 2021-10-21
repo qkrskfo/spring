@@ -21,7 +21,6 @@ import com.itwill.shop.user.User;
 import com.itwill.shop.user.UserService;
 /*
 <<요청command>>
-/user_main
 /user_write_form
 /user_write_action
 /user_login_form
@@ -31,7 +30,6 @@ import com.itwill.shop.user.UserService;
 /user_modify_form_myinfo
 /user_modify_action_myinfo
 /user_remove_action_myinfo
-/user_error
  */
 @Controller
 public class UserController {

@@ -21,12 +21,18 @@ label.error {
 	border: 1px solid green;
 }
 </style>
+
+
+
+<!-- jquery, jquery-validation -->
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script type="text/javascript"
 	src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
+	
 <script type="text/javascript">
 	$(function() {
+		/*#### 회원가입, 메인버튼 이벤트 처리 ####*/
 		$('#member_create_btn').click(function(e) {
 			$('#f').trigger('submit');
 		});

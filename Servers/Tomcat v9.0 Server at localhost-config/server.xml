@@ -156,7 +156,7 @@
         
 
 
-      <Context docBase="guest_ajax_jquery_spring" path="/guest_ajax_jquery_spring" reloadable="true" source="org.eclipse.jst.jee.server:guest_ajax_jquery_spring"/><Context docBase="guest_ajax" path="/guest_ajax" reloadable="true" source="org.eclipse.jst.jee.server:guest_ajax"/><Context docBase="user_spring" path="/user_spring" reloadable="true" source="org.eclipse.jst.jee.server:user_spring"/><Context docBase="bootstrap" path="/bootstrap" reloadable="true" source="org.eclipse.jst.jee.server:bootstrap"/><Context docBase="projectShop_spring" path="/projectShop_spring" reloadable="true" source="org.eclipse.jst.jee.server:projectShop_spring"/></Host>
+      <Context docBase="projectShop_spring" path="/projectShop_spring" reloadable="true" source="org.eclipse.jst.jee.server:projectShop_spring"/></Host>
     </Engine>
   </Service>
 </Server>

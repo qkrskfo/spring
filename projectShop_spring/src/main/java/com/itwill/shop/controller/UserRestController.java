@@ -18,6 +18,7 @@ import com.itwill.shop.user.UserService;
 public class UserRestController {
 	@Autowired
 	private UserService userService;
+	
 	@RequestMapping(value = "/user_id_duplicate_check_rest")
 	public String user_id_duplicate_check(@RequestParam String userId) throws Exception{
 		boolean isDuplicate= userService.isDuplcateUserId(userId);

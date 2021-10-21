@@ -12,6 +12,9 @@ public class ProductDaoTestMain {
 				new ClassPathXmlApplicationContext("spring/application-config.xml");
 		ProductDao productDao=(ProductDao)applicationContext.getBean("productDao");
 		System.out.println(productDao);
+		
+		System.out.println("1. product List: "+productDao.getProductList());
+		System.out.println("2. product Detail: "+productDao.getProduct(1));
 	}
 
 }

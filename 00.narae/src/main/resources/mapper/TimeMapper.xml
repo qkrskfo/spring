@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.TimeMapper">
+	<resultMap type="com.itwill.littlecinema.domain.Time" id="time">
+		<id property="timeCode" column="time_Code" />
+		<result property="startTime" column="start_Time" />
+		<result property="endTime" column="end_Time" />
+		<result property="movieDate" column="movie_Date" />
+		<association property="movie" javaType="com.itwill.littlecinema.domain.Movie">
+			<result property="movieNo" column="movie_No" />
+			<result property="title" column="title" />
+			<result property="rating" column="rating"/>
+			<result property="posterImage" column="poster_Image" />
+		</association>
+		<association property="screen" javaType="com.itwill.littlecinema.domain.Screen">
+			<result property="screenNo" column="screen_No" />
+			<result property="screenName" column="screen_Name" />
+		</association>
+	</resultMap>
+
+	<select id="selectAllDate" resultType="date">
+		SELECT DISTINCT MOVIE_DATE 
+		FROM TIME 
+		ORDER BY MOVIE_DATE
+	</select>
+	
+	<select id="selectDateByNo" resultType="date" parameterType="int">
+		SELECT DISTINCT MOVIE_DATE 
+		FROM TIME 
+		WHERE MOVIE_NO = #{movieNo} 
+		ORDER BY MOVIE_DATE
+	</select>
+	
+	<select id="selectScreenTimeByDate" resultMap="time" parameterType="string">
+		SELECT TIME_CODE,
+		       START_TIME,
+		       END_TIME,
+		       MOVIE_DATE,
+		       M.MOVIE_NO,
+		       TITLE,
+		       RATING,
+		       POSTER_IMAGE,
+		       S.SCREEN_NO,
+		       SCREEN_NAME
+		FROM TIME T join MOVIE M on t.MOVIE_NO = M.MOVIE_NO
+		    join SCREEN S on T.SCREEN_NO = S.SCREEN_NO
+		WHERE MOVIE_DATE = #{movieDate}
+	</select>
+	
+	<select id="selectScreenTimeByNoDate" resultMap="time" parameterType="map">
+		SELECT TIME_CODE,
+		       START_TIME,
+		       END_TIME,
+		       MOVIE_DATE,
+		       M.MOVIE_NO,
+		       TITLE,
+		       RATING,
+		       POSTER_IMAGE,
+		       S.SCREEN_NO,
+		       SCREEN_NAME
+		FROM TIME T join MOVIE M on t.MOVIE_NO = M.MOVIE_NO
+		    join SCREEN S on T.SCREEN_NO = S.SCREEN_NO
+		WHERE MOVIE_DATE = #{movieDate} AND M.MOVIE_NO = #{movieNo}
+	</select>
+
+</mapper>

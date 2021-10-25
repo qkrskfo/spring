@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.MemberMapper">
+	<select id="selectById" parameterType="string" resultType="com.itwill.littlecinema.domain.Member">
+		SELECT * FROM MEMBER WHERE ID = #{id}
+	</select>
+	
+	<insert id="insertMember" parameterType="com.itwill.littlecinema.domain.Member">
+		INSERT INTO MEMBER
+		VALUES(#{id}, #{password}, #{name}, #{phone}, #{birth_date})
+	</insert>
+	
+	<update id="updateMember" parameterType="com.itwill.littlecinema.domain.Member">
+		UPDATE MEMBER
+		SET NAME = #{name},
+		    PASSWORD = #{password},
+		    PHONE = #{phone},
+		    BIRTH_DATE = #{birth_date}
+		WHERE ID = #{id}
+	</update>
+	
+	<delete id="deleteMember" parameterType="string">
+		DELETE FROM MEMBER WHERE ID = #{id}
+	</delete>
+	
+	<select id="existedMember" parameterType="string" resultType="int">
+		SELECT COUNT(*) CNT FROM MEMBER WHERE ID=#{id}
+	</select>
+</mapper>

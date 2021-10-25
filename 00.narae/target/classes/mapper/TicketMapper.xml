@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.TicketMapper">
+
+	<resultMap type="com.itwill.littlecinema.domain.Ticket" id="ticket">
+		<id property="ticketNo" column="ticket_no"/>
+		<result property="payCost" column="pay_cost"/>
+		<result property="orderDate" column="order_date"/>
+		<result property="ticketStatus" column="ticket_status"/>
+		<association property="member" javaType="com.itwill.littlecinema.domain.Member" autoMapping="true">
+			<id property="id" column="id"/>	
+		</association>
+		<association property="time" javaType="com.itwill.littlecinema.domain.Time" autoMapping="true">
+			<id property="timeCode" column="time_code"/>
+		</association>
+	</resultMap>
+
+	<select id="selectById" parameterType="string" resultMap="ticket">
+		SELECT * FROM TICKET WHERE ID = #{id}
+	</select>
+	
+	<insert id="insertTicket" parameterType="com.itwill.littlecinema.domain.Ticket">
+		<selectKey order="BEFORE" resultType="int" keyProperty="ticketNo" keyColumn="ticket_no">
+			SELECT TICKET_SEQ.nextval FROM DUAL
+		</selectKey>
+		INSERT INTO TICKET(TICKET_NO, ID, TIME_CODE, PAY_COST, ORDER_DATE, TICKET_STATUS)
+		VALUES(#{ticketNo}, #{member.id}, #{time.timeCode}, #{payCost}, #{orderDate}, #{ticketStatus})
+	</insert>
+	
+	<update id="updateTicketStatus" parameterType="int">
+		UPDATE TICKET
+		SET TICKET_STATUS = 0
+		WHERE TICKET_NO = #{ticketNo}
+	</update>
+</mapper>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.ReviewMapper">
+
+	<insert id="insert" parameterType="com.itwill.littlecinema.domain.Review">
+		<selectKey keyProperty="reviewNo" resultType="int" order="BEFORE">
+			select REVIEW_SEQ.NEXTVAL from dual
+		</selectKey>
+		INSERT INTO REVIEW(REVIEW_NO, ID, MOVIE_NO, SCORE, REVIEW_COMMENT) 
+		VALUES(#{reviewNo}, #{member.id}, #{movie.movieNo}, #{score}, #{reviewComment})
+	</insert>
+	
+	<update id="update" parameterType="com.itwill.littlecinema.domain.Review">
+		UPDATE REVIEW 
+		SET SCORE = #{score}, REVIEW_COMMENT = #{reviewComment}
+		WHERE REVIEW_NO = #{reviewNo}
+	</update>
+	<delete id="delete" parameterType="int">
+		DELETE FROM REVIEW 
+		WHERE REVIEW_NO = #{reviewNo}
+	</delete>
+	
+	<select id="selectByNo" parameterType="int" resultType="com.itwill.littlecinema.domain.Review">
+		SELECT REVIEW_NO as reviewNo,
+		       ID,
+		       MOVIE_NO as movieNo,
+		       SCORE,
+		       REVIEW_COMMENT as reviewComment
+		FROM REVIEW
+		WHERE REVIEW_NO = #{reviewNo}
+	</select>
+	
+	<select id="selectAvgScore" parameterType="int" resultType="double">
+		SELECT AVG(SCORE) FROM REVIEW WHERE MOVIE_NO = #{movieNo}
+	</select>
+</mapper>

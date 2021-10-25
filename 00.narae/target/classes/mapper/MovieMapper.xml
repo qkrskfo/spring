@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.MovieMapper">
+<resultMap type="com.itwill.littlecinema.domain.Movie" id="movieWithReview">
+	<id property="movieNo" column="movie_no" />
+	<result property="title" column="title" />
+	<result property="openDate" column="open_date" />
+	<result property="director" column="director" />
+	<result property="actors" column="actors" />
+	<result property="genre" column="genre" />
+	<result property="runningtime" column="runningtime" />
+	<result property="summary" column="summary" />
+	<result property="rating" column="rating" />
+	<result property="posterImage" column="poster_image" />
+	<collection property="reviewList" ofType="com.itwill.littlecinema.domain.Review">
+		<id property="reviewNo" column="review_No" />
+		<result property="score" column="score" />
+		<result property="reviewComment" column="review_Comment" />
+		<association property="member" javaType="com.itwill.littlecinema.domain.Member">
+			<id property="id" column="id" />
+			<result property="password" column="password" />
+			<result property="name" column="name" />
+			<result property="phone" column="phone" />
+			<result property="birth_date" column="birth_date" />
+		</association>
+	</collection>
+</resultMap>
+ 	
+	<select id="selectDetailByNo" parameterType="int" resultMap="movieWithReview">
+		SELECT *
+		FROM MOVIE M join REVIEW R on M.MOVIE_NO = R.MOVIE_NO
+		JOIN MEMBER M2 on R.ID = M2.ID
+		WHERE M.MOVIE_NO = #{movieNo}
+	</select>
+	
+	<select id="selectPlayingList" resultMap="movieWithReview">
+		SELECT * 
+		FROM MOVIE 
+		WHERE MOVIE_NO IN (SELECT DISTINCT MOVIE_NO FROM TIME WHERE TIME.MOVIE_DATE >= SYSDATE)
+	</select>
+
+</mapper>

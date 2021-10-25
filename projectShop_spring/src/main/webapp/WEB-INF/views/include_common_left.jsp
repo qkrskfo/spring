@@ -24,8 +24,10 @@
 			<li><a href="user_logout_action">로그아웃</a></li>
 			<li><a href=""></a></li>
 			<li><a href="cart_view">장바구니[전체주문](3)</a></li>
-			<li><a href="cart_view_select">장바구니[선택주문](3)</a></li>
-			<li><a href="cart_view_select_update_qty">장바구니[수량변경](3)</a></li>
+			
+			<li><a href="#">장바구니[선택주문](3)</a></li>
+			<li><a href="#">장바구니[수량변경](3)</a></li>
+			
 			<li><a href="cart_view_select_update_qyt_image">장바구니[전체선택](3)</a></li>
 			<li><a href=""></a></li>
 			<li><a href="order_list">주문목록</a></li>

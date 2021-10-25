@@ -1,19 +1,21 @@
 package com.itwill.shop.cart;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.transaction.annotation.Transactional;
+@Transactional
 public interface CartService {
 
 	/*
 	 * 카트추가 or 수정
 	 */
 	int addCart(String sUserId, int p_no, int cart_qty) throws Exception;
-
+	int addCart(CartItem cartItem) throws Exception;
 	/*
 	 * 카트수량변경수정
 	 */
 	int updateCart(int cart_no, int cart_qty) throws Exception;
+	int updateCart(CartItem cartItem) throws Exception;
 
 	/*
 	 * 카트보기

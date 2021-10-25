@@ -3,15 +3,27 @@ package com.itwill.shop.cart;
 import com.itwill.shop.product.Product;
 import com.itwill.shop.user.User;
 
+/*
+이름       널?       유형            
+-------- -------- ------------- 
+CART_NO  NOT NULL NUMBER(10)    
+USERID            VARCHAR2(100) 
+P_NO              NUMBER(10)    
+CART_QTY          NUMBER(10)   
+ */
+
 public class CartItem {
 	private int cart_no;
+	
 	/******User************/
-	private User user;
+	private User user;//FK
+	
 	/****Product**********/
-	private Product product;
+	private Product product;//FK
+	
 	private int cart_qty;
 	public CartItem() {
-		// TODO Auto-generated constructor stub
+		
 	}
 	public CartItem(int cart_no, User user, Product product, int cart_qty) {
 		super();

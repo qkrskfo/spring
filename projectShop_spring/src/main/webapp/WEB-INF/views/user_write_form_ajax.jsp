@@ -11,10 +11,12 @@
 input.error, textarea.error {
 	border: 1px solid red;
 }
+
 label.error {
 	margin-left: 10px;
 	color: orange;
 }
+
 .valid {
 	border: 1px solid green;
 }
@@ -86,6 +88,7 @@ label.error {
 					required : "이메일을 입력해 주세요",
 					email : '이메일 형식에 맞게 입력해주세요'
 				}
+
 			},
 			errorClass : 'error',
 			validClass : 'valid',
@@ -97,6 +100,7 @@ label.error {
 			}
 		});
 	});
+
 </script>
 </head>
 <body bgcolor=#FFFFFF text=#000000 leftmargin=0 topmargin=0

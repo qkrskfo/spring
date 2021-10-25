@@ -1,6 +1,5 @@
 package com.itwill.shop.cart;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public interface CartDao {
@@ -9,27 +8,35 @@ public interface CartDao {
 	 * cart제품 존재여부
 	 */
 	boolean isProductExist(String sUserId, int p_no) throws Exception;
+	boolean isProductExist(CartItem cartItem) throws Exception;
 
 	/*
 	 * cart insert
 	 */
-	int add(String sUserId, int p_no, int cart_qty) throws Exception;
+	int addInsert(String sUserId,int p_no,int cart_qty) throws Exception;
+	int addInsert(CartItem cartItem) throws Exception;
+	
 
 	/*
 	 * cart add update
 	 */
-	int update(String sUserId, int p_no, int cart_qty) throws Exception;
+	int addUpdate(String sUserId,int p_no,int cart_qty) throws Exception;
+	int addUpdate(CartItem cartItem) throws Exception;
 
 	/*
 	 * cart update
 	 */
 	int update(int cart_no, int cart_qty) throws Exception;
+	int update(CartItem cartItem) throws Exception;
 
 	/*
-	 * cart list
+	 * cart item list
 	 */
 	List<CartItem> getCartList(String sUserId) throws Exception;
-
+	/*
+	 * cart item 
+	 */
+	CartItem getCartItemByCartNo(int cart_no) throws Exception;
 	/*
 	 * cart pk delete
 	 */
@@ -40,6 +47,6 @@ public interface CartDao {
 	 */
 	int deleteCart(String sUserId) throws Exception;
 
-	CartItem getCartItemByCartNo(int cart_no) throws Exception;
+	
 
 }

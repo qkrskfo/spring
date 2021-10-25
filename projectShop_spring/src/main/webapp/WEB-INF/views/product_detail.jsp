@@ -29,7 +29,7 @@
 	function add_cart_popup_window(){
 		if (!isLogin) {
 			alert('로그인 하세요');
-			location.href = 'user_login_form.jsp';
+			location.href = 'user_login_form';
 		} else {
 			var cartWin = window.open('about:blank','cartForm','width=320,height=150,top=150,left=150,location=no, directories=no, status=no, menubar=no, scrollbars=no,copyhistory=no');
 			document.add_cart_form.action = 'cart_add_action_popup_window.jsp';
@@ -38,18 +38,19 @@
 			document.add_cart_form.submit();
 		}
 	}
+
 	function order_create_form() {
 		if (!isLogin) {
 			alert('로그인 하세요');
-			location.href = 'user_login_form.jsp';
+			location.href = 'user_login_form';
 		} else {
 			document.product_detail_form.method = 'POST';
-			document.product_detail_form.action = 'order_create_form.jsp';
+			document.product_detail_form.action = 'order_create_form';
 			document.product_detail_form.submit();
 		}
 	}
 	function productList() {
-		location.href = 'product_list.jsp';
+		location.href = 'product_list';
 	}
 </script>
 </head>
@@ -108,7 +109,7 @@
 								</tr>
 								<tr width=100%>
 									<td width=30% height=200 align=center class=t1>
-										<form name="add_cart_form" method="post" action="cart_add_action.jsp">
+										<form name="add_cart_form" method="post" action="cart_add_action">
 											수량 :
 											<!-- 
 											 <input type=text name="cart_qty" value=1 size=4 class=TXTFLD>  

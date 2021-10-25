@@ -2,6 +2,8 @@ package com.itwill.shop.user;
 
 import java.util.List;
 
+import org.springframework.transaction.annotation.Transactional;
+@Transactional
 public interface UserService {
 	/*
 	 * 회원가입

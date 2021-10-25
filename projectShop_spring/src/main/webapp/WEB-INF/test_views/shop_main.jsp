@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>shop_main</h1><hr>
+<h1>shop_main</h1><hr>
 </body>
 </html>

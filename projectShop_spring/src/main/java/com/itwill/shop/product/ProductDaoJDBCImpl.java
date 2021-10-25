@@ -13,10 +13,6 @@ import org.springframework.stereotype.Repository;
 public class ProductDaoJDBCImpl implements ProductDao {
 	//@Autowired
 	private DataSource dataSource;
-
-	
-	
-
 	@Override
 	public ArrayList<Product> getProductList() throws Exception {
 		Connection con = null;

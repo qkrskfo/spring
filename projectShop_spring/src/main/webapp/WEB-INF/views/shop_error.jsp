@@ -12,9 +12,9 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
-<meta name="author" content="CJ O Shopping" />
+<meta name="author" content="ITWILL Shopping" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<title>에러페이지 :: CJO</title>
+<title>에러페이지 :: ITWILL</title>
 <link rel="stylesheet" type="text/css"
 	href="//image.cjonstyle.net/public/confirm/contents/common/error/css/bi_error.css">
 <style type="text/css">

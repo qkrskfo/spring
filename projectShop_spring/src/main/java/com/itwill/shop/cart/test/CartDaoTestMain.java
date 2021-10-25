@@ -4,7 +4,10 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.itwill.shop.cart.CartDao;
-
+import com.itwill.shop.product.ProductDao;
+import com.itwill.shop.user.User;
+import com.itwill.shop.user.UserDao;
+import com.itwill.shop.user.UserDaoMyBatisImpl;
 
 public class CartDaoTestMain {
 
@@ -15,5 +18,4 @@ public class CartDaoTestMain {
 		System.out.println(cartDao);
 		System.out.println(cartDao.getCartList("guard1"));
 	}
-
 }

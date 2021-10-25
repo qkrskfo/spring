@@ -8,6 +8,8 @@
 <select id="getProduct" parameterType="java.lang.Integer" resultType="com.itwill.shop.product.Product">
 	select * from product where p_no=#{p_no}
 </select>
+
+
 <update id="updateReadcount" parameterType="java.lang.Integer">
 	update product set p_click_count = p_click_count+1 where p_no=#{p_no}
 </update>

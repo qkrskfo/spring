@@ -46,7 +46,7 @@ public interface OrderDao {
 	int deleteByOrderNo(int o_no) throws Exception;
 
 	/*
-	 * 주문생성
+	 * 주문생성(JDBC)
 	 */
 	int create(Order order) throws Exception;
 

@@ -76,6 +76,7 @@ public class OrderDaoJDBCImpl implements OrderDao {
 		return 0;
 	}
 	*/
+	
 	/*
 	 * 주문1건삭제(ON DELETE CASCADE)
 	 */
@@ -87,13 +88,13 @@ public class OrderDaoJDBCImpl implements OrderDao {
 		int rowCount=0;
 		try {
 			con=dataSource.getConnection();
-			con.setAutoCommit(false);
+			//con.setAutoCommit(false);
 			pstmt=con.prepareStatement(deleteSql);
 			pstmt.setInt(1, o_no);
 			rowCount= pstmt.executeUpdate();
-			con.commit();
+			//con.commit();
 		}catch (Exception e) {
-			con.rollback();
+			//con.rollback();
 			e.printStackTrace();
 			throw e;
 		}finally {

@@ -6,7 +6,7 @@
 		<result column="O_DESC" property="o_desc"/>
 		<result column="O_DATE" property="o_date"/>
 		<result column="O_PRICE" property="o_price"/>
-		<result column="userId" property="userId"/>
+		<result column="USERID" property="userId"/>
 		<collection property="orderItemList" ofType="com.itwill.shop.order.OrderItem">
 			<result column="OI_NO" property="oi_no"/>
 			<result column="OI_QTY" property="oi_qty"/>
@@ -36,8 +36,9 @@
 	
 	<insert id="createOrderItem" parameterType="com.itwill.shop.order.OrderItem">
 		insert into order_item(oi_no,oi_qty,o_no,p_no) 
-		values(order_item_oi_no_SEQ.nextval,#{oi_qty},orders_o_no_SEQ.currval,#{p_no})
+		values(order_item_oi_no_SEQ.nextval,#{oi_qty},orders_o_no_SEQ.currval,#{product.p_no})
 	</insert>
+	
 	<select id="list" parameterType="java.lang.String" resultType="com.itwill.shop.order.Order">
 		select * from orders where userid=#{userId}
 	</select>

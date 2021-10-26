@@ -101,22 +101,10 @@ public class OrderServiceImpl implements OrderService {
 		String o_desc = orderItemList.get(0).getProduct().getP_name()+"외 "+(oi_tot_count-1)+" 개";
 		Order newOrder=new Order(0,o_desc, null, o_tot_price, sUserId,orderItemList);
 		orderDao.create(newOrder);
+		
 		for(int i =0;i<cart_item_no_array.length;i++) {
 			cartDao.deleteCartByNo(cart_item_no_array[i]);
 		}
 		return 0;
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

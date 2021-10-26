@@ -16,9 +16,9 @@ import org.springframework.stereotype.Repository;
 import com.itwill.shop.cart.CartItem;
 import com.itwill.shop.product.Product;
 import com.itwill.shop.user.User;
-@Repository
+//@Repository
 public class OrderDaoJDBCImpl implements OrderDao {
-	@Autowired
+	//@Autowired
 	private DataSource dataSource;
 	
 	/*
@@ -144,6 +144,7 @@ public class OrderDaoJDBCImpl implements OrderDao {
 	}
 	
 	
+	
 	/*
 	 * 주문전체(특정사용자)
 	 */
@@ -219,6 +220,8 @@ public class OrderDaoJDBCImpl implements OrderDao {
 		
 		return order;
 	}
+	
+	
 	
 	
 }

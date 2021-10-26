@@ -8,6 +8,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>	
+<%@taglib prefix="s"  uri="http://www.springframework.org/tags"%>	
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -26,7 +27,7 @@ form > table tr td{
 <script type="text/javascript">
 	function order_create_form_submit() {
 		document.order_create_form.method = 'POST';
-		document.order_create_form.action = 'order_create_action.jsp';
+		document.order_create_form.action = 'order_create_action';
 		document.order_create_form.submit();
 	}
 </script>
@@ -85,8 +86,8 @@ form > table tr td{
 											고</td>
 									</tr>
 									<tr>
-										<td width=290 height=26 align=center bgcolor="ffffff" class=t1>${user.userId()}</td>
-										<td width=112 height=26 align=center bgcolor="ffffff" class=t1>${user.name()}</td>
+										<td width=290 height=26 align=center bgcolor="ffffff" class=t1>${user.userId}</td>
+										<td width=112 height=26 align=center bgcolor="ffffff" class=t1>${user.name}</td>
 										<td width=166 height=26 align=center bgcolor="ffffff" class=t1>${user.email}</td>
 										<td width=50 height=26 align=center bgcolor="ffffff" class=t1></td>
 									</tr>
@@ -115,11 +116,11 @@ form > table tr td{
 									<tr>
 										<td width=290 height=26 align=center bgcolor="ffffff" class=t1>
 											<a
-											href='product_detail?p_no=${cartItem.product.p_no()}'>${cartItem.product.p_name}</a>
+											href='product_detail?p_no=${cartItem.product.p_no}'>${cartItem.product.p_name}</a>
 										</td>
 										<td width=112 height=26 align=center bgcolor="ffffff" class=t1>${cartItem.cart_qty}</td>
 										<td width=166 height=26 align=center bgcolor="ffffff" class=t1>
-											<%--=new DecimalFormat("#,###").format(cartItem.cart_qty * cartItem.product().p_price)--%>
+											<s:eval expression="new java.text.DecimalFormat('#,###').format(cartItem.cart_qty * cartItem.product.p_price)"/>
 										</td>
 										<td width=50 height=26 align=center bgcolor="ffffff" class=t1></td>
 									</tr>
@@ -128,7 +129,7 @@ form > table tr td{
 									<tr>
 										<td width=640 colspan=4 height=26 bgcolor="ffffff" class=t1>
 											<p align=right style="padding-top: 10px">
-												<font color=#FF0000>총 주문 금액 : <%--=new DecimalFormat("#,###").format(tot_price)--%>
+												<font color=#FF0000>총 주문 금액 :<s:eval expression="new java.text.DecimalFormat('#,###').format(tot_price)"/>
 													원
 												</font>
 											</p>

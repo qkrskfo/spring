@@ -15,7 +15,6 @@ public class ProductDaoMyBatisImpl implements ProductDao {
 	@Override
 	public List<Product> getProductList() throws Exception {
 		List<Product> productList = sqlSession.selectList(NAMESPACE+"getProductList");
-		//sqlSession.close(); 닫는거 직접하면 안됨. service에서 return되는 순간 close를 자동으로 해줌 
 		return productList;
 	}
 

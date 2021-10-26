@@ -1,11 +1,8 @@
 package com.itwill.shop.order;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.itwill.shop.cart.CartDao;
 import com.itwill.shop.cart.CartItem;
 import com.itwill.shop.product.Product;
@@ -18,8 +15,6 @@ public class OrderServiceImpl implements OrderService {
 	private ProductDao productDao;
 	@Autowired
 	private CartDao cartDao;
-	
-	
 	/*
 	 * 주문1개삭제
 	 */
@@ -92,13 +87,12 @@ public class OrderServiceImpl implements OrderService {
 	 * cart에서 선택주문
 	 */
 	@Override
-	public int create(String sUserId,String[] cart_item_noStr_array) throws Exception{
-		
+	public int create(String sUserId,int[] cart_item_no_array) throws Exception{
 		ArrayList<OrderItem> orderItemList=new ArrayList<OrderItem>();
 		int o_tot_price=0;
 		int oi_tot_count=0;
-		for(int i =0;i<cart_item_noStr_array.length;i++) {
-			CartItem  cartItem = cartDao.getCartItemByCartNo(Integer.parseInt(cart_item_noStr_array[i]));
+		for(int i =0;i<cart_item_no_array.length;i++) {
+			CartItem  cartItem = cartDao.getCartItemByCartNo(cart_item_no_array[i]);
 			OrderItem orderItem=new OrderItem(0, cartItem.getCart_qty(),0,cartItem.getProduct());
 			orderItemList.add(orderItem);
 			o_tot_price+=orderItem.getOi_qty()*orderItem.getProduct().getP_price();
@@ -107,8 +101,8 @@ public class OrderServiceImpl implements OrderService {
 		String o_desc = orderItemList.get(0).getProduct().getP_name()+"외 "+(oi_tot_count-1)+" 개";
 		Order newOrder=new Order(0,o_desc, null, o_tot_price, sUserId,orderItemList);
 		orderDao.create(newOrder);
-		for(int i =0;i<cart_item_noStr_array.length;i++) {
-			cartDao.deleteCartByNo(Integer.parseInt(cart_item_noStr_array[i]));
+		for(int i =0;i<cart_item_no_array.length;i++) {
+			cartDao.deleteCartByNo(cart_item_no_array[i]);
 		}
 		return 0;
 	}

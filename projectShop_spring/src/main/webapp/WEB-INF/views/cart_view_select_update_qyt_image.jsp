@@ -186,6 +186,7 @@
 									</tr>
 									<!-- cart item start -->
 									<c:set var="tot_price" value="0" />
+									<c:set var="tot_price"  value="${tot_price+0}"/>
 									<c:forEach items="${cartItemList}" var="cartItem">
 										<c:set var="tot_price"
 											value="${tot_price + cartItem.product.p_price * cartItem.cart_qty}" />

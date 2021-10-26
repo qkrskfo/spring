@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,11 +17,14 @@ import com.itwill.shop.cart.CartService;
 import com.itwill.shop.controller.interceptor.LoginCheck;
 import com.itwill.shop.product.Product;
 import com.itwill.shop.user.User;
+import com.itwill.shop.user.UserService;
 
 @Controller
 public class CartController {
 	@Autowired
 	private CartService cartService;
+	@Autowired 
+	private UserService userService;
 	@LoginCheck
 	@RequestMapping(value = "cart_view")
 	public String cart_view(HttpSession session,Model model)throws Exception {
@@ -43,6 +47,18 @@ public class CartController {
 		String sUserId=(String)session.getAttribute("sUserId");
 		cartService.addCart(sUserId,p_no,cart_qty);
 		return "redirect:cart_view";
+	}
+	@LoginCheck
+	@GetMapping(value = "cart_add_action_popup_window")
+	public String cart_add_action_popup_window_get() {
+		return "redierct:product_list";
+	}
+	@LoginCheck
+	@PostMapping(value = "cart_add_action_popup_window")
+	public String cart_add_action_popup_window_post(@RequestParam int p_no,@RequestParam int cart_qty,HttpSession session)throws Exception {
+		String sUserId=(String)session.getAttribute("sUserId");
+		cartService.addCart(sUserId,p_no,cart_qty);
+		return "cart_add_action_popup_window";
 	}
 	@LoginCheck
 	@PostMapping(value = "cart_update_item_action")

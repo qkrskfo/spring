@@ -49,7 +49,7 @@ public interface OrderDao {
 	 * 주문생성(JDBC)
 	 */
 	int create(Order order) throws Exception;
-
+	
 	/*
 	 * 주문전체(특정사용자)
 	 */

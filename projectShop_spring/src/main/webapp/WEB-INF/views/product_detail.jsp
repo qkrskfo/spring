@@ -32,7 +32,7 @@
 			location.href = 'user_login_form';
 		} else {
 			var cartWin = window.open('about:blank','cartForm','width=320,height=150,top=150,left=150,location=no, directories=no, status=no, menubar=no, scrollbars=no,copyhistory=no');
-			document.add_cart_form.action = 'cart_add_action_popup_window.jsp';
+			document.add_cart_form.action = 'cart_add_action_popup_window';
 			document.add_cart_form.target = 'cartForm';
 			document.add_cart_form.method = 'POST';
 			document.add_cart_form.submit();
@@ -153,8 +153,9 @@
 
 							<table border="0" cellpadding="0" cellspacing="1">
 								<tr>
-									<td align=center><input type="button" value="주문하기[주문폼]" onClick="order_create_form();"> &nbsp; 
-									<input type="button" value="상품리스트" onClick="productList();"></td>
+									<td align=center><input type="button" value="주문하기[주문폼]"
+										onClick="order_create_form();"> &nbsp; <input
+										type="button" value="상품리스트" onClick="productList();"></td>
 								</tr>
 							</table></td>
 					</tr>

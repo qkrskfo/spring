@@ -2,6 +2,8 @@ package com.itwill.shop.order;
 
 import java.util.List;
 
+import org.springframework.transaction.annotation.Transactional;
+@Transactional
 public interface OrderService {
 
 	/*
@@ -37,6 +39,6 @@ public interface OrderService {
 	/*
 	 * cart에서 선택주문
 	 */
-	int create(String sUserId, String[] cart_item_noStr_array) throws Exception;
+	int create(String sUserId, int[] cart_item_noStr_array) throws Exception;
 
 }

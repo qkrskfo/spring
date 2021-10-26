@@ -90,12 +90,13 @@
 									
 									<!-- cart item start -->
 									<c:set var="tot_price"  value="0"/>
+									<c:set var="tot_price"  value="${tot_price+0}"/>
 									<c:forEach items="${cartItemList}" var="cartItem" >
 										<c:set var="tot_price"  value="${tot_price + cartItem.product.p_price * cartItem.cart_qty}"/>
 										<tr>
 											<td width=60 height=26 align=center bgcolor="ffffff" class=t1></td>
 											<td width=40 height=26 align=center bgcolor="ffffff" class=t1><img src='image/${cartItem.product.p_image}' width="34" height="28"/></td>
-											<td width=210 height=26 align=center bgcolor="ffffff" class=t1><a href='product_detail.jsp?p_no=${cartItem.product.p_no}'>${cartItem.product.p_name}</a></td>
+											<td width=210 height=26 align=center bgcolor="ffffff" class=t1><a href='product_detail?p_no=${cartItem.product.p_no}'>${cartItem.product.p_name}</a></td>
 											<td width=112 height=26 align=center bgcolor="ffffff" class=t1>${cartItem.cart_qty}</td>
 											<td width=146 height=26 align=center bgcolor="ffffff" class=t1>
 												<s:eval expression="new java.text.DecimalFormat('#,##0').format(cartItem.product.p_price*cartItem.cart_qty)"/>
@@ -114,7 +115,8 @@
 										<td width=640 colspan=6 height=26 class=t1 bgcolor="ffffff">
 											<p align=right>
 												<br/>
-												<span id="tot_order_price" style="color: red">총주문금액 : <s:eval expression="new java.text.DecimalFormat('#,##0').format(tot_price)"/>원</span>
+												<span id="tot_order_price" style="color: red">총주문금액 : 
+												<s:eval expression="new java.text.DecimalFormat('#,##0').format(tot_price)"/>원</span>
 											</p>
 										</td>
 									</tr>
@@ -128,7 +130,7 @@
 								<tr>
 									<td align=center>&nbsp;&nbsp;
 									
-									<a href="product_list.jsp" class=m1>계속 구경하기</a>&nbsp;&nbsp;
+									<a href="product_list" class=m1>계속 구경하기</a>&nbsp;&nbsp;
 									<c:if test="${cartItemList.size()>=1}">
 										<a href="javascript:cart_view_form_order_submit();" class=m1>총 <span style="font-weight: bold;" id="cart_item_select_count">${cartItemList.size()}</span>개 주문하기[주문폼]</a>
 										<a href="javascript:cart_delete();" class=m1>장바구니 비우기</a>&nbsp;&nbsp;

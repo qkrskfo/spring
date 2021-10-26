@@ -28,8 +28,8 @@ public class UserDaoMyBatisImpl implements UserDao{
 
 	@Override
 	public int remove(String userId) throws Exception {
-		// TODO Auto-generated method stub
 		return sqlSession.delete(NAMESPACE+"remove",userId);
+		
 	}
 
 	@Override

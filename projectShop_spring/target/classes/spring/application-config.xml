@@ -30,9 +30,9 @@
 		<property name="mapperLocations">
 			<list>
 				<value>classpath:/com/itwill/shop/user/mapper/UserMapper.xml</value>
-				<value>classpath:/com/itwill/shop/product/mapper/ProductMapper.xml
-				</value>
+				<value>classpath:/com/itwill/shop/product/mapper/ProductMapper.xml</value>
 				<value>classpath:/com/itwill/shop/cart/mapper/CartMapper.xml</value>
+				<value>classpath:/com/itwill/shop/order/mapper/OrderMapper.xml</value>
 			</list>
 		</property>
 		<!-- 

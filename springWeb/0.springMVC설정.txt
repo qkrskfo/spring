@@ -1,48 +1,41 @@
-	
-	A.spring-webmvc-4.3.25.RELEASE.jar라이브러리다운로드후 
-	  context/WEB-INF/lib 폴더에위치시킨다.(spring-webmvc-4.3.25.RELEASE.jar)
-	  
-	B.mvc-config.xml 파일생성(요청url -->Controller)
-	
-	C.web.xml에 모든클라이언트요청(*.do)을 실행하도록 DispatcherServlet 설정
+A.spring-webmvc-4.3.25.RELEASE.jar라이브러리다운로드후 
+  context/WEB-INF/lib 폴더에위치시킨다.(spring-webmvc-4.3.25.RELEASE.jar)
+  
+B.mvc-config.xml 파일생성(요청url-->Controller)
+
+C.web.xml에모든클라이언트요청(*.do)을 실행하도록  DispatcherServlet 설정
+D.contoller설정파일위치파라메타등록
 		<servlet>
 			<servlet-name>dispatcher</servlet-name>
-			<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+			<servlet-class>org.springframework.web.servlet.DispatcherServlet
+			</servlet-class>
 			<init-param>
 				<param-name>contextConfigLocation</param-name>
 				<param-value>classpath:spring/mvc-config.xml</param-value>
 			</init-param>
 			<load-on-startup>1</load-on-startup>
 		</servlet>
-			
+	
 		<servlet-mapping>
 			<servlet-name>dispatcher</servlet-name>
 			<url-pattern>*.do</url-pattern>
 		</servlet-mapping>
-	
-	D.contoller설정파일위치파라메타등록
-	
-	E.인코딩필터클래스설정  web.xml설정	  
-	<filter>
-	    	<filter-name>encodingFilter</filter-name>
-		    <filter-class>
-		   			org.springframework.web.filter.CharacterEncodingFilter
-		  	</filter-class>
-		    <init-param>
-		      <param-name>encoding</param-name>
-		      <param-value>UTF-8</param-value>
-		    </init-param>
-	   	</filter>
-	   	<filter-mapping>
-	    	<filter-name>encodingFilter</filter-name>
-	    	<url-pattern>/*</url-pattern>
+
+E.web.xml 에인코딩필터클래스설정 
+		<filter>
+			<filter-name>encodingFilter</filter-name>
+			<filter-class>
+				org.springframework.web.filter.CharacterEncodingFilter
+			</filter-class>
+			<init-param>
+				<param-name>encoding</param-name>
+				<param-value>UTF-8</param-value>
+			</init-param>
+		</filter>
+		<filter-mapping>
+			<filter-name>encodingFilter</filter-name>
+			<url-pattern>/*</url-pattern>
 		</filter-mapping>
-			
-	
-	F. Controller작성(Controller interface implement)
-	
-	G. properties파일에설정(mapping)
-	
-	
-	
-	
+ 
+F.Controller작성(Controller interface implement)
+G.mvc-config.xml 파일에설정(mapping)

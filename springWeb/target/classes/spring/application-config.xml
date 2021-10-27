@@ -2,14 +2,14 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-
-	<!-- application 이 사용하는 bean -->
-	<bean id="helloDao" class="com.itwill.hello.HelloDao" />
+	<!-- application bean -->
+	<bean id="helloDao" class="com.itwill.hello.HelloDao"/>
 	<bean id="helloService" class="com.itwill.hello.HelloService">
-		<property name="helloDao" ref="helloDao" />
+		<property name="helloDao" ref="helloDao"/>
 	</bean>
-
-	 <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+	<bean 	id="messageSource" 
+			class="org.springframework.context.support.ResourceBundleMessageSource">
     	<property name="basenames" value="messages/guest,messages/messages,messages/user"/>
     </bean>
+	
 </beans>

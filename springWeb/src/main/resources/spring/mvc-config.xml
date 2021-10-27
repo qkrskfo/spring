@@ -6,6 +6,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	
 		
 	<mvc:annotation-driven/>
 	<context:component-scan 
@@ -26,36 +27,32 @@
 		</property>
 	</bean>
 	
-	<!-- View 객체 등록-->
-	<bean id="xmlView" class="com.itwill.controller.annotation.XMLView" />
+	<!-- View 객체등록 -->
+	<bean id="xmlView" class="com.itwill.controller.annotation.XMLView"/>
+	
 	
 	<!-- 
 	Controller가 반환하는 view name(String)
-	1. redirect:response_redirect_view_name.jsp
-	2. forward:/WEB-INF/views/response_view_name.jsp
-	3. xmlView
+	1.redirect:response_redirect_view_name.jsp
+	2.forward:/WEB-INF/views/response_view_name.jsp
+	3.xmlView
+	
 	 -->
+	<!-- ViewResolver 객체등록 -->
 	
-	
-	<!-- ViewResolver 객체 등록 -->
-	<!-- 1. BeanNameViewResolver -->
+	<!-- 1 . BeanNameViewResolver  -->
 	<bean id="beanNameViewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver">
-		<property name="order" value="0" />
+		<property name="order" value="0"/>
 	</bean>
 	
+	<!-- 2 . InternalResourceViewResolver[등록하지않아도 생성] -->
+	<bean 	id="myInternalResourceViewResolver" 
+			class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="order" value="1"/>
+		<property name="prefix" value="/WEB-INF/views/"/>
+		<property name="suffix" value=".jsp"/>
+	</bean>		
 	
-	<!-- 2. InternalResourceViewResolver (등록하지 않아도 생성) -->
-	<bean id="myInternalResourceViewResolver" 
-		  class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="order" value="1" />
-		<property name="prefix" value="/WEB-INF/views/" />
-		<property name="suffix" value=".jsp" />
-	</bean>
+	
 	
 </beans>
-
-
-
-
-
-

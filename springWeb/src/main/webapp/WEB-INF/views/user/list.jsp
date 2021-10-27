@@ -14,9 +14,9 @@
 		<li><a href='view.do'>LEE</a></li>
 		<li><a href='view.do'>PARK</a></li>
 		<li>--------------------</li>
-		<li><a href='/springMavenWeb/user/view.do'>KIM</a></li>
-		<li><a href='/springMavenWeb/user/view.do'>LEE</a></li>
-		<li><a href='/springMavenWeb/user/view.do'>PARK</a></li>
+		<li><a href='/springWeb/user/view.do'>KIM</a></li>
+		<li><a href='/springWeb/user/view.do'>LEE</a></li>
+		<li><a href='/springWeb/user/view.do'>PARK</a></li>
 		<li>--------------------</li>
 		<li><a href="<c:url value='/user/view.do'/>">KIM</a></li>
 		<li><a href="<c:url value='/user/view.do'/>">LEE</a></li>

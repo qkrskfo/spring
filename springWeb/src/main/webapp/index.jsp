@@ -16,6 +16,7 @@
 			<li><a href='4.response_menu.jsp'>4.response_menu.jsp</a></li>
 			<li><a href='5.exception_menu.jsp'>5.exception_menu.jsp</a></li>
 			<li><a href='6.spring_customtag_spel_menu.jsp'>6.spring_customtag_spel_menu.jsp</a></li>
+			<li><a href='7.spring_session_menu.jsp'>7.spring_session_menu.jsp</a></li>
 		</ul>	
 	</body>
 </html>

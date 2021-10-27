@@ -10,7 +10,9 @@ public class HelloDao {
 	
 	public List<HelloDto> helloList() {
 		System.out.println("C . ### HelloDao.helloList()메쏘드호출");
-		List<HelloDto> helloList = new ArrayList<HelloDto>();
+		
+		List<HelloDto> helloList=
+				new ArrayList<HelloDto>();
 		helloList.add(new HelloDto("안녕"));
 		helloList.add(new HelloDto("Hello"));
 		helloList.add(new HelloDto("Nihao"));

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,10 +13,10 @@
 	1. application-config.xml에 MessageSource빈설정
 	 <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
     	<property name="basenames" value="messages/guest,messages/messages,messages/user"/>
-    </bean>
+     </bean>
 </xmp>
 <ol>
-	<li><s:message code="page.title" /></li>
+	<li><s:message code="page.title"/></li>
 	<li><s:message code="page.login.header"/></li>
 	<!-- 
 		<< user_ko.properties>>
@@ -24,20 +24,18 @@
 		<< user_en.properties>>
 		exception.userexisted = {0} user existed...!!
 	 -->
-	<li><s:message code="exception.userexisted" arguments="guard" /></li> <!-- arguments에 el 들어갈 수 있음 -->
-	<li><s:message code="exception.userexisted" arguments="xxxx" /></li>
-	<li></li> 
+	<li><s:message code="exception.userexisted" arguments="guard"/></li>
+	<li><s:message code="exception.userexisted" arguments="xxxx"/></li>
 	<!-- 
-	<< user_ko.properties >>
-	nv.bc=홈 < {0} < {1}
-	<< user_en.properties >>
-	nv.bc=HOME < {0} < {1}
+	<< user_ko.properties>>
+		nv.bc=홈 < {0} < {1}
+	<< user_en.properties>>
+		nv.bc=HOME < {0} < {1}
 	 -->
-	 <li><s:message code="nv.bc" arguments="유저, 유저리스트" argumentSeparator="," /></li> 
-	 <li><s:message code="nv.bc" arguments="USER, USER LIST" argumentSeparator="," /></li> 
-	 <li>Spring Container에 등록된  MessageSource객체를 @를 이용해 jsp에서 직접 호출</li>
-	 <li><s:eval expression="@messageSource.getMessage('header.title', new Object[]{}, new java.util.Locale('${pageContext.request.locale.language}'))" /></li>
-	 <li></li>
+	 <li><s:message code="nv.bc" arguments="유저,유저리스트" argumentSeparator=","/></li> 
+	 <li><s:message code="nv.bc" arguments="USER,USER LIST" argumentSeparator=","/></li> 
+	 <li>Spring Container에 등록된 MessageSource 빈객체를 @를 이용해서 JSP에서직접호출</li>
+	 <li><s:eval expression="@messageSource.getMessage('header.title',new Object[]{},new java.util.Locale('${pageContext.request.locale.language}'))"/></li>
 	 <li></li> 
 	 <li>
 	 <li>Controller에서 생성한 메세지:${user_existed_exception_controller_msg}</li>

@@ -30,12 +30,12 @@ public class SpringCustomTagSPELController {
 		//return "forward:/WEB-INF/views/jstl_fmt_i18n.jsp";
 		return "jstl_fmt_i18n";
 	}
-	/************Spring JSP에서 국제화******
+	/************Spring JSP에서 국제화*******************
 	1. application-config.xml에 MessageSource빈설정
 	 <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
   		<property name="basenames" value="messages/guest,messages/messages,messages/user"/>
   	 </bean>
-	*************/
+  	 *****************************************************/
 	@RequestMapping("/spring_customtag_spel_i18n.do")
 	public String spring_customtag_spel_i18n() {
 		return "spring_customtag_spel_i18n";
@@ -52,19 +52,15 @@ public class SpringCustomTagSPELController {
    	 
    	 3. Controller객체메쏘드에서 MessageSource객체 사용
    	 
-   	 	String msg = messageSource.getMessage("user.existed.exception", null, requestLocale);
+   	 	String msg = messageSource.getMessage("user.existed.exception",
+											null,
+											requestLocale);
    	 
    *************************************************************/
 	
-	/*** SpringCustomTagSPELController 에서 국제화 해야함 ***/
-	/** Controller에서 국제화 **/
-	//버튼이름 취소/cancle, 등록/submit 같은거
 	@RequestMapping("/spring_controller_i18n.do")
 	public String spring_customtag_i18n(Locale requestLocale,Model model) {
-		//메시지를 붙여보내려면 인자에 model도 있어야해
-		
-		//Locale requestLocale = request.getLocale(); 인자에 Httpservletrequest 넣어야함
-		
+		/*
 		/*
 		<< messags_ko.properties >>
 		user.existed.exception = {0}는 존재하는 아이디 입니다.
@@ -74,9 +70,11 @@ public class SpringCustomTagSPELController {
 		user.existed.exception = {0} User ID already exist.
 		user.notfound.exception = {0} User ID don't exist.
 		 */
+		
 		String msg = messageSource.getMessage("user.existed.exception",
 											new Object[] {"guard"},
 											requestLocale);
+		
 		model.addAttribute("user_existed_exception_controller_msg", msg);
 		return "spring_customtag_spel_i18n";
 	}

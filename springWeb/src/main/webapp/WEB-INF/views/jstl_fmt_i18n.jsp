@@ -3,7 +3,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<fmt:setLocale value="${pageContext.request.locale}"/>
 <fmt:setBundle basename="messages/guest"/>
 <!DOCTYPE html>
 <html>
@@ -12,7 +11,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>JSTL I18N[Internationalization]국제화</h1>
+<h1>JSTL I18N[Internationalization]국제화</h1><hr/>
 <ol>
 	<li><fmt:message key="title.main"/></li>
 	<li><fmt:message key="title.list"/></li>

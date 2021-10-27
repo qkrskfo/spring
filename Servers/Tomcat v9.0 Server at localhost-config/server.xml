@@ -156,7 +156,7 @@
         
 
 
-      <Context docBase="little-cinema" path="/little-cinema" reloadable="true" source="org.eclipse.jst.jee.server:little-cinema"/><Context docBase="javascript_ajax" path="/javascript_ajax" reloadable="true" source="org.eclipse.jst.jee.server:javascript_ajax"/><Context docBase="guest_ajax_jquery_spring" path="/guest_ajax_jquery_spring" reloadable="true" source="org.eclipse.jst.jee.server:guest_ajax_jquery_spring"/><Context docBase="springWeb" path="/springWeb" reloadable="true" source="org.eclipse.jst.jee.server:springWeb"/></Host>
+      <Context docBase="little-cinema" path="/little-cinema" reloadable="true" source="org.eclipse.jst.jee.server:little-cinema"/><Context docBase="javascript_ajax" path="/javascript_ajax" reloadable="true" source="org.eclipse.jst.jee.server:javascript_ajax"/><Context docBase="guest_ajax_jquery_spring" path="/guest_ajax_jquery_spring" reloadable="true" source="org.eclipse.jst.jee.server:guest_ajax_jquery_spring"/><Context docBase="springWeb" path="/springWeb" reloadable="true" source="org.eclipse.jst.jee.server:springWeb"/><Context docBase="projectShop_spring_bootstrap" path="/projectShop_spring_bootstrap" reloadable="true" source="org.eclipse.jst.jee.server:projectShop_spring_bootstrap"/><Context docBase="shop_cart_session_model1" path="/shop_cart_session_model1" reloadable="true" source="org.eclipse.jst.jee.server:shop_cart_session_model1"/></Host>
     </Engine>
   </Service>
 </Server>

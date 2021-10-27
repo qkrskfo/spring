@@ -68,6 +68,12 @@
 		<option value="3">3명</option>
 		<option value="4">4명</option>
 		<option value="5">5명</option>
+		<option value="5">6명</option>
+		<option value="5">7명</option>
+		<option value="5">8명</option>
+		<option value="5">9명</option>
+		<option value="5">10명</option>
+
 	</select>
 
 	<table border="1">
@@ -89,13 +95,14 @@
 	<a>10명이상 단체예매는 문의바람으로?</a>
 	</br>
 	<h3>좌석선택</h3>
-	<c:forEach items="${bookedSeatList }" var="seat">
+	<c:forEach items="${bookedSeatList }" var="bookedSeat">
 		<input type="checkbox" name="bookedseat" checked="checked"
-			disabled="disabled">
-		<a>이미 티켓팅된 좌석</a>
+			disabled="disabled">${seat.seat } <br/>${seat.ticket }<br/>
+		<a>이미 티켓팅된 좌석</a><br/>
 	</c:forEach>
 	</br>
 	<li>빈좌석중 bookedSeatList 해서 나오게 how?..</li>
 	<input type="button" value="예매" onclick="">
+	
 </body>
 </html>

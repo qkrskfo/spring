@@ -132,7 +132,7 @@ public class Movie {
 	public String toString() {
 		return "Movie [movieNo=" + movieNo + ", title=" + title + ", openDate=" + openDate + ", director=" + director
 				+ ", actors=" + actors + ", genre=" + genre + ", runningtime=" + runningtime + ", summary=" + summary
-				+ ", rating=" + rating + ", posterImage=" + posterImage + ", timeList=" + timeList + ", reviewList="
+				+ ", rating=" + rating + ", posterImage=" + posterImage + ", \n timeList=" + timeList + ", \n reviewList="
 				+ reviewList + "] \n";
 	}
 

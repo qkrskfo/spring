@@ -6,7 +6,6 @@ public class BookedSeat {
 	private Seat seat;
 
 	public BookedSeat() {
-		// TODO Auto-generated constructor stub
 	}
 	
 	public BookedSeat(Ticket ticket, Seat seat) {
@@ -32,9 +31,7 @@ public class BookedSeat {
 
 	@Override
 	public String toString() {
-		return "BookedSeat [ticketNo=" + ticket.getTicketNo() +
-				", seatCode=" + seat.getSeatCode() +
-				", screenName=" + seat.getScreen().getScreenName() + "]";
+		return "BookedSeat [ticket=" + ticket + ", seat=" + seat + "] \n";
 	}
 	
 }

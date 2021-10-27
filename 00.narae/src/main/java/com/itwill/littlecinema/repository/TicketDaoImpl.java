@@ -6,7 +6,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.itwill.littlecinema.domain.Member;
 import com.itwill.littlecinema.domain.Ticket;
 import com.itwill.littlecinema.repository.interface_dao.TicketDao;
 

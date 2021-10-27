@@ -89,56 +89,42 @@
 			method: "post",
 			data: "movieDate="+$(e.target).attr("date"),
 			success: function(data) {
-				let movie = Object.create(null);
-			
+				let groups = Object.create(null);
+				
 				data.forEach(item=> {
-					if(!movie[item.movie.title]) {
-						movie[item.movie.title] = {
-								thumbnail: item.movie.posterImage,
-								rating: item.movie.rating,
-								timetable: [],
-						};
-					} 
+					if(!groups[item.movie.movieTitle]) {
+						groups[item.movie.movieTitle] = [];
+					}
 					
-					movie[item.movie.title].timetable.push({
+					groups[item.movie.movieTitle].push({
+						movieNo: item.movie.movieNo,
 						timeCode: item.timeCode,
 						screenName: item.screen.screenName,
 						startTime: item.startTime,
-						movieNo: item.movie.movieNo,
 					});
 				});
 				
-				let result = Object.entries(movie).map(([k, v]) => ({[k]: v}));
-
-				let html=`<hr> <div class="btn-group-vertical btn-group-toggle" data-toggle="buttons">`;
+				let result = Object.entries(groups).map(([k, v]) => ({[k]: v}));
+				
+				let html=`<hr>
+				<h1> REST 그룹화 <h1>`;
+					html+= `<div class="btn-group btn-group-toggle" data-toggle="buttons">`;
 				result.forEach(function(el){
-					html+=`<img src="`;
-					html+=el[Object.keys(el)].thumbnail;
-					html+=`" width=200 height=200>`;
 					html+=`<h3>`;
 					html+=Object.keys(el);
-					html+=`(`;
-					html+=el[Object.keys(el)].rating;
-					html+=`)`;
 					html+=`</h3>`;
-					
-					el[Object.keys(el)].timetable.forEach(function(el2){
-						html += `<div class="btn-group btn-group-toggle">`;
-						html += `<label class="btn btn-outline-primary ">
+					el[Object.keys(el)].forEach(function(el2){
+						html +=`<label class="btn btn-outline-primary ">
 						    <input type="radio" name="options" timeCode="`;
 						html += el2.timeCode;
-						//console.log(el2.timeCode);
 						html +=`">`;
 						html += el2.movieNo;
 						html += `&nbsp;`;
 						html += el2.screenName;
 						html += el2.startTime;
 						html += `</label>`;
-						html+=`</div>`;
 					});
-					html += `<br>`;
 				});
-					
 					html+=`</div>`;
 				$("#movieTimeTableRest").html(html);	
 			}

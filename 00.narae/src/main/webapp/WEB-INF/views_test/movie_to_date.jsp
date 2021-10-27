@@ -40,6 +40,9 @@
 <div id="timeTable">
 
 </div>
+<div id="timeTableRest">
+	
+</div>
 
 <script>
 /*
@@ -57,7 +60,53 @@
 			}
 			
 		});
+		
+		$.ajax({
+			url: "date_to_timeTable_rest",
+			method: "post",
+			data: "movieNo=" + $(e.target).attr("movieNo") + "&movieDate=" + $(e.target).attr("date"),
+			success: function(data) {
+				let groups = Object.create(null);
+				
+				data.forEach(item => {
+				    if (!groups[item.screen.screenName]) {
+				        groups[item.screen.screenName] = [];
+				    }
+				
+				    groups[item.screen.screenName].push({
+				    	timeCode: item.timeCode,
+				    	startTime: item.startTime,
+				    	endTime: item.endTime,
+				    });
+				});
+				
+				let result = Object.entries(groups).map(([k, v]) => ({[k]: v}));
+				
+				let html = `<hr>
+				<h1>REST 방식으로 그룹화해서 받아오기</h1>`;
+					html += `<div class="btn-group-vertical btn-group-toggle" data-toggle="buttons">`;
+				result.forEach(function(el) {
+					html += `<h3>`;
+					html += Object.keys(el);
+					html += `</h3>`;
+					el[Object.keys(el)].forEach(function(el2) {
+						html +=`<label class="btn btn-outline-primary ">
+						    <input type="radio" name="options" timeCode="`;
+						html += el2.timeCode;
+						html +=`">`;
+						html += `시작: `; 
+						html += el2.startTime;
+						html += `<br>종료: `; 
+						html += el2.endTime;
+						html += `</label>`;
+					});
+				});
+					html += `</div>`;
+				$("#timeTableRest").html(html);
+			}
+		});
 	});
+	
 	
 </script>
 </body>

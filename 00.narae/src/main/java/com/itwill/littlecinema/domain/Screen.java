@@ -28,7 +28,7 @@ public class Screen {
 
 	@Override
 	public String toString() {
-		return "Screen [screenNo=" + screenNo + ", screenName=" + screenName + "]";
+		return "Screen [screenNo=" + screenNo + ", screenName=" + screenName + "] \n";
 	}
 	
 }

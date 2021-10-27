@@ -14,12 +14,12 @@ public class Member {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Member(String id, String password, String name, String phone, Date date) {
+	public Member(String id, String password, String name, String phone, Date birth_date) {
 		this.id = id;
 		this.password = password;
 		this.name = name;
 		this.phone = phone;
-		this.birth_date = date;
+		this.birth_date = birth_date;
 	}
 
 	public String getId() {
@@ -64,8 +64,8 @@ public class Member {
 
 	@Override
 	public String toString() {
-		return "Member [id=" + id + ", name=" + name + "]";
+		return "Member [id=" + id + ", password=" + password + ", name=" + name + ", phone=" + phone + ", birth_date="
+				+ birth_date + "] \n";
 	}
-	
 	
 }

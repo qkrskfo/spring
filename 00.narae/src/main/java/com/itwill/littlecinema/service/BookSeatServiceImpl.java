@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.itwill.littlecinema.domain.BookedSeat;
-import com.itwill.littlecinema.domain.Ticket;
 import com.itwill.littlecinema.repository.interface_dao.BookedSeatDao;
 import com.itwill.littlecinema.service.interface_service.BookedSeatService;
 

@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.itwill.littlecinema.domain.BookedSeat;
-import com.itwill.littlecinema.domain.Ticket;
+import com.itwill.littlecinema.domain.Time;
 import com.itwill.littlecinema.repository.interface_dao.BookedSeatDao;
 
 @Repository
@@ -27,5 +27,12 @@ public class BookedSeatDaoImpl implements BookedSeatDao {
 	public List<BookedSeat> selectBookedSeatList(int timeCode) throws Exception {
 		return sqlSession.selectList(NAMESPACE + "selectByTimeCode", timeCode);
 	}
+
+	@Override
+	public List<BookedSeat> selectByTimeBookedSeatList(Time time) throws Exception {
+		return sqlSession.selectList(NAMESPACE + "selectByTime", time);
+	}
+	
+	
 
 }

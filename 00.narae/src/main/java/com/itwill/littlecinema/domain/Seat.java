@@ -25,5 +25,10 @@ public class Seat {
 	public void setScreen(Screen screen) {
 		this.screen = screen;
 	}
+
+	@Override
+	public String toString() {
+		return "Seat [seatCode=" + seatCode + ", screen=" + screen + "] \n";
+	}
 	
 }

@@ -8,7 +8,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.itwill.littlecinema.domain.Movie;
 import com.itwill.littlecinema.domain.Time;
 import com.itwill.littlecinema.repository.interface_dao.TimeDao;
 
@@ -31,6 +30,11 @@ public class TimeDaoImpl implements TimeDao {
 	public List<Date> selectDateByNo(int movieNo) {
 		return sqlSession.selectList(NAMESPACE + "selectDateByNo", movieNo);
 	}
+	
+	@Override
+	public List<Time> selectTimeByNo(int movieNo) {
+		return sqlSession.selectList(NAMESPACE + "selectTimeByNo", movieNo);
+	}
 
 	@Override
 	public List<Time> selectScreenTimeByNoDate(Map<String, Object> movieNoDate) {
@@ -41,5 +45,11 @@ public class TimeDaoImpl implements TimeDao {
 	public List<Time> selectScreenTimeByDate(String movieDate) {
 		return sqlSession.selectList(NAMESPACE + "selectScreenTimeByDate", movieDate);
 	}
+
+	@Override
+	public List<Time> selectTimeTableByNoDate(Map<String, Object> movieNoDate) {
+		return sqlSession.selectList(NAMESPACE + "selectTimeTableByNoDate", movieNoDate);
+	}
+
 
 }

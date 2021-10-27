@@ -10,8 +10,20 @@ public class Review {
 	public Review() {
 	}
 
+	public Review(int reviewNo, int score, String reviewComment) { //리뷰 수정할 때 씀
+		this.reviewNo = reviewNo;
+		this.score = score;
+		this.reviewComment = reviewComment;
+	}
+
+	public Review(Member member, Movie movie, int score, String reviewComment) {
+		this.member = member;
+		this.movie = movie;
+		this.score = score;
+		this.reviewComment = reviewComment;
+	}
+
 	public Review(int reviewNo, Member member, Movie movie, int score, String reviewComment) {
-		super();
 		this.reviewNo = reviewNo;
 		this.member = member;
 		this.movie = movie;

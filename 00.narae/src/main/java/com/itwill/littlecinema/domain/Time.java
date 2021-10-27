@@ -1,7 +1,6 @@
 package com.itwill.littlecinema.domain;
 
 import java.util.Date;
-import java.util.List;
 
 public class Time {
 	private int timeCode;
@@ -10,13 +9,16 @@ public class Time {
 	private String startTime;
 	private String endTime;
 	private Date movieDate;
-	private int movieCount;
 	
 	public Time() {
 	}
 
-	public Time(int timeCode, Screen screen, Movie movie, String startTime, String endTime, Date movieDate,
-			int movieCount) {
+	public Time(int timeCode) {
+		super();
+		this.timeCode = timeCode;
+	}
+
+	public Time(int timeCode, Screen screen, Movie movie, String startTime, String endTime, Date movieDate) {
 		super();
 		this.timeCode = timeCode;
 		this.screen = screen;
@@ -24,7 +26,6 @@ public class Time {
 		this.startTime = startTime;
 		this.endTime = endTime;
 		this.movieDate = movieDate;
-		this.movieCount = movieCount;
 	}
 
 	public int getTimeCode() {
@@ -75,18 +76,10 @@ public class Time {
 		this.movieDate = movieDate;
 	}
 
-	public int getMovieCount() {
-		return movieCount;
-	}
-
-	public void setMovieCount(int movieCount) {
-		this.movieCount = movieCount;
-	}
-
 	@Override
 	public String toString() {
 		return "Time [timeCode=" + timeCode + ", screen=" + screen + ", movie=" + movie + ", startTime=" + startTime
-				+ ", endTime=" + endTime + ", movieDate=" + movieDate + ", movieCount=" + movieCount + "] \n" ;
+				+ ", endTime=" + endTime + ", movieDate=" + movieDate + "] \n" ;
 	}
 	
 }

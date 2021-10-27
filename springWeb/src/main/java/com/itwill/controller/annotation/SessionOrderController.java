@@ -11,15 +11,9 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.itwill.dto.Order;
-//@SessionAttributes("order")
+
 //@Controller
 public class SessionOrderController {
-	
-	//@ModelAttribute("order")
-	public Order setUpOrder() {
-		System.out.println("==============>setUpOrder");
-		return new Order();
-	}
 	
 	@RequestMapping(value = "session_order_process1.do")
 	public String session_order_process1(HttpSession session) {

@@ -13,8 +13,9 @@ import com.itwill.dto.Order;
 @Controller
 public class SessionOrderAnnotationController {
 	/*
-	 -@Session 
-	 * 
+	- @SessionAttributes 파라미터로 지정된 이름과 같은 이름이 
+		@ModelAttribute에 지정되어 있을 경우 메소드가 반환되는 값은 세션에 저장된다
+	- 아래의 setUpOrder메쏘드 세션에 값을 초기화하는 목적으로 사용되었다
 	 */
 	@ModelAttribute("order")
 	public Order setUpOrder() {
@@ -29,8 +30,10 @@ public class SessionOrderAnnotationController {
 		
 		return "session_order_process1";
 	}
+	
 	/*
-	 * @se
+	 @SessionAttributes의 파라미터와 같은 이름이 메서드의 인자로  @ModelAttribute에 있을 경우 
+	 세션에 있는 객체를 가져온 후, 클라이언트로 전송받은 파라메타값을 설정한다.
 	 */
 	@RequestMapping(value = "session_order_process2.do")
 	public String order_process2(@ModelAttribute("order") Order order) {
@@ -51,6 +54,10 @@ public class SessionOrderAnnotationController {
 		return "session_order_input_result";
 	}
 	
+	/*
+	 - SessionStatus 는 컨트롤러 메소드의 파라미터로 사용할 수 있는 스프링 내장 타입이다.
+	 - 이 오브젝트의 setComplete() 메서드를 이용하면 현재 컨트롤러의 @SessionAttributes에 의해 저장된 오브젝트를 제거할 수 있다.
+	 */
 	@RequestMapping(value = "session_order_create.do")
 	public String session_order_create(@SessionAttribute("order") Order order, SessionStatus sessionStatus) {
 		

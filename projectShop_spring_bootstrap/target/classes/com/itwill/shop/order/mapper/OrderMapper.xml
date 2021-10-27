@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itwill.shop.order.mapper.OrderMapper">
+	<resultMap id="oderResultMap" type="com.itwill.shop.order.Order" >
+		<result column="O_NO" property="o_no"/>
+		<result column="O_DESC" property="o_desc"/>
+		<result column="O_DATE" property="o_date"/>
+		<result column="O_PRICE" property="o_price"/>
+		<result column="USERID" property="userId"/>
+		<collection property="orderItemList" ofType="com.itwill.shop.order.OrderItem">
+			<result column="OI_NO" property="oi_no"/>
+			<result column="OI_QTY" property="oi_qty"/>
+			<result column="O_NO" property="o_no"/>
+			<association property="product" javaType="com.itwill.shop.product.Product">
+				<result column="P_NO" property="p_no"/>
+				<result column="P_NAME" property="p_name"/>
+				<result column="P_PRICE" property="p_price"/>
+				<result column="P_IMAGE" property="p_image"/>
+				<result column="P_DESC" property="p_desc"/>
+				<result column="P_CLICK_COUNT" property="p_click_count"/>
+			</association>
+		</collection>
+	</resultMap>
+	<delete id="delete" parameterType="java.lang.String">
+		delete from orders where userid=#{userId}
+	</delete>
+	<delete id="deleteByOrderNo" parameterType="_int">
+		delete from orders where o_no=#{o_no}
+	</delete>
+	<insert id="createOrder" parameterType="com.itwill.shop.order.Order">
+		insert into orders(o_no,o_desc,o_date,o_price,userid) 
+		values (orders_o_no_SEQ.nextval,#{o_desc},sysdate,#{o_price},#{userId})
+	</insert>
+	
+	<insert id="createOrderItem" parameterType="com.itwill.shop.order.OrderItem">
+		insert into order_item(oi_no,oi_qty,o_no,p_no) 
+		values(order_item_oi_no_SEQ.nextval,#{oi_qty},orders_o_no_SEQ.currval,#{product.p_no})
+	</insert>
+	
+	<select id="list" parameterType="java.lang.String" resultType="com.itwill.shop.order.Order">
+		select * from orders where userid=#{userId}
+	</select>
+	<select id="detail" resultMap="oderResultMap" parameterType="java.util.Map">
+		select * from 
+		orders o 
+		join order_item oi on o.o_no=oi.o_no  
+		join  product p on oi.p_no=p.p_no where o.userid=#{userId} and  o.o_no = #{o_no}
+	</select>
+</mapper>

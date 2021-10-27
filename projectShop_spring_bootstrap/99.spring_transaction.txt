@@ -1,0 +1,39 @@
+1. ################ spring-transaction 의존성추가 ##################
+<dependency>
+	<groupId>org.springframework</groupId>
+	<artifactId>spring-tx</artifactId>
+	<version>${org.springframework-version}</version>
+</dependency>
+<dependency>
+	<groupId>org.springframework</groupId>
+	<artifactId>spring-jdbc</artifactId>
+	<version>${org.springframework-version}</version>
+</dependency>
+
+2. ############ application-config.xml TransactionManager 추가  ###############
+
+<tx:annotation-driven/>
+<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+</bean>
+
+3. ############ Service Interface 에 @Transactional 어노테이션추가 ###############
+
+	@Transactional
+	public interface CartService {}
+
+	@Transactional
+	public interface UserService {}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

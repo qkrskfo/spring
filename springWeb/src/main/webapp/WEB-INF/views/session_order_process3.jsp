@@ -9,7 +9,8 @@
 <body>
 <h1>주문폼3</h1><hr>
 <form  action="session_order_input_result.do">
-주문데이타3[배송지]<input type="text" value="서울 강남구" name="address"><input type="submit" value="전송">
+주문데이타3[배송지]<input type="text" value="서울 강남구" name="address">
+<input type="submit" value="다음">
 </form>
 </body>
 </html>

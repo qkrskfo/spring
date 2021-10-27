@@ -14,7 +14,7 @@
 	주문데이타2[카드번호]${order.cardNo}<br>
 	주문데이타3[배송지]${order.address}<br>
 </div>
-<input type="submit" value="데이타베이스에주문생성">
+<input type="submit" value="위정보로 주문생성[DB]">
 </form>
 </body>
 </html>

@@ -9,7 +9,8 @@
 <body>
 <h1>주문폼1</h1><hr>
 <form  action="session_order_process2.do">
-주문데이타1[이름]<input type="text" value="김경호" name="name"><input type="submit" value="전송">
+주문데이타1[이름]<input type="text" value="김경호" name="name">
+<input type="submit" value="다음">
 </form>
 </body>
 </html>

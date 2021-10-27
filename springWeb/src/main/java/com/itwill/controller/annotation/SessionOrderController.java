@@ -12,7 +12,7 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import com.itwill.dto.Order;
 //@SessionAttributes("order")
-@Controller
+//@Controller
 public class SessionOrderController {
 	
 	//@ModelAttribute("order")

@@ -25,7 +25,7 @@ label.error {
 	/*********************guest_list[HTML]콜백함수*****************/
 	function displayGuestListHTML(){
 		if(xhr.readyState==4){
-			if(xhr.status==200){
+			if(xhr.status==200){ // 200,404 같은 코드를 잡음
 				
 				/*
 				<div class="guest_item">
@@ -56,6 +56,8 @@ label.error {
 					},{},{}
 				]
 				*/
+				
+				// JSON을 HTML로 바꾸기
 				/*
 				<< HTML >>
 				<div class="guest_item">
@@ -68,6 +70,7 @@ label.error {
 				 */
 				var html="";
 				for(var i=0;i<guestListJsonArray.length;i++){
+					//Template literals 
 					html+=`<div class="guest_item">
 								<h3 class="guest_title"  guest_no="${guestListJsonArray[i].guest_no}">
 									<a href="">${guestListJsonArray[i].guest_title}[JSON]</a>
@@ -109,6 +112,8 @@ label.error {
 			}
 			document.querySelector('#guest_list').innerHTML=html;
 			showLoadingDialog(false);
+			
+			// XML을 HTML로 바꾸기
 			/*
 			<< HTML >>
 			<div class="guest_item">
@@ -190,11 +195,99 @@ label.error {
 		}
 	}
 	/***************************guest_detail[JSON]**************************/
-	/***************************guest_detail[XML]**************************/
+	function displayGuestDetailJSON(clickElement){
+		if(xhr.readyState==4 & xhr.status==200){
+			var detailJsonData = JSON.parse(xhr.responseText);
+			
+			var guestDetailDivElement=document.createElement('div');
+			guestDetailDivElement.setAttribute('class','guest_detail');
+			guestDetailDivElement.style.display='block';
+			guestDetailDivElement.innerHTML= `
+				<div class="guest_date">
+					날짜:${detailJsonData[0].guest_date}
+				</div>
+				<div class="guest_name">
+					이름:${detailJsonData[0].guest_name}
+				</div>
+				<div class="guest_email">
+					이메일:${detailJsonData[0].guest_email}
+				</div>
+				<div class="guest_content">
+					내용:${detailJsonData[0].guest_content}
+				</div>
+				<div class="guest_delete">
+					<input type="button" value="삭제" guest_no="${detailJsonData[0].guest_no}">
+					<input type="button" value="수정" guest_no="${detailJsonData[0].guest_no}">
+				</div>`;
+			
+			clickElement.parentElement.parentElement.appendChild(guestDetailDivElement);
+		};
+	/*
+		[
+		{
+		"guest_no":"<%=guest.getGuest_no()%>",
+		"guest_name":"<%=guest.getGuest_name()%>",
+		"guest_date":"<%=guest.getGuest_date()%>",
+		"guest_email":"<%=guest.getGuest_email()%>",
+		"guest_title":"<%=guest.getGuest_title()%>",
+		"guest_content":"<%=guest.getGuest_content()%>"
+		}
+		]
+	*/
+	};
 	
+	
+	
+	/***************************guest_detail[XML]**************************/
+	function displayGuestDetailXML(clickElement){
+		if(xhr.readyState==4 & xhr.status==200){
+			var detailXmlData = xhr.responseXML;
+			var guestNodeList = detailXmlData.getElementsByTagName('guest')[0];
+			console.log(guestNodeList);
+			var guestDetailDivElement=document.createElement('div');
+			guestDetailDivElement.setAttribute('class','guest_detail');
+			guestDetailDivElement.style.display='block';
+			guestDetailDivElement.innerHTML= `
+				<div class="guest_date">
+					날짜:${guestNodeList.getElementsByTagName("guest_date")[0].firstChild.nodeValue}
+				</div>
+				<div class="guest_name">
+					이름:${guestNodeList.getElementsByTagName("guest_name")[0].firstChild.nodeValue}
+				</div>
+				<div class="guest_email">
+					이메일:${guestNodeList.getElementsByTagName("guest_email")[0].firstChild.nodeValue}
+				</div>
+				<div class="guest_content">
+					내용:${guestNodeList.getElementsByTagName("guest_content")[0].firstChild.nodeValue}
+				</div>
+				<div class="guest_delete">
+					<input type="button" value="삭제" guest_no="${guestNodeList.getElementsByTagName('guest_no')[0].firstChild.nodeValue}">
+					<input type="button" value="수정" guest_no="${guestNodeList.getElementsByTagName('guest_no')[0].firstChild.nodeValue}">
+				</div>`;
+			clickElement.parentElement.parentElement.appendChild(guestDetailDivElement);
+		}
+		/*
+		<guest_list> 
+			<guest> 
+				<guest_no><%=guest.getGuest_no()%></guest_no>
+				<guest_name><%=guest.getGuest_name()%></guest_name>
+				<guest_date><%=guest.getGuest_date()%></guest_date>
+				<guest_email><%=guest.getGuest_email()%></guest_email>
+				<guest_homepage><%=guest.getGuest_homepage()%></guest_homepage>
+				<guest_title><%=guest.getGuest_title()%></guest_title>
+				<guest_content><%=guest.getGuest_content()%></guest_content>
+			</guest>
+		</guest_list> 
+		*/
+	}
 	
 	
 /*%%%%%%%%%%%%%%%%%%%%%%%%% AJAX응답도착했을때실행되는콜백함수끝 %%%%%%%%%%%%%%%%%%%%%%%%*/
+	
+	
+	
+	
+	
 	
 /*%%%%%%%%%%%%%%%%%%%%%%%%%%%메뉴 UI이벤트처리시작[DOM트리로딩후]%%%%%%%%%%%%%%%%%%%%%%%%%*/
 	window.onload=function(){
@@ -203,8 +296,9 @@ label.error {
 			//ajax요청
 			sendRequest('guest/guest_list_html.jsp',null,displayGuestListHTML ,'GET');
 			showLoadingDialog(true);
-			e.preventDefault();
+			e.preventDefault(); //페이지 넘기는거 막는 요청
 		});
+		
 		/*******************guest_list[JSON]메뉴이벤트****************************/
 		document.querySelector('#menu-b a').addEventListener('click',function(e){
 			//ajax요청
@@ -212,6 +306,7 @@ label.error {
 			showLoadingDialog(true);
 			e.preventDefault();
 		});
+		
 		/*******************guest_list[XML]메뉴이벤트****************************/
 		document.querySelector('#menu-c a').addEventListener('click',function(e){
 			//ajax요청
@@ -337,6 +432,9 @@ label.error {
 		});
 	};
 /*%%%%%%%%%%%%%%%%%%%%%%%%%%%메뉴 UI이벤트처리끝[DOM트리로딩후]%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+
+
+
 
 /*%%%%%%%%%%%%%%%%%%%%%%%%%%%loading dialog생성삭제함수 시작%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
 	function showLoadingDialog(isVisible){

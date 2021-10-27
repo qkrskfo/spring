@@ -9,7 +9,7 @@
 <body>
 <h1>주문폼2</h1><hr>
 <form  action="session_order_process3.do">
-주문데이타2[카드번호]<input type="text" value="123-8989" name="cartNo">
+주문데이타2[카드번호]<input type="text" value="123-8989" name="cardNo">
 <input type="submit" value="다음">
 </form>
 </body>

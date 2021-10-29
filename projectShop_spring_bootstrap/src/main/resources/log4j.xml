@@ -26,7 +26,6 @@
 	<logger name="org.springframework.context">
 		<level value="info" />
 	</logger>
-
 	<logger name="org.springframework.web">
 		<level value="info" />
 	</logger>

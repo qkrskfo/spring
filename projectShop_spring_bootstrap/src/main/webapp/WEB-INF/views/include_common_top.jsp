@@ -399,28 +399,39 @@
 					<i class="icon-search"></i>
 				</div>
 				<div class="account">
+					<c:if test="${empty sUserId}">
+					<a href="account-login"></a><i class="icon-head"></i>
+					</c:if>
+					<c:if test="${!empty sUserId}">
 					<a href="account-orders.html"></a><i class="icon-head"></i>
-					<ul class="toolbar-dropdown">
-						<li class="sub-menu-user">
-							<div class="user-ava">
-								<img src="img/account/user-ava-sm.jpg" alt="Daniel Adams">
-							</div>
-							<div class="user-info">
-								<h6 class="user-name">Daniel Adams</h6>
-								<span class="text-xs text-muted">290 Reward points</span>
-							</div>
-						</li>
-						<li><a href="account-profile.html">My Profile</a></li>
-						<li><a href="account-orders.html">Orders List</a></li>
-						<li><a href="account-wishlist.html">Wishlist</a></li>
-						<li class="sub-menu-separator"></li>
-						<li><a href="#"> <i class="icon-unlock"></i>Logout
-						</a></li>
-					</ul>
+					<!-- user info dropdown start -->
+						<ul class="toolbar-dropdown">
+							<li class="sub-menu-user">
+								<div class="user-ava">
+									<img src="img/account/user-ava-sm.jpg" alt="Daniel Adams">
+								</div>
+								<div class="user-info">
+									<h6 class="user-name">Daniel Adams</h6>
+									<span class="text-xs text-muted">290 Reward points</span>
+								</div>
+							</li>
+							<li><a href="account-profile.html">My Profile</a></li>
+							<li><a href="account-orders.html">Orders List</a></li>
+							<li><a href="account-wishlist.html">Wishlist</a></li>
+							<li class="sub-menu-separator"></li>
+							<li><a href="#"> <i class="icon-unlock"></i>Logout
+							</a></li>
+						</ul>
+					</c:if>
+					<!-- user info dropdown end -->
 				</div>
 				<div class="cart">
-					<a href="cart.html"></a><i class="icon-bag"></i><span class="count">3</span><span
-						class="subtotal">$289.68</span>
+				<c:if test="${empty sUserId}">
+					<a href="account_login.html"></a><i class="icon-bag">
+				</c:if>
+				<c:if test="${!empty sUserId}">
+					<a href="cart.html"></a><i class="icon-bag"></i><span class="count">3</span>
+					<span class="subtotal">$289.68</span>
 					<div class="toolbar-dropdown">
 						<div class="dropdown-product-item">
 							<span class="dropdown-product-remove"><i
@@ -474,6 +485,8 @@
 						</div>
 					</div>
 				</div>
+				</c:if>
+				<!-- cart toolbar dropdown end -->
 			</div>
 		</div>
 	</div>

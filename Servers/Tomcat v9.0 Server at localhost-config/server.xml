@@ -156,7 +156,7 @@
         
 
 
-      <Context docBase="little-cinema" path="/little-cinema" reloadable="true" source="org.eclipse.jst.jee.server:little-cinema"/><Context docBase="guest_ajax_jquery_spring" path="/guest_ajax_jquery_spring" reloadable="true" source="org.eclipse.jst.jee.server:guest_ajax_jquery_spring"/></Host>
+      <Context docBase="little-cinema" path="/little-cinema" reloadable="true" source="org.eclipse.jst.jee.server:little-cinema"/><Context docBase="guest_ajax_jquery_spring" path="/guest_ajax_jquery_spring" reloadable="true" source="org.eclipse.jst.jee.server:guest_ajax_jquery_spring"/><Context docBase="projectShop_spring_bootstrap" path="/projectShop_spring_bootstrap" reloadable="true" source="org.eclipse.jst.jee.server:projectShop_spring_bootstrap"/></Host>
     </Engine>
   </Service>
 </Server>

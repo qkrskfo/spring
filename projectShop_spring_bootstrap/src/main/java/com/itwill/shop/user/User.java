@@ -76,10 +76,3 @@ public class User {
 	}
 
 }
-
-
-
-
-
-
-

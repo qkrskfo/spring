@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <div class="offcanvas-container" id="shop-categories">
 	<div class="offcanvas-header">
 		<h3 class="offcanvas-title">Shop Categories</h3>
@@ -337,19 +339,26 @@
 		<ul>
 			<li class="has-megamenu active"><a href="index"><span>Home</span></a></li>
 			<li><a href="shop-grid-ns"><span>Shop</span></a></li>
-			<li><a href="account-orders.html"><span>Account</span></a>
-				<ul class="sub-menu">
-					<li><a href="account-login.html">Login / Register</a></li>
-					<li><a href="account-password-recovery.html">Password
-							Recovery</a></li>
-					<li><a href="account-orders.html">Orders List</a></li>
-					<li><a href="account-wishlist.html">Wishlist</a></li>
-					<li><a href="account-profile.html">Profile Page</a></li>
-					<li><a href="account-address.html">Contact / Shipping
-							Address</a></li>
-					<li><a href="account-tickets.html">My Tickets</a></li>
-					<li><a href="account-single-ticket.html">Single Ticket</a></li>
-				</ul></li>
+			<c:if test="${!empty sUserId}">
+				<li><a href="account-orders.html"><span>Account</span></a>
+					<ul class="sub-menu">
+						<li><a href="account-logout">Logout</a></li>
+						<li><a href="account-orders.html">Orders List</a></li>
+						<li><a href="account-wishlist.html">Wishlist</a></li>
+						<li><a href="account-profile.html">Profile Page</a></li>
+						<li><a href="account-address.html">Contact / Shipping Address</a></li>
+						<li><a href="account-tickets.html">My Tickets</a></li>
+						<li><a href="account-single-ticket.html">Single Ticket</a></li>
+					</ul>
+				</li>
+			</c:if>
+			<c:if test="${empty sUserId}">
+				<li><a href="account-login.html"><span>Account</span></a>
+					<ul class="sub-menu">
+						<li><a href="account-login.html">Login / Register</a></li>
+					</ul>
+				</li>
+			</c:if>
 			<li><a href="blog-rs.html"><span>Blog</span></a>
 				<ul class="sub-menu">
 					<li class="has-children"><a href="blog-rs.html"><span>Blog

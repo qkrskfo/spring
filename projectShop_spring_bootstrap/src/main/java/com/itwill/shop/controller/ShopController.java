@@ -28,7 +28,9 @@ public class ShopController {
 	
 	@RequestMapping(value = "/index")
 	public String user_main(Model model,HttpSession session) throws Exception{
+		
 		List<Product> productList=productService.getProductList();
+		
 		String sUserId=(String)session.getAttribute("sUserId");
 		User loginUser=new User();
 		List<CartItem> cartItemList=new ArrayList<CartItem>();

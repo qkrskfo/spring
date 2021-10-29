@@ -96,6 +96,7 @@
               <del class="text-muted text-normal">&#8361;<s:eval expression="new java.text.DecimalFormat('#,###').format(product.p_price)"/></del>&nbsp;&#8361;${product.p_price*0.7}</span>
             <p>${product.p_desc}</p>
             <div class="row margin-top-1x">
+            <!-- 	
               <div class="col-sm-4">
                 <div class="form-group">
                   <label for="size">Men's size</label>
@@ -121,10 +122,12 @@
                   </select>
                 </div>
               </div>
+              -->
+            
               <div class="col-sm-3">
                 <div class="form-group">
                   <label for="quantity">Quantity</label>
-                  <select class="form-control" id="quantity">
+                  <select class="form-control" id="quantity" p-no="${product.p_no }">
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
@@ -134,8 +137,8 @@
                 </div>
               </div>
             </div>
-            <div class="pt-1 mb-2"><span class="text-medium">SKU:</span> #21457832</div>
-            <div class="padding-bottom-1x mb-2"><span class="text-medium">Categories:&nbsp;</span><a class="navi-link" href="#">Men’s shoes,</a><a class="navi-link" href="#"> Snickers,</a><a class="navi-link" href="#"> Sport shoes</a></div>
+            <div class="pt-1 mb-2"><span class="text-medium">PRODUCT NO:</span> ${product.p_no}</div>
+            <div class="padding-bottom-1x mb-2"><span class="text-medium">Categories:&nbsp;</span><a class="navi-link" href="#"></a><a class="navi-link" href="#"></a><a class="navi-link" href="#"></a></div>
             <hr class="mb-3">
             <div class="d-flex flex-wrap justify-content-between">
               <div class="entry-share mt-2 mb-2"><span class="text-muted">Share:</span>
@@ -143,7 +146,7 @@
               </div>
               <div class="sp-buttons mt-2 mb-2">
                 <button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="Whishlist"><i class="icon-heart"></i></button>
-                <button class="btn btn-primary" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!"><i class="icon-bag"></i> Add to Cart</button>
+                <button class="btn btn-primary btn-add-cart"  data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!" ><i class="icon-bag" ></i> Add to Cart</button>
               </div>
             </div>
           </div>
@@ -351,7 +354,7 @@
               </h4>
               <div class="product-buttons">
                 <button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="Whishlist"><i class="icon-heart"></i></button>
-                <button class="btn btn-outline-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
+                <button class="btn btn-outline-primary btn-sm add-cart-btn" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
               </div>
             </div>
           </div>
@@ -364,6 +367,48 @@
     <!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
     <script src="js/vendor.min.js"></script>
     <script src="js/scripts.min.js"></script>
+    <script src="js/common.shop.js"></script>
+    <script>	
+       
+    	$(function(){
+    		 
+    		
+    		 
+    		/*******************add cart***************************/
+    		$('.btn-add-cart').on('click',function(e){
+    			if('${sUserId}'===''){
+	    			alert('로그인하세요!');
+	    			location.href='account-login';
+	    			e.stopPropagation();
+    			}else{
+    				var cart_qty=$("#quantity option:selected").val();
+					var p_no    =$('#quantity').attr('p-no');
+					console.log(p_no);
+					console.log(cart_qty);
+					var params={
+								'p_no':p_no,
+								'cart_qty':cart_qty
+							   };
+	    			$.ajax({
+	    				url:'cart_add_action_rest',
+	    				method:'POST',
+	    				data:params,
+	    				dataType:'text',
+	    				success:function(resultText){
+	    					if(resultText.trim()==='true'){
+	    						 cart_item_count_rest();
+	    					}else{
+	    						alert('add cart error!!');
+	    					}
+	    				}
+	    			});
+    			}
+    			
+    		});
+    		/**********************************************/
+    		
+    	});
+    </script>
   </body>
 </html>
 </c:if>

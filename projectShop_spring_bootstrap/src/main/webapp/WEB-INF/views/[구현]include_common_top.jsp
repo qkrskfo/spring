@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <div class="offcanvas-container" id="shop-categories">
 	<div class="offcanvas-header">
 		<h3 class="offcanvas-title">Shop Categories</h3>
@@ -72,6 +74,9 @@
 		</ul>
 	</nav>
 </div>
+<!-- Off-Canvas Category Menu-->
+<!-- Off-Canvas Wrapper-->
+
 <!-- Off-Canvas Mobile Menu-->
 <div class="offcanvas-container" id="mobile-menu">
 	<a class="account-link" href="account-orders.html">
@@ -336,37 +341,26 @@
 	<nav class="site-menu">
 		<ul>
 			<li class="has-megamenu active"><a href="index"><span>Home</span></a></li>
-			<li><a href="shop-grid-ns"><span>Shop</span></a></li>
-			<li><a href="account-orders.html"><span>Account</span></a>
-				<ul class="sub-menu">
-					<li><a href="account-login.html">Login / Register</a></li>
-					<li><a href="account-password-recovery.html">Password
-							Recovery</a></li>
-					<li><a href="account-orders.html">Orders List</a></li>
-					<li><a href="account-wishlist.html">Wishlist</a></li>
-					<li><a href="account-profile.html">Profile Page</a></li>
-					<li><a href="account-address.html">Contact / Shipping
-							Address</a></li>
-					<li><a href="account-tickets.html">My Tickets</a></li>
-					<li><a href="account-single-ticket.html">Single Ticket</a></li>
-				</ul></li>
-			<li><a href="blog-rs.html"><span>Blog</span></a>
-				<ul class="sub-menu">
-					<li class="has-children"><a href="blog-rs.html"><span>Blog
-								Layout</span></a>
-						<ul class="sub-menu">
-							<li><a href="blog-rs.html">Blog Right Sidebar</a></li>
-							<li><a href="blog-ls.html">Blog Left Sidebar</a></li>
-							<li><a href="blog-ns.html">Blog No Sidebar</a></li>
-						</ul></li>
-					<li class="has-children"><a href="blog-single-rs.html"><span>Single
-								Post Layout</span></a>
-						<ul class="sub-menu">
-							<li><a href="blog-single-rs.html">Post Right Sidebar</a></li>
-							<li><a href="blog-single-ls.html">Post Left Sidebar</a></li>
-							<li><a href="blog-single-ns.html">Post No Sidebar</a></li>
-						</ul></li>
-				</ul></li>
+			<li><a href="shop-grid-ns"><span>Shop</span></a></li> 
+			<li>
+				<c:if test="${empty sUserId}">
+					<a href="#"><span>Account</span></a>
+					<ul class="sub-menu">
+							<li><a href="account-login">Login / Register</a></li>
+					</ul>
+				</c:if>	
+				<c:if test="${!empty sUserId}">
+					<a href="account-orders.html"><span>Account</span></a>
+					<ul class="sub-menu">
+							<li><a href="account-logout">Logout</a></li>
+							<li><a href="account-orders.html">Orders List</a></li>
+							<li><a href="account-wishlist.html">Wishlist</a></li>
+							<li><a href="account-profile.html">Profile Page</a></li>
+							<li><a href="account-address.html">Contact / Shipping Address</a></li>
+					</ul>
+				</c:if>	
+			</li>
+			<li><a href="blog-rs.html"><span>Blog</span></a></li>
 			<li><a href="#"><span>Pages</span></a>
 				<ul class="sub-menu">
 					<li><a href="about.html">About Us</a></li>
@@ -374,12 +368,10 @@
 					<li><a href="faq.html">Help / FAQ</a></li>
 					<li><a href="order-tracking.html">Order Tracking</a></li>
 					<li><a href="search-results.html">Search Results</a></li>
-					<li><a href="404.html">404 Not Found</a></li>
 					<li><a href="coming-soon.html">Coming Soon</a></li>
-					<li><a class="text-danger" href="docs/dev-setup.html">Documentation</a></li>
 				</ul>
 			</li>
-			
+		
 		</ul>
 	</nav>
 	<!-- Toolbar-->
@@ -389,15 +381,20 @@
 				<div class="search">
 					<i class="icon-search"></i>
 				</div>
+				
 				<div class="account">
+					<c:if test="${empty(sUserId)}">
+					<a href="account-login"></a><i class="icon-head"></i>
+					</c:if>
+					<c:if test="${!empty(sUserId)}">
 					<a href="account-orders.html"></a><i class="icon-head"></i>
 					<ul class="toolbar-dropdown">
 						<li class="sub-menu-user">
 							<div class="user-ava">
-								<img src="img/account/user-ava-sm.jpg" alt="Daniel Adams">
+								<img src="img/account/${loginUser.userId}.png" alt="${loginUser.name}">
 							</div>
 							<div class="user-info">
-								<h6 class="user-name">Daniel Adams</h6>
+								<h6 class="user-name">${loginUser.name}</h6>
 								<span class="text-xs text-muted">290 Reward points</span>
 							</div>
 						</li>
@@ -405,57 +402,49 @@
 						<li><a href="account-orders.html">Orders List</a></li>
 						<li><a href="account-wishlist.html">Wishlist</a></li>
 						<li class="sub-menu-separator"></li>
-						<li><a href="#"> <i class="icon-unlock"></i>Logout
+						<li><a href="account-logout"> <i class="icon-unlock"></i>Logout
 						</a></li>
 					</ul>
+					</c:if>
 				</div>
+				
+				
+				
 				<div class="cart">
-					<a href="cart.html"></a><i class="icon-bag"></i><span class="count">3</span><span
-						class="subtotal">$289.68</span>
+				<c:if test="${empty(sUserId)}">
+				<a href="account-login"></a><i class="icon-bag"></i>
+				</c:if>
+				<c:if test="${!empty(sUserId)}">
+				<c:set var="tot_price"  value="0"/>
+				<c:set var="tot_price"  value="${tot_price+0}"/>
+				<a href="cart"></a><i class="icon-bag"></i><span class="count">${cartItemList.size()}</span><span
+						class="subtotal">&#8361; <s:eval expression="new java.text.DecimalFormat('#,##0').format(cartTotPrice)"/></span>
 					<div class="toolbar-dropdown">
+						
+						<c:forEach items="${cartItemList}" var="cartItem">
+						<c:set var="tot_price"  value="${tot_price + cartItem.product.p_price * cartItem.cart_qty}"/>
 						<div class="dropdown-product-item">
 							<span class="dropdown-product-remove"><i
 								class="icon-cross"></i></span><a class="dropdown-product-thumb"
-								href="shop-single.html"><img src="img/cart-dropdown/01.jpg"
+								href="shop-single.html"><img src="img/cart-dropdown/${cartItem.product.p_image}"
 								alt="Product"></a>
 							<div class="dropdown-product-info">
-								<a class="dropdown-product-title" href="shop-single.html">Unionbay
-									Park</a><span class="dropdown-product-details">1 x $43.90</span>
+								<a class="dropdown-product-title" href="shop-single?p_no=${cartItem.product.p_no}">${cartItem.product.p_name}</a><span class="dropdown-product-details">
+								${cartItem.cart_qty} x	&#8361;<s:eval expression="new java.text.DecimalFormat('#,###').format(cartItem.product.p_price)"/></span>
 							</div>
 						</div>
-						<div class="dropdown-product-item">
-							<span class="dropdown-product-remove"><i
-								class="icon-cross"></i></span><a class="dropdown-product-thumb"
-								href="shop-single.html"><img src="img/cart-dropdown/02.jpg"
-								alt="Product"></a>
-							<div class="dropdown-product-info">
-								<a class="dropdown-product-title" href="shop-single.html">Daily
-									Fabric Cap</a><span class="dropdown-product-details">2 x
-									$24.89</span>
-							</div>
-						</div>
-						<div class="dropdown-product-item">
-							<span class="dropdown-product-remove"><i
-								class="icon-cross"></i></span><a class="dropdown-product-thumb"
-								href="shop-single.html"><img src="img/cart-dropdown/03.jpg"
-								alt="Product"></a>
-							<div class="dropdown-product-info">
-								<a class="dropdown-product-title" href="shop-single.html">Haan
-									Crossbody</a><span class="dropdown-product-details">1 x
-									$200.00</span>
-							</div>
-						</div>
+						</c:forEach>
 						<div class="toolbar-dropdown-group">
 							<div class="column">
 								<span class="text-lg">Total:</span>
 							</div>
 							<div class="column text-right">
-								<span class="text-lg text-medium">$289.68&nbsp;</span>
+								<span class="text-lg text-medium">&#8361; <s:eval expression="new java.text.DecimalFormat('#,##0').format(tot_price)"/>&nbsp;</span>
 							</div>
 						</div>
 						<div class="toolbar-dropdown-group">
 							<div class="column">
-								<a class="btn btn-sm btn-block btn-secondary" href="cart.html">View
+								<a class="btn btn-sm btn-block btn-secondary" href="cart">View
 									Cart</a>
 							</div>
 							<div class="column">
@@ -465,6 +454,7 @@
 						</div>
 					</div>
 				</div>
+			 </c:if>
 			</div>
 		</div>
 	</div>

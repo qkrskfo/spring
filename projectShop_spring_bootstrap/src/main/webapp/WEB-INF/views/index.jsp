@@ -1,88 +1,128 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>	
-<%@taglib prefix="s"  uri="http://www.springframework.org/tags"%>	       
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<title>Unishop | Universal E-Commerce Template</title>
-<!-- SEO Meta Tags-->
-<meta name="description"
-	content="Unishop - Universal E-Commerce Template">
-<meta name="keywords"
-	content="shop, e-commerce, modern, flat style, responsive, online store, business, mobile, blog, bootstrap 4, html5, css3, jquery, js, gallery, slider, touch, creative, clean">
-<meta name="author" content="Rokaux">
-<!-- Mobile Specific Meta Tag-->
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<!-- Favicon and Apple Icons-->
-<link rel="icon" type="image/x-icon" href="favicon.ico">
-<link rel="icon" type="image/png" href="favicon.png">
-<link rel="apple-touch-icon" href="touch-icon-iphone.png">
-<link rel="apple-touch-icon" sizes="152x152" href="touch-icon-ipad.png">
-<link rel="apple-touch-icon" sizes="180x180"
-	href="touch-icon-iphone-retina.png">
-<link rel="apple-touch-icon" sizes="167x167"
-	href="touch-icon-ipad-retina.png">
-<!-- Vendor Styles including: Bootstrap, Font Icons, Plugins, etc.-->
-<link rel="stylesheet" media="screen" href="css/vendor.min.css">
-<!-- Main Template Styles-->
-<link id="mainStyles" rel="stylesheet" media="screen"
-	href="css/styles.min.css">
-<!-- Modernizr-->
-<script src="js/modernizr.min.js"></script>
-</head>
-<!-- Body-->
-<body>
-<!-- Off-Canvas Category Menu-->
-<!-- include_common_top.jsp start  -->
-<jsp:include page="include_common_top.jsp"/>
-<!-- include_common_top.jsp end  -->
-<!-- Off-Canvas Wrapper-->
+  <head>
+    <meta charset="utf-8">
+    <title>Unishop | Universal E-Commerce Template
+    </title>
+    <!-- SEO Meta Tags-->
+    <meta name="description" content="Unishop - Universal E-Commerce Template">
+    <meta name="keywords" content="shop, e-commerce, modern, flat style, responsive, online store, business, mobile, blog, bootstrap 4, html5, css3, jquery, js, gallery, slider, touch, creative, clean">
+    <meta name="author" content="Rokaux">
+    <!-- Mobile Specific Meta Tag-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- Favicon and Apple Icons-->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="touch-icon-iphone.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="touch-icon-ipad.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="touch-icon-iphone-retina.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="touch-icon-ipad-retina.png">
+    
+    <!-- Vendor Styles including: Bootstrap, Font Icons, Plugins, etc.-->
+    <link rel="stylesheet" media="screen" href="css/vendor.min.css">
+    <!-- Main Template Styles-->
+    <link id="mainStyles" rel="stylesheet" media="screen" href="css/styles.min.css">
+    <!-- Modernizr-->
+    <script src="js/modernizr.min.js"></script>
+    
+  </head>
+  <!-- Body-->
+  <body>
+    <!-- Off-Canvas Category Menu-->
+	
+	<!-- include-common-top.jsp start -->
+	<jsp:include page="include_common_top.jsp"/>
+	<!-- include-common-top.jsp end   -->
+	
+	<!-- Off-Canvas Wrapper-->
     <div class="offcanvas-wrapper">
       <!-- Page Content-->
       <!-- Main Slider-->
       <section class="hero-slider" style="background-image: url(img/hero-slider/main-bg.jpg);">
         <div class="owl-carousel large-controls dots-inside" data-owl-carousel="{ &quot;nav&quot;: true, &quot;dots&quot;: true, &quot;loop&quot;: true, &quot;autoplay&quot;: true, &quot;autoplayTimeout&quot;: 7000 }">
-          <c:forEach items="${productList}" var="product" varStatus="status">
           <div class="item">
             <div class="container padding-top-3x">
               <div class="row justify-content-center align-items-center">
                 <div class="col-lg-5 col-md-6 padding-bottom-2x text-md-left text-center">
-                  <div class="from-bottom"><img class="d-inline-block w-200 mb-4" src="img/hero-slider/${product.p_image}" alt="Converse">
-                    <div class="h2 text-body text-normal mb-2 pt-1">${product.p_name}</div>
-                    <div class="h2 text-body text-normal mb-4 pb-1">for only <span class="text-bold"> &#8361;<s:eval expression="new java.text.DecimalFormat('#,##0').format(product.p_price)"/></span></div>
-                  </div><a class="btn btn-primary scale-up delay-1" href="shop-single?p_no=${product.p_no}">Shop Now</a>
+                  <div class="from-bottom"><img class="d-inline-block w-150 mb-4" src="img/hero-slider/logo02.png" alt="Puma">
+                    <div class="h2 text-body text-normal mb-2 pt-1">Puma Backpacks Collection</div>
+                    <div class="h2 text-body text-normal mb-4 pb-1">starting at <span class="text-bold">$37.99</span></div>
+                  </div><a class="btn btn-primary scale-up delay-1" href="shop-grid-ls.html">View Offers</a>
                 </div>
-                <div class="col-md-6 padding-bottom-2x mb-3"><img class="d-block mx-auto" src="img/hero-slider/${product.p_image}" alt="Chuck Taylor All Star II"></div>
+                <div class="col-md-6 padding-bottom-2x mb-3"><img class="d-block mx-auto" src="img/hero-slider/02.png" alt="Puma Backpack"></div>
               </div>
             </div>
           </div>
-  		</c:forEach>	
+          <div class="item">
+            <div class="container padding-top-3x">
+              <div class="row justify-content-center align-items-center">
+                <div class="col-lg-5 col-md-6 padding-bottom-2x text-md-left text-center">
+                  <div class="from-bottom"><img class="d-inline-block w-200 mb-4" src="img/hero-slider/logo01.png" alt="Converse">
+                    <div class="h2 text-body text-normal mb-2 pt-1">Chuck Taylor All Star II</div>
+                    <div class="h2 text-body text-normal mb-4 pb-1">for only <span class="text-bold">$59.99</span></div>
+                  </div><a class="btn btn-primary scale-up delay-1" href="shop-single.html">Shop Now</a>
+                </div>
+                <div class="col-md-6 padding-bottom-2x mb-3"><img class="d-block mx-auto" src="img/hero-slider/01.png" alt="Chuck Taylor All Star II"></div>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="container padding-top-3x">
+              <div class="row justify-content-center align-items-center">
+                <div class="col-lg-5 col-md-6 padding-bottom-2x text-md-left text-center">
+                  <div class="from-bottom"><img class="d-inline-block mb-4" src="img/hero-slider/logo03.png" style="width: 125px;" alt="Motorola">
+                    <div class="h2 text-body text-normal mb-2 pt-1">Smart Watch Moto 360 2nd</div>
+                    <div class="h2 text-body text-normal mb-4 pb-1">for only <span class="text-bold">$299.99</span></div>
+                  </div><a class="btn btn-primary scale-up delay-1" href="shop-single.html">Shop Now</a>
+                </div>
+                <div class="col-md-6 padding-bottom-2x mb-3"><img class="d-block mx-auto" src="img/hero-slider/03.png" alt="Moto 360"></div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
       <!-- Top Categories-->
       <section class="container padding-top-3x">
         <h3 class="text-center mb-30">Top Categories</h3>
         <div class="row">
-        <c:forEach items="${productList}" var="product" varStatus="status" step="3">
-           <!--category start  -->
           <div class="col-md-4 col-sm-6">
-            <div class="card mb-30"><a class="card-img-tiles" href="shop-grid-ns">
+            <div class="card mb-30"><a class="card-img-tiles" href="shop-grid-ls.html">
                 <div class="inner">
-                  <div class="main-img"><img src="img/shop/categories/${product.p_image}" alt="Category"></div>
-                  <div class="thumblist"><img src="img/shop/categories/${product.p_image}" alt="Category"><img src="img/shop/categories/${product.p_image}" alt="Category"></div>
+                  <div class="main-img"><img src="img/shop/categories/01.jpg" alt="Category"></div>
+                  <div class="thumblist"><img src="img/shop/categories/02.jpg" alt="Category"><img src="img/shop/categories/03.jpg" alt="Category"></div>
                 </div></a>
               <div class="card-body text-center">
                 <h4 class="card-title">Clothing</h4>
-                <p class="text-muted">Starting from $49.99</p><a class="btn btn-outline-primary btn-sm" href="shop-grid-ns">View Products</a>
+                <p class="text-muted">Starting from $49.99</p><a class="btn btn-outline-primary btn-sm" href="shop-grid-ls.html">View Products</a>
               </div>
             </div>
-           </div>
-           <!--category end -->
-         </c:forEach>
-            
+          </div>
+          <div class="col-md-4 col-sm-6">
+            <div class="card mb-30"><a class="card-img-tiles" href="shop-grid-ls.html">
+                <div class="inner">
+                  <div class="main-img"><img src="img/shop/categories/04.jpg" alt="Category"></div>
+                  <div class="thumblist"><img src="img/shop/categories/05.jpg" alt="Category"><img src="img/shop/categories/06.jpg" alt="Category"></div>
+                </div></a>
+              <div class="card-body text-center">
+                <h4 class="card-title">Shoes</h4>
+                <p class="text-muted">Starting from $56.00</p><a class="btn btn-outline-primary btn-sm" href="shop-grid-ls.html">View Products</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6">
+            <div class="card mb-30"><a class="card-img-tiles" href="shop-grid-ls.html">
+                <div class="inner">
+                  <div class="main-img"><img src="img/shop/categories/07.jpg" alt="Category"></div>
+                  <div class="thumblist"><img src="img/shop/categories/08.jpg" alt="Category"><img src="img/shop/categories/09.jpg" alt="Category"></div>
+                </div></a>
+              <div class="card-body text-center">
+                <h4 class="card-title">Bags</h4>
+                <p class="text-muted">Starting from $27.00</p><a class="btn btn-outline-primary btn-sm" href="shop-grid-ls.html">View Products</a>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="text-center"><a class="btn btn-outline-secondary margin-top-none" href="shop-categories.html">All Categories</a></div>
       </section>
@@ -324,12 +364,12 @@
           </div>
         </div>
       </section>
-<!-- Site Footer-->
-<!-- include_common_top.jsp start-->
-<jsp:include page="include_common_bottom.jsp"/>
-<!-- include_common_top.jsp end  -->
-<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
+    <!-- Site Footer-->
+    <!--include-common-bottom.jsp start -->
+    <jsp:include page="include_common_bottom.jsp"/>
+    <!--include-common-bottom.jsp end  -->
+    <!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
     <script src="js/vendor.min.js"></script>
     <script src="js/scripts.min.js"></script>
   </body>
-</html>     
+</html>

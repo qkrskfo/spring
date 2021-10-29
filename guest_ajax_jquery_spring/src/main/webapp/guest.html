@@ -245,12 +245,20 @@ label.error {
 		*/
 		$('#guest_list').on('click','.guest_title a',function(e){
 			var titleStr = $(e.target).text();
+			console.log(titleStr);
 			var h3Element=e.target.parentElement;
+			console.log(h3Element);
 			var params = 'guest_no='+$(h3Element).attr('guest_no');
-			
+			console.log(params);
+			console.log("------");
+			console.log($(h3Element));
+			console.log($(h3Element).parent());
+			console.log($(h3Element).parent().children());
 			if(titleStr.endsWith('[HTML]')){
 				/************방명록상세보기[HTML]*********************/
 				if($(h3Element).parent().children().length > 1){
+					console.log("------");
+					console.log($(h3Element).parent().children());
 					//상세정보 존재
 					$(h3Element).next().slideToggle(500);
 					

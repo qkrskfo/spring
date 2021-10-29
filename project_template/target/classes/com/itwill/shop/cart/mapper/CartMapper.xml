@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itwill.shop.cart.mapper.CartMapper">
+	
+	<resultMap id="cartItemResultMap" type="com.itwill.shop.cart.CartItem"  autoMapping="false">
+		<result column="CART_NO" property="cart_no"/>
+		<result column="CART_QTY" property="cart_qty"/>
+		<association property="user" javaType="com.itwill.shop.user.User"  autoMapping="false">
+			<result column="USERID" property="userId"/>
+			<result column="PASSWORD" property="password"/>
+			<result column="NAME" property="name"/>
+			<result column="EMAIL" property="email"/>
+		</association>
+		<association property="product" javaType="com.itwill.shop.product.Product" autoMapping="false">
+			<result column="P_NO" property="p_no"/>
+			<result column="P_NAME" property="p_name"/>
+			<result column="P_PRICE" property="p_price"/>
+			<result column="P_IMAGE" property="p_image"/>
+			<result column="P_DESC"  property="p_desc"/>
+			<result column="P_CLICK_COUNT" property="p_click_count"/>
+		</association>
+	</resultMap>
+	<!-- cart제품 존재여부확인-->
+	<select id="isProductExist" parameterType="com.itwill.shop.cart.CartItem" resultType="java.lang.Integer">
+		select count(*)  as p_count from cart c  where c.userid=#{user.userId} and c.p_no=#{product.p_no}
+	</select>
+	<!-- cart아이템 추가시 cart아이템 insert-->
+	<insert id="addInsert" parameterType="com.itwill.shop.cart.CartItem">
+		insert into cart(cart_no,userId,p_no,cart_qty) values (cart_cart_no_SEQ.nextval,#{user.userId},#{product.p_no},#{cart_qty})
+	</insert>
+	<!-- cart 아이템 추가시 수량 update -->
+	<update id="addUpdate" parameterType="com.itwill.shop.cart.CartItem">
+		update cart set cart_qty=cart_qty + #{cart_qty} where userid=#{user.userId} and p_no=#{product.p_no}
+	</update>
+	<!-- cart 아이템 수량변경시 수량update -->
+	<update id="update" parameterType="com.itwill.shop.cart.CartItem">
+		update cart set cart_qty=#{cart_qty} where cart_no=#{cart_no}
+	</update>
+	
+	<!-- cart item list -->
+	<select id="getCartList" 
+			parameterType="java.lang.String" 
+			resultMap="cartItemResultMap">
+		select * 
+		from cart c join userinfo u
+		on c.userid=u.userid 
+		join product p 
+		on p.p_no=c.p_no
+		where u.userid=#{userId}
+	</select>
+	<!-- cart item -->
+	<select id="getCartItemByCartNo"  parameterType="java.lang.Integer" resultMap="cartItemResultMap">
+		select * from cart c join product p on c.p_no=p.p_no where cart_no=#{cart_no}
+	</select>
+	
+	<!--  cart item1개삭제 -->
+	<delete id="deleteCartByNo" parameterType="java.lang.Integer">
+		delete from cart where cart_no=#{cart_no}
+	</delete>
+	<!-- cart item 전체삭제 -->
+	<delete id="deleteCart" parameterType="java.lang.String">
+		delete from cart where userid=#{userId}
+	</delete>
+	
+	
+	
+	
+	
+	
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+

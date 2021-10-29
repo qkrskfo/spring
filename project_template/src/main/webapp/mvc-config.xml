@@ -29,7 +29,7 @@
 	<!-- static resource cache설정 -->
 	<mvc:resources mapping="/js/**" location="/js/" cache-period="0"/>
 	<mvc:resources mapping="/css/**" location="/css/" cache-period="0"/>
-	<mvc:resources mapping="/img/**" location="/img/" cache-period="0"/>
+	<mvc:resources mapping="/image/**" location="/image/" cache-period="0"/>
 	
 	<mvc:interceptors>
 	    <mvc:interceptor>

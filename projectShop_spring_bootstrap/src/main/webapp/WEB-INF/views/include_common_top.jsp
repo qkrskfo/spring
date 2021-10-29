@@ -410,10 +410,10 @@
 					<ul class="toolbar-dropdown">
 						<li class="sub-menu-user">
 							<div class="user-ava">
-								<img src="img/account/user-ava-sm.jpg" alt="Daniel Adams">
+								<img src="img/account/${sUserId}.png" alt="Daniel Adams">
 							</div>
 							<div class="user-info">
-								<h6 class="user-name">Daniel Adams</h6>
+								<h6 class="user-name">${loginUser.name}</h6>
 								<span class="text-xs text-muted">290 Reward points</span>
 							</div>
 						</li>
@@ -421,7 +421,7 @@
 						<li><a href="account-orders.html">Orders List</a></li>
 						<li><a href="account-wishlist.html">Wishlist</a></li>
 						<li class="sub-menu-separator"></li>
-						<li><a href="#"> <i class="icon-unlock"></i>Logout
+						<li><a href="account-logout"> <i class="icon-unlock"></i>Logout
 						</a></li>
 					</ul>
 					</c:if>
@@ -432,58 +432,40 @@
 					<a href="account-login"></a><i class="icon-bag"></i>
 					</c:if>
 					<c:if test="${sUserId != null}">
-					<a href="cart"></a><i class="icon-bag"></i><span class="count">3</span><span class="subtotal">$289.68</span>
+					<a href="cart"></a><i class="icon-bag"></i>
+						<span class="count">${cartItemList.size()}</span>
+						<span class="subtotal">&#8361; <s:eval expression="new java.text.DecimalFormat('#,###').format(cartTotPrice)"></s:eval> </span>
 					<div class="toolbar-dropdown">
+						<c:forEach items="${cartItemList}" var="cartItem">
+						<!-- cart item start -->
 						<div class="dropdown-product-item">
-							<span class="dropdown-product-remove"><i
-								class="icon-cross"></i></span><a class="dropdown-product-thumb"
-								href="shop-single.html"><img src="img/cart-dropdown/01.jpg"
-								alt="Product"></a>
+							<span class="dropdown-product-remove">
+							<i class="icon-cross"></i></span><a class="dropdown-product-thumb" href="shop-single?p_no=${cartItem.product.p_no}">
+							<img src="img/cart-dropdown/${cartItem.product.p_image}" alt="Product"></a>
 							<div class="dropdown-product-info">
-								<a class="dropdown-product-title" href="shop-single.html">Unionbay
-									Park</a><span class="dropdown-product-details">1 x $43.90</span>
+								<a class="dropdown-product-title" href="shop-single.html">${cartItem.product.p_name}</a>
+								<span class="dropdown-product-details">${cartItem.cart_qty} x &#8361; <s:eval expression="new java.text.DecimalFormat('#,###').format(cartItem.product.p_price)"></s:eval></span>
 							</div>
 						</div>
-						<div class="dropdown-product-item">
-							<span class="dropdown-product-remove"><i
-								class="icon-cross"></i></span><a class="dropdown-product-thumb"
-								href="shop-single.html"><img src="img/cart-dropdown/02.jpg"
-								alt="Product"></a>
-							<div class="dropdown-product-info">
-								<a class="dropdown-product-title" href="shop-single.html">Daily
-									Fabric Cap</a><span class="dropdown-product-details">2 x
-									$24.89</span>
-							</div>
-						</div>
-						<div class="dropdown-product-item">
-							<span class="dropdown-product-remove"><i
-								class="icon-cross"></i></span><a class="dropdown-product-thumb"
-								href="shop-single.html"><img src="img/cart-dropdown/03.jpg"
-								alt="Product"></a>
-							<div class="dropdown-product-info">
-								<a class="dropdown-product-title" href="shop-single.html">Haan
-									Crossbody</a><span class="dropdown-product-details">1 x
-									$200.00</span>
-							</div>
-						</div>
+						<!-- cart item end -->
+						</c:forEach>
 						<div class="toolbar-dropdown-group">
 							<div class="column">
 								<span class="text-lg">Total:</span>
 							</div>
 							<div class="column text-right">
-								<span class="text-lg text-medium">$289.68&nbsp;</span>
+								<span class="text-lg text-medium">&#8361; <s:eval expression="new java.text.DecimalFormat('#,###').format(cartTotPrice)"></s:eval>&nbsp;</span>
 							</div>
 						</div>
 						<div class="toolbar-dropdown-group">
 							<div class="column">
-								<a class="btn btn-sm btn-block btn-secondary" href="cart.html">View
-									Cart</a>
+								<a class="btn btn-sm btn-block btn-secondary" href="cart">View Cart</a>
 							</div>
 							<div class="column">
-								<a class="btn btn-sm btn-block btn-success"
-									href="checkout-address.html">Checkout</a>
+								<a class="btn btn-sm btn-block btn-success" href="checkout-address.html">Checkout</a>
 							</div>
 						</div>
+					
 					</div>
 					</c:if>
 					

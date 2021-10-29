@@ -151,6 +151,7 @@
           </div>
         </div>
       </section>
+      
       <!-- Featured Products Carousel-->
       <section class="container padding-top-3x padding-bottom-3x">
         <h3 class="text-center mb-30">Featured Products</h3>
@@ -172,10 +173,9 @@
           </div>
           <!-- Product end-->
     	 </c:forEach>
-      
-     
         </div>
       </section>
+      
       <!-- Product Widgets-->
       <section class="container padding-bottom-2x">
         <div class="row">

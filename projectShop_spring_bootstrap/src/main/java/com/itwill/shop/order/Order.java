@@ -22,6 +22,15 @@ public class Order {
 	private Date o_date;
 	private int o_price;
 	private String userId;
+	private Address address;
+	private Card card;
+	private String shipping_method;
+	public String getShipping_method() {
+		return shipping_method;
+	}
+	public void setShipping_method(String shipping_method) {
+		this.shipping_method = shipping_method;
+	}
 	private ArrayList<OrderItem> orderItemList=new ArrayList<OrderItem>();
 	public Order() {
 	}
@@ -81,10 +90,24 @@ public class Order {
 	public void setOrderItemList(ArrayList<OrderItem> orderItemList) {
 		this.orderItemList = orderItemList;
 	}
+	
+	public Address getAddress() {
+		return address;
+	}
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+	public Card getCard() {
+		return card;
+	}
+	public void setCard(Card card) {
+		this.card = card;
+	}
 	@Override
 	public String toString() {
 		return "Order [o_no=" + o_no + ", o_desc=" + o_desc + ", o_date=" + o_date + ", o_price=" + o_price
-				+ ", userId=" + userId + ", orderItemList=" + orderItemList + "]";
+				+ ", userId=" + userId + ", address=" + address + ", card=" + card + ", shipping_method="
+				+ shipping_method + ", orderItemList=" + orderItemList + "]";
 	}
 	
 	

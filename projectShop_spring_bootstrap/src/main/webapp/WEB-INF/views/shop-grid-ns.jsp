@@ -3,7 +3,7 @@
 <%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>	
 <%@taglib prefix="s"  uri="http://www.springframework.org/tags"%>	    
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="utf-8">
     <title>Shop Grid No Sidebar
@@ -89,7 +89,7 @@
               </h4>
               <div class="product-buttons">
                 <button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="Whishlist"><i class="icon-heart"></i></button>
-                <button p-no="${product.p_no}" class="btn btn-outline-primary btn-sm btn-add-cart" data-toast data-toast-type="success" data-toast-position="topCenter" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
+                <button p-no="${product.p_no}" class="btn btn-outline-primary btn-sm btn-add-cart" data-toast data-toast-type="success" data-toast-position="topCenter" data-toast-icon="icon-circle-check" data-toast-title="${product.p_name}" data-toast-message="successfuly added to cart!">Add to Cart</button>
               </div>
             </div>
           </div>
@@ -119,41 +119,28 @@
  
     <script src="js/vendor.min.js"></script>
     <script src="js/scripts.min.js"></script>
-     <script src="js/common.shop.js"></script>
+    
+    <script src="js/custom.cart.js"></script>
     <script type="text/javascript">
     $(function(){
-    	
-    	/*******************add cart***************************/
-		$('.btn-add-cart').on('click',function(e){
-			if('${sUserId}'===''){
-    			alert('로그인하세요!');
-    			location.href='account-login';
-    			e.stopPropagation();
-			}else{
-				var cart_qty=1;
-				var p_no    =$(e.target).attr('p-no');
-				
-				var params={
-							'p_no':p_no,
-							'cart_qty':cart_qty
-						   };
-    			$.ajax({
-    				url:'cart_add_action_rest',
-    				method:'POST',
-    				data:params,
-    				dataType:'text',
-    				success:function(resultText){
-    					if(resultText.trim()==='true'){
-    						location.reload();
-    					}else{
-    						alert('add cart error!!');
-    					}
-    				}
-    			});
-			}
-			
+    	/******** .btn-add-cart 이벤트처리************/
+    	$('.btn-add-cart').on('click',function(e){
+    		if('${sUserId}'===''){
+        		alert('로그인하세요!');
+        		location.href='account-login';
+        		e.stopPropagation();
+        	}else{
+        		var params={
+    						'p_no':$(e.target).attr('p-no'),
+    						'cart_qty':1
+    				  		};
+        		cart_add_action(params);
+        	}
 		});
-		/**********************************************/
+    	/***********************************************/
+    	
+		
+		
 	});
   </script>  
   </body>

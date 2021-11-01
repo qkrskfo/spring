@@ -8,8 +8,10 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.itwill.shop.cart.CartItem;
 import com.itwill.shop.cart.CartService;
@@ -17,7 +19,7 @@ import com.itwill.shop.product.Product;
 import com.itwill.shop.product.ProductService;
 import com.itwill.shop.user.User;
 import com.itwill.shop.user.UserService;
-
+@SessionAttributes("viewProductList")
 @Controller
 public class ProductController {
 	@Autowired
@@ -26,6 +28,13 @@ public class ProductController {
 	private CartService cartService;
 	@Autowired
 	private UserService userService;
+	
+	@ModelAttribute("viewProductList")
+	public List<Product> setUpViewProductList(){
+		List<Product> productViewList=new ArrayList<Product>();
+		return productViewList;
+	}
+	
 	
 	@RequestMapping(value = "/shop-grid-ns")
 	public String product_list(HttpSession session,Model model) throws Exception{
@@ -63,9 +72,11 @@ public class ProductController {
 		return "redirect:shop-grid-ns";
 	}
 	@RequestMapping(value = "/shop-single",params="p_no")
-	public String product_detail(@RequestParam int p_no,Model model,HttpSession session) throws Exception{
+	public String product_detail(@RequestParam int p_no,Model model,HttpSession session,@ModelAttribute("viewProductList") List<Product> viewProductList) throws Exception{
 		
 		Product product=productService.getProduct(p_no);
+		
+		session.setAttribute("", "");
 		
 		List<Product> productList=productService.getProductList();
 		String sUserId=(String)session.getAttribute("sUserId");

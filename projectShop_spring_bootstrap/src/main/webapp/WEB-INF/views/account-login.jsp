@@ -4,7 +4,7 @@
 <%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>	
 <%@taglib prefix="s"  uri="http://www.springframework.org/tags"%>	  
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="utf-8">
     <title>Login / Register Account

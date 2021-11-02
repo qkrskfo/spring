@@ -268,7 +268,7 @@
     						'p_no':$(e.target).attr('p-no'),
     						'cart_qty':1
     				  		};
-        		cart_add_action(params);
+        		cart_add_action_rest(params);
         	}
 		});
     	/***********************************************/

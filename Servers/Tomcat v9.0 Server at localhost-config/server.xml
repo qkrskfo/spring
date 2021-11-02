@@ -156,7 +156,7 @@
         
 
 
-      <Context docBase="little-cinema" path="/little-cinema" reloadable="true" source="org.eclipse.jst.jee.server:little-cinema"/><Context docBase="springjQueryAjax" path="/springJQueryAjax" reloadable="true" source="org.eclipse.jst.jee.server:springjQueryAjax"/></Host>
+      <Context docBase="little-cinema" path="/little-cinema" reloadable="true" source="org.eclipse.jst.jee.server:little-cinema"/></Host>
     </Engine>
   </Service>
 </Server>

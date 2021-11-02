@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,8 +23,7 @@ import com.itwill.shop.user.UserService;
 public class CartRestController {
 	@Autowired
 	private CartService cartService;
-	@Autowired 
-	private UserService userService;
+
 	
 	@LoginCheck
 	@RequestMapping(value = "cart_item_list_rest",produces = "application/json;charset=UTF-8")
@@ -60,7 +60,7 @@ public class CartRestController {
 		return result;
 	}
 	@LoginCheck
-	@PostMapping(value = "cart_update_item_action_rest",produces = "application/json;charset=UTF-8")
+	@RequestMapping(value = "cart_update_item_action_rest",produces = "application/json;charset=UTF-8")
 	public Map cart_update_item_action_rest(@RequestParam int cart_no,@RequestParam int cart_qty,HttpSession session)throws Exception {
 		String sUserId=(String)session.getAttribute("sUserId");
 		cartService.updateCart(cart_no, cart_qty);

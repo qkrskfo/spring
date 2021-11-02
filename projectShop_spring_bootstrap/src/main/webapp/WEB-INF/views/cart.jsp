@@ -103,7 +103,10 @@
                 </td>
                 <td id="subtotal-${cartItem.cart_no}" class="text-center text-lg text-medium">&#8361;<s:eval expression="new java.text.DecimalFormat('#,##0').format(cartItem.product.p_price * cartItem.cart_qty)"/></td>
                 <td class="text-center text-lg text-medium">&#8361;00.00</td>
-                <td class="text-center"><a class="remove-from-cart" href="#" data-toggle="tooltip" title="Remove item"><i class="icon-cross" cart-no="${cartItem.cart_no}"></i></a></td>
+                <td class="text-center">
+                	<a class="remove-from-cart" href="#" data-toggle="tooltip" title="Remove item"  cart-no="${cartItem.cart_no}">
+                		<i class="icon-cross" cart-no="${cartItem.cart_no}"></i>
+                	</a></td>
               </tr>
               <!-- cart item end -->
               </c:forEach>
@@ -152,12 +155,13 @@
     
     <script type="text/javascript">
     	$(function(){
-    		/*************.remove-from-cart[CLEAR CART]이벤트처리***************/	
+    		/*************.remove-from-cart[REMOVE CART ITEM]이벤트처리***************/	
     		$('.remove-from-cart').on('click',function(e){
     			var cart_no = $(e.target).attr('cart-no');
     			cart_delete_item_action_rest(cart_no);
+    			e.preventDefault();
     		});
-    		/*************.btn-clear-cart[ADD TO CART 버튼]이벤트처리***************/	
+    		/*************.btn-clear-cart[CLEAR CART 버튼]이벤트처리***************/	
      		$('.btn-clear-cart').on('click',function(e){
      			cart_delete_all_item_action_rest();
      		});
@@ -173,6 +177,10 @@
         			
         			
         	});
+     		
+        	$(".alert").fadeTo(500, 500).slideUp(500, function() {
+        	      $(".alert").slideUp(500);
+        	 });
     	});
     </script>
   </body>

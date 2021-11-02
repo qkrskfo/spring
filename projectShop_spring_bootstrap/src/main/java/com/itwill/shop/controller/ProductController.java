@@ -1,6 +1,7 @@
 package com.itwill.shop.controller;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -32,6 +33,7 @@ public class ProductController {
 	@ModelAttribute("viewProductList")
 	public List<Product> setUpViewProductList(){
 		List<Product> productViewList=new ArrayList<Product>();
+		System.out.println("----------------> "+productViewList);
 		return productViewList;
 	}
 	
@@ -40,6 +42,7 @@ public class ProductController {
 	public String product_list(HttpSession session,Model model) throws Exception{
 		
 		List<Product> productList=productService.getProductList();
+		
 		String sUserId=(String)session.getAttribute("sUserId");
 		User loginUser=new User();
 		List<CartItem> cartItemList=new ArrayList<CartItem>();
@@ -75,8 +78,19 @@ public class ProductController {
 	public String product_detail(@RequestParam int p_no,Model model,HttpSession session,@ModelAttribute("viewProductList") List<Product> viewProductList) throws Exception{
 		
 		Product product=productService.getProduct(p_no);
+		boolean isExist=false;
+		for (Product viewProduct : viewProductList) {
+			if(viewProduct.getP_no()==product.getP_no()) {
+				isExist=true;
+				break;
+			}
+		}
+		if(!isExist) {
+			viewProductList.add(product);
+		}
 		
-		session.setAttribute("", "");
+		
+		System.out.println(viewProductList);
 		
 		List<Product> productList=productService.getProductList();
 		String sUserId=(String)session.getAttribute("sUserId");

@@ -2,7 +2,7 @@ function sdsds(){
 	
 }
 /******카트아이템추가[cart_add_action_rest]*******/
-var cart_add_action=function(params){
+var cart_add_action_rest=function(params){
 	
 	$.ajax({
 			url:'cart_add_action_rest',
@@ -27,6 +27,7 @@ var cart_delete_item_action_rest=function(cart_no){
 		data:'cart_no='+cart_no,
 		success:function(textResult){
 			if(textResult.trim()=='true'){
+				
 				$('.shopping-cart table tr').each(function(i,element){
 					 var find_cart_no=$(element).find('.remove-from-cart .icon-cross').attr('cart-no');
 					 if(find_cart_no==cart_no){
@@ -37,6 +38,7 @@ var cart_delete_item_action_rest=function(cart_no){
 						common_header_cart_info_change();
 					 }			
 				});	
+				
 			}
 		}
 	});

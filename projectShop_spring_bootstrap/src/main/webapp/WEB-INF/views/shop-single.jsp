@@ -67,7 +67,7 @@
         <div class="row">
           <!-- Poduct Gallery-->
           <div class="col-md-6">
-            <div class="product-gallery"><span class="product-badge text-danger">30% Off</span>
+            <div class="product-gallery">
               <div class="gallery-wrapper">
                 <div class="gallery-item video-btn text-center"><a href="#" data-toggle="tooltip" data-type="video" data-video="&lt;div class=&quot;wrapper&quot;&gt;&lt;div class=&quot;video-wrapper&quot;&gt;&lt;iframe class=&quot;pswp__video&quot; width=&quot;960&quot; height=&quot;640&quot; src=&quot;//www.youtube.com/embed/B81qd2v6alw?rel=0&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;/div&gt;" title="Watch video"></a></div>
               </div>
@@ -93,7 +93,7 @@
               <div class="rating-stars"><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star"></i>
               </div><span class="text-muted align-middle">&nbsp;&nbsp;4.2 | 3 customer reviews</span>
             <h2 class="padding-top-1x text-normal">${product.p_name}</h2><span class="h2 d-block">
-              <del class="text-muted text-normal">&#8361;<s:eval expression="new java.text.DecimalFormat('#,###').format(product.p_price)"/></del>&nbsp;&#8361;${product.p_price*0.7}</span>
+              &#8361;<s:eval expression="new java.text.DecimalFormat('#,###').format(product.p_price)"/></span>
             <p>${product.p_desc}</p>
             <div class="row margin-top-1x">
             <!-- 	
@@ -138,7 +138,7 @@
               </div>
             </div>
             <div class="pt-1 mb-2"><span class="text-medium">PRODUCT NO:</span> ${product.p_no}</div>
-            <div class="padding-bottom-1x mb-2"><span class="text-medium">Categories:&nbsp;</span><a class="navi-link" href="#"></a><a class="navi-link" href="#"></a><a class="navi-link" href="#"></a></div>
+            <div class="padding-bottom-1x mb-2"><span class="text-medium">Categories:&nbsp;소형견</span><a class="navi-link" href="#"></a><a class="navi-link" href="#"></a><a class="navi-link" href="#"></a></div>
             <hr class="mb-3">
             <div class="d-flex flex-wrap justify-content-between">
               <div class="entry-share mt-2 mb-2"><span class="text-muted">Share:</span>
@@ -292,7 +292,6 @@
     <!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
     <script src="js/vendor.min.js"></script>
     <script src="js/scripts.min.js"></script>
-    
     <script src="js/custom.cart.js"></script>
     <script>	
     	$(function(){
@@ -307,7 +306,7 @@
 							'p_no':$(e.target).attr('p-no'),
 							'cart_qty':$("#quantity option:selected").val()
 						   };
-		      		cart_add_action(params);
+		      		cart_add_action_rest(params);
 		      	}
 			});
 	  		/***********************************************/

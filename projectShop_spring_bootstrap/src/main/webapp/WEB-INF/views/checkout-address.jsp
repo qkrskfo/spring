@@ -103,7 +103,7 @@
                   <label for="checkout-country">Country</label>
                   <select class="form-control" id="checkout-country" name="checkout_country">
                     <option>Choose country</option>
-                    <option selected="selected">Korea</option>
+                    <option selected >Korea</option>
                     <option>Australia</option>
                     <option>Canada</option>
                     <option>France</option>
@@ -169,7 +169,7 @@
           <!-- Sidebar          -->
           <div class="col-xl-3 col-lg-4">
            <!--include_checkout_left_sidebar.jsp start  -->
-           <jsp:include page="include_checkout_left_sidebar.jsp"/>
+           <jsp:include page="include_checkout_right_sidebar.jsp"/>
            <!--include_checkout_left_sidebar.jsp end    -->
           </div>       
         </div>

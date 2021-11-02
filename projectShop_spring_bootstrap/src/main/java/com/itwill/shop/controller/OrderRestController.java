@@ -1,5 +1,7 @@
 package com.itwill.shop.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,13 @@ public class OrderRestController {
 		String sUserId = (String) session.getAttribute("sUserId");
 		Order order = orderService.detail(sUserId, o_no);
 		return order;
+	}
+	@LoginCheck
+	@RequestMapping(value = "order_list_count_rest",produces = "application/json;charset=UTF-8")
+	public List<Order> order_list_count(@RequestParam int o_no, HttpSession session) throws Exception {
+		String sUserId = (String) session.getAttribute("sUserId");
+		List<Order> orderList = orderService.list(sUserId);
+		return orderList;
 	}
 	
 }

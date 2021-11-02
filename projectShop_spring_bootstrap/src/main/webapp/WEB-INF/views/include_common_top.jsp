@@ -2,13 +2,10 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="s" uri="http://www.springframework.org/tags"%>
-<c:if test="${empty(cartTotPrice) }">
-	<c:set var="cartTotPrice" value="0" />
-</c:if>
 <!-- Off-Canvas Wrapper-->
 <!-- Off-Canvas Mobile Menu-->
 <div class="offcanvas-container" id="mobile-menu">
-	<a class="account-link" href="account-orders.html">
+	<a class="account-link" href="account-orders">
 		<div class="user-ava">
 			<img src="img/account/user-ava-md.jpg" alt="Daniel Adams">
 		</div>
@@ -20,10 +17,10 @@
 	<nav class="offcanvas-menu">
 		<ul class="menu">
 			<li class="has-children active"><span><a
-					href="index.html"><span>Home</span></a><span
+					href="index"><span>Home</span></a><span
 					class="sub-menu-toggle"></span></span>
 				<ul class="offcanvas-submenu">
-					<li class="active"><a href="index.html">Featured Products
+					<li class="active"><a href="index">Featured Products
 							Slider</a></li>
 					<li><a href="home-featured-categories.html">Featured
 							Categories</a></li>
@@ -34,23 +31,23 @@
 			<li class="has-children"><span><a href="shop-grid-ns"><span>Shop</span></a><span
 					class="sub-menu-toggle"></span></span>
 				<ul class="offcanvas-submenu">
-					<li><a href="shop-categories.html">Shop Categories</a></li>
-					<li><a href="shop-single.html">Single Product</a></li>
-					<li><a href="cart.html">Cart</a></li>
-					<li><a href="checkout.html">Checkout</a></li>
+					<li><a href="shop-categories">Shop Categories</a></li>
+					<li><a href="shop-single">Single Product</a></li>
+					<li><a href="cart">Cart</a></li>
+					<li><a href="checkout">Checkout</a></li>
 				</ul></li>
 			
 			<li class="has-children"><span><a
-					href="account-orders.html"><span>Account</span></a><span
+					href="account-orders"><span>Account</span></a><span
 					class="sub-menu-toggle"></span></span>
 				<ul class="offcanvas-submenu">
-					<li><a href="account-login.html">Login / Register</a></li>
-					<li><a href="account-password-recovery.html">Password
+					<li><a href="account-login">Login / Register</a></li>
+					<li><a href="account-password-recovery">Password
 							Recovery</a></li>
-					<li><a href="account-orders.html">Orders List</a></li>
-					<li><a href="account-wishlist.html">Wishlist</a></li>
-					<li><a href="account-profile.html">Profile Page</a></li>
-					<li><a href="account-address.html">Contact / Shipping
+					<li><a href="account-orders">Orders List</a></li>
+					<li><a href="account-wishlist">Wishlist</a></li>
+					<li><a href="account-profile">Profile Page</a></li>
+					<li><a href="account-address">Contact / Shipping
 							Address</a></li>
 					
 				</ul></li>
@@ -155,9 +152,9 @@
 					<ul class="sub-menu">
 						<li><a href="account-logout">Logout</a></li>
 						<li><a href="account-orders">Orders List</a></li>
-						<li><a href="account-wishlist.html">Wishlist</a></li>
-						<li><a href="account-profile.html">Profile Page</a></li>
-						<li><a href="account-address.html">Contact / Shipping
+						<li><a href="account-wishlist">Wishlist</a></li>
+						<li><a href="account-profile">Profile Page</a></li>
+						<li><a href="account-address">Contact / Shipping
 								Address</a></li>
 					</ul></li>
 			</c:if>
@@ -193,7 +190,7 @@
 						<i class="icon-head"></i>
 					</c:if>
 					<c:if test="${!empty(sUserId)}">
-						<a href="account-orders.html"></a>
+						<a href="account-orders"></a>
 						<i class="icon-head"></i>
 						<ul class="toolbar-dropdown">
 							<li class="sub-menu-user">
@@ -206,9 +203,9 @@
 									<span class="text-xs text-muted">290 Reward points</span>
 								</div>
 							</li>
-							<li><a href="account-profile.html">My Profile</a></li>
-							<li><a href="account-orders.html">Orders List</a></li>
-							<li><a href="account-wishlist.html">Wishlist</a></li>
+							<li><a href="account-profile">My Profile</a></li>
+							<li><a href="account-orders">Orders List</a></li>
+							<li><a href="account-wishlist">Wishlist</a></li>
 							<li class="sub-menu-separator"></li>
 							<li><a href="account-logout"> <i class="icon-unlock"></i>Logout
 							</a></li>
@@ -216,23 +213,21 @@
 					</c:if>
 				</div>
 
-
-
+				<c:set var="tot_price" value="0" />
+				<c:set var="tot_price" value="${tot_price+0}" />	
 				<div class="cart">
 					<c:if test="${empty(sUserId)}">
 						<a href="account-login"></a>
 						<i class="icon-bag"></i>
 					</c:if>
 					<c:if test="${!empty(sUserId)}">
-						<c:set var="tot_price" value="0" />
-						<c:set var="tot_price" value="${tot_price+0}" />
 						<a href="cart"></a>
 						<i class="icon-bag"></i>
 						<span class="count">${cartItemList.size()}</span>
-						<span class="subtotal">&#8361; <s:eval
+						<span class="subtotal">&#8361;<s:eval
 								expression="new java.text.DecimalFormat('#,##0').format(cartTotPrice)" /></span>
 						<div class="toolbar-dropdown">
-
+							
 							<c:forEach items="${cartItemList}" var="cartItem">
 								<c:set var="tot_price"
 									value="${tot_price + cartItem.product.p_price * cartItem.cart_qty}" />
@@ -252,6 +247,7 @@
 									</div>
 								</div>
 							</c:forEach>
+							
 							<div class="toolbar-dropdown-group">
 								<div class="column">
 									<span class="text-lg">Total:</span>

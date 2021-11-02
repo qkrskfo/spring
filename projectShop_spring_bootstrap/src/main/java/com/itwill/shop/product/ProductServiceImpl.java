@@ -1,6 +1,7 @@
 ﻿package com.itwill.shop.product;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public List<Product> getProductList() throws Exception {
 		List<Product> productList = productDao.getProductList();
+		Collections.shuffle(productList);
 		return productList;
 	}
 

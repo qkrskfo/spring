@@ -6,7 +6,7 @@
 <html lang="ko">
   <head>
     <meta charset="utf-8">
-    <title>Shop Grid No Sidebar
+    <title>Shop
     </title>
     <!-- SEO Meta Tags-->
     <meta name="description" content="Unishop - Universal E-Commerce Template">
@@ -40,14 +40,14 @@
       <div class="page-title">
         <div class="container">
           <div class="column">
-            <h1>Shop Grid No Sidebar</h1>
+            <h1>Shop</h1>
           </div>
           <div class="column">
             <ul class="breadcrumbs">
               <li><a href="index.html">Home</a>
               </li>
               <li class="separator">&nbsp;</li>
-              <li>Shop Grid No Sidebar</li>
+              <li>Shop</li>
             </ul>
           </div>
         </div>
@@ -89,7 +89,13 @@
               </h4>
               <div class="product-buttons">
                 <button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="Whishlist"><i class="icon-heart"></i></button>
-                <button p-no="${product.p_no}" class="btn btn-outline-primary btn-sm btn-add-cart" data-toast data-toast-type="success" data-toast-position="topCenter" data-toast-icon="icon-circle-check" data-toast-title="${product.p_name}" data-toast-message="successfuly added to cart!">Add to Cart</button>
+                <button p-no="${product.p_no}" 
+                		class="btn-add-cart btn btn-outline-primary btn-sm" 
+                		data-toast data-toast-type="success" 
+                		data-toast-position="topCenter" 
+                		data-toast-icon="icon-circle-check" 
+                		data-toast-title="${product.p_name}" 
+                		data-toast-message="successfuly added to cart!">Add to Cart</button>
               </div>
             </div>
           </div>
@@ -119,29 +125,36 @@
  
     <script src="js/vendor.min.js"></script>
     <script src="js/scripts.min.js"></script>
-    
     <script src="js/custom.cart.js"></script>
     <script type="text/javascript">
     $(function(){
+    	
     	/******** .btn-add-cart 이벤트처리************/
     	$('.btn-add-cart').on('click',function(e){
+    		
+    		/*
+    		1.이벤트처리(클래스)
+    		2.Controller로 전송할데이타얻기 
+    		3.Controller로 담기요청 ajax  방식으로요청
+    		*/
     		if('${sUserId}'===''){
-        		alert('로그인하세요!');
-        		location.href='account-login';
-        		e.stopPropagation();
-        	}else{
-        		var params={
+	    		alert('로그인하세요!');
+	    		location.href='account-login';
+    			e.stopPropagation();
+    		}else{
+    			var params={
     						'p_no':$(e.target).attr('p-no'),
     						'cart_qty':1
     				  		};
-        		cart_add_action(params);
-        	}
+    			cart_add_action_rest(params);
+    		}
+        	
+    		
+    		
 		});
     	/***********************************************/
     	
-		
-		
-	});
+ 	});
   </script>  
   </body>
 </html>

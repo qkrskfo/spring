@@ -1,6 +1,7 @@
 package com.itwill.shop.controller;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -29,6 +30,7 @@ public class ShopController {
 	@RequestMapping(value = "/index")
 	public String user_main(Model model,HttpSession session) throws Exception{
 		List<Product> productList=productService.getProductList();
+	
 		String sUserId=(String)session.getAttribute("sUserId");
 		User loginUser=new User();
 		List<CartItem> cartItemList=new ArrayList<CartItem>();

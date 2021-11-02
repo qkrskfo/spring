@@ -9,7 +9,9 @@ var order_detail_rest=function(params){
 		success:function(order){
 			$('#orderDetails').find('.modal-header .modal-title').html('Order No  - #'+order.o_no);
 			$('#orderDetails .shopping-cart table > tbody').html('');
+			let totPrice=0;
 			$.each(order.orderItemList,function(i,orderItem){
+				totPrice+= orderItem.oi_qty*orderItem.product.p_price;
 				$('#orderDetails .shopping-cart table > tbody').append(`
 						<tr>
 	                    <td>
@@ -22,8 +24,10 @@ var order_detail_rest=function(params){
 	                    <td class="text-center text-lg text-medium">₩ ${(orderItem.oi_qty*orderItem.product.p_price).toLocaleString('en')}</td>
 	                  </tr>
 					`);
-				
 			});
+			
+			$('#orderDetails').find('.tot-price').html(`₩ ${totPrice.toLocaleString('en')}`);
+			
 		}
 	});
 	

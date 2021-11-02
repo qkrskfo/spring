@@ -1,5 +1,6 @@
 package com.itwill.shop.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,8 +16,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.itwill.shop.cart.CartItem;
+import com.itwill.shop.cart.CartService;
 import com.itwill.shop.controller.interceptor.LoginCheck;
+import com.itwill.shop.order.Order;
+import com.itwill.shop.order.OrderService;
+import com.itwill.shop.product.Product;
+import com.itwill.shop.product.ProductService;
 import com.itwill.shop.user.User;
 import com.itwill.shop.user.UserService;
 /*
@@ -31,10 +39,18 @@ import com.itwill.shop.user.UserService;
 /user_modify_action_myinfo
 /user_remove_action_myinfo
  */
+
 @Controller
 public class UserController {
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private ProductService productService;
+	@Autowired
+	private CartService cartService;
+	@Autowired
+	private OrderService orderService;
+	
 	
 	@GetMapping(value = "/account-login")
 	public String user_login_form() {
@@ -67,15 +83,70 @@ public class UserController {
 		session.invalidate();
 		return "redirect:index";
 	}
-	//@RequestMapping(value = "/user_write_form")
-	public String user_write_form() {
-		return "user_write_form";
+	@LoginCheck
+	@RequestMapping(value = "/account-address")
+	public String user_view_address(HttpSession session,Model model) throws Exception {
+		String sUserId=(String)session.getAttribute("sUserId");
+		User loginUser=userService.findUser(sUserId);
+		List<Product> productList=productService.getProductList();
+		List<CartItem> cartItemList = cartService.getCartList(sUserId);
+		int cartTotPrice=0;
+		for (CartItem cartItem : cartItemList) {
+				cartTotPrice+=cartItem.getProduct().getP_price()*cartItem.getCart_qty();
+		}
+		List<Order> orderList=orderService.list(sUserId);
+		
+		model.addAttribute("loginUser", loginUser);
+		model.addAttribute("cartItemList", cartItemList);
+		model.addAttribute("cartTotPrice", cartTotPrice);
+		model.addAttribute("productList", productList);
+		model.addAttribute("orderList", orderList);
+		
+		return "account-address";
 	}
-	//@RequestMapping(value = "/user_write_form_ajax")
-	public String user_write_form_ajax() {
-		return "user_write_form_ajax";
+	@LoginCheck
+	@RequestMapping(value = "/account-profile")
+	public String user_view_myinfo(HttpSession session,Model model) throws Exception {
+		String sUserId=(String)session.getAttribute("sUserId");
+		User loginUser=userService.findUser(sUserId);
+		List<Product> productList=productService.getProductList();
+		List<CartItem> cartItemList = cartService.getCartList(sUserId);
+		int cartTotPrice=0;
+		for (CartItem cartItem : cartItemList) {
+			cartTotPrice+=cartItem.getProduct().getP_price()*cartItem.getCart_qty();
+		}
+		List<Order> orderList=orderService.list(sUserId);
+		model.addAttribute("loginUser", loginUser);
+		model.addAttribute("cartItemList", cartItemList);
+		model.addAttribute("cartTotPrice", cartTotPrice);
+		model.addAttribute("productList", productList);
+		model.addAttribute("orderList", orderList);
+		
+		return "account-profile";
 	}
-	//@PostMapping(value ="user_write_action" )
+	@LoginCheck
+	@RequestMapping(value = "/account-wishlist")
+	public String user_wishlist(HttpSession session,Model model) throws Exception {
+		String sUserId=(String)session.getAttribute("sUserId");
+		User loginUser=userService.findUser(sUserId);
+		List<Product> productList=productService.getProductList();
+		List<CartItem> cartItemList = cartService.getCartList(sUserId);
+		int cartTotPrice=0;
+		for (CartItem cartItem : cartItemList) {
+			cartTotPrice+=cartItem.getProduct().getP_price()*cartItem.getCart_qty();
+		}
+		List<Order> orderList=orderService.list(sUserId);
+		model.addAttribute("loginUser", loginUser);
+		model.addAttribute("cartItemList", cartItemList);
+		model.addAttribute("cartTotPrice", cartTotPrice);
+		model.addAttribute("productList", productList);
+		model.addAttribute("orderList", orderList);
+		
+		return "account-wishlist";
+	}
+	
+	
+	@PostMapping(value ="user_write_action" )
 	public String user_write_action_post(@ModelAttribute User user,Model model) throws Exception{
 		String forwardPath="";
 		int result = userService.create(user);
@@ -96,14 +167,7 @@ public class UserController {
 	
 	
 	
-	//@LoginCheck
-	//@RequestMapping(value = "/user_view_myinfo")
-	public String user_view_myinfo(HttpSession session,HttpServletRequest request) throws Exception {
-		String loginUserId=(String)session.getAttribute("sUserId");
-		User loginUser = userService.findUser(loginUserId);
-		request.setAttribute("loginUser", loginUser);
-		return "user_view_myinfo";
-	}
+	
 	//@LoginCheck
 	//@RequestMapping(value = "/user_modify_form_myinfo")
 	public String user_modify_form_myinfo(HttpSession session,Model model)throws Exception {

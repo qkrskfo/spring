@@ -1,5 +1,6 @@
 package com.itwill.shop.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import com.itwill.shop.cart.CartItem;
 import com.itwill.shop.cart.CartService;
@@ -20,18 +22,17 @@ import com.itwill.shop.order.Address;
 import com.itwill.shop.order.Card;
 import com.itwill.shop.order.Order;
 import com.itwill.shop.order.OrderService;
-
+import com.itwill.shop.product.Product;
 import com.itwill.shop.user.User;
 import com.itwill.shop.user.UserService;
 
-@SessionAttributes({ "order", "address", "card" })
+@SessionAttributes({ "order", "address", "card" ,"viewProductList"})
 @Controller
 public class OrderController {
 	@Autowired
 	private OrderService orderService;
 	@Autowired
 	private UserService userService;
-	
 	@Autowired
 	private CartService cartService;
 
@@ -49,6 +50,10 @@ public class OrderController {
 	public Card setUpCard() {
 		return new Card();
 	}
+	@ModelAttribute("viewProductList")
+	public List<Product> setUpViewProductList() {
+		return new ArrayList<Product>();
+	}
 
 	// @LoginCheck
 	// @GetMapping(value =
@@ -60,7 +65,8 @@ public class OrderController {
 
 	@LoginCheck
 	@RequestMapping(value = "/checkout-address")
-	public String checkout_address(Model model, HttpSession session) throws Exception {
+	public String checkout_address(Model model, HttpSession session,
+									@ModelAttribute("viewProductList") List<Product> viewProductList)throws Exception {
 		String sUserId = (String) session.getAttribute("sUserId");
 		User loginUser = userService.findUser(sUserId);
 		List<CartItem> cartItemList = cartService.getCartList(sUserId);
@@ -77,7 +83,7 @@ public class OrderController {
 	@LoginCheck
 	@RequestMapping(value = "/checkout-shipping")
 	public String checkout_shipping(@ModelAttribute("order") Order order, @ModelAttribute("address") Address address,
-			Model model, HttpSession session) throws Exception {
+			Model model, HttpSession session,@ModelAttribute("viewProductList") List<Product> viewProductList) throws Exception {
 
 		order.setAddress(address);
 
@@ -97,7 +103,7 @@ public class OrderController {
 
 	@LoginCheck
 	@RequestMapping(value = "/checkout-payment")
-	public String checkout_payment(@ModelAttribute("order") Order order, Model model, HttpSession session)
+	public String checkout_payment(@ModelAttribute("order") Order order, Model model, HttpSession session,@ModelAttribute("viewProductList") List<Product> viewProductList)
 			throws Exception {
 
 		String sUserId = (String) session.getAttribute("sUserId");
@@ -117,7 +123,7 @@ public class OrderController {
 	@LoginCheck
 	@RequestMapping(value = "/checkout-review")
 	public String checkout_review(@SessionAttribute("order") Order order, @ModelAttribute("card") Card card,
-			Model model, HttpSession session) throws Exception {
+			Model model, HttpSession session,@ModelAttribute("viewProductList") List<Product> viewProductList) throws Exception {
 
 		order.setCard(card);
 
@@ -138,7 +144,7 @@ public class OrderController {
 
 	@LoginCheck
 	@RequestMapping(value = "/checkout-complete")
-	public String checkout_complete(@SessionAttribute("order") Order order, Model model, HttpSession session)
+	public String checkout_complete(@SessionAttribute("order") Order order, Model model, HttpSession session,SessionStatus sessionStatus,@ModelAttribute("viewProductList") List<Product> viewProductList)
 			throws Exception {
 		String sUserId = (String) session.getAttribute("sUserId");
 		orderService.create(sUserId);
@@ -154,7 +160,7 @@ public class OrderController {
 		model.addAttribute("loginUser", loginUser);
 		model.addAttribute("cartItemList", cartItemList);
 		model.addAttribute("cartTotPrice", cartTotPrice);
-
+		sessionStatus.setComplete();
 		return "checkout-complete";
 	}
 

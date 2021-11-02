@@ -83,10 +83,10 @@
             </div>
             <hr class="mb-3">
             <div class="d-flex flex-wrap justify-content-between align-items-center pb-2">
-              <div class="px-2 py-1">Subtotal: <span class='text-medium'>$289.68</span></div>
-              <div class="px-2 py-1">Shipping: <span class='text-medium'>$22.50</span></div>
-              <div class="px-2 py-1">Tax: <span class='text-medium'>$3.42</span></div>
-              <div class="text-lg px-2 py-1">Total: <span class='text-medium'>$315.60</span></div>
+              <div class="px-2 py-1">Subtotal: <span class='text-medium tot-price'>₩ 289.68</span></div>
+              <div class="px-2 py-1">Shipping: <span class='text-medium'>₩ 0.0</span></div>
+              <div class="px-2 py-1">Tax: <span class='text-medium'>₩ 0.0</span></div>
+              <div class="text-lg px-2 py-1">Total: <span class='text-medium tot-price'>₩ 315.60</span></div>
             </div>
           </div>
         </div>
@@ -121,28 +121,13 @@
       <!-- Page Content-->
       <div class="container padding-bottom-3x mb-2">
         <div class="row">
-        <!--  -->
+       
           <div class="col-lg-4">
-            <aside class="user-info-wrapper">
-              <div class="user-cover" style="background-image: url(img/account/user-cover-img.jpg);">
-                <div class="info-label" data-toggle="tooltip" title="You currently have 290 Reward Points to spend"><i class="icon-medal"></i>290 points</div>
-              </div>
-              <div class="user-info">
-                <div class="user-avatar"><a class="edit-avatar" href="#"></a><img src="img/account/${loginUser.userId}.png" alt="User"></div>
-                <div class="user-data">
-                  <h4>${loginUser.name}</h4><span>Joined <s:eval expression="new java.util.Date().toLocaleString()"/></span>
-                </div>
-              </div>
-            </aside>
-            <nav class="list-group">
-            <a class="list-group-item with-badge active" href="account-orders.html"><i class="icon-bag"></i>Orders<span class="badge badge-primary badge-pill">6</span></a>
-            <a class="list-group-item" href="account-profile.html"><i class="icon-head"></i>Profile</a>
-            <a class="list-group-item" href="account-address.html"><i class="icon-map"></i>Addresses</a>
-            <a class="list-group-item with-badge" href="account-wishlist.html"><i class="icon-heart"></i>Wishlist<span class="badge badge-primary badge-pill">3</span></a>
-            
-			</nav>
+          <!-- include_account_left_sidebar.jsp  start-->
+          <jsp:include page="include_account_left_sidebar.jsp"/> 
+          <!-- include_account_left_sidebar.jsp  end  -->
           </div>
-         <!--  -->
+        
           <div class="col-lg-8">
             <div class="padding-top-2x mt-2 hidden-lg-up"></div>
             <div class="table-responsive">
@@ -183,15 +168,17 @@
     <script src="js/vendor.min.js"></script>
     <script src="js/scripts.min.js"></script>
     <script src="js/custom.order.js"></script>
+    <script src="js/custom.account.js"></script>
     <script type="text/javascript">
 		
-		$('#orderDetails').on('show.bs.modal',function(e){
+        $('#orderDetails').on('show.bs.modal',function(e){
 			var o_no=$(e.relatedTarget).text().trim();
 			var params={'o_no':o_no};
 			
 			order_detail_rest(params)
 			
 		});
+		account_left_sidebar_select('${requestScope['javax.servlet.forward.request_uri'].substring(pageContext.request.contextPath.length()+1)}');
     </script>
   </body>
 </html>

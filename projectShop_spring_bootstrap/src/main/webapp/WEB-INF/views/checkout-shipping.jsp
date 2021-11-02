@@ -162,7 +162,7 @@
           <!-- Sidebar          -->
           <div class="col-xl-3 col-lg-4">
            <!--include_checkout_left_sidebar.jsp start  -->
-           <jsp:include page="include_checkout_left_sidebar.jsp"/>
+           <jsp:include page="include_checkout_right_sidebar.jsp"/>
            <!--include_checkout_left_sidebar.jsp end    -->
           </div>
         </div>

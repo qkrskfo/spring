@@ -1,0 +1,15 @@
+.nav-tabs {
+  border-bottom: none;
+}
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+  color: #7a4000;
+  background-color: #ff8a00;
+  border-color: #ff8a00;
+}
+.nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {
+  border-color: #ff8a00;
+}
+
+/*==============================
+	
+==============================*/

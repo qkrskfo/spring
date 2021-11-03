@@ -11,33 +11,41 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
 </head>
 <body>
-<!-- 
+<h1>ddddd</h1>
 	<ul>
-		<c:forEach items="${timeList}" var="time">
-			<li><img src="${time.movie.posterImage}" width=150 height=150/></li>		
-			<li>${time.movie.rating} &nbsp;<b>${time.movie.title}</b></li>
-			<li>${time.screen.screenName}</li>		
-			<li>${time.startTime}</li>
-			<hr/>
+		<c:forEach items="${mapList}" var="time">
+				<li><img src="${time.posterImage}" width=150 height=150/></li>		
+				<li>${time.rating} &nbsp;<b>${time.title}</b></li>
+				<li>${time}</b></li>
+					<ul>
+							<li>제목:${time.screen.screenName}</li>
+					</ul>			
+				<hr/>
 		</c:forEach>
 	</ul>
- -->
+<h1>d222222222222</h1>
  <form id="timeTablePage">
 	<div class="btn-group-vertical btn-group-toggle" data-toggle="buttons">
-		<c:forEach items="${timeList}" var="time">
-			<label class="btn btn-outline-primary">
-				<input type="radio" name="options" id="${time.timeCode}">
-				<img src="${time.movie.posterImage}" width=150 height=150/><br>		
-				${time.movie.rating} &nbsp;<b>${time.movie.title}</b><br>
-				${time.screen.screenName}<br>		
-				${time.startTime}<br>
-			</label>
+		<c:forEach items="${mapList}" var="time">
+				<label class="btn btn-outline-primary">
+					<input type="radio" name="options" id="${time.timeCode}">
+					<img src="${time.posterImage}" width=150 height=150/><br>		
+					${time.rating} &nbsp;<b>${time.title}</b><br>
+					${time.startTime}<br>
+				</label>
+				<ul>
+					<c:forEach items="${dateTimeTable}" var="timetable">
+						<li>${timetable.screenName}</li>
+					</c:forEach>
+				</ul>	
 		</c:forEach>
 	</div> 
  </form>
- 
+
  <script type="text/javascript">
- 	$("#timeTablePage .btn.btn-outline-primary:first").addClass("active");
+ 	//$("#timeTablePage .btn.btn-outline-primary:first").addClass("active");
+ 	console.log(${mapList});
+ 	console.log(${timetable.screenName});
  </script>
 </body>
 </html>

@@ -1,6 +1,8 @@
 package com.itwill.littlecinema.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.Date;
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -11,33 +13,32 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import com.itwill.littlecinema.domain.Member;
 import com.itwill.littlecinema.domain.Movie;
 import com.itwill.littlecinema.domain.Review;
+import com.itwill.littlecinema.domain.Time;
 import com.itwill.littlecinema.service.interface_service.MemberService;
 import com.itwill.littlecinema.service.interface_service.MovieService;
 import com.itwill.littlecinema.service.interface_service.ReviewService;
+import com.itwill.littlecinema.service.interface_service.TimeService;
 
 @Controller
 public class ReviewController {
 
-	@Autowired
 	private MovieService movieService;
-	
-	@Autowired
 	private MemberService memberService;
-	
-	@Autowired
 	private ReviewService reviewService;
-
 	
-	@RequestMapping("/review")
-	public String review(Model model) throws Exception {
-		model.addAttribute("review1movie", reviewService.findByNo(5));
-		model.addAttribute("reviewAvg", reviewService.findAvgScore(5));
-		return "review";
+	
+	public ReviewController(MovieService movieService, MemberService memberService, ReviewService reviewService) {
+		this.movieService = movieService;
+		this.memberService = memberService;
+		this.reviewService = reviewService;
 	}
-
+	
+	
+	
+	
 	@RequestMapping("/review_write")
 	public String reviewWrite(@RequestParam int movieNo, Model model) throws Exception {
-		model.addAttribute("currentMovie", movieService.findDetailByNo(movieNo)); //test code
+		model.addAttribute("currentMovie", movieService.findDetailByNo(movieNo));
 		return "review_write";
 	}
 
@@ -51,7 +52,7 @@ public class ReviewController {
 		Movie movie = movieService.findDetailByNo(movieNo);
 		
 		reviewService.add(new Review(member, movie, score, reviewComment));
-		return "redirect:movie_info?movieNo=" + movieNo;
+		return "redirect:movie-info?movieNo=" + movieNo;
 	}
 
 	@RequestMapping("/review_modify")
@@ -63,9 +64,8 @@ public class ReviewController {
 	@RequestMapping("/review_modify_action")
 	public String reviewModifyAction(@ModelAttribute Review review, @RequestParam int movieNo) throws Exception {
 		
-//		reviewService.modify(new Review(reviewNo, score, reviewComment));
 		reviewService.modify(review);
-		return "redirect:movie_info?movieNo=" + movieNo;
+		return "redirect:movie-info?movieNo=" + movieNo;
 	}
 
 	@RequestMapping("/review_remove")
@@ -73,7 +73,7 @@ public class ReviewController {
 		Review review = reviewService.findByNo(reviewNo);
 		int movieNo = review.getMovie().getMovieNo();
 		reviewService.remove(reviewNo);
-		return "redirect:movie_info?movieNo="+movieNo;
+		return "redirect:movie-info?movieNo="+movieNo;
 	}
 
 }

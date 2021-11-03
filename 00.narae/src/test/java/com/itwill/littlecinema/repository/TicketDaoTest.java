@@ -31,11 +31,13 @@ public class TicketDaoTest {
 	@Test
 	public void ticketDaoTest() throws Exception {
 		System.out.println("----------- selectList -----------");
+		/*
 		List<Ticket> ticketList = td.selectTicketList("asurcombe1");
 		for (Ticket ticket : ticketList) {
 			System.out.println(ticket);
 		}
-		
+		*/
+		/*
 		System.out.println("----------- insert -----------");
 		List<Time> timeList = td2.selectScreenTimeByDate("2021-10-21");
 		Ticket ticket = new Ticket(0, md.select("asurcombe1"), timeList.get(0), 1, new Date(), 1);
@@ -49,6 +51,11 @@ public class TicketDaoTest {
 		for (Ticket ticket2 : ticketList) {
 			System.out.println(ticket2);
 		}
+		*/
+		System.out.println("-------- selectTicketBookedSeatByNo --------");
+		System.out.println(td.selectTicketBookedSeatByNo(3));
+		
+		
 	}
 	
 }

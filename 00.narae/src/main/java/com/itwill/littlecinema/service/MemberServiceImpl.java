@@ -1,6 +1,5 @@
 package com.itwill.littlecinema.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.itwill.littlecinema.domain.Member;
@@ -10,8 +9,11 @@ import com.itwill.littlecinema.service.interface_service.MemberService;
 @Service
 public class MemberServiceImpl implements MemberService {
 	
-	@Autowired
 	private MemberDao memberDao;
+	
+	public MemberServiceImpl(MemberDao memberDao) {
+		this.memberDao = memberDao;
+	}
 
 	//회원가입
 	@Override

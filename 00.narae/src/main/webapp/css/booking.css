@@ -1,0 +1,41 @@
+        .container {
+            width: 100%;
+            height: 100%;
+            background-color: white;
+        }
+        .booking {
+            align-items: center;
+            margin-top: 5%;
+            margin-bottom: 5%;
+        }
+        div[class^="col"] {
+            border: 1px solid #e5e5e5;
+
+        }
+        .row-title {
+            color: #fff;
+            font-size: larger;
+            background-color: #ff8a00;
+        }
+
+        input[name="movies"] {
+            text-align: left;
+        }
+
+        .list-item {
+            margin: 10px
+        }
+        #movie-info {
+            margin: 10px;
+            font-size: 15px;
+        }
+        .movie-info-title {
+            font-size: 18px;
+        }
+        #select-seats {
+       	    margin-bottom: 5%;
+        }
+        .body {
+            background-color: #f5f5f5;
+        }
+        

@@ -15,6 +15,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
 function reviewWrite() {
    var isLogin = false;
@@ -42,6 +43,40 @@ function reviewRemove(reviewNo) {
 function reviewModify(reviewNo) {
 	location.href = "review_modify?reviewNo="+reviewNo;
 }
+
+$(function(){
+	$('.ScreeningDate').on('click', function(e) {
+		$(".ScreeningDate").css('background', 'white');
+		$(e.target).css('background', 'green');
+		$.ajax({
+			url:'MovieTimeTableJSON?movieNo=${movie.movieNo}&movieDate=' + e.target.getAttribute("date"),
+			method:'GET',
+			dataType:'json',
+			success:function(jsonObject) {
+				var html='<ul>';
+				html += `<li>
+							<img src="\${jsonObject.posterImage}" width="21px" height="30px"/>
+							(\${jsonObject.rating})\${jsonObject.title}
+						</li>`;
+				$.each(jsonObject.dateTimeTable, function(i, time) {
+					html += `<li>
+								<a href="booking?timeCode=\${time.timeCode}">
+									\${time.screen.screenName}
+									\${time.startTime} - \${time.endTime}
+									잔여석 \${96 - time.bookedCount}석
+								<a>
+							</li>`;
+				});
+				html += '</ul>';
+				
+				$('#timeTableDiv').html(html);
+			}
+		});
+		e.preventDefault();
+	});
+	
+	$('.ScreeningDate:first').trigger('click');
+});
 </script>
 </head>
 <body> 
@@ -63,18 +98,15 @@ function reviewModify(reviewNo) {
 		<li>상영일자</li><br>
 		<c:forEach items="${dateList}" var="date">
 			<li>
-				<a href="movie_timetable?movieNo=${movie.movieNo}&movieDate=${date}"><fmt:formatDate value="${date}" pattern="yyyy-MM-dd"/></a>
-				<%-- <ul>
-				<c:forEach items="${timeList}" var="time">
-					<c:if test="${time.movieDate eq date}">
-						<li><a href="#;">${time.startTime}</a></li>
-					</c:if>
-				</c:forEach>
-				</ul> --%>
+				<%-- <a class="ScreeningDate" href="MovieTimeTableJSON?movieNo=${movie.movieNo}&movieDate=${date}"> --%>
+				<a class="ScreeningDate" href="#;" date="${date}">
+					<fmt:formatDate value="${date}" pattern="yyyy-MM-dd"/>
+				</a>
 			</li>
 			</br>
 		</c:forEach>
 	</ul>
+	<div id="timeTableDiv">이곳이 타임테이블</div>
 	<form name="f">
 		<ul>	
 			<li>리뷰</li><br>

@@ -34,6 +34,8 @@ public class MovieDaoTest {
 			System.out.println("######## 제목: "+movie.getTitle());
 		}
 		
+		// 3. 상영예정 영화 목록 조회
+		System.out.println(movieDao.selectScheduledList());
 	}
 
 }

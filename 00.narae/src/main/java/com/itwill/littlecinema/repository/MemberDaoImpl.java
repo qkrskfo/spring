@@ -1,7 +1,6 @@
 package com.itwill.littlecinema.repository;
 
 import org.apache.ibatis.session.SqlSession;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.itwill.littlecinema.domain.Member;
@@ -9,12 +8,14 @@ import com.itwill.littlecinema.repository.interface_dao.MemberDao;
 
 @Repository
 public class MemberDaoImpl implements MemberDao{
-
-	public static final String NAMESPACE = "mapper.MemberMapper.";
-
-	@Autowired
+	
+	private static final String NAMESPACE = "mapper.MemberMapper.";
 	private SqlSession sqlSession;
 	
+	public MemberDaoImpl(SqlSession sqlSession) {
+		this.sqlSession = sqlSession;
+	}
+
 	//회원가입
 	@Override
 	public int insert(Member member) throws Exception {

@@ -12,10 +12,11 @@
 <body>
 
 	<c:forEach items="${movieList}" var="movie">
-		<li>제목: 
-		<a class="title" href="reservation_summary" no="${movie.movieNo }">${movie.title}</a></li>
+		<li>제목: <a class="title" href="reservation_summary"
+			no="${movie.movieNo }">${movie.title}</a></li>
 		<form>
-			<input class="movie" type="button" name="movie" value="${movie.title}" no="${movie.movieNo }"> 
+			<input class="movie" type="button" name="movie"
+				value="${movie.title}" no="${movie.movieNo }">
 		</form>
 	</c:forEach>
 	<br>
@@ -23,9 +24,12 @@
 	<br>
 	<div id="summary"></div>
 	<div id="movieDateList"></div>
+	<div id="movieInfo"></div>
 
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script>
+		
+	// 누르면 해당 영화 간단 정보 페이지로 이동
 		$("a.title").click(
 				function(e) {
 					e.preventDefault();
@@ -34,6 +38,7 @@
 							+ $(e.target).attr("no");
 				});
 
+	//ajax 누르면 해당 영화 간단 정보 출력
 		$(".movie").click(function(e) {
 			$.ajax({
 				url : 'reservation_summary',
@@ -46,7 +51,7 @@
 					alert("100");
 				}
 			});
-			
+
 			$.ajax({
 				url : 'movie_to_dateList',
 				type : 'post',
@@ -59,75 +64,7 @@
 				}
 			});
 		});
-
-		/* function callByAjax() {
-			var form = document.form1;
-			var num1 = form.num1.value;
-			alert(num1);
-
-			var action = form.action;
-			action = "main";
-
-			$.ajax({
-				url : 'reservation_movie',
-				type : 'get',
-				data : {
-					'id' : 'admin'
-				},
-				success : function(data) {
-					alert(data);
-				},
-				error : function(err) {
-					alert("100");
-				}
-			});
-
-		}; */
-		
 	</script>
 
-	<!-- <form name="form1" action="reservation_movie" method="get">
-		<div>
-			<input onclick="callByAjax()" type="button" value="ajax실행버튼">
-		</div>
-		<div>
-			<input type="text" name="num1" placeholder="영화제목">
-		</div>
-	</form> -->
-
-
-	<%-- <script type="text/javascript">
-	$(function(){
-		setInterval(function(){
-			$.ajax({
-				url:'/reservation_movie',
-				method:'GET',
-				dataType:'xml',
-				success:function(){
-					alert("통신 성공")
-				}
-				error: function() {
-					alert("통신 실패")
-				}
-			});
-		});
-	</script> --%>
-
-	<!-----------------------위 -- 링크달린 제목---------------------------->
-	<!-----------------------밑 -- 링크 누르면 나오는 간단설명---------------------------->
-
-
-	<!-- 영화리스트  -->
-	<%-- <c:forEach items="${movieList}" var="movie">
-		<ul>
-			<img src="${movie.posterImage}" width="100" height="100" alt="영화이미지">
-			<li>${movie.title }</li>
-			<li>장르: ${movie.genre }</li>
-			<li>상영시간: ${movie.runningtime }</li>
-			<li>${movie.rating }관람가</li>
-		</ul>
-
-		<hr>
-	</c:forEach> --%>
 </body>
 </html>

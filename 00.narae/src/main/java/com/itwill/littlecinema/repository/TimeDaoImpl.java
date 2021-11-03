@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.itwill.littlecinema.domain.Time;
@@ -13,10 +12,10 @@ import com.itwill.littlecinema.repository.interface_dao.TimeDao;
 
 @Repository
 public class TimeDaoImpl implements TimeDao {
+	
 	private final static String NAMESPACE = "mapper.TimeMapper.";
 	private SqlSession sqlSession;
 
-	@Autowired
 	public TimeDaoImpl(SqlSession sqlSession) {
 		this.sqlSession = sqlSession;
 	}
@@ -37,11 +36,6 @@ public class TimeDaoImpl implements TimeDao {
 	}
 
 	@Override
-	public List<Time> selectScreenTimeByNoDate(Map<String, Object> movieNoDate) {
-		return sqlSession.selectList(NAMESPACE + "selectScreenTimeByNoDate", movieNoDate);
-	}
-
-	@Override
 	public List<Time> selectScreenTimeByDate(String movieDate) {
 		return sqlSession.selectList(NAMESPACE + "selectScreenTimeByDate", movieDate);
 	}
@@ -49,6 +43,18 @@ public class TimeDaoImpl implements TimeDao {
 	@Override
 	public List<Time> selectTimeTableByNoDate(Map<String, Object> movieNoDate) {
 		return sqlSession.selectList(NAMESPACE + "selectTimeTableByNoDate", movieNoDate);
+	}
+	
+	@Override
+	public Time selectTimeByTimeCode(int timeCode) {
+		return sqlSession.selectOne(NAMESPACE + "selectTimeByTimeCode", timeCode);
+	}
+	
+	//==================================== TESTING ====================================
+	
+	@Override
+	public List<Time> selectScreenTimeByNoDate(Map<String, Object> movieNoDate) {
+		return sqlSession.selectList(NAMESPACE + "selectScreenTimeByNoDate", movieNoDate);
 	}
 
 

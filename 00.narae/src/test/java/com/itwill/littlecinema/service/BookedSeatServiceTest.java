@@ -28,9 +28,8 @@ public class BookedSeatServiceTest {
 	private TimeDao td2;
 	
 	@Test
-	public void bookedSeatDaoTest() throws Exception {
-		
-		
+	public void bookedSeatDaoTest() throws Exception {	
 	}
+
 	
 }

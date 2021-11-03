@@ -43,8 +43,8 @@ public class MovieInfoController2 {
 	        for (Date date : dateList) {
 	            movieNoDate.put("movieDate", date);
 	            movieNoDate.put("movieNo", movieNo);
-	            List<Time> timeList = timeService.findScreenTimeByNoDate(movieNoDate);
-	            wholeTimeList.add(timeList);
+	            //List<Time> timeList = timeService.findScreenTimeByNoDate(movieNoDate);
+	            //wholeTimeList.add(timeList);
 	        }
 	        model.addAttribute("wholeTimeList", wholeTimeList);
 	        

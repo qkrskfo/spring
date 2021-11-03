@@ -1,0 +1,12 @@
+<svg version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40">
+	<title>avatar-svg</title>
+	<defs>
+		<image  width="20" height="20" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAMAAAC6V+0/AAAAAXNSR0IB2cksfwAAAJBQTFRFAAAA/4oA/4oA/4oA/4oA/4oA/4oA/4oA/4oA/4oA/4oA/4oA/4oA/4oA/4oA/4oA/4oA/4oA/4oA/4oA/4oA/4oA/4oA/4oA/4oA/4oA/4oA/4oA/4oA/4oA/4oA/4oA/4oA/4oA/4oA/4oA/4oA/4oA/4oA/4oA/4oA/4oA/4oA/4oA/4oA/4oA/4oA/4oAoGc61AAAADB0Uk5TABZww+oTzv+sbQgoU+411oB59eQaT2a5F1XowX/YdEaJFGJbwotvWaiba947Lsy/H8n+5AAAAK1JREFUeJxdzskSgjAURNEnKBcFHHACBEVFceb//86qBEOwN+k6i7wWURk47nDoOgOxMvJQ8UYW+jCeBGGE35kD6p3OcAx6zHVZ4BmMmegSEBtcEuiyYmnQJdRljWtwQzRVBTbd+S2zRZCksLXXZ3p8ZlG6o80u/VkOxf6QJId9Abmx8qjrsWw1hFP30xk1r+Jin7xSidQU0suNWu6UfXxwlyevPr55yqeRvzTNFy2NCdWtirSsAAAAAElFTkSuQmCC"/>
+	</defs>
+	<style>
+		tspan { white-space:pre }
+		.shp0 { fill: #ffffff } 
+	</style>
+	<path id="Layer" class="shp0" d="M0 0L40 0L40 40L0 40L0 0Z" />
+	<use id="레이어 1" href="#img1" x="10" y="10" />
+</svg>

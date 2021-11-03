@@ -32,6 +32,18 @@ public class MovieController {
 		this.reviewService = reviewService;
 	}
 
+	@RequestMapping(value = {"/", "/main", "/index"})
+	public String index(Model model) throws Exception {
+		List<Date> dateList = timeService.findAllDate();	
+		model.addAttribute("movieList", movieService.findPlayingList());
+		model.addAttribute("firstDate", dateList.get(0));
+		model.addAttribute("lastDate", dateList.get(dateList.size() - 1));
+		
+		List<Movie> scheduledMovieList = movieService.findScheduledList();
+		model.addAttribute("scheduledMovieList", scheduledMovieList);
+		return "index";
+	}
+	
 	//MovieTimeTableController
 	
 	//모든 영화 상영일자 조회
@@ -42,11 +54,11 @@ public class MovieController {
 	}
 	
 	@RequestMapping(value="/timetable")
-	public String MovieDateTable(Model model) throws Exception {
+	public String movieDateTable(Model model) throws Exception {
 		
 		List<Date> dateList = timeService.findAllDate();
 		model.addAttribute("dateList", dateList);
-
+		
 		return "movie_timetable";
 	}
 /*
@@ -90,13 +102,13 @@ public class MovieController {
 	//MovieInfoController
 	
 	//movieNo 없이 요청되면 영화목록으로
-	@RequestMapping(value="/movie_info", params="!movieNo")
+	@RequestMapping(value="/movie-info", params="!movieNo")
 	public String movie_info_no_param() {
 		return "redirect:playing";
 	}
 
 	//정상적인 영화 상세 정보 페이지 요청
-	@RequestMapping(value="/movie_info", params="movieNo")
+	@RequestMapping(value="/movie-info", params="movieNo")
 	public String movie_info(@RequestParam int movieNo, Model model) throws Exception {
 		
 		//movieNo으로 영화정보 조회
@@ -111,8 +123,12 @@ public class MovieController {
 		//movieNo으로 영화 리뷰 평점 조회
 		Double avgScore = reviewService.findAvgScore(movieNo);
 		model.addAttribute("avgScore", avgScore);
-		
-		return "movie_info";
+		//현재상영중영화(사이드바에 적용)
+		model.addAttribute("movieList", movieService.findPlayingList());
+		//상영예정영화(사이드바에 적용)
+		List<Movie> scheduledMovieList = movieService.findScheduledList();
+		model.addAttribute("scheduledMovieList", scheduledMovieList);
+		return "movie-info";
 	}
 
 	//PlayingController
@@ -120,12 +136,43 @@ public class MovieController {
 	@RequestMapping("/playing")
 	public String playing(Model model) throws Exception {
 		model.addAttribute("movieList", movieService.findPlayingList());
-		return "playing";
+		return "playing1";
 	}
 	
-	@RequestMapping(value = {"/", "/main"})
-	public String main() {
-		return "main";
+	@ResponseBody
+	@RequestMapping("/rest_avg")
+	public Double avg(@RequestParam int movieNo) throws Exception {
+		if (reviewService.findAvgScore(movieNo) == null) {
+			return 0.0;
+		}
+		
+		return Math.round((reviewService.findAvgScore(movieNo) * 10)) / 10.0;
+	}
+	
+	// 상영예정영화 리스트
+	@RequestMapping("/scheduled-movies")
+	public String scheduled_movies(Model model) throws Exception {
+		List<Movie> scheduledMovieList = movieService.findScheduledList();
+		model.addAttribute("scheduledMovieList", scheduledMovieList);
+		return "movie-scheduled-list";
+	}
+	
+	// 상영예정영화 상세
+	@RequestMapping(value="/scheduled-movie-info", params="movieNo")
+	public String scheduled_movie_info(@RequestParam int movieNo, Model model) throws Exception {
+		
+		//movieNo으로 영화정보 조회
+		Movie movie = movieService.findDetailByNo(movieNo);
+		model.addAttribute("movie", movie);
+		
+		//현재상영중영화(사이드바에 적용)
+		model.addAttribute("movieList", movieService.findPlayingList());
+		
+		//상영예정영화(사이드바에 적용)
+		List<Movie> scheduledMovieList = movieService.findScheduledList();
+		model.addAttribute("scheduledMovieList", scheduledMovieList);
+		
+		return "movie-scheduled-info";
 	}
 	
 	

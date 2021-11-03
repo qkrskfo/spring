@@ -18,132 +18,81 @@
 
 </script>
 <body>
-<!-- 
-	<h2><s:eval expression="new java.text.SimpleDateFormat('MM').format(dateList[0])"></s:eval>월</h2>
-	<ul>
-		<c:forEach items="${dateList}" var="date">
-			<li><a href="timetable_detail?movieDate=<s:eval expression="new java.text.SimpleDateFormat('yyyy-MM-dd').format(date)"></s:eval>"><s:eval expression="new java.text.SimpleDateFormat('yyyy-MM-dd').format(date)"></s:eval></a></li>
-		</c:forEach>
-	</ul>
- -->	
- <!-- 
-	<div id=container>
-		<div id="header">
-			<h2><s:eval expression="new java.text.SimpleDateFormat('MM').format(dateList[0])"></s:eval>월</h2>
-		</div>
-		<div id="sidebar">
-			<div id="menus">
-				<c:forEach items="${dateList}" var="date2">
-					<div class="menu" id="menu-<s:eval expression="new java.text.SimpleDateFormat('yyyy-MM-dd').format(date2)"></s:eval>">
-						<h3>
-							<a href="timetable_detail?movieDate=<s:eval expression="new java.text.SimpleDateFormat('yyyy-MM-dd').format(date2)"></s:eval>"><s:eval expression="new java.text.SimpleDateFormat('yyyy-MM-dd').format(date2)"></s:eval></a>
-						</h3>
-					</div>
-				</c:forEach>
-			</div>
-		</div>
-		<div id="content">
-			<div id="time_list"></div>
-		</div>
+
+	<div id="header">
+		<h2>
+			<s:eval expression="new java.text.SimpleDateFormat('MM').format(dateList[0])"></s:eval>월
+		</h2>
 	</div>
- -->	
- 
- 
+	
+	<div class="btn-group btn-group-toggle" data-toggle='buttons'>
+		<c:forEach items="${dateList}" var="date">
+			<label class="btn btn-outline-primary">
+				<input class="date_result" type="radio" name="options" date="${date }">
+				<fmt:formatDate value="${date }" pattern="MM월 dd일" />
+			</label>
+		</c:forEach>
 
-		<div id="header">
-			<h2><s:eval expression="new java.text.SimpleDateFormat('MM').format(dateList[0])"></s:eval>월</h2>
-		</div>
-		<div class="btn-group btn-group-toggle" data-toggle='buttons'>
-			<c:forEach items="${dateList}" var="date">
-				<label class="btn btn-outline-primary">
-					<input class="date_result" type="radio" name="options" date=<fmt:formatDate value="${date }" pattern="yyyy-MM-dd" />>
-					<fmt:formatDate value="${date }" pattern="MM월 dd일" />
-				</label>
-			</c:forEach>
-		</div>
+	</div>
+	
+	<div id="movieTimeTableRest">
+	
+	</div>
+	
+	<div id="pickedTicket">
+	
+	</div>
 		
-		<div id="movieTimeTable">
-		
-		</div>
-		
-		<div id="movieTimeTableRest">
-		
-		</div>
-		
-
  
 <script>
+	let isFirst = true;
+	window.setTimeout(() => {
+		if(isFirst) {
+			$(".btn input:first").trigger("click");
+			isFirst = false;
+			return;
+		}
+	});
+
+
 	$(".date_result").click(function(e) {
-		/*
-		$.ajax({
-			url: "timetable_detail",
-			method: "post",
-			data: "movieDate="+$(e.target).attr("date"),
-			success:function(response) {
-				$("#movieTimeTable").html(response);
-			}
-		}); */
-		
 		$.ajax({
 			url: "timetable_detail_rest",
-			method: "post",
+			method: "get",
 			data: "movieDate="+$(e.target).attr("date"),
-			success: function(data) {
-				let movie = Object.create(null);
 			
-				data.forEach(item=> {
-					if(!movie[item.movie.title]) {
-						movie[item.movie.title] = {
-								thumbnail: item.movie.posterImage,
-								rating: item.movie.rating,
-								timetable: [],
-						};
-					} 
-					
-					movie[item.movie.title].timetable.push({
-						timeCode: item.timeCode,
-						screenName: item.screen.screenName,
-						startTime: item.startTime,
-						movieNo: item.movie.movieNo,
+			success: function(data) {
+				let html='';
+					$.each(data, function(i, movie) {
+						if(movie.dateTimeTable.length>0) {
+							html+=`<hr> 
+									<div class="btn-group-vertical btn-group-toggle" data-toggle="buttons">
+									<img src="\${movie.posterImage}" width=200 height=200>
+									<h3>\${movie.title}(\${movie.rating})</h3>
+									`;
+							$.each(movie.dateTimeTable, function(i, time) {
+								html += `<div class="btn-group btn-group-toggle">
+											<label class="btn btn-outline-primary">
+											<input type="radio" name="options" timeCode="\${time.timeCode}">
+											<p class="pickedMovie">\${time.screen.screenName}&nbsp;\${time.startTime}&nbsp;잔여석: \${96 - time.bookedCount}석</p>
+											</label>
+											</div>`;
+							});		
+							html+=`</div>`;	
+						}	//if문
 					});
-				});
-				
-				let result = Object.entries(movie).map(([k, v]) => ({[k]: v}));
-
-				let html=`<hr> <div class="btn-group-vertical btn-group-toggle" data-toggle="buttons">`;
-				result.forEach(function(el){
-					html+=`<img src="`;
-					html+=el[Object.keys(el)].thumbnail;
-					html+=`" width=200 height=200>`;
-					html+=`<h3>`;
-					html+=Object.keys(el);
-					html+=`(`;
-					html+=el[Object.keys(el)].rating;
-					html+=`)`;
-					html+=`</h3>`;
-					
-					el[Object.keys(el)].timetable.forEach(function(el2){
-						html += `<div class="btn-group btn-group-toggle">`;
-						html += `<label class="btn btn-outline-primary ">
-						    <input type="radio" name="options" timeCode="`;
-						html += el2.timeCode;
-						//console.log(el2.timeCode);
-						html +=`">`;
-						html += el2.movieNo;
-						html += `&nbsp;`;
-						html += el2.screenName;
-						html += el2.startTime;
-						html += `</label>`;
-						html+=`</div>`;
-					});
-					html += `<br>`;
-				});
-					
-					html+=`</div>`;
-				$("#movieTimeTableRest").html(html);	
+					$("#movieTimeTableRest").html(html);
 			}
 		});
+		e.preventDefault();
 	});
+
+
+	$('#movieTimeTableRest').on('click', 'input', function(e){
+		window.location.href = "booking?timeCode=" + $(e.target).attr('timeCode');
+	});
+
+
 </script>
 </body>
 </html>

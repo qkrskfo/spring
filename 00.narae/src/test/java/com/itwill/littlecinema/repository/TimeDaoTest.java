@@ -31,7 +31,6 @@ public class TimeDaoTest {
 		// 2. 영화별 상영 날짜목록 조회
 		assertThat(timeDao.selectDateByNo(5).size(), is(4));
 		
-		
 		// 3.영화 번호, 상영날짜로 상영시간 목록 조회 
 		System.out.println("#####영화 번호, 상영날짜로 상영시간 목록 조회");
 		Map<String, Object> movieNoDate = new HashMap<>();
@@ -46,5 +45,18 @@ public class TimeDaoTest {
 		assertThat(timeDao.selectScreenTimeByDate("2021-10-21").size(), is(9));
 		System.out.println(timeDao.selectScreenTimeByDate("2021-10-21"));
 		
+		
+		// 5. 영화번호, 상영날짜로 타임테이블 조회
+		System.out.println("######### 영화번호, 상영날짜로 타임테이블 조회");
+		System.out.println(timeDao.selectTimeTableByNoDate(movieNoDate));
+		
+		
+		// 영화별 Time 목록 검색
+		System.out.println("##### 영화별 Time 목록 검색");
+		System.out.println(timeDao.selectTimeByNo(2));
+		
+		// 타임코드(pk)로 Time 조회
+		System.out.println("######### TimeCode로 Time 조회");
+		System.out.println(timeDao.selectTimeByTimeCode(1));
 	}
 }

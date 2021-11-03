@@ -35,6 +35,7 @@ public class ReviewDaoTest {
 		System.out.println("### 생성한 리뷰 번호: " + review.getReviewNo());
 		
 		Review insertedReview = reviewDao.selectByNo(review.getReviewNo());
+		System.out.println(insertedReview);
 		assertThat(insertedReview.getScore(), is(0));
 		assertThat(insertedReview.getReviewComment(), is("노잼"));
 
@@ -47,8 +48,7 @@ public class ReviewDaoTest {
 		// 3. 리뷰 삭제
 		assertThat(reviewDao.delete(insertedReview.getReviewNo()), is(1));
 		
-		// 4. 영화 평점 평균 조회
-		assertThat(reviewDao.selectAvgScore(4), is(4.5));
-
+		// 4. (내정보) 리뷰 갯수 (이승현)
+		System.out.println(reviewDao.selectByReviewCount("test"));
 	}
 }

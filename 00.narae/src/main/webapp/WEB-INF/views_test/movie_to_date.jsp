@@ -32,7 +32,7 @@
 	<c:forEach items="${dateList }" var="date">
 	  <label class="btn btn-outline-primary ">
 	    <input class="date2" type="radio" name="options" movieNo="${movieNo }" date=<fmt:formatDate value="${date }" pattern="yyyy-MM-dd" />>
-		<fmt:formatDate value="${date }" pattern="MM월 dd일" />
+		<fmt:formatDate value="${date }" pattern="MM월 dd일 EE" />
 	  </label>
 	</c:forEach>
 </div>
@@ -79,9 +79,10 @@
 				    	endTime: item.endTime,
 				    });
 				});
-				
+				console.log(groups);
+				console.log(Object.entries(groups));
 				let result = Object.entries(groups).map(([k, v]) => ({[k]: v}));
-				
+				console.log(result);
 				let html = `<hr>
 				<h1>REST 방식으로 그룹화해서 받아오기</h1>`;
 					html += `<div class="btn-group-vertical btn-group-toggle" data-toggle="buttons">`;
